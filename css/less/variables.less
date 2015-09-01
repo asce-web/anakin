@@ -1,0 +1,227 @@
+/*------------------------------------*\
+    Palette
+\*------------------------------------*/
+@white: #fff;
+@black: #000;
+
+@darkest-gray: #8c959d;
+@dark-gray: #b3b8bc;
+@medium-dark-gray: #d1d4d7;
+@medium-light-gray: #e8eaeb;
+@light-gray: #ebeded;
+@lightest-gray: #f4f4f5;
+
+@black: #1a1d22;
+@blue: #0c5fa8;
+@green: #62b840;
+@orange: #f99729;
+@light-orange: #FBB15F;
+@red: #d83241;
+@brown: #b58357;
+@yellow: #fdcd2f;
+@light-green: #77bc66;
+@lightest-green: #99cd8c;
+
+@darkest-cyan: #19a1cf;
+@dark-cyan: #75c7e2;
+@light-cyan: #97d5e9;
+@lightest-cyan: #ddf1f8;
+
+@visited: #92663f;
+/*------------------------------------*\
+    For Print Media
+\*------------------------------------*/
+@important:!important;
+@none:0px @important;
+@paragraph: 12pt;
+@paragraph-margin:10px 0px 0px 0px @important;
+@title-margin:10px 0px 10px 0px @important;
+@link-padding:5px 0px 5px 0px @important;
+@print-logo:url(../../images/logo-print.png) @important;
+@left:left @important;
+@right:right @important;
+@inherit:inherit @important;
+@full-width:100%;
+@seperator:1px solid @black;
+@block-tile:block @important;
+@content-margin:0 60px 0 60px @important;
+@print-title:18pt @important;
+@10:10px;
+@visible:visible @important;
+.print-hidden{
+  display: none @important;
+}
+.all-relative{
+  position: relative @important;
+}
+.no-margin{
+  margin: 0px @important;
+}
+.no-padding{
+  padding: 0px @important;
+}
+.no-top-margin{
+  margin-top: 0px @important;
+}
+.title-margin{
+  margin-top: 10px @important;
+  margin-bottom: 10px @important;
+}
+.auto-height{
+  height: auto @important;
+}
+.no-shadow{
+  box-shadow: none;
+}
+.no-border{
+  border: 0px @important;
+}
+.light-green {
+    color: @light-green @important;
+}
+
+/*------------------------------------*\
+    Fonts
+\*------------------------------------*/
+@font-family-base: "open-sans", Arial;
+@font-size-base: 16px;
+@line-height-base: 1;
+
+.futura (@size: 16, @line: 1, @weight: 500, @style: normal) {
+    font-family: "futura-pt", Verdana;
+
+    font-size: unit(@size, px); /*px fallback*/
+    font-size: unit((@size/10), rem);
+    line-height: @line/@size;
+
+    font-weight: @weight;
+    font-style: @style;
+}
+
+.sans (@size: 16, @line: 1, @weight: 400, @style: normal) {
+    font-family: "open-sans", Arial;
+
+    font-size: unit(@size, px);
+    font-size: unit((@size/10), rem);
+    line-height: @line/@size;
+
+    font-weight: @weight;
+    font-style: @style;
+}
+
+.ex-bold {
+    font-weight: 800 !important;
+}
+
+/*------------------------------------*\
+    Gradient Overlays
+\*------------------------------------*/
+.horizontal-gradient (@startColor: #eee, @endColor: white) {
+  background-color: @startColor;
+  background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+  background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+  background-image: -moz-linear-gradient(left, @startColor, @endColor);
+  background-image: -ms-linear-gradient(left, @startColor, @endColor);
+  background-image: -o-linear-gradient(left, @startColor, @endColor);
+}
+
+/*------------------------------------*\
+    Sprites
+\*------------------------------------*/
+.sprite(@x, @y) {
+   background: url(../images/sprite.png) no-repeat;
+   background-position: unit(-1*@x, px) unit(-1*@y, px);
+}
+.spritex2(@x, @y) {
+   background: url(../images/spritex2.png) no-repeat;
+   background-position: unit(-1*@x, px) unit(-1*@y, px);
+   background-size: 590px 330px;
+}
+.background(@x,@y) {
+  background-position: unit(-1*@x, px) unit(-1*@y, px);
+}
+.logo_72(@x,@y) {
+   background: url(../../images/logo.png) no-repeat;
+   background-position: unit(-1*@x, px) unit(-1*@y, px);
+}
+.logo_144(@x,@y) {
+   background: url(../images/logo2x.png) no-repeat;
+   background-position: unit(-1*@x, px) unit(-1*@y, px);
+   background-size: 330px 600px;
+}
+.logo_wrapper_72(@x,@y) {
+   background: url(../images/logo-asce.png) no-repeat;
+   background-position: unit(-1*@x, px) unit(-1*@y, px);
+   display: inline-block;
+}
+.logo_wrapper_144(@x,@y) {
+   background: url(../images/logo-asce2x.png) no-repeat;
+   background-position: unit(-1*@x, px) unit(-1*@y, px);
+   background-size: 360px 480px;
+   display: inline-block;
+}
+
+.clearfix () {
+  content: " ";
+  overflow: hidden;
+  visibility: hidden;
+  display: inline-block;
+  display: block;
+  height: 0px;
+  clear: both;
+}
+
+.two_column_images {
+  ul {
+    
+    list-style: none;
+    width: 100%;
+    float: left;
+    margin-bottom: 40px;
+    li {
+      float: left;
+      background-image: none;
+      list-style: none;
+      margin: 0;
+      max-width: 50%;
+      padding: 0 5px 0 0;
+      a {
+        display: block;
+        height: 190px;
+        img {
+          max-width: 100%;
+          max-height: 170px;
+        }
+      }
+      &:nth-child(even) {
+        padding: 0 0 0 5px;
+      }
+      &:nth-child(n+3) {
+        padding-top: 40px;
+      }
+    }
+  }
+}
+
+.two_col_layout {
+  ul {
+    list-style: none;
+    width: 100%;
+    float: left;
+    margin-bottom: 40px;
+    li {
+      float: left;
+      background-image: none;
+      list-style: none;
+      margin: 0;
+      max-width: 50%;
+      padding: 0 5px 0 0;
+    }
+    &:nth-child(even) {
+        padding: 0 0 0 5px;
+      }
+    &:nth-child(n+3) {
+      padding-top: 40px;
+    }
+  }
+}

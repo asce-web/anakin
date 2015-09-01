@@ -1,0 +1,29 @@
+BOOTSTRAP
+------------
+The included Bootstrap.min.css file is a custom Bootstrap 3 compilation with the following custom parameters:
+
+Media queries breakpoints
+@screen-xs-min
+480px
+@screen-sm-min
+581px
+@screen-md-min
+768px
+@screen-lg-min
+1020px
+
+Grid system
+@grid-columns
+18
+@grid-gutter-width
+20px
+
+Container sizes
+@container-sm
+540px
+@container-md
+720px
+@container-lg
+940px
+
+Additionally, the container size is constrained to 1200px.
