@@ -204,15 +204,18 @@
 }
 
 main {
-  .two_col_layout {
+  .double_col {
     ul {
       list-style: none;
       width: 100%;
       float: left;
       margin-bottom: 40px;
       overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
       li {
         float: left;
+        display: flex;
         background-image: none;
         list-style: none;
         margin: 0;
