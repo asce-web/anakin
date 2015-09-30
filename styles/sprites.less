@@ -1,0 +1,1329 @@
+@import "variables";
+
+/*------------------------------------*\
+   Icons
+\*------------------------------------*/
+span[class^="icon"] {
+  display: inline-block;
+  white-space: nowrap;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    cursor: pointer;
+    cursor: hand;
+  }
+}
+
+/*------------------------------------*\
+   Row 1
+\*------------------------------------*/
+.icon-shop {
+  .sprite(33, 6);
+  width: 24px;
+  height: 19px;
+  margin-right: 4px;
+  margin-bottom: -2px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(33,36);
+  }
+}
+.icon-search {
+  .sprite(97, 7);
+  width: 16px;
+  height: 16px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(97, 38);
+  }
+}
+.icon-bullet-light {
+  .sprite(132,11);
+  width: 7px;
+  height: 7px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(132,42);
+  }
+}
+.icon-bullet-dark {
+  .sprite(162,11);
+  width: 7px;
+  height: 7px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(162,42);
+  }
+}
+// cyan, blue
+.icon-expand {
+  .sprite(220, 10);
+  width: 11px;
+  height: 11px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(190, 40);
+  }
+}
+// white window
+.icon-window {
+  .sprite(280, 10);
+  width: 11px;
+  height: 10px;
+  margin-left: 4px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(280, 40);
+  }
+}
+// blue window for white backgrounds...
+.icon-window-white {
+  .sprite(250, 10);
+  width: 11px;
+  height: 10px;
+  margin-left: 4px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(280, 40);
+  }
+}
+// white icon with black hover - opposite of sprite
+.icon-expand-white {
+  .sprite(310, 40);
+  width: 11px;
+  height: 11px;
+  margin-left: 2px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(310, 10);
+  }
+}
+// light blue to black
+.icon-search-2 {
+  .sprite(338, 7);
+  width: 16px;
+  height: 16px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(338, 38);
+  }
+}
+// dark blue to light blue
+.icon-search-3 {
+  .sprite(368, 7);
+  width: 16px;
+  height: 16px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(368, 37);
+  }
+}
+.icon-radio {
+  .sprite(398, 7);
+  width: 16px;
+  height: 16px;
+
+  .selected {
+    .background(398, 37);
+  }
+}
+.icon-checkbox {
+  .sprite(427, 7);
+  width: 16px;
+  height: 16px;
+
+  .selected {
+    .background(427, 37);
+  }
+}
+.icon-check {
+  .sprite(458,39);
+  width: 16px;
+  height: 12px;
+}
+.icon-expand-up {
+  .sprite(490,10);
+  width: 11px;
+  height: 11px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(490,40);
+  }
+}
+.icon-filter {
+  .sprite(517,6);
+  width: 15px;
+  height: 17px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(517,36);
+  }
+}
+
+/*------------------------------------*\
+   Row 2
+\*------------------------------------*/
+.icon-home {
+  .sprite(37, 67);
+  width: 16px;
+  height: 15px;
+  margin-right: 2px;
+  margin-bottom: -2px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(37, 98);
+  }
+}
+.icon-subscribe {
+  .sprite(68, 67);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(68, 98);
+  }
+}
+.icon-find {
+  .sprite(100, 67);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(100, 98);
+  }
+}
+.icon-broadcast {
+  .sprite(128, 67);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(128, 98);
+  }
+}
+.icon-quote {
+  .sprite(157, 69);
+  width: 16px;
+  height: 12px;
+  margin-right: 4px;
+}
+.icon-kids {
+  .sprite(192, 65);
+  width: 68px;
+  height: 21px;
+  margin-left: 4px;
+  margin-bottom: -4px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(192, 96);
+  }
+}
+.icon-arrow-left {
+  .sprite(281, 71);
+  width: 6px;
+  height: 9px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(281, 101);
+  }
+}
+.icon-arrow-right {
+  .sprite(313, 71);
+  width: 6px;
+  height: 9px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(313, 101);
+  }
+}
+.icon-exam {
+  .sprite(334,67);
+  width: 23px;
+  height: 16px;
+}
+.icon-expert {
+  .sprite(363,64);
+  width: 24px;
+  height: 21px;
+}
+.icon-webinar {
+  .sprite(394,64);
+  width: 22px;
+  height: 22px;
+}
+.icon-learning {
+  .sprite(423,63);
+  width: 24px;
+  height: 24px;
+}
+.icon-conferences {
+  .sprite(450,69);
+  width: 29px;
+  height: 14px;
+}
+.icon-training {
+  .sprite(484,64);
+  width: 24px;
+  height: 21px;
+}
+.icon-arrow-up {
+  .sprite(520,102);
+  width: 9px;
+  height: 6px;
+}
+/*------------------------------------*\
+   Row 3
+\*------------------------------------*/
+.icon-person {
+  .sprite(37, 128);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  margin-bottom: -3px;
+}
+.icon-open {
+  .sprite(71, 135);
+  width: 9px;
+  height: 5px;
+  margin-left: 4px;
+  margin-bottom: 2px;
+}
+.icon-screen {
+  .sprite(127,128);
+  width: 16px;
+  height: 16px;
+}
+.icon-screen-2 {
+  .sprite(158,128);
+  width: 16px;
+  height: 16px;
+}
+.icon-close-blue {
+  .sprite(188,128);
+  width: 16px;
+  height: 16px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(188,158);
+  }
+}
+.icon-calendar {
+  .sprite(250,127);
+  width: 13px;
+  height: 16px;
+}
+.icon-calendar-2 {
+  .sprite(219,127);
+  width: 13px;
+  height: 16px;
+}
+.icon-pdf {
+  .sprite(277,127);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  margin-bottom: -3px;
+}
+.icon-download {
+  .sprite(310,127);
+  width: 13px;
+  height: 16px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(310,157);
+  }
+}
+.icon-calendar-large {
+  .sprite(336,123);
+  width: 20px;
+  height: 24px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(336,153);
+  }
+}
+.icon-tag {
+  .sprite(369,129);
+  width: 13px;
+  height: 13px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(369,159);
+  }
+}
+.icon-star {
+  .sprite(398,128);
+  width: 16px;
+  height: 16px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(398,158);
+  }
+}
+/*------------------------------------*\
+   Row 4
+\*------------------------------------*/
+.icon-edit {
+  .sprite(38,190);
+  width: 16px;
+  height: 14px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(38,220);
+  }
+}
+.icon-expand-large {
+  .sprite(67,187);
+  width: 17px;
+  height: 17px;
+}
+.icon-expand-rotate {
+  .sprite(97,187);
+  width: 17px;
+  height: 17px;
+}
+.icon-phone {
+  .sprite(129,187);
+  width: 14px;
+  height: 16px;
+}
+.icon-mail {
+  .sprite(156,190);
+  width: 16px;
+  height: 10px;
+  &:hover,
+  &:focus,
+  &:active {
+    .background(156,220);
+  }
+}
+.icon-chat {
+  .sprite(186,188);
+  width: 16px;
+  height: 14px;
+}
+.icon-open-white {
+  .sprite(220,190);
+  width: 11px;
+  height: 11px;
+}
+.icon-open-cyan {
+  .sprite(250,190);
+  width: 11px;
+  height: 11px;
+}
+.icon-expand-green {
+  .sprite(280,190);
+  width: 11px;
+  height: 11px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(280,220);
+  }
+}
+.icon-open-blue {
+  .sprite(310,190);
+  width: 11px;
+  height: 11px;
+}
+.icon-lock {
+  .sprite(340,189);
+  width: 11px;
+  height: 14px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(340,219);
+  }
+}
+.icon-page {
+  .sprite(369,188);
+  width: 12px;
+  height: 16px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(369,218);
+  }
+}
+.icon-pages {
+  .sprite(399,188);
+  width: 16px;
+  height: 17px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(399,218);
+  }
+}
+/*------------------------------------*\
+   Row 5
+\*------------------------------------*/
+.icon-linkedin {
+  .sprite(33, 273);
+  width: 24px;
+  height: 24px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(33, 303);
+  }
+}
+.icon-facebook {
+  .sprite(69, 273);
+  width: 11px;
+  height: 24px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(69, 303);
+  }
+}
+.icon-twitter {
+  .sprite(94, 276);
+  width: 24px;
+  height: 19px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(94, 306);
+  }
+}
+.icon-youtube {
+  .sprite(125, 273);
+  width: 20px;
+  height: 24px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(125, 303);
+  }
+}
+.icon-google {
+  .sprite(158, 273);
+  width: 16px;
+  height: 24px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(158, 303);
+  }
+}
+.icon-pinterest {
+  .sprite(183, 273);
+  width: 24px;
+  height: 24px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(183, 303);
+  }
+}
+.icon-close {
+  .sprite(217, 277);
+  width: 16px;
+  height: 16px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(217, 308);
+  }
+}
+.icon-help {
+  .sprite(247, 277);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  margin-bottom: -2px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(247, 308);
+  }
+}
+.icon-contact {
+  .sprite(280, 277);
+  width: 10px;
+  height: 16px;
+  margin-right: 4px;
+  margin-bottom: -2px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(280, 308);
+  }
+}
+.icon-hamburger {
+  .sprite(305, 278);
+  width: 20px;
+  height: 14px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(305, 308);
+  }
+}
+.icon-rss {
+  .sprite(334,274);
+  width: 22px;
+  height: 22px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(334,304);
+  }
+}
+
+/* Retina */
+@media
+only screen and  (min--moz-device-pixel-ratio: 2),
+only screen and  (-o-min-device-pixel-ratio: 2/1),
+only screen and  (-webkit-min-device-pixel-ratio: 2),
+only screen and  (min-device-pixel-ratio: 2) {
+
+.icon-shop {
+  .spritex2(33, 6);
+  width: 24px;
+  height: 19px;
+  margin-right: 4px;
+  margin-bottom: -2px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(33, 36);
+  }
+}
+
+.icon-search {
+  .spritex2(97, 7);
+  width: 16px;
+  height: 16px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(97, 38);
+  }
+}
+
+.icon-bullet-light {
+  .spritex2(132,11);
+  width: 7px;
+  height: 7px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(132,42);
+  }
+}
+
+.icon-bullet-dark {
+  .spritex2(162,11);
+  width: 7px;
+  height: 7px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(162,42);
+  }
+}
+// cyan, blue
+.icon-expand {
+  .spritex2(220, 10);
+  width: 11px;
+  height: 11px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(190, 40);
+  }
+}
+// white window
+.icon-window {
+  .spritex2(280, 10);
+  width: 11px;
+  height: 10px;
+  margin-left: 4px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(280, 40);
+  }
+}
+// blue window for white backgrounds...
+.icon-window-white {
+  .spritex2(250, 10);
+  width: 11px;
+  height: 10px;
+  margin-left: 4px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(280, 40);
+  }
+}
+// white icon with black hover - opposite of spritex2
+.icon-expand-white {
+  .spritex2(310, 40);
+  width: 11px;
+  height: 11px;
+  margin-left: 2px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(310, 10);
+  }
+}
+// light blue to black
+.icon-search-2 {
+  .spritex2(338, 7);
+  width: 16px;
+  height: 16px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(338, 38);
+  }
+}
+// dark blue to light blue
+.icon-search-3 {
+  .spritex2(368, 7);
+  width: 16px;
+  height: 16px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(368, 37);
+  }
+}
+.icon-radio {
+  .spritex2(398, 7);
+  width: 16px;
+  height: 16px;
+
+  .selected {
+    .background(398, 37);
+  }
+}
+.icon-checkbox {
+  .spritex2(427, 7);
+  width: 16px;
+  height: 16px;
+
+  .selected {
+    .background(427, 37);
+    width: 17px;
+  }
+}
+.icon-check {
+  .spritex2(458,39);
+  width: 16px;
+  height: 12px;
+}
+.icon-expand-up {
+  .spritex2(490,10);
+  width: 11px;
+  height: 11px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(490,40);
+  }
+}
+.icon-filter {
+  .spritex2(517,6);
+  width: 15px;
+  height: 17px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(517,36);
+  }
+}
+
+/*------------------------------------*\
+   Row 2
+\*------------------------------------*/
+.icon-home {
+  .spritex2(37, 67);
+  width: 17px;
+  height: 15px;
+  margin-right: 2px;
+  margin-bottom: -2px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(37, 98);
+  }
+}
+.icon-subscribe {
+  .spritex2(68, 67);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(68, 98);
+  }
+}
+.icon-find {
+  .spritex2(100, 67);
+  width: 11px;
+  height: 16px;
+  margin-right: 4px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(100, 98);
+  }
+}
+.icon-broadcast {
+  .spritex2(128, 67);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(128, 98);
+  }
+}
+.icon-quote {
+  .spritex2(157, 69);
+  width: 15px;
+  height: 12px;
+  margin-right: 4px;
+}
+.icon-kids {
+  .spritex2(192, 65);
+  width: 68px;
+  height: 21px;
+  margin-left: 4px;
+  margin-bottom: -4px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(192, 96);
+  }
+}
+.icon-arrow-left {
+  .spritex2(281, 71);
+  width: 6px;
+  height: 9px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(281, 101);
+    background-size: 590px 330px;
+  }
+}
+.icon-arrow-right {
+  .spritex2(313, 71);
+  width: 6px;
+  height: 9px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(313, 101);
+  }
+}
+.icon-exam {
+  .spritex2(334,67);
+  width: 23px;
+  height: 16px;
+}
+.icon-expert {
+  .spritex2(363,64);
+  width: 24px;
+  height: 21px;
+}
+.icon-webinar {
+  .spritex2(394,64);
+  width: 22px;
+  height: 22px;
+}
+.icon-learning {
+  .spritex2(423,63);
+  width: 24px;
+  height: 25px;
+}
+.icon-conferences {
+  .spritex2(450,69);
+  width: 29px;
+  height: 14px;
+}
+.icon-training {
+  .spritex2(484,64);
+  width: 24px;
+  height: 21px;
+}
+.icon-arrow-up {
+  .spritex2(520,102);
+  width: 9px;
+  height: 6px;
+}
+/*------------------------------------*\
+   Row 3
+\*------------------------------------*/
+.icon-person {
+  .spritex2(37, 128);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  margin-bottom: -3px;
+}
+.icon-open {
+  .spritex2(71, 135);
+  width: 9px;
+  height: 5px;
+  margin-left: 4px;
+  margin-bottom: 2px;
+}
+.icon-screen {
+  .spritex2(127,128);
+  width: 16px;
+  height: 16px;
+}
+.icon-screen-2 {
+  .spritex2(158,128);
+  width: 16px;
+  height: 16px;
+}
+.icon-close-blue {
+  .spritex2(188,128);
+  width: 16px;
+  height: 16px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(188,158);
+  }
+}
+.icon-calendar {
+  .spritex2(250,127);
+  width: 13px;
+  height: 16px;
+}
+.icon-calendar-2 {
+  .spritex2(219,127);
+  width: 13px;
+  height: 16px;
+}
+.icon-pdf {
+  .spritex2(277,127);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  margin-bottom: -3px;
+}
+.icon-download {
+  .spritex2(310,127);
+  width: 13px;
+  height: 16px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(310,157);
+  }
+}
+.icon-calendar-large {
+  .spritex2(336,123);
+  width: 20px;
+  height: 24px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(336,153);
+  }
+}
+.icon-tag {
+  .spritex2(369,129);
+  width: 13px;
+  height: 13px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(369,159);
+  }
+}
+.icon-star {
+  .spritex2(398,128);
+  width: 16px;
+  height: 16px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(398,158);
+  }
+}
+/*------------------------------------*\
+   Row 4
+\*------------------------------------*/
+.icon-edit {
+  .spritex2(38,190);
+  width: 16px;
+  height: 14px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(38,220);
+  }
+}
+.icon-expand-large {
+  .spritex2(67,187);
+  width: 16px;
+  height: 16px;
+}
+.icon-expand-rotate {
+  .spritex2(97,187);
+  width: 16px;
+  height: 16px;
+}
+.icon-phone {
+  .spritex2(129,187);
+  width: 14px;
+  height: 17px;
+}
+.icon-mail {
+  .spritex2(156,190);
+  width: 16px;
+  height: 10px;
+  &:hover,
+  &:focus,
+  &:active {
+    .background(156,220);
+  }
+}
+.icon-chat {
+  .spritex2(186,188);
+  width: 16px;
+  height: 14px;
+}
+.icon-open-white {
+  .spritex2(220,190);
+  width: 11px;
+  height: 11px;
+}
+.icon-open-cyan {
+  .spritex2(250,190);
+  width: 11px;
+  height: 11px;
+}
+.icon-expand-green {
+  .spritex2(280,190);
+  width: 11px;
+  height: 11px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(280,220);
+  }
+}
+.icon-open-blue {
+  .spritex2(310,190);
+  width: 11px;
+  height: 11px;
+}
+.icon-lock {
+  .spritex2(340,189);
+  width: 11px;
+  height: 14px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(340,219);
+  }
+}
+.icon-page {
+  .sprite(369,188);
+  width: 12px;
+  height: 16px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .sprite(369,218);
+  }
+}
+.icon-pages {
+  .sprite(399,188);
+  width: 16px;
+  height: 17px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .sprite(399,218);
+  }
+}
+/*------------------------------------*\
+   Row 5
+\*------------------------------------*/
+.icon-linkedin {
+  .spritex2(33, 273);
+  width: 24px;
+  height: 24px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(33, 303);
+  }
+}
+.icon-facebook {
+  .spritex2(69, 273);
+  width: 11px;
+  height: 24px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(69, 303);
+  }
+}
+.icon-twitter {
+  .spritex2(94, 276);
+  width: 24px;
+  height: 19px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(94, 306);
+  }
+}
+.icon-youtube {
+  .spritex2(125, 273);
+  width: 20px;
+  height: 24px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(125, 303);
+  }
+}
+.icon-google {
+  .spritex2(158, 273);
+  width: 16px;
+  height: 24px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(158, 303);
+  }
+}
+.icon-pinterest {
+  .spritex2(183, 273);
+  width: 24px;
+  height: 24px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(183, 303);
+  }
+}
+.icon-close {
+  .spritex2(217, 277);
+  width: 16px;
+  height: 16px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(217, 308);
+  }
+}
+.icon-help {
+  .spritex2(247, 277);
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  margin-bottom: -2px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(247, 308);
+  }
+}
+.icon-contact {
+  .spritex2(280, 277);
+  width: 10px;
+  height: 16px;
+  margin-right: 4px;
+  margin-bottom: -2px;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.hover {
+    .background(280, 308);
+  }
+}
+.icon-hamburger {
+  .spritex2(305, 278);
+  width: 20px;
+  height: 14px;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.hover {
+      .background(305, 308);
+    }
+  }
+  .icon-rss {
+    .spritex2(334,274);
+    width: 22px;
+    height: 22px;
+    &:hover,
+    &:focus,
+    &:active,
+    &.hover {
+      .background(334,304);
+    }
+  }
+}
