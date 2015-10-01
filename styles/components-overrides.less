@@ -1,0 +1,135 @@
+@import "variables";
+
+main {
+  .content-main,
+  .content-bottom {
+    .jobs {
+      a.title:before,
+      span.title:before {
+        content: " ";
+        border-left: none;
+      }
+    }
+    .continuing-education {
+      .feeds {
+        li {
+          &:nth-child(odd) {
+            .padding-container {
+              background-color: @lightest-gray;
+            }
+          }
+          &:hover {
+            .padding-container {
+              background-color: @orange;
+            }
+          }
+        }
+      }
+    }
+    .conferences-events {
+      .feeds {
+        li {
+          &:nth-child(odd) {
+            .padding-container {
+              background-color: @lightest-gray;
+            }
+          }
+          &:hover {
+            .padding-container {
+              background-color: @light-green;
+            }
+          }
+        }
+      }
+    }
+    .events-calendar {
+      .feeds {
+        li {
+          &:nth-child(odd) {
+            .padding-container {
+              background-color: @lightest-gray;
+            }
+          }
+        }
+        .events-feed {
+          &:hover {
+            .padding-container {
+              background-color: @light-green;
+            }
+          }
+        }
+        .education-feed {
+          &:hover {
+            .padding-container {
+              background-color: @orange;
+            }
+          }
+        }
+      }
+    }
+    .callout {
+      margin-bottom: 20px;
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .content-right {
+    .group-finder {
+      .tab-container {
+        width: 200px;
+        .tabs li:first-child {
+          width: 60px
+        }
+        .tabs li:last-child {
+          width: 138px;
+        }
+        .tab-pane {
+          form,
+          .form {
+            input, select {
+                .sans(12,16);
+              }
+              select {
+                width: 140px;
+              }
+            .search-container {
+              ::-webkit-input-placeholder {
+                .sans(12,16);
+                color: @darkest-gray;
+                text-align: left;
+                padding-top: 2px;
+              }
+              ::-moz-placeholder {
+                .sans(12,16);
+                text-align: left;
+                padding-top: 2px;
+              }
+              :-ms-input-placeholder {
+                .sans(12,16);
+                color: @darkest-gray;
+                text-align: left;
+                padding-top: 8px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .jobs-v2 {
+      .content {
+        background-color: @lightest-gray;
+        ul {
+          margin-right: 20px;
+        }
+      }
+    }
+    .promo,
+    .promo-300x250 {
+      &:first-child {
+        margin-top: 40px;
+      }
+    }
+  }
+}

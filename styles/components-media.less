@@ -1,0 +1,552 @@
+@import "variables";
+
+@media (min-width: 1020px) {
+  main {
+    .content-right, {
+      .testimonial-v2 {
+        &:after {
+          content: " ";
+          position: absolute;
+          top: 0;
+          height: 100%;
+          right: -250%;
+          width: 250%;
+          background-color: @white;
+          z-index: 999;
+        }
+      }
+      .contact-box {
+        &:after {
+          content: " ";
+          position: absolute;
+          top: 0;
+          height: 100%;
+          right: -250%;
+          width: 250%;
+          background: url('../img/triangle-dark.png') repeat-x right bottom @white;
+          z-index: 999;
+        }
+      }
+    }
+  }
+}
+
+/* < Large */
+@media (max-width: 1019px) {
+  main {
+    .content-main,
+    .content-bottom {
+      .continuing-education,
+      .conferences-events {
+        .featured {
+          .header, .content {
+            display: block;
+            .light, .dark, .pattern, .plain {
+              display: block;
+              width: 100%;
+            }
+            .plain {
+              border-top: none;
+              padding-top: 20px;
+              padding-bottom: 20px;
+            }
+          }
+        }
+      }
+      .conferences-events {
+        .featured {
+          .table-data {
+            .content {
+              .plain {
+                min-height: 300px;
+              }
+            }
+          }
+        }
+      }
+      .promo-list {
+        .row {
+          margin-bottom: 0;
+          .promo-container {
+            margin-bottom: 30px;
+          }
+        }
+      }
+      .highlight-box-gray,
+      .highlight-box-blue {
+        .border {
+          padding-top: 20px;
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+/* Medium */
+@media (min-width: 768px) and (max-width: 1019px) {
+  main {
+    .content-main,
+    .content-right,
+    .content-bottom {
+      .promo-offer-image {
+        img {
+          margin: 0;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          max-width: 135px;
+        }
+        .header {
+          h2, a {
+            margin-left: 155px;
+          }
+        }
+        .body {
+          p {
+            margin-left: 155px;
+          }
+        }
+      }
+      .initiatives-issues {
+        .button-big {
+          font-size: smaller;
+        }
+      }
+    }
+  }
+}
+
+/* < Medium */
+@media (max-width: 767px) {
+  main {
+    .content-main,
+    .content-right,
+    .content-bottom {
+      .continuing-education,
+      .conferences-events,
+      .events-calendar {
+        .feeds {
+          li {
+            .content {
+              margin-right: 0;
+              //margin-left: 40px;
+              .title {
+                margin-bottom: 5px;
+              }
+            }
+            .info {
+              position: relative;
+              margin-top: 4px;
+              margin-left: 50px;
+              .type {
+                display: inline-block;
+              }
+              .credits {
+                display: inline-block;
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+
+      .membership-requirements {
+        .col-1, .col-2 {
+          display: block;
+          width: 100%;
+        }
+        .header {
+          .col-2 {
+            display: none;
+          }
+        }
+        .content > .header {
+          display: block;
+          background-color: @dark-cyan;
+          border-bottom: 2px solid #bae3f1;
+          padding: 15px 20px 0 20px;
+        }
+        .outer-circle {
+          position: relative;
+          display: table;
+          margin: 10px auto;
+        }
+        .inner-circle {
+          display: none;
+        }
+      }
+
+      .exam-review {
+        .content {
+          display: block;
+          width: 100%;
+        }
+        .sidebar {
+          display: block;
+          width: 100%;
+        }
+      }
+      .book-purchase {
+        .button-v2 {
+          position: relative;
+        }
+      }
+
+      .promo-horizontal {
+        display: block;
+        .wrapper {
+          display: block;
+          width: 100%;
+        }
+      }
+
+      .book-search {
+        .reset {
+          float: none;
+          display: block;
+          margin-top: 10px;
+        }
+      }
+      .book-list {
+        .pagination {
+          margin-bottom: 30px;
+        }
+        .sort {
+          margin-top: 0;
+        }
+        .search {
+          width: 100%;
+        }
+      }
+    }
+
+    .content-main,
+    .content-bottom {
+      .continuing-education,
+      .conferences-events {
+        .feeds {
+          margin-left: 0;
+        }
+      }
+
+      .conferences-events {
+        .feeds {
+          margin-left: 0;
+        }
+        .featured {
+          .table-data {
+            display: block;
+            .pattern {
+              .overlay {
+                display: none;
+              }
+            }
+            .plain {
+              min-height: 200px;
+            }
+          }
+        }
+      }
+
+      .testimonial {
+        blockquote {
+          width: auto;
+        }
+        div {
+          display: block;
+          width: auto;
+          margin-top: 20px;
+        }
+      }
+
+      .initiatives-issues {
+          .button-big {
+            width: 175px;
+            margin-bottom: 10px;
+          }
+      }
+    }
+
+    .content-right .continuing-education .feeds li .info .credits {
+      display: none;
+    }
+  }
+}
+
+/* > Small */
+@media (min-width: 768px) {
+  main {
+    .content-main,
+    .content-right,
+    .content-bottom {
+      .membership-requirements {
+        .content {
+          &> .header {
+            display: none;
+          }
+          .col-1 {
+            position: relative;
+          }
+        }
+        .outer-circle {
+          display: none;
+        }
+        .inner-circle {
+          display: table;
+          position: absolute;
+          bottom: -20px;
+        }
+      }
+    }
+  }
+}
+
+/* Small */
+@media (min-width: 581px) and (max-width: 767px) {
+  main {
+    .content-main,
+    .content-right,
+    .content-bottom {
+      .promo-offer-image {
+        img {
+          margin: 0;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          max-width: 130px;
+        }
+        .header {
+          h2, a {
+            margin-left: 150px;
+          }
+        }
+        .body {
+          p {
+            margin-left: 150px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*X-Small*/
+@media (max-width: 580px) {
+  main {
+    .content-main,
+    .content-right,
+    .content-bottom {
+      .promo {
+        display:  none;
+      }
+      .intro {
+        padding: 0;
+        p {
+          .sans(14,20);
+        }
+        h1 {
+          margin-bottom: 30px;
+        }
+      }
+      .featured-news-intro {
+        .title {
+          margin-left: 0;
+          margin-top: 20px;
+          float: left;
+        }
+        p {
+          margin-left: 0;
+          margin-top: 0;
+          float: left;
+        }
+      }
+      .promo-offer-image {
+        img {
+          margin: 0;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          max-width: 100px;
+        }
+        .header {
+          h2, a {
+            margin-left: 120px;
+          }
+        }
+        .body {
+          p {
+            margin-left: 120px;
+          }
+        }
+      }
+      .popup-container-small {
+        max-width: 320px;
+      }
+      .news-feed {
+        .header {
+          .top {
+            .logo {
+              span {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Retina*/
+@media
+only screen and  (min--moz-device-pixel-ratio: 2),
+only screen and  (-o-min-device-pixel-ratio: 2/1),
+only screen and  (-webkit-min-device-pixel-ratio: 2),
+only screen and  (min-device-pixel-ratio: 2) {
+  main {
+    .content-main {
+      .news-feed {
+        .header {
+          .top {
+            .logo {
+              span {
+                .logo_144(11, 254);
+                width: 99px;
+                height: 31px;
+
+                &:hover,
+                &:focus,
+                &:active {
+                  .background(11, 314);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* from components.less*/
+  main .content-bottom .link-arrow:after {
+    .spritex2(250,190);
+    width: 11px;
+    height: 11px;
+  }
+
+  main .content-bottom .link-arrow-dark:after {
+    .spritex2(220,190);
+    width: 11px;
+    height: 11px;
+  }
+
+  main .content-bottom form input[type="checkbox"] + label > span:first-child {
+    .spritex2(427, 7);
+    width: 16px;
+    height: 16px;
+  }
+
+  main .content-bottom form input[type="checkbox"]:checked + label > span:first-child {
+    .spritex2(427, 37);
+    width: 16px;
+    height: 16px;
+  }
+
+  main .content-bottom .show-more a.selected span {
+    .spritex2(190, 10);
+    width: 11px;
+    height: 11px;
+  }
+
+  main .content-bottom .jobs-v2 .title .icon {
+    .spritex2(310, 40);
+    width: 11px;
+    height: 11px;
+  }
+
+  main .content-bottom .events-calendar .feeds li:active .info .icon-screen {
+    .spritex2(158, 128);
+    width: 16px;
+    height: 16px;
+  }
+
+  main .content-bottom .events-calendar .feeds li:active .info .icon-calendar {
+    .spritex2(219, 127);
+    width: 13px;
+    height: 16px;
+  }
+
+  main .content-bottom .events-calendar .featured .header .dark .icon {
+    .spritex2(158, 128);
+    width: 16px;
+    height: 16px;
+  }
+
+  main .content-bottom .events-calendar .featured .header .dark .icon {
+    .spritex2(219, 127);
+    width: 16px;
+    height: 16px;
+  }
+
+  main .content-bottom .callout-mylearning h2 a:after {
+    .spritex2(310, 40);
+    width: 11px;
+    height: 11px;
+  }
+
+  main .content-bottom .accordion .header div.icon .icon {
+    .spritex2(220, 40);
+    width: 11px;
+    height: 11px;
+  }
+
+  main .content-bottom .accordion .header:focus div.icon .icon {
+    .spritex2(190, 10);
+    width: 11px;
+    height: 11px;
+  }
+
+  main .content-bottom .accordion .header.selected div.icon .icon {
+    .spritex2(190, 10);
+    width: 11px;
+    height: 11px;
+  }
+
+  main .content-bottom .promo-offer-image .header.linked h2:after {
+    .spritex2(310, 40);
+    width: 11px;
+    height: 11px;
+  }
+
+  main .content-bottom .membership-requirements .header .col-2 .icon {
+    .spritex2(71, 5);
+    width: 12px;
+    height: 19px;
+  }
+  /* end components.less*/
+    /* from pages.less */
+  .conferences main .calendar .tab-container .tab-pane.upcoming .filter-panel .facets .facet .header:active span {
+    .spritex2(250, 190);
+    width: 11px;
+    height: 11px;
+  }
+
+  .conferences main .calendar .tab-container .tab-pane.upcoming .filter-panel .facets .facet .header.open span {
+    .spritex2(280, 190);
+    width: 11px;
+    height: 11px;
+  }
+
+  .conferences main .calendar .tab-container .tab-pane.upcoming .filter-panel .facets .facet .header.open span:active {
+    .spritex2(280, 220);
+    width: 11px;
+    height: 11px;
+  }
+
+  .conferences main .calendar .tab-container .tab-pane.upcoming .filter-panel .facets .facet .header.open:focus .conferences main .calendar .tab-container .tab-pane.upcoming .filter-panel .facets .facet .header.open:active span {
+    .spritex2(280, 220);
+    width: 11px;
+    height: 11px;
+  }
+}
