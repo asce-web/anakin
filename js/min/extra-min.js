@@ -1,1 +1,1 @@
-var spec_url="/event/2016/asce-week";$(function(){0===location.pathname.indexOf(spec_url)&&$(".highlight-box-blue, .content-right .section").hide()});
+$(document).ready(function(){var e="/event/2016/asce-week";$(function(){0===location.pathname.indexOf(e)&&$(".highlight-box-blue, .content-right .section").hide()})});
