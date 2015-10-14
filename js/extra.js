@@ -1,6 +1,7 @@
-var spec_url = "/event/2016/asce-week-10737418178/";
+// ASCE Week section ommission -- Dae Clarke 10/14/2015
+var spec_url = "/event/2016/asce-week";
 $(function(){
-  if (location.pathname===spec_url){
+  if (location.pathname.indexOf(spec_url)===0){
     $('.highlight-box-blue, .content-right .section').hide();
   }
 });
