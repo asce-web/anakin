@@ -1,0 +1,226 @@
+@import "variables";
+
+@media (min-width: 1020px) {
+  header {
+    margin-bottom: 0;
+  }
+  main {
+    .join {
+        background-color: rgba(251,255,248,0.7);
+        &:after {
+        content: " ";
+        position: absolute;
+        height: 100%;
+        top: 0;
+        width: 150%;
+        right: -150%;
+        background-color: rgba(251,255,248,0.7);
+      }
+    }
+  }
+}
+
+/* < Large */
+@media (max-width: 1019px) {
+  main {
+    .photo-caption {
+      width: 50%;
+    }
+    .join {
+      .group-finder-v2 {
+        background-color: @lightest-gray;
+        padding: 50px;
+        position: relative;
+        &:before {
+          content: " ";
+          position: absolute;
+          top: 0;
+          height: 100%;
+          left:-20px;
+          width: 20px;
+          background-color: @lightest-gray;
+        }
+      }
+    }
+    .content-right {
+      background-color: transparent;
+    }
+    .content-bottom {
+      .intro h2 {
+        white-space: normal;
+        display: inline;
+        .futura(36,36,300);
+      }
+      .continuing-education,
+      .conferences-events {
+        .feeds {
+          margin-left: 0;
+          li {
+            .content {
+              margin-right: 0;
+              margin-left: 40px;
+              .title {
+                margin-bottom: 5px;
+              }
+            }
+            .info {
+              position: relative;
+              margin-top: 4px;
+              margin-left: 40px;
+              .type {
+                display: inline-block;
+              }
+              .credits {
+                display: inline-block;
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Medium */
+@media (min-width: 768px) and (max-width: 1019px) {
+  main {
+    .photo-caption {
+      margin-top: 250px;
+      margin-bottom: 40px;
+      p {
+        margin-left: 20px;
+      }
+    }
+    .join {
+      width: 100%;
+      background-color: @white;
+      .content {
+        width: 48%;
+        padding: 0;
+        display: inline-block;
+        margin-left: 20px;
+        float: left;
+      }
+      .group-finder-v2 {
+        background-color: @lightest-gray;
+        display: inline-block;
+        position: relative;
+        padding: 30px;
+        margin-top: 0;
+        float: right;
+        margin-right: -10px;
+      }
+    }
+  }
+}
+
+/* > Small */
+@media (min-width: 768px) {
+  main {
+    .body {
+      margin-left: 30px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+/* < Medium */
+@media (max-width: 767px) {
+  body {
+    .background-image {
+      div {
+        display: none;
+      }
+    }
+  }
+  main {
+    .intro:first-child {
+      margin-top: 10px;
+    }
+    .content-right {
+      padding: 0;
+    }
+    .photo-caption {
+      width: 100%;
+      float: right;
+      margin-right: -10px;
+      margin-top: 28%;
+      z-index: 1;
+      p {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 0;
+      }
+    }
+    .join {
+      display: block;
+      clear: both;
+      width: 100%;
+      padding-left: 10px;
+      padding-bottom: 10px;
+      margin-bottom: 0;
+      .content {
+        margin: 0;
+        padding-left: 10px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        margin-top: 40px;
+      }
+      .group-finder-v2 {
+        margin-top: 0;
+        margin-bottom: 40px;
+        padding-left: 10px;
+        width: 100%;
+        .tab-pane {
+          form {
+            input:not(.submit) {
+              width: 130px;
+            }
+            select {
+              width: 170px;
+            }
+          }
+        }
+      }
+    }
+    .content-main,
+    .content-right {
+      .show-more-v2 {
+        margin-top: 30px;
+      }
+      .featured-books,
+      .featured-library {
+        padding: 0;
+      }
+      .jobs {
+        margin: 0;
+      }
+    }
+  }
+}
+
+/*X-Small*/
+@media (max-width: 580px) {
+  main {
+    background: none;
+    .photo-caption {
+      margin-top: 30%;
+    }
+    .content-right {
+      .tabs li {
+        padding: 10px 20px;
+      }
+    }
+    .content-main {
+      .featured-news,
+      .featured-news-image,
+      .featured-news-intro {
+        margin-left: 0;
+      }
+    }
+    .content-bottom {
+      margin-left: 0;
+    }
+  }
+}
