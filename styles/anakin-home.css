@@ -138,6 +138,7 @@ main .join {
   margin-bottom: 50px;
   position: relative;
   width: 100%;
+  float: left;
 }
 main .join .content {
   padding: 50px 0 0 50px;
