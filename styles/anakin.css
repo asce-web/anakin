@@ -749,7 +749,8 @@ pre code {
   padding-left: 10px;
   padding-right: 10px;
 }
-.row {
+.row,
+.double_col ul {
   margin-left: -10px;
   margin-right: -10px;
 }
@@ -824,7 +825,8 @@ pre code {
 .col-xs-18,
 .col-sm-18,
 .col-md-18,
-.col-lg-18 {
+.col-lg-18,
+.double_col ul li {
   position: relative;
   min-height: 1px;
   padding-left: 10px;
@@ -1587,7 +1589,8 @@ pre code {
   .col-lg-15,
   .col-lg-16,
   .col-lg-17,
-  .col-lg-18 {
+  .col-lg-18,
+  .double_col ul li {
     float: left;
   }
   .col-lg-18 {
@@ -1617,7 +1620,8 @@ pre code {
   .col-lg-10 {
     width: 55.55555556%;
   }
-  .col-lg-9 {
+  .col-lg-9,
+  .double_col ul li {
     width: 50%;
   }
   .col-lg-8 {
@@ -7460,7 +7464,8 @@ main .content-right .section .content .insert {
     margin: 0px !important;
     padding: 0px !important;
   }
-  .row {
+  .row,
+  .double_col ul {
     margin: 0px !important;
   }
   .col-lg-1,
@@ -7534,7 +7539,8 @@ main .content-right .section .content .insert {
   .col-xs-6,
   .col-xs-7,
   .col-xs-8,
-  .col-xs-9 {
+  .col-xs-9,
+  .double_col ul li {
     padding: 0px !important;
     width: 100%;
   }
@@ -16178,4 +16184,11 @@ main .content-right .promo-300x250:first-child {
 }
 .two_column_images ul li:nth-child(n+3) {
   padding-top: 40px;
+}
+.double_col ul {
+  list-style: none;
+}
+.double_col ul li {
+  list-style: none;
+  background-image: none !important;
 }
