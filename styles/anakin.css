@@ -16204,3 +16204,18 @@ main .content-right .promo-300x250:first-child {
   list-style: none;
   background-image: none !important;
 }
+main .content-main .image-with-caption {
+  max-width: 220px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+main .content-main .image-with-caption img {
+  width: 100%;
+  margin: 0;
+}
+main .content-main .image-with-caption .caption span {
+  display: block;
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 5px 5px 0 5px;
+}
