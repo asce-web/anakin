@@ -552,4 +552,7 @@ main .content-bottom .show-more-v2 {
   main .content-bottom {
     margin-left: 0;
   }
+  .home .row.ad-spots {
+    display: none !important;
+  }
 }
