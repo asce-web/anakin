@@ -16207,3 +16207,14 @@ main .content-right .promo-300x250:first-child {
   line-height: 1.2;
   padding: 5px 5px 0 5px;
 }
+.site-alert {
+  background: darkorange;
+  font-size: small;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  color: beige;
+}
+.site-alert p {
+  margin: 0;
+  padding: 0;
+}
