@@ -8,6 +8,11 @@ $( document ).ready(function() {
   });
 });
 
+// Chat link button addition
+$(window).load(function(){
+  $('#header-icon-livechat a, #footer-icon-livechat a').prepend('<span class="icon-livechat"></span>');
+});
+
 // Personify Maintenance updates -- DC 7.29.16
 // also modified:
 // - features.less

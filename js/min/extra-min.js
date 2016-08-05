@@ -1,1 +1,1 @@
-$(document).ready(function(){var e="/event/2016/asce-week";$(function(){0===location.pathname.indexOf(e)&&$(".highlight-box-blue, .content-right .section").hide()})});
+$(document).ready(function(){var e="/event/2016/asce-week";$(function(){0===location.pathname.indexOf(e)&&$(".highlight-box-blue, .content-right .section").hide()})}),$(window).load(function(){$("#header-icon-livechat a, #footer-icon-livechat a").prepend('<span class="icon-livechat"></span>')});
