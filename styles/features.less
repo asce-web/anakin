@@ -63,3 +63,26 @@
     color: blue;
   }
 }
+
+.magazine main .content-main .featured-image {
+  width: 450px;
+  margin: 0 0 20px;
+}
+.magazine main .content-main .featured-image.pull-right {
+  margin-left: 20px;
+}
+.magazine main .content-main .featured-image.pull-left {
+  margin-right: 20px;
+}
+
+.magazine main .content-main .featured-image .image {
+  max-width: 100%; /*REVIEW: add `img{max-width:100%}` to Reset Sheet*/
+  margin-bottom: 0;
+}
+.magazine main .content-main .featured-image .caption {
+  padding: 20px;
+  background: url('/images/ASCE_bglight1.jpg') repeat;
+}
+.magazine main .content-main .featured-image .caption > *:last-child {
+  margin-bottom: 0; /*override default for paragraphs*/
+}
