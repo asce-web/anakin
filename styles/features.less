@@ -65,9 +65,13 @@
 }
 
 .magazine main .content-main .featured-image {
-  width: 450px;
+  width: 100%;
   margin: 0 0 20px;
+  @media screen and (min-width: 581px) {
+    width: 450px;
+  }
 }
+
 .magazine main .content-main .featured-image.pull-right {
   margin-left: 20px;
 }
@@ -76,12 +80,12 @@
 }
 
 .magazine main .content-main .featured-image .image {
-  max-width: 100%; /*REVIEW: add `img{max-width:100%}` to Reset Sheet*/
+  max-width: 100%; /*REVIEW add `img{max-width:100%}` to Reset Sheet*/
   margin-bottom: 0;
 }
 .magazine main .content-main .featured-image .caption {
   padding: 20px;
-  background: url('/images/ASCE_bglight1.jpg') repeat;
+  background: url('../images/ASCE_bglight1.jpg') repeat;
 }
 .magazine main .content-main .featured-image .caption > *:last-child {
   margin-bottom: 0; /*override default for paragraphs*/
