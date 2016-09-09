@@ -46,6 +46,7 @@
   padding: 0.5rem 1rem;
   text-align: center;
   color: beige;
+  color: black; // `beige` has contrast ratio of 2.1. `black` is 9.
   p {
     margin: 0;
     padding: 0;  
@@ -62,4 +63,32 @@
   &:hover {
     color: blue;
   }
+}
+
+.magazine main .content-main .featured-image {
+  width: 100%;
+  margin: 0 0 20px;
+  @media screen and (min-width: 581px) {
+    width: 450px;
+  }
+}
+
+.magazine main .content-main .featured-image.pull-right {
+  margin-left: 20px;
+}
+.magazine main .content-main .featured-image.pull-left {
+  margin-right: 20px;
+}
+
+.magazine main .content-main .featured-image .image {
+  width: 100%;
+  max-width: 100%; /*REVIEW add `img{max-width:100%}` to Reset Sheet*/
+  margin-bottom: 0;
+}
+.magazine main .content-main .featured-image .caption {
+  padding: 20px;
+  background: url('../images/ASCE_bglight1.jpg') repeat;
+}
+.magazine main .content-main .featured-image .caption > *:last-child {
+  margin-bottom: 0; /*override default for paragraphs*/
 }
