@@ -17,4 +17,5 @@ $(window).load(function(){
 // also modified:
 // - features.less
 // last modified -- DC 9.9.16
-$('body').prepend('<div class="site-alert"><p>Online purchases and updates to personal profiles will be unavailable on Saturday, September 10, from 9:00 AM – 4:00 PM Eastern.</p></div>');
+// removed -- CH 9.10.16
+//$('body').prepend('<div class="site-alert"><p>Online purchases and updates to personal profiles will be unavailable on Saturday, September 10, from 9:00 AM – 4:00 PM Eastern.</p></div>');
