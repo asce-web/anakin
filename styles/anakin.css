@@ -95,6 +95,7 @@ figure {
   margin: 1em 40px;
 }
 hr {
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0;
 }
@@ -154,6 +155,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 input[type="search"] {
   -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
 input[type="search"]::-webkit-search-cancel-button,
@@ -255,10 +258,14 @@ th {
   }
 }
 * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 *:before,
 *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 html {
@@ -2072,6 +2079,8 @@ label {
   font-weight: bold;
 }
 input[type="search"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 input[type="radio"],
@@ -2117,6 +2126,7 @@ output {
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -2124,6 +2134,7 @@ output {
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 .form-control::-moz-placeholder {
@@ -2264,10 +2275,12 @@ select[multiple].input-lg {
 }
 .has-success .form-control {
   border-color: #3c763d;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .has-success .form-control:focus {
   border-color: #2b542c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
 }
 .has-success .input-group-addon {
@@ -2288,10 +2301,12 @@ select[multiple].input-lg {
 }
 .has-warning .form-control {
   border-color: #8a6d3b;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .has-warning .form-control:focus {
   border-color: #66512c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;
 }
 .has-warning .input-group-addon {
@@ -2312,10 +2327,12 @@ select[multiple].input-lg {
 }
 .has-error .form-control {
   border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .has-error .form-control:focus {
   border-color: #843534;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
 }
 .has-error .input-group-addon {
@@ -2434,6 +2451,7 @@ select[multiple].input-lg {
 .btn.active {
   outline: 0;
   background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 .btn.disabled,
@@ -2443,6 +2461,7 @@ fieldset[disabled] .btn {
   pointer-events: none;
   opacity: .65;
   filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
   box-shadow: none;
 }
 .btn-default {
@@ -2702,6 +2721,7 @@ fieldset[disabled] .btn-danger.active {
 .btn-link[disabled],
 fieldset[disabled] .btn-link {
   background-color: transparent;
+  -webkit-box-shadow: none;
   box-shadow: none;
 }
 .btn-link,
@@ -4422,6 +4442,9 @@ ul.style li {
 .light-gradient {
   background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.75)), to(rgba(255, 255, 255, 0.25)));
   background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
+  background: -moz-linear-gradient(left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
+  background: -o-linear-gradient(left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
+  background: -ms-linear-gradient(left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
   background: linear-gradient(left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
 }
 .constrain {
@@ -4951,6 +4974,8 @@ header .top .account-links {
   border: 2px solid #75c7e2;
   padding: 10px;
   z-index: 99;
+  -moz-box-shadow: 2px 2px 1px #b3b8bc;
+  -webkit-box-shadow: 2px 2px 1px #b3b8bc;
   box-shadow: 2px 2px 1px #b3b8bc;
   z-index: 999;
 }
@@ -5065,6 +5090,8 @@ header .main .nav .menu {
   border: 2px solid #75c7e2;
   padding: 20px;
   z-index: 99;
+  -moz-box-shadow: 2px 2px 1px #b3b8bc;
+  -webkit-box-shadow: 2px 2px 1px #b3b8bc;
   box-shadow: 2px 2px 1px #b3b8bc;
 }
 header .main .nav .menu ul {
@@ -6269,6 +6296,8 @@ main .content-right .section .content .insert {
     width: 100%;
     border: 1px solid #97d5e9;
     border-right: none;
+    -webkit-box-shadow: 2px 2px 0px #ebeded inset;
+    -moz-box-shadow: 2px 2px 0px #ebeded inset;
     box-shadow: 2px 2px 0px #ebeded inset;
   }
   header .search-container .search .search-wrapper .input-wrapper ::-webkit-input-placeholder {
@@ -6295,6 +6324,8 @@ main .content-right .section .content .insert {
     border-bottom: 1px solid #97d5e9;
     border-top: 1px solid #97d5e9;
     border-right: 1px solid #97d5e9;
+    -webkit-box-shadow: 0px 2px 2px -2px #ebeded inset;
+    -moz-box-shadow: 0px 2px 2px -2px #ebeded inset;
     box-shadow: 0px 2px 2px -2px #ebeded inset;
   }
   header .search-container .search .search-wrapper .submit a {
@@ -6558,8 +6589,11 @@ main .content-right .section .content .insert {
     background-position: -190px -40px;
     -webkit-transform: rotate(180deg);
     /* Chrome and other webkit browsers */
+    -moz-transform: rotate(180deg);
     /* FF */
+    -o-transform: rotate(180deg);
     /* Opera */
+    -ms-transform: rotate(180deg);
     /* IE9 */
     transform: rotate(180deg);
   }
@@ -6813,8 +6847,11 @@ main .content-right .section .content .insert {
     margin-top: -4px;
     -webkit-transform: rotate(180deg);
     /* Chrome and other webkit browsers */
+    -moz-transform: rotate(180deg);
     /* FF */
+    -o-transform: rotate(180deg);
     /* Opera */
+    -ms-transform: rotate(180deg);
     /* IE9 */
     transform: rotate(180deg);
     margin-top: -2px;
@@ -6966,8 +7003,11 @@ main .content-right .section .content .insert {
     background-position: -310px -10px;
     -webkit-transform: rotate(180deg);
     /* Chrome and other webkit browsers */
+    -moz-transform: rotate(180deg);
     /* FF */
+    -o-transform: rotate(180deg);
     /* Opera */
+    -ms-transform: rotate(180deg);
     /* IE9 */
     transform: rotate(180deg);
   }
@@ -6995,6 +7035,9 @@ main .content-right .section .content .insert {
   main {
     background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.25)));
     background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
     background: linear-gradient(left, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
   }
   main .content-main,
@@ -8499,6 +8542,8 @@ main .content-bottom div.sort select {
   padding: 8px;
   border: 1px solid #b3b8bc;
   box-shadow: inset 2px 2px 0 #ebeded;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   vertical-align: bottom;
   font-family: "open-sans", Arial;
@@ -8729,6 +8774,8 @@ main .content-bottom .search .search-container input {
   padding: 8px;
   border: 1px solid #b3b8bc;
   box-shadow: inset 2px 2px 0 #ebeded;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   vertical-align: bottom;
   font-family: "open-sans", Arial;
@@ -8778,6 +8825,8 @@ main .content-bottom .search .search-container .submit {
   border-top: 2px solid #0b5597;
   border-right: none;
   border-bottom: none;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   box-shadow: none;
 }
@@ -9721,8 +9770,11 @@ main .content-bottom .show-more a.selected span {
   background-position: -190px -10px;
   -webkit-transform: rotate(180deg);
   /* Chrome and other webkit browsers */
+  -moz-transform: rotate(180deg);
   /* FF */
+  -o-transform: rotate(180deg);
   /* Opera */
+  -ms-transform: rotate(180deg);
   /* IE9 */
   transform: rotate(180deg);
 }
@@ -10428,8 +10480,11 @@ main .content-bottom .jobs-v2 .title .icon {
   margin-bottom: 7px;
   -webkit-transform: rotate(-90deg);
   /* Chrome and other webkit browsers */
+  -moz-transform: rotate(-90deg);
   /* FF */
+  -o-transform: rotate(-90deg);
   /* Opera */
+  -ms-transform: rotate(-90deg);
   /* IE9 */
   transform: rotate(-90deg);
 }
@@ -12646,8 +12701,11 @@ main .content-bottom .callout-mylearning h2 a:after {
   margin-top: 2px;
   -webkit-transform: rotate(-90deg);
   /* Chrome and other webkit browsers */
+  -moz-transform: rotate(-90deg);
   /* FF */
+  -o-transform: rotate(-90deg);
   /* Opera */
+  -ms-transform: rotate(-90deg);
   /* IE9 */
   transform: rotate(-90deg);
 }
@@ -13011,8 +13069,11 @@ main .content-bottom .accordion .header.selected div.icon .icon {
   background-position: -190px -10px;
   -webkit-transform: rotate(180deg);
   /* Chrome and other webkit browsers */
+  -moz-transform: rotate(180deg);
   /* FF */
+  -o-transform: rotate(180deg);
   /* Opera */
+  -ms-transform: rotate(180deg);
   /* IE9 */
   transform: rotate(180deg);
 }
@@ -13159,6 +13220,8 @@ main .content-bottom .group-finder-v2 .tab-container .tab-pane .form select {
   padding: 8px;
   border: 1px solid #b3b8bc;
   box-shadow: inset 2px 2px 0 #ebeded;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   vertical-align: bottom;
   font-family: "open-sans", Arial;
@@ -13358,6 +13421,8 @@ main .content-bottom .group-finder-v2 .tab-container .tab-pane .form .search-con
   border-top: 2px solid #0b5597;
   border-right: none;
   border-bottom: none;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   box-shadow: none;
 }
@@ -13680,6 +13745,8 @@ main .content-bottom .popup-container-large {
   z-index: 999999;
   background-color: #fff;
   border: 1px solid #8c959d;
+  -webkit-box-shadow: 2px 3px 1px 0px rgba(140, 149, 157, 0.75);
+  -moz-box-shadow: 2px 3px 1px 0px rgba(140, 149, 157, 0.75);
   box-shadow: 2px 3px 1px 0px rgba(140, 149, 157, 0.75);
 }
 main .content-main .popup-container-small .header,
@@ -13804,8 +13871,11 @@ main .content-bottom .promo-offer-image .header.linked h2:after {
   margin-top: 2px;
   -webkit-transform: rotate(-90deg);
   /* Chrome and other webkit browsers */
+  -moz-transform: rotate(-90deg);
   /* FF */
+  -o-transform: rotate(-90deg);
   /* Opera */
+  -ms-transform: rotate(-90deg);
   /* IE9 */
   transform: rotate(-90deg);
 }
@@ -14334,6 +14404,9 @@ main .content-bottom .book-search .reset span {
   margin-right: 5px;
   margin-bottom: -2px;
   -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 main .content-main .book-search .options.expanded span,
@@ -14346,6 +14419,9 @@ main .content-main .book-search .reset.expanded span,
 main .content-right .book-search .reset.expanded span,
 main .content-bottom .book-search .reset.expanded span {
   -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 main .content-main .book-search .reset,
@@ -14874,7 +14950,6 @@ main .content-bottom .section-v2 {
   padding: 30px 0 20px 0;
   margin-bottom: 40px;
   background: url('../img/ASCE_bglight2.jpg') repeat;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff), url('../img/ASCE_bglight2.jpg') repeat;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff), url('../img/ASCE_bglight2.jpg') repeat;
   border-top: 2px solid #d1d4d7;
 }
@@ -14888,7 +14963,6 @@ main .content-right .section-v2:before,
 main .content-bottom .section-v2:before {
   content: ' ';
   position: absolute;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff), url('../img/ASCE_bglight2.jpg') repeat;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff), url('../img/ASCE_bglight2.jpg') repeat;
   top: 0;
   height: 100%;
@@ -14902,7 +14976,6 @@ main .content-right .section-v2:after,
 main .content-bottom .section-v2:after {
   content: ' ';
   position: absolute;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff), url('../img/ASCE_bglight2.jpg') repeat;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff), url('../img/ASCE_bglight2.jpg') repeat;
   top: 0;
   height: 100%;
@@ -16174,18 +16247,9 @@ main .content-right .promo-300x250:first-child {
   padding-top: 40px;
 }
 .double_col ul {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   list-style: none;
 }
 .double_col ul li {
@@ -16212,6 +16276,7 @@ main .content-right .promo-300x250:first-child {
   font-size: small;
   padding: 0.5rem 1rem;
   text-align: center;
+  color: beige;
   color: black;
 }
 .site-alert p {
@@ -16257,4 +16322,14 @@ main .content-right .promo-300x250:first-child {
 .magazine main .content-main .featured-image .caption > *:last-child {
   margin-bottom: 0;
   /*override default for paragraphs*/
+}
+/*------------------------------------*\
+    SHAME
+\*------------------------------------*/
+main .content-main .heading-help {
+  padding: 0.125em 0.25em;
+  font-size: 48px;
+  font-weight: 300;
+  background-color: #65b648;
+  color: #fff;
 }
