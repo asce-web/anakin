@@ -18,4 +18,4 @@ $(window).load(function(){
 // - features.less
 // last modified -- DC 9.9.16
 // removed -- CH 9.10.16
-//$('body').prepend('<div class="site-alert"><p>Online purchases and updates to personal profiles will be unavailable on Saturday, September 10, from 9:00 AM – 4:00 PM Eastern.</p></div>');
+$('body').prepend('<div class="site-alert"><p>Online transactions, including payment processing, are currently unavailable.</p></div>');
