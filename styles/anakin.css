@@ -16324,3 +16324,5 @@ main .content-main .heading-help {
   background-color: #65b648;
   color: #fff;
 }
+/* fixes link color in blue background */
+.sustainability-resources .caption a { color: inherit !important; }
