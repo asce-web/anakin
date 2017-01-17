@@ -18,4 +18,4 @@ $(window).load(function(){
 // - features.less
 // last modified -- DC 9.9.16
 // removed -- CH 9.10.16
-// $('body').prepend('<div class="site-alert"><p>Online transactions, including payment processing, are currently unavailable.</p></div>');
+$('body').prepend('<div class="site-alert"><p>Maintenance Notice: ASCE will be performing system updates this Wednesday from 6pm &ndash; 8pm EST. Online transactions, including payment processing, will be unavailable during this time period.</p></div>');
