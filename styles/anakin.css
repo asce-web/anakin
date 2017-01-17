@@ -12888,15 +12888,6 @@ main .content-bottom .callout-mylearning .article-stack li a span {
   font-weight: 600;
   font-style: normal;
 }
-main .content-main .callout .button,
-main .content-right .callout .button,
-main .content-bottom .callout .button,
-main .content-main .callout-mylearning .button,
-main .content-right .callout-mylearning .button,
-main .content-bottom .callout-mylearning .button {
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
 main .content-main .callout-mylearning,
 main .content-right .callout-mylearning,
 main .content-bottom .callout-mylearning {
@@ -16333,3 +16324,5 @@ main .content-main .heading-help {
   background-color: #65b648;
   color: #fff;
 }
+/* fixes link color in blue background */
+.sustainability-resources .caption a { color: inherit !important; }

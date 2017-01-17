@@ -409,7 +409,6 @@ main .content-bottom .show-more-v2 {
   main .content-bottom .continuing-education .feeds li .content,
   main .content-bottom .conferences-events .feeds li .content {
     margin-right: 0;
-    margin-left: 40px;
   }
   main .content-bottom .continuing-education .feeds li .content .title,
   main .content-bottom .conferences-events .feeds li .content .title {
@@ -419,7 +418,7 @@ main .content-bottom .show-more-v2 {
   main .content-bottom .conferences-events .feeds li .info {
     position: relative;
     margin-top: 4px;
-    margin-left: 40px;
+    margin-left: 50px;
   }
   main .content-bottom .continuing-education .feeds li .info .type,
   main .content-bottom .conferences-events .feeds li .info .type {
