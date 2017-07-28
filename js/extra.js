@@ -18,4 +18,5 @@ $(window).load(function(){
 // - features.less
 // last modified -- DC 9.9.16
 // removed -- CH 9.10.16
-// $('body').prepend('<div class="site-alert"><p><strong>Notice</strong>: Due to an unexpected outage, we are currently unable to receive phone calls. If you need to reach a Customer Service representative, please email <a href="mailto:member@asce.org">member@asce.org</a>, or use live chat. Thank you.</p></div>');
+// added -- DC 7.28.17
+$('body').prepend('<div class="site-alert"><p><strong>Notice</strong>: Maintenance Notice: ASCE will be performing system updates this Friday from 9pm &ndash; Saturday 12pm EST. Online transactions, including payment processing, will be unavailable during this time period.</p></div>');
