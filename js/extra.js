@@ -19,4 +19,5 @@ $(window).load(function(){
 // last modified -- DC 9.9.16
 // removed -- CH 9.10.16
 // added -- DC 7.28.17
-$('body').prepend('<div class="site-alert"><p><strong>Maintenance Notice</strong>: ASCE will be performing system updates this Friday from 9pm &ndash; Saturday 12pm EST. Online transactions, including payment processing, will be unavailable during this time period.</p></div>');
+// removed -- DC 7.29.17
+// $('body').prepend('<div class="site-alert"><p><strong>Maintenance Notice</strong>: ASCE will be performing system updates this Friday from 9pm &ndash; Saturday 12pm EST. Online transactions, including payment processing, will be unavailable during this time period.</p></div>');
