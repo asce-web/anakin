@@ -21,3 +21,11 @@ $(window).load(function(){
 // added -- DC 7.28.17
 // removed -- DC 7.29.17
 // $('body').prepend('<div class="site-alert"><p><strong>Maintenance Notice</strong>: ASCE will be performing system updates this Friday from 9pm &ndash; Saturday 12pm EST. Online transactions, including payment processing, will be unavailable during this time period.</p></div>');
+
+
+// Publications Maintenance updates -- DC 8.18.17
+var pathArray = window.location.pathname.split( '/' );
+var secondLevelLocation = pathArray[1];
+if (secondLevelLocation === "publications") {
+  $('body').prepend('<div class="site-alert"><p><strong>Attention ASCE Customers</strong>: Due to ASCE&#39;s annual year-end inventory count, all Print Book, DVD, CD ROM and Video orders submitted after 1:00 pm EST, Monday, September 11th, will begin shipping on Friday, September 15th. E-books will continue to be available for purchase through the ASCE Bookstore.</p></div>');
+}
