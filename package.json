@@ -1,0 +1,27 @@
+{
+  "name": "anakin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ASCE.org Core Styles",
+  "main": "styles/anakin.css",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-pug": "^3.3.0"
+  },
+  "directories": {
+    "doc": "docs/api"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asce-web/anakin.git"
+  },
+  "author": "ASCE Web Team <webteam@asce.org> (https://github.com/asce-web/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asce-web/anakin/issues"
+  },
+  "homepage": "https://github.com/asce-web/anakin#readme"
+}
