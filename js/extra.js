@@ -20,7 +20,8 @@ $(window).load(function(){
 // removed -- CH 9.10.16
 // added -- DC 7.28.17
 // removed -- DC 7.29.17
-// $('body').prepend('<div class="site-alert"><p><strong>Maintenance Notice</strong>: ASCE will be performing system updates this Friday from 9pm &ndash; Saturday 12pm EST. Online transactions, including payment processing, will be unavailable during this time period.</p></div>');
+// ASCE Convention status message added -- DC 10.6.17
+$('body').prepend('<div class="site-alert"><p>Due to weather and travel conditions, all Sunday activities for the ASCE Convention are cancelled. The ASCE Convention will begin Monday, Oct. 9, 2017.</p></div>');
 
 
 // // Publications Maintenance updates -- DC 8.18.17
