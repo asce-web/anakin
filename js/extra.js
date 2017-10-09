@@ -21,7 +21,7 @@ $(window).load(function(){
 // added -- DC 7.28.17
 // removed -- DC 7.29.17
 // ASCE Convention status message added -- DC 10.6.17
-$('body').prepend('<div class="site-alert"><p>Due to weather and travel conditions, all Sunday activities for the ASCE Convention are cancelled. The ASCE Convention will begin Monday, Oct. 9, 2017. <a href="http://www.asceconvention.org/program" style="color: #000;text-decoration: underline;">More details</a>.</p></div>');
+// $('body').prepend('<div class="site-alert"><p>Due to weather and travel conditions, all Sunday activities for the ASCE Convention are cancelled. The ASCE Convention will begin Monday, Oct. 9, 2017. <a href="http://www.asceconvention.org/program" style="color: #000;text-decoration: underline;">More details</a>.</p></div>');
 
 
 // // Publications Maintenance updates -- DC 8.18.17
