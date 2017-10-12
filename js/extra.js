@@ -36,3 +36,12 @@ $(window).load(function(){
 //     if( this.protocol === "http:")
 //         this.protocol = "https:"
 // });
+// $(".shooju-msearch a[href]").each(function(){
+//     if( this.protocol === "http:")
+//         this.protocol = "https:"
+// });
+
+$("a[href*='www.asce.org']").each(function(){
+    if( this.protocol === "http:")
+        this.protocol = "https:"
+});
