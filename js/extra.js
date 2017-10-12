@@ -41,7 +41,10 @@ $(window).load(function(){
 //         this.protocol = "https:"
 // });
 
-$("a[href*='www.asce.org']").each(function(){
-    if( this.protocol === "http:")
-        this.protocol = "https:"
+
+$(window).bind("load", function() {
+  $("a[href*='www.asce.org']").each(function(){
+      if( this.protocol === "http:")
+          this.protocol = "https:"
+  });
 });

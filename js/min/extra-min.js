@@ -1,1 +1,0 @@
-$(document).ready(function(){$(function(){0===location.pathname.indexOf("/event/2016/asce-week")&&$(".highlight-box-blue, .content-right .section").hide()})}),$(window).load(function(){$("#header-icon-livechat a, #footer-icon-livechat a").prepend('<span class="icon-livechat"></span>')});
