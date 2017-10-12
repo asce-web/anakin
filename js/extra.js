@@ -31,8 +31,8 @@ $(window).load(function(){
 //   $('body').prepend('<div class="site-alert"><p><strong>Attention ASCE Customers</strong>: Due to ASCE&#39;s annual year-end inventory count, all Print Book, DVD, CD ROM and Video orders submitted after 1:00 pm EST, Monday, September 11th, will begin shipping on Friday, September 15th. E-books will continue to be available for purchase through the ASCE Bookstore.</p></div>');
 // }
 
-// Temporary Fix for broken HTTP links
-$("a[href]").each(function(){
-    if( this.protocol === "http:")
-        this.protocol = "https:"
-});
+// Temporary Fix for broken HTTP link
+// $("a[href]").each(function(){
+//     if( this.protocol === "http:")
+//         this.protocol = "https:"
+// });
