@@ -1,4 +1,33 @@
+# OS system files
 .DS_Store
+Thumbs.db
+
+# User Configurations
 config.codekit
 cols.html
 /config.codekit3
+
+# Dependency directories
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+jspm_packages
+
+# Optional npm cache directory
+.npm
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+
+# Auto-generated documentation & style guides
+docs/styleguide
+docs/api
+
+
+# Manually installed 3rd party packages
+vendor
+
+# Site files and assets
+proto/*/files
