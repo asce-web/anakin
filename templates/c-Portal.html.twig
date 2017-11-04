@@ -1,12 +1,9 @@
-{# class Portal({title, icon, links}) #}
+<!-- class Portal({title, icon, links}) -->
 <section class="c-Portal">
   <h1>
-    <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
-    <span class="h-Block">{{ title }}</span>
+    <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ data.icon }}" role="none" aria-hidden="true"></i>
+    <span class="h-Block">{{ data.title }}</span>
   </h1>
-  <ul class="o-List c-Portal__List">
-    {% for item in links %}
-      <li class="o-List__Item c-Portal__List__Item"><a href="{{ item.url }}">{{ item.text }}</a></li>
-    {% endfor %}
-  </ul>
+  <ul class="o-List c-Portal__List">{{ data.links.map((item) =>
+    '<li class="o-List__Item c-Portal__List__Item"><a href="'+ item.url +'">'+ item.text +'</a></li>').join('') }}</ul>
 </section>

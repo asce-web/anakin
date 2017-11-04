@@ -1,7 +1,7 @@
-{# class MemberStory({name, title, image, quote}) #}
+<!-- class MemberStory({name, title, image, quote}) -->
 <article class="c-MemberStory">
-  <img class="c-MemberStory__Img" src="{{ image }}"/>
-  <h1 class="c-MemberStory__Hn">{{ name }}</h1>
-  <p class="c-MemberStory__SubHn">{{ title }}</p>
-  <blockquote class="c-MemberStory__Quote">{{ quote }}</blockquote>
+  <img class="c-MemberStory__Img" src="{{ data.image }}"/>
+  <h1 class="c-MemberStory__Hn">{{ data.name }}</h1>
+  <p class="c-MemberStory__SubHn">{{ data.title }}</p>
+  <blockquote class="c-MemberStory__Quote">{{ data.quote }}</blockquote>
 </article>
