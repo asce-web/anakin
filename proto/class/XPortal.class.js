@@ -1,27 +1,11 @@
-<template id="x-portal">
-<section class="c-Portal">
-  <h1>
-    <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
-    <span class="c-Portal__Hn h-Block">{{ title }}</span>
-  </h1>
-  <ul class="o-List c-Portal__List">
-    <li class="o-List__Item c-Portal__List__Item">
-      <a href="{{ item.url }}">{{ item.text }}</a>
-    </li>
-  </ul>
-</section>
-</template>
-
-<script>
-  class XPortal extends HTMLElement {
+  export class XPortal extends HTMLElement {
     // sample: <x-portal title="Membership" icon="nameplate">
     //   <item text="Manage My Membership" url="#0"></item>
     //   <item text="Join ASCE" url="#0"></item>
     // </x-portal>
     constructor() {
       super()
-      let markup = document.currentScript.ownerDocument.querySelector('#x-portal').content // NOTE: `currentScript` will not work with `<script type="module">`
-      let returned = markup.cloneNode(true)
+      let returned = global.template.x_portal.content.cloneNode(true)
       returned.querySelector('.c-Portal__Icon').className = returned.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
       returned.querySelector('.c-Portal__Hn'  ).innerHTML = this.getAttribute('title')
       this.querySelectorAll('item').forEach(function (item) {
@@ -32,7 +16,7 @@
       })
       returned.querySelector('.c-Portal__List').firstElementChild.remove() // remove the empty template list item
       while (this.firstChild) { this.firstChild.remove() }
-      if (ENABLE_WEB_COMPONENTS) {
+      if (global.ENABLE_WEB_COMPONENTS) {
       let shadowroot = this.attachShadow({ mode: 'closed' })
       shadowroot.appendChild(returned)
       } else {
@@ -40,5 +24,3 @@
       }
     }
   }
-  window.customElements.define('x-portal', XPortal)
-</script>

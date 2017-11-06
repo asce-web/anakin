@@ -1,25 +1,14 @@
-<template id="x-memberstory">
-<article class="c-MemberStory">
-  <img class="c-MemberStory__Img" src="{{ image }}"/>
-  <h1 class="c-MemberStory__Hn">{{ name }}</h1>
-  <p class="c-MemberStory__SubHn">{{ title }}</p>
-  <blockquote class="c-MemberStory__Quote">{{ quote }}</blockquote>
-</article>
-</template>
-
-<script>
-  class XMemberStory extends HTMLElement {
+  export class XMemberStory extends HTMLElement {
     // sample: <x-memberstory name="Katie Haslett" title="Student Member" image="Haslett.png">The impact of seeing successful...</x-memberstory>
     constructor() {
       super()
-      let markup = document.currentScript.ownerDocument.querySelector('#x-memberstory').content // NOTE: `currentScript` will not work with `<script type="module">`
-      let returned = markup.cloneNode(true)
+      let returned = global.template.x_memberstory.content.cloneNode(true)
       returned.querySelector('.c-MemberStory__Img').setAttribute('src', this.getAttribute('image'))
       returned.querySelector('.c-MemberStory__Hn').innerHTML = this.getAttribute('name')
       returned.querySelector('.c-MemberStory__SubHn').innerHTML = this.getAttribute('title')
       returned.querySelector('.c-MemberStory__Quote').innerHTML = this.innerHTML
       while (this.firstChild) { this.firstChild.remove() }
-      if (ENABLE_WEB_COMPONENTS) {
+      if (global.ENABLE_WEB_COMPONENTS) {
       let shadowroot = this.attachShadow({ mode: 'closed' })
       shadowroot.appendChild(returned)
       } else {
@@ -27,5 +16,3 @@
       }
     }
   }
-  window.customElements.define('x-memberstory', XMemberStory)
-</script>

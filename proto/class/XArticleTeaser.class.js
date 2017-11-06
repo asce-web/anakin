@@ -1,14 +1,3 @@
-<template id="x-articleteaser">
-<article class="c-ArticleTeaser">
-  <img class="c-ArticleTeaser__Img" src="{{ image }}"/>
-  <h1 class="c-ArticleTeaser__Hn">
-    <a class="c-ArticleTeaser__Link" href="{{ url }}">{{ title }}</a>
-  </h1>
-  <p class="c-ArticleTeaser__Date">{{ datetime }}</p>
-</article>
-</template>
-
-<script>
   const MONTHS = [
     'January',
     'February',
@@ -24,18 +13,17 @@
     'December',
   ]
   function formatDate(date) { return `${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}` }
-  class XArticleTeaser extends HTMLElement {
+  export class XArticleTeaser extends HTMLElement {
     // sample: <x-articleteaser title="Emergency and Carryover Storage Project Earns OCEA" image="emergency.png" url="#0" datetime="2017-03-16"></x-articleteaser>
     constructor() {
       super()
-      let markup = document.currentScript.ownerDocument.querySelector('#x-articleteaser').content // NOTE: `currentScript` will not work with `<script type="module">`
-      let returned = markup.cloneNode(true)
+      let returned = global.template.x_articleteaser.content.cloneNode(true)
       returned.querySelector('.c-ArticleTeaser__Img').setAttribute('src', this.getAttribute('image'))
       returned.querySelector('.c-ArticleTeaser__Link').setAttribute('href', this.getAttribute('url'))
       returned.querySelector('.c-ArticleTeaser__Link').innerHTML = this.getAttribute('title')
       returned.querySelector('.c-ArticleTeaser__Date').innerHTML = formatDate(new Date(this.getAttribute('datetime')))
       while (this.firstChild) { this.firstChild.remove() }
-      if (ENABLE_WEB_COMPONENTS) {
+      if (global.ENABLE_WEB_COMPONENTS) {
       let shadowroot = this.attachShadow({ mode: 'closed' })
       shadowroot.appendChild(returned)
       } else {
@@ -43,5 +31,3 @@
       }
     }
   }
-  window.customElements.define('x-articleteaser', XArticleTeaser)
-</script>

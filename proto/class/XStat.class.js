@@ -1,26 +1,15 @@
-<template id="x-stat">
-<p class="c-Stat">
-  <i class="c-Stat__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
-  <span class="c-Stat__Num h-Block">{{ number }}</span>
-  <span class="c-Stat__Text h-Block">{{ text }}</span>
-  <br/>
-  <a class="c-Stat__Cta c-Button" href="{{ cta.url }}">{{ cta.text }}</a>
-</p>
-</template>
-<script>
-  class XStat extends HTMLElement {
+  export class XStat extends HTMLElement {
     // sample: <x-stat icon="group" number="150000" text="Members" ctatext="Join ASCE" ctaurl="#0"></x-stat>
     constructor() {
       super()
-      let markup = document.currentScript.ownerDocument.querySelector('#x-stat').content // NOTE: `currentScript` will not work with `<script type="module">`
-      let returned = markup.cloneNode(true)
+      let returned = global.template.x_stat.content.cloneNode(true)
       returned.querySelector('.c-Stat__Icon').className = returned.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
       returned.querySelector('.c-Stat__Num' ).innerHTML = this.getAttribute('number')
       returned.querySelector('.c-Stat__Text').innerHTML = this.getAttribute('text')
       returned.querySelector('.c-Stat__Cta' ).setAttribute('href', this.getAttribute('ctaurl'))
       returned.querySelector('.c-Stat__Cta' ).innerHTML = this.getAttribute('ctatext')
       while (this.firstChild) { this.firstChild.remove() }
-      if (ENABLE_WEB_COMPONENTS) {
+      if (global.ENABLE_WEB_COMPONENTS) {
       let shadowroot = this.attachShadow({ mode: 'closed' })
       shadowroot.appendChild(returned)
       } else {
@@ -28,5 +17,3 @@
       }
     }
   }
-  window.customElements.define('x-stat', XStat)
-</script>

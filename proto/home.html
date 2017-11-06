@@ -12,20 +12,16 @@
 
   <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.0.0/xmeter.css"/>
   <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
-  <link rel="stylesheet" href="anakin.css"/>
 
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"/> -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700"/> -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
 
-  <script>
-  const ENABLE_WEB_COMPONENTS = true
-  </script>
-  <link rel="import" href="./imports/x-stat.wc.html"/>
-  <link rel="import" href="./imports/x-promotion.wc.html"/>
-  <link rel="import" href="./imports/x-portal.wc.html"/>
-  <link rel="import" href="./imports/x-articleteaser.wc.html"/>
-  <link rel="import" href="./imports/x-memberstory.wc.html"/>
+  <link rel="import" href="./template/x-stat.tpl.html"/>
+  <link rel="import" href="./template/x-promotion.tpl.html"/>
+  <link rel="import" href="./template/x-portal.tpl.html"/>
+  <link rel="import" href="./template/x-articleteaser.tpl.html"/>
+  <link rel="import" href="./template/x-memberstory.tpl.html"/>
 </head>
 <body>
   <a class="h-Hidden" href="#main">skip to main content</a>
@@ -155,5 +151,29 @@
   </footer>
   <a class="h-Hidden" href="#top">jump to top</a>
   <!-- <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script> -->
+  <script>
+    let global = {
+      /** set to false to disable experimental web components features*/ ENABLE_WEB_COMPONENTS: true,
+      template: {
+        x_stat         : document.querySelector('link[href*="x-stat"]'         ).import.querySelector('template#x-stat'         ),
+        x_promotion    : document.querySelector('link[href*="x-promotion"]'    ).import.querySelector('template#x-promotion'    ),
+        x_portal       : document.querySelector('link[href*="x-portal"]'       ).import.querySelector('template#x-portal'       ),
+        x_articleteaser: document.querySelector('link[href*="x-articleteaser"]').import.querySelector('template#x-articleteaser'),
+        x_memberstory  : document.querySelector('link[href*="x-memberstory"]'  ).import.querySelector('template#x-memberstory'  ),
+      },
+    }
+  </script>
+  <script type="module">
+    import { XStat          } from './class/XStat.class.js'
+    import { XPromotion     } from './class/XPromotion.class.js'
+    import { XPortal        } from './class/XPortal.class.js'
+    import { XArticleTeaser } from './class/XArticleTeaser.class.js'
+    import { XMemberStory   } from './class/XMemberStory.class.js'
+    window.customElements.define('x-stat', XStat)
+    window.customElements.define('x-promotion', XPromotion)
+    window.customElements.define('x-portal', XPortal)
+    window.customElements.define('x-articleteaser', XArticleTeaser)
+    window.customElements.define('x-memberstory', XMemberStory)
+  </script>
 </body>
 </html>

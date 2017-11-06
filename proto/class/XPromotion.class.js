@@ -1,25 +1,15 @@
-<template id="x-promotion">
-<section class="c-Promotion" style="background-image: url('{{ image }}');">
-  <h1 class="c-Promotion__Hn">{{ title }}</h1>
-  <p class="c-Promotion__Text">{{ text }}</p>
-  <p><a class="c-Promotion__Cta c-Button" href="{{ cta.url }}">{{ cta.text }}</a></p>
-</section>
-</template>
-
-<script>
-  class XPromotion extends HTMLElement {
+  export class XPromotion extends HTMLElement {
     // sample: <x-promotion title="Dream Big: subhead" image="dream-big.png" ctatext="Find a screen" ctaurl="#0">A giant-screen film...</x-promotion>
     constructor() {
       super()
-      let markup = document.currentScript.ownerDocument.querySelector('#x-promotion').content // NOTE: `currentScript` will not work with `<script type="module">`
-      let returned = markup.cloneNode(true)
+      let returned = global.template.x_promotion.content.cloneNode(true)
       returned.querySelector('.c-Promotion').style.setProperty('background-image', `url('${this.getAttribute('image')}')`)
       returned.querySelector('.c-Promotion__Hn'  ).innerHTML = this.getAttribute('title')
       returned.querySelector('.c-Promotion__Text').innerHTML = this.innerHTML
       returned.querySelector('.c-Promotion__Cta' ).setAttribute('href', this.getAttribute('ctaurl'))
       returned.querySelector('.c-Promotion__Cta' ).textContent = this.getAttribute('ctatext')
       while (this.firstChild) { this.firstChild.remove() }
-      if (ENABLE_WEB_COMPONENTS) {
+      if (global.ENABLE_WEB_COMPONENTS) {
       let shadowroot = this.attachShadow({ mode: 'closed' })
       shadowroot.appendChild(returned)
       } else {
@@ -27,5 +17,3 @@
       }
     }
   }
-  window.customElements.define('x-promotion', XPromotion)
-</script>
