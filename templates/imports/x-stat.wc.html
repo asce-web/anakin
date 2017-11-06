@@ -15,10 +15,10 @@
       let markup = document.currentScript.ownerDocument.querySelector('#x-stat').content // NOTE: `currentScript` will not work with `<script type="module">`
       let returned = markup.cloneNode(true)
       returned.querySelector('.c-Stat__Icon').className = returned.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
-      returned.querySelector('.c-Stat__Num' ).textContent = this.getAttribute('number')
-      returned.querySelector('.c-Stat__Text').textContent = this.getAttribute('text')
+      returned.querySelector('.c-Stat__Num' ).innerHTML = this.getAttribute('number')
+      returned.querySelector('.c-Stat__Text').innerHTML = this.getAttribute('text')
       returned.querySelector('.c-Stat__Cta' ).setAttribute('href', this.getAttribute('ctaurl'))
-      returned.querySelector('.c-Stat__Cta' ).textContent = this.getAttribute('ctatext')
+      returned.querySelector('.c-Stat__Cta' ).innerHTML = this.getAttribute('ctatext')
       let shadowroot = this.attachShadow({ mode: 'open' })
       shadowroot.appendChild(returned.querySelector('.c-Stat'))
     }

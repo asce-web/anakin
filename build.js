@@ -26,7 +26,6 @@ function compile(template) {
      * @type {object}
      */
     let data = {}
-    data.Stat          = class { constructor(opts) { this.opts = opts } toString() { return compile('./templates/c-Stat.html.twig').call(null, this.opts) } }
     data.Promotion     = class { constructor(opts) { this.opts = opts } toString() { return compile('./templates/c-Promotion.html.twig').call(null, this.opts) } }
     data.Portal        = class { constructor(opts) { this.opts = opts } toString() { return compile('./templates/c-Portal.html.twig').call(null, this.opts) } }
     data.ArticleTeaser = class { constructor(opts) { this.opts = opts } toString() { return compile('./templates/c-ArticleTeaser.html.twig').call(null, this.opts) } }
