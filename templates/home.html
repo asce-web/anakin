@@ -22,6 +22,7 @@
   <link rel="import" href="./imports/x-promotion.wc.html"/>
   <link rel="import" href="./imports/x-portal.wc.html"/>
   <link rel="import" href="./imports/x-articleteaser.wc.html"/>
+  <link rel="import" href="./imports/x-memberstory.wc.html"/>
 </head>
 <body>
   <a class="h-Hidden" href="#main">skip to main content</a>
@@ -141,8 +142,11 @@
     </section>
     <section id="member-stories">
       <h1>ASCE Member Stories</h1>
-      <ul>{{ data.member_stories.map((item) =>
-        '<li>'+ new data.MemberStory(item) +'</li>').join('') }}</ul>
+      <ul>
+        <li><x-memberstory name="Katie Haslett" title="Student Member" image="Haslett.png">The impact of seeing successful...</x-memberstory></li>
+        <li><x-memberstory name="Nakeia Jackson" title="2017 New Faces of Civil Engineering" image="Jackson.png">When you become an engineer...</x-memberstory></li>
+        <li><x-memberstory name="Damani Nkeiruka" title="Distinguished Member" image="Nkeiruka.png">There are so many infrastructure and...</x-memberstory></li>
+      </ul>
     </section>
     <p><a href="#0">Join ASCE</a></p>
   </main>

@@ -26,7 +26,6 @@ function compile(template) {
      * @type {object}
      */
     let data = {}
-    data.MemberStory   = class { constructor(opts) { this.opts = opts } toString() { return compile('./templates/c-MemberStory.html.twig').call(null, this.opts) } }
     /**
      * Promotional sections.
      * @type {Array<Object{title:string, text:string, cta:{text:string, url:string}, image:string}>}
