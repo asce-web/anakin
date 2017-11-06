@@ -20,6 +20,7 @@
 
   <link rel="import" href="./imports/x-stat.wc.html"/>
   <link rel="import" href="./imports/x-promotion.wc.html"/>
+  <link rel="import" href="./imports/x-portal.wc.html"/>
 </head>
 <body>
   <a class="h-Hidden" href="#main">skip to main content</a>
@@ -63,12 +64,17 @@
     <section id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid" style="--cols: 3;">
-        <li class="o-List__Item o-Grid__Item">{{ new data.Portal({ title:'Membership'              , icon:'nameplate'   , links:data.portal_links.membership }) }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ new data.Portal({ title:'Continuing Education'    , icon:'education'   , links:data.portal_links.cont_ed }) }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ new data.Portal({ title:'Publications'            , icon:'book-open'   , links:data.portal_links.pubs }) }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ new data.Portal({ title:'Conferences &amp; Events', icon:'calendar'    , links:data.portal_links.confs_events }) }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ new data.Portal({ title:'Professional'            , icon:'address-book', links:data.portal_links.professional }) }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ new data.Portal({ title:'Careers'                 , icon:'briefcase'   , links:data.portal_links.careers }) }}</li>
+        <li class="o-List__Item o-Grid__Item">
+          <x-portal title="Membership" icon="nameplate">
+            <item text="Manage My Membership" url="#0"></item>
+            <item text="Join ASCE" url="#1"></item>
+          </x-portal>
+        </li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Continuing Education"      icon="education"   ></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Publications"              icon="book-open"   ></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Conferences &amp; Events"  icon="calendar"    ></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Professional"              icon="address-book"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Careers"                   icon="briefcase"   ></x-portal></li>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
