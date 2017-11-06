@@ -35,8 +35,12 @@
       returned.querySelector('.c-ArticleTeaser__Link').innerHTML = this.getAttribute('title')
       returned.querySelector('.c-ArticleTeaser__Date').innerHTML = formatDate(new Date(this.getAttribute('datetime')))
       while (this.firstChild) { this.firstChild.remove() }
-      let shadowroot = this.attachShadow({ mode: 'open' })
+      if (ENABLE_WEB_COMPONENTS) {
+      let shadowroot = this.attachShadow({ mode: 'closed' })
       shadowroot.appendChild(returned)
+      } else {
+        this.parentNode.replaceChild(returned, this)
+      }
     }
   }
   window.customElements.define('x-articleteaser', XArticleTeaser)

@@ -30,10 +30,14 @@
         listitem.querySelector('a').innerHTML = item.getAttribute('text')
         returned.querySelector('.c-Portal__List').appendChild(listitem)
       })
-      returned.querySelector('.c-Portal__List').firstElementChild.remove()
+      returned.querySelector('.c-Portal__List').firstElementChild.remove() // remove the empty template list item
       while (this.firstChild) { this.firstChild.remove() }
-      let shadowroot = this.attachShadow({ mode: 'open' })
+      if (ENABLE_WEB_COMPONENTS) {
+      let shadowroot = this.attachShadow({ mode: 'closed' })
       shadowroot.appendChild(returned)
+      } else {
+        this.parentNode.replaceChild(returned, this)
+      }
     }
   }
   window.customElements.define('x-portal', XPortal)

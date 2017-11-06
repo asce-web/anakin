@@ -19,8 +19,12 @@
       returned.querySelector('.c-MemberStory__SubHn').innerHTML = this.getAttribute('title')
       returned.querySelector('.c-MemberStory__Quote').innerHTML = this.innerHTML
       while (this.firstChild) { this.firstChild.remove() }
-      let shadowroot = this.attachShadow({ mode: 'open' })
+      if (ENABLE_WEB_COMPONENTS) {
+      let shadowroot = this.attachShadow({ mode: 'closed' })
       shadowroot.appendChild(returned)
+      } else {
+        this.parentNode.replaceChild(returned, this)
+      }
     }
   }
   window.customElements.define('x-memberstory', XMemberStory)

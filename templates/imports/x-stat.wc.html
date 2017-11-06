@@ -19,8 +19,13 @@
       returned.querySelector('.c-Stat__Text').innerHTML = this.getAttribute('text')
       returned.querySelector('.c-Stat__Cta' ).setAttribute('href', this.getAttribute('ctaurl'))
       returned.querySelector('.c-Stat__Cta' ).innerHTML = this.getAttribute('ctatext')
-      let shadowroot = this.attachShadow({ mode: 'open' })
-      shadowroot.appendChild(returned.querySelector('.c-Stat'))
+      while (this.firstChild) { this.firstChild.remove() }
+      if (ENABLE_WEB_COMPONENTS) {
+      let shadowroot = this.attachShadow({ mode: 'closed' })
+      shadowroot.appendChild(returned)
+      } else {
+        this.parentNode.replaceChild(returned, this)
+      }
     }
   }
   window.customElements.define('x-stat', XStat)
