@@ -21,6 +21,7 @@
   <link rel="import" href="./imports/x-stat.wc.html"/>
   <link rel="import" href="./imports/x-promotion.wc.html"/>
   <link rel="import" href="./imports/x-portal.wc.html"/>
+  <link rel="import" href="./imports/x-articleteaser.wc.html"/>
 </head>
 <body>
   <a class="h-Hidden" href="#main">skip to main content</a>
@@ -132,8 +133,10 @@
     </section>
     <section id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
-      <ul>{{ data.news.map((item) =>
-        '<li>'+ new data.ArticleTeaser(item) +'</li>').join('') }}</ul>
+      <ul>
+        <li><x-articleteaser title="Emergency and Carryover Storage Project Earns OCEA" image="emergency.png" url="#0" datetime="2017-03-16"></x-articleteaser></li>
+        <li><x-articleteaser title="Former Corps Chief Bostick Honored with OPAL Award" image="opal.png" url="#0" datetime="2017-03-09"></x-articleteaser></li>
+      </ul>
       <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
     </section>
     <section id="member-stories">
