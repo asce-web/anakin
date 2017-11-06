@@ -17,6 +17,8 @@
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"/> -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700"/> -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
+
+  <link rel="import" href="./x-stat.tpl.html"/>
 </head>
 <body>
   <a class="h-Hidden" href="#main">skip to main content</a>
@@ -35,9 +37,9 @@
       <blockquote>Civil Engineers are global leaders building a better quality of life.</blockquote>
       <h1>We Represent:</h1>
       <ul class="o-List o-Flex">
-        <li class="o-List__Item o-Flex__Item">{{ new data.Stat({ icon:'group' , number:150000, text:'Members'   , cta:{text:'Join ASCE'        , url:'#0'} }) }}</li>
-        <li class="o-List__Item o-Flex__Item">{{ new data.Stat({ icon:'map'   , number:177   , text:'Countries' , cta:{text:'Find a Chapter'   , url:'#0'} }) }}</li>
-        <li class="o-List__Item o-Flex__Item">{{ new data.Stat({ icon:'shield', number:9     , text:'Institutes', cta:{text:'Join an Institute', url:'#0'} }) }}</li>
+        <li class="o-List__Item o-Flex__Item"><x-stat icon="group"  number="150000" text="Members"    ctatext="Join ASCE"         ctaurl="#0"></x-stat></li>
+        <li class="o-List__Item o-Flex__Item"><x-stat icon="map"    number="177"    text="Countries"  ctatext="Find a Chapter"    ctaurl="#0"></x-stat></li>
+        <li class="o-List__Item o-Flex__Item"><x-stat icon="shield" number="9"      text="Institutes" ctatext="Join an Institute" ctaurl="#0"></x-stat></li>
       </ul>
     </section>
     <aside>ADVERTISEMENT</aside>
