@@ -26,7 +26,6 @@ function compile(template) {
      * @type {object}
      */
     let data = {}
-    data.Promotion     = class { constructor(opts) { this.opts = opts } toString() { return compile('./templates/c-Promotion.html.twig').call(null, this.opts) } }
     data.Portal        = class { constructor(opts) { this.opts = opts } toString() { return compile('./templates/c-Portal.html.twig').call(null, this.opts) } }
     data.ArticleTeaser = class { constructor(opts) { this.opts = opts } toString() { return compile('./templates/c-ArticleTeaser.html.twig').call(null, this.opts) } }
     data.MemberStory   = class { constructor(opts) { this.opts = opts } toString() { return compile('./templates/c-MemberStory.html.twig').call(null, this.opts) } }
@@ -41,6 +40,12 @@ function compile(template) {
           of discovery from the world’s tallest building to a bridge higher than the clouds.`,
         cta  : { text: 'Find a screen', url: '#0' },
         image: 'dream-big.png',
+      },
+      {
+        title: 'Save America’s Infrastructure',
+        text : `Keep up with the latest in US infrastructure news from the American Society of Civil Engineers.`,
+        cta  : { text: 'Read more', url: '#0' },
+        image: 'infrastructure.png',
       },
     ]
     /**

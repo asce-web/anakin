@@ -19,6 +19,7 @@
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
 
   <link rel="import" href="./imports/x-stat.wc.html"/>
+  <link rel="import" href="./imports/x-promotion.wc.html"/>
 </head>
 <body>
   <a class="h-Hidden" href="#main">skip to main content</a>
@@ -48,8 +49,16 @@
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <ul>{{ data.promotions.map((item) =>
-        '<li>'+ new data.Promotion(item) +'</li>').join('') }}</ul>
+      <!-- <ul>{{ data.promotions.map((item) => `
+        <li><x-promotion title="${item.title}" image="${item.image}" ctatext="${item.cta.text}" ctaurl="${item.cta.url}">${item.text}</x-promotion></li>
+      `).join('') }}</ul> -->
+      <x-promotion title="Dream Big: Engineering Our World" image="dream-big.png" ctatext="Find a screen" ctaurl="#0">
+        A giant-screen film about engineering will take viewers on a journey
+        of discovery from the world’s tallest building to a bridge higher than the clouds.
+      </x-promotion>
+      <x-promotion title="Save America’s Infrastructure" image="infrastructure.png" ctatext="Read more" ctaurl="#0">
+        Keep up with the latest in US infrastructure news from the American Society of Civil Engineers.
+      </x-promotion>
     </section>
     <section id="portals">
       <h1 class="h-Hidden">Portals</h1>
