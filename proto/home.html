@@ -17,7 +17,17 @@
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700"/> -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
 
-  <link rel="import" href="./template/x-stat.tpl.html"/>
+  <!-- REVIEW INDENTATION -->
+<template id="x-stat">
+  <p class="c-Stat">
+    <i class="c-Stat__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
+    <span class="c-Stat__Num h-Block">{{ number }}</span>
+    <span class="c-Stat__Text h-Block">{{ text }}</span>
+    <br/>
+    <a class="c-Stat__Cta c-Button" href="{{ cta.url }}">{{ cta.text }}</a>
+  </p>
+</template>
+    <!-- REVIEW INDENTATION -->
   <script id="data" type="application/json">
 {
   "jobs": [
@@ -372,9 +382,6 @@
         return `${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}`
       },
       /** set to false to disable experimental web components features*/ ENABLE_WEB_COMPONENTS: true,
-      template: {
-        x_stat: document.querySelector('link[href*="x-stat"]').import.querySelector('template#x-stat'),
-      },
       data: JSON.parse(document.querySelector('script#data').textContent),
     }
 
@@ -457,10 +464,26 @@
       frag.querySelector('.c-MemberStory__Quote').innerHTML = ((typeof datum.quote === 'string') ? datum.quote : datum.quote.join(''))
       return frag
     })
-  </script>
-  <script type="module">
-    import { XStat } from './class/XStat.class.js'
-    window.customElements.define('x-stat', XStat)
+
+    window.customElements.define('x-stat', class XStat extends HTMLElement {
+      // REVIEW INDENTATION
+    constructor() {
+      super()
+      let returned = document.querySelector('template#x-stat').content.cloneNode(true)
+      returned.querySelector('.c-Stat__Icon').className = returned.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
+      returned.querySelector('.c-Stat__Num' ).innerHTML = this.getAttribute('number')
+      returned.querySelector('.c-Stat__Text').innerHTML = this.getAttribute('text')
+      returned.querySelector('.c-Stat__Cta' ).setAttribute('href', this.getAttribute('ctaurl'))
+      returned.querySelector('.c-Stat__Cta' ).innerHTML = this.getAttribute('ctatext')
+      while (this.firstChild) { this.firstChild.remove() }
+      if (global.ENABLE_WEB_COMPONENTS) {
+      let shadowroot = this.attachShadow({ mode: 'closed' })
+      shadowroot.appendChild(returned)
+      } else {
+        this.parentNode.replaceChild(returned, this)
+      }
+    }
+    })
   </script>
 </body>
 </html>
