@@ -79,7 +79,15 @@
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <ul class="o-List" data-each="promotions"></ul>
+      <ul class="o-List" data-each="promotions">
+        <template>
+          <li class="o-List__Item">
+            <x-promotion title="{{ title }}" image="{{ image }}" ctatext="{{ cta.text }}" ctaurl="{{ cta.url }}">
+              {{ innerHTML }}
+            </x-promotion>
+          </li>
+        </template>
+      </ul>
     </section>
     <section id="portals">
       <h1 class="h-Hidden">Portals</h1>
@@ -188,20 +196,17 @@
 
     function populateListWithData(dataname, generator) {
       let list = document.querySelector(`[data-each="${dataname}"]`)
-      global.data[dataname].forEach(function (item) {
-        list.appendChild(generator.call(null, item))
+      global.data[dataname].forEach(function (d) {
+        list.appendChild(generator.call(null, list.querySelector('template').content, d))
       })
     }
-    function generatePromotion(item) {
-      let returned = document.createElement('li')
-      returned.className = 'o-List__Item'
-      let element = document.createElement('x-promotion')
-      element.setAttribute('title', item.title)
-      element.setAttribute('image', item.image)
-      element.setAttribute('ctatext', item.cta.text)
-      element.setAttribute('ctaurl', item.cta.url)
-      element.innerHTML = (Array.isArray(item.text) ? item.text.join('') : item.text)
-      returned.appendChild(element)
+    function generatePromotion(frag, data) {
+      let returned = frag.cloneNode(true)
+      returned.querySelector('x-promotion').setAttribute('title', data.title)
+      returned.querySelector('x-promotion').setAttribute('image', data.image)
+      returned.querySelector('x-promotion').setAttribute('ctatext', data.cta.text)
+      returned.querySelector('x-promotion').setAttribute('ctaurl', data.cta.url)
+      returned.querySelector('x-promotion').innerHTML = (Array.isArray(data.text)) ? data.text.join('') : data.text
       return returned
     }
     populateListWithData('promotions', generatePromotion)
