@@ -32,30 +32,6 @@ function compile(template) {
     //  */
     // data.foundation_blurb = `` // NOTE may need this later
     /**
-     * Links for Technical Information section.
-     * This array should have no more than 4 items.
-     * Each object in the array should have a text (string) and a url (string).
-     * @type {Array<{text:string, url:string>}}
-     */
-    data.tech_info_links = [
-      { text: 'Find a local group'   , url: '#0' },
-      { text: 'Browse publications'  , url: '#0' },
-      { text: 'Register for a course', url: '#0' },
-      { text: 'Find a conference'    , url: '#0' },
-    ]
-    /**
-     * Links for Get Involved section.
-     * This array should have no more than 4 items.
-     * Each object in the array should have a text (string) and a url (string).
-     * @type {Array<{text:string, url:string>}}
-     */
-    data.get_involved_links = [
-      { text: 'View volunteer opportunities'       , url: '#0' },
-      { text: 'Find a Section or Branch'           , url: '#0' },
-      { text: 'Visit <cite>ASCE Collaborate</cite>', url: '#0' },
-      { text: 'Find a committee'                   , url: '#0' },
-    ]
-    /**
      * Articles for What’s Happening section.
      * This array should have no more than 3 items.
      * Each object in the array should have a title (string), url (string), image (string), and date (Date).

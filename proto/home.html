@@ -118,8 +118,18 @@
       "<p><a>Read more</a></p>",
     "</article>"
   ],
-  "tech_info_links": [],
-  "get_involved_links": [],
+  "tech_info_links": [
+    { "text": "Find a local group"   , "url": "#0" },
+    { "text": "Browse publications"  , "url": "#0" },
+    { "text": "Register for a course", "url": "#0" },
+    { "text": "Find a conference"    , "url": "#0" }
+  ],
+  "get_involved_links": [
+    { "text": "View volunteer opportunities", "url": "#0" },
+    { "text": "Find a Section or Branch"    , "url": "#0" },
+    { "text": "Visit ASCE Collaborate"      , "url": "#0" },
+    { "text": "Find a committee"            , "url": "#0" }
+  ],
   "news": [],
   "member_stories": []
 }
@@ -228,16 +238,22 @@
           <h1>Technical Infomation</h1>
           <p>Access the latest technical information in your discipline.</p>
         </header>
-        <ul>{{ data.tech_info_links.map((item) =>
-          '<li><a href="'+ item.url +'">'+ item.text +'</a></li>').join('') }}</ul>
+        <ul data-each="tech_info_links">
+          <template>
+            <li><a href="{{ url }}">{{ text }}</a></li>
+          </template>
+        </ul>
       </section>
       <section id="get-involved">
         <header>
           <h1>Get Involved</h1>
           <p>Dedicate your time and expertise to a cause that is important to you.</p>
         </header>
-        <ul>{{ data.get_involved_links.map((item) =>
-          '<li><a href="'+ item.url +'">'+ item.text +'</a></li>').join('') }}</ul>
+        <ul data-each="get_involved_links">
+          <template>
+            <li><a href="{{ url }}">{{ text }}</a></li>
+          </template>
+        </ul>
       </section>
     </section>
     <section id="whats-happening">
@@ -320,6 +336,16 @@
     })
     populateNamedElementWithData('cemag_body', function (frag, datum) {
       frag.querySelector('div').innerHTML = ((typeof datum === 'string') ? datum : datum.join(''))
+      return frag
+    })
+    populateNamedListWithData('tech_info_links', function (frag, datum) {
+      frag.querySelector('a').setAttribute('href', datum.url)
+      frag.querySelector('a').textContent = datum.text
+      return frag
+    })
+    populateNamedListWithData('get_involved_links', function (frag, datum) {
+      frag.querySelector('a').setAttribute('href', datum.url)
+      frag.querySelector('a').textContent = datum.text
       return frag
     })
 
