@@ -32,31 +32,6 @@ function compile(template) {
     //  */
     // data.foundation_blurb = `` // NOTE may need this later
     /**
-     * ASCE7 section content.
-     * @type {string}
-     */
-    data.asce7_body = `
-      <h2>ASCE 7 Online</h2>
-      <p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>
-      <a clas="c-Button" href="#0">Learn More</a>
-      <h2>ASCE 7 Hazard Tool</h2>
-      <p>Look up key design parameters as specified by ASCE 7.</p>
-      <a clas="c-Button" href="#0">Learn More</a>
-    `
-    /**
-     * Civil Engineering Magazine section content.
-     * @type {string}
-     */
-    data.cemag_body = `
-      <h2>Featured this Month</h2>
-      <article>
-        <h3>Topographic Transformation</h3>
-        <p><time datetime="2017-06">June 2017</time></p>
-        <p>The formerly flat Governors Island, in New York City harbor, is home to...</p>
-        <p><a>Read more</a></p>
-      </article>
-    `
-    /**
      * Links for Technical Information section.
      * This array should have no more than 4 items.
      * Each object in the array should have a text (string) and a url (string).

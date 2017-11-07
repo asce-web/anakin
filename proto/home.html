@@ -101,8 +101,23 @@
       ]
     }
   ],
-  "asce7_body": "",
-  "cemag_body": "",
+  "asce7_body": [
+      "<h2>ASCE 7 Online</h2>",
+      "<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>",
+      "<a clas=\"c-Button\" href=\"#0\">Learn More</a>",
+      "<h2>ASCE 7 Hazard Tool</h2>",
+      "<p>Look up key design parameters as specified by ASCE 7.</p>",
+      "<a clas=\"c-Button\" href=\"#0\">Learn More</a>"
+  ],
+  "cemag_body": [
+    "<h2>Featured this Month</h2>",
+    "<article>",
+      "<h3>Topographic Transformation</h3>",
+      "<p><time datetime=\"2017-06\">June 2017</time></p>",
+      "<p>The formerly flat Governors Island, in New York City harbor, is home to...</p>",
+      "<p><a>Read more</a></p>",
+    "</article>"
+  ],
   "tech_info_links": [],
   "get_involved_links": [],
   "news": [],
@@ -175,35 +190,35 @@
     <aside>ADVERTISEMENT</aside>
     <section>
       <h1>ASCE Foundation</h1>
+      <!-- QUESTION: are this graf and stat hard-coded? -->
       <p>Making a positive change in our communities is possible… but only if we
         start now, set our sights high, and work together.</p>
-      {{
-        new data.Stat({
-          icon  : 'donate',
-          number: 25,
-          text  : 'Programs Supported',
-          cta   : { text: 'Give a Gift' , url: '#0' },
-        })
-      }}
+      <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0"></x-stat>
     </section>
     <section id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
       <section>
+        <!-- QUESTION: which parts of this are hard-coded? -->
         <h1>ASCE 7</h1>
         <p><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16</p>
         <ul>
           <li><a href="#0">Provisions &amp; Commentary</a></li>
           <li><a href="#0">Guides &amp; more</a></li>
         </ul>
-        <article>{{ data.asce7_body }}</article>
+        <article data-if="asce7_body">
+          <template><div></div></template>
+        </article>
       </section>
       <section>
+        <!-- QUESTION: which parts of this are hard-coded? -->
         <h1>Civil Engineering Magazine</h1>
         <p>The Official magazine of the American Society of Civil Engineers.</p>
         <ul>
           <li><a href="#0">Learn More</a></li>
         </ul>
-        <article>{{ data.cemag_body }}</article>
+        <article data-if="cemag_body">
+          <template><div></div></template>
+        </article>
       </section>
     </section>
     <section id="learn-contribute">
@@ -259,23 +274,37 @@
       data: JSON.parse(document.querySelector('script#data').textContent),
     }
 
+    function populateElementWithData(element, data, generator) {
+      if (generator) {
+        element.appendChild(generator.call(null, element.querySelector('template').content.cloneNode(true), data))
+      } else {
+        element.innerHTML += data.toString()
+      }
+    }
     function populateListWithData(list, data, generator) {
       data.forEach(function (d) {
-        list.appendChild(generator.call(null, list.querySelector('template').content.cloneNode(true), d))
+        if (generator) {
+          list.appendChild(generator.call(null, list.querySelector('template').content.cloneNode(true), d))
+        } else {
+          list.innerHTML += d.toString()
+        }
       })
     }
-    function populateNamedListWithData(name, generator) {
-      populateListWithData(document.querySelector(`[data-each="${name}"]`), global.data[name], generator)
+    function populateNamedElementWithData(name, generator) {
+      populateElementWithData(document.querySelector(`[data-if="${name}"]`), global.data[name] || '', generator)
     }
-    populateNamedListWithData('promotions', function generatePromotion(frag, datum) {
+    function populateNamedListWithData(name, generator) {
+      populateListWithData(document.querySelector(`[data-each="${name}"]`), global.data[name] || [], generator)
+    }
+    populateNamedListWithData('promotions', function (frag, datum) {
       frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${datum.image}')`)
       frag.querySelector('.c-Promotion__Hn'  ).innerHTML = datum.title
       frag.querySelector('.c-Promotion__Cta' ).setAttribute('href', datum.cta.url)
       frag.querySelector('.c-Promotion__Cta' ).textContent = datum.cta.text
-      frag.querySelector('.c-Promotion__Text').innerHTML = ((Array.isArray(datum.text)) ? datum.text.join('') : datum.text)
+      frag.querySelector('.c-Promotion__Text').innerHTML = ((typeof datum.text === 'string') ? datum.text : datum.text.join(''))
       return frag
     })
-    populateNamedListWithData('portals', function generatePortal(frag, datum) {
+    populateNamedListWithData('portals', function (frag, datum) {
       frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', datum.icon)
       frag.querySelector('.c-Portal__Hn'  ).innerHTML = datum.title
       populateListWithData(frag.querySelector('.c-Portal__List'), datum.links, function (innerfrag, link) {
@@ -283,6 +312,14 @@
         innerfrag.querySelector('.c-Portal__List__Item > a').textContent = link.text
         return innerfrag
       })
+      return frag
+    })
+    populateNamedElementWithData('asce7_body', function (frag, datum) {
+      frag.querySelector('div').innerHTML = ((typeof datum === 'string') ? datum : datum.join(''))
+      return frag
+    })
+    populateNamedElementWithData('cemag_body', function (frag, datum) {
+      frag.querySelector('div').innerHTML = ((typeof datum === 'string') ? datum : datum.join(''))
       return frag
     })
 
