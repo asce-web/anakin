@@ -26,20 +26,6 @@ function compile(template) {
      * @type {object}
      */
     let data = {}
-    /**
-     * Object containing links for each portal.
-     * Each array should have no more than 4 items.
-     * Each object in the array should have a text (string) and a url (string).
-     * @type {Object<Array<{text:string, url:string>>}}
-     */
-    data.portal_links = {
-      membership  : [{text:'Manage My Membership', url:'#0'}, {text:'Join ASCE', url:'#0'}, {text:'', url:''}, {text:'', url:''}],
-      cont_ed     : [{text:'', url:''}, {text:'', url:''}, {text:'', url:''}, {text:'', url:''}],
-      pubs        : [{text:'', url:''}, {text:'', url:''}, {text:'', url:''}, {text:'', url:''}],
-      confs_events: [{text:'', url:''}, {text:'', url:''}, {text:'', url:''}, {text:'', url:''}],
-      professional: [{text:'', url:''}, {text:'', url:''}, {text:'', url:''}, {text:'', url:''}],
-      careers     : [{text:'', url:''}, {text:'', url:''}, {text:'', url:''}, {text:'', url:''}],
-    }
     // /**
     //  * Blurb used for ASCE Foundation section.
     //  * @type {string}

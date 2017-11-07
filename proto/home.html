@@ -18,7 +18,6 @@
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
 
   <link rel="import" href="./template/x-stat.tpl.html"/>
-  <link rel="import" href="./template/x-portal.tpl.html"/>
   <link rel="import" href="./template/x-articleteaser.tpl.html"/>
   <link rel="import" href="./template/x-memberstory.tpl.html"/>
   <script id="data" type="application/json">
@@ -40,7 +39,68 @@
       "text" : "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers."
     }
   ],
-  "portal_links": {},
+  "portals": [
+    {
+      "title": "Membership",
+      "icon" : "nameplate",
+      "links": [
+        { "text": "Manage My Membership", "url": "#0" },
+        { "text": "Join ASCE", "url": "#0" },
+        { "text": "a", "url": "#0" },
+        { "text": "b", "url": "#0" }
+      ]
+    },
+    {
+      "title": "Continuing Education",
+      "icon" : "education",
+      "links": [
+        { "text": "abcdec", "url": "#0" },
+        { "text": "abcded", "url": "#0" },
+        { "text": "abcdee", "url": "#0" },
+        { "text": "abcdef", "url": "#0" }
+      ]
+    },
+    {
+      "title": "Publications",
+      "icon" : "book-open",
+      "links": [
+        { "text": "abcdeg", "url": "#0" },
+        { "text": "abcdeh", "url": "#0" },
+        { "text": "abcdei", "url": "#0" },
+        { "text": "abcdej", "url": "#0" }
+      ]
+    },
+    {
+      "title": "Conferences &amp; Events",
+      "icon" : "calendar",
+      "links": [
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" }
+      ]
+    },
+    {
+      "title": "Professional",
+      "icon" : "address-book",
+      "links": [
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" }
+      ]
+    },
+    {
+      "title": "Careers",
+      "icon" : "briefcase",
+      "links": [
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" }
+      ]
+    }
+  ],
   "asce7_body": "",
   "cemag_body": "",
   "tech_info_links": [],
@@ -92,18 +152,24 @@
     </section>
     <section id="portals">
       <h1 class="h-Hidden">Portals</h1>
-      <ol class="o-List o-Grid" style="--cols: 3;">
-        <li class="o-List__Item o-Grid__Item">
-          <x-portal title="Membership" icon="nameplate">
-            <item text="Manage My Membership" url="#0"></item>
-            <item text="Join ASCE" url="#1"></item>
-          </x-portal>
-        </li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Continuing Education"      icon="education"   ></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Publications"              icon="book-open"   ></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Conferences &amp; Events"  icon="calendar"    ></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Professional"              icon="address-book"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Careers"                   icon="briefcase"   ></x-portal></li>
+      <ol class="o-List o-Grid" style="--cols: 3;" data-each="portals">
+        <template>
+          <li class="o-List__Item o-Grid__Item">
+            <section class="c-Portal">
+              <h1>
+                <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
+                <span class="c-Portal__Hn h-Block">{{ title }}</span>
+              </h1>
+              <ul class="o-List c-Portal__List">
+                <template>
+                  <li class="o-List__Item c-Portal__List__Item">
+                    <a href="{{ url }}">{{ text }}</a>
+                  </li>
+                </template>
+              </ul>
+            </section>
+          </li>
+        </template>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -187,7 +253,6 @@
       /** set to false to disable experimental web components features*/ ENABLE_WEB_COMPONENTS: true,
       template: {
         x_stat         : document.querySelector('link[href*="x-stat"]'         ).import.querySelector('template#x-stat'         ),
-        x_portal       : document.querySelector('link[href*="x-portal"]'       ).import.querySelector('template#x-portal'       ),
         x_articleteaser: document.querySelector('link[href*="x-articleteaser"]').import.querySelector('template#x-articleteaser'),
         x_memberstory  : document.querySelector('link[href*="x-memberstory"]'  ).import.querySelector('template#x-memberstory'  ),
       },
@@ -210,15 +275,24 @@
       frag.querySelector('.c-Promotion__Text').innerHTML = ((Array.isArray(datum.text)) ? datum.text.join('') : datum.text)
       return frag
     })
+    populateNamedListWithData('portals', function generatePortal(frag, datum) {
+      frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', datum.icon)
+      frag.querySelector('.c-Portal__Hn'  ).innerHTML = datum.title
+      populateListWithData(frag.querySelector('.c-Portal__List'), datum.links, function (innerfrag, link) {
+        innerfrag.querySelector('.c-Portal__List__Item > a').setAttribute('href', link.url)
+        innerfrag.querySelector('.c-Portal__List__Item > a').textContent = link.text
+        return innerfrag
+      })
+      return frag
+    })
+
 
   </script>
   <script type="module">
     import { XStat          } from './class/XStat.class.js'
-    import { XPortal        } from './class/XPortal.class.js'
     import { XArticleTeaser } from './class/XArticleTeaser.class.js'
     import { XMemberStory   } from './class/XMemberStory.class.js'
     window.customElements.define('x-stat', XStat)
-    window.customElements.define('x-portal', XPortal)
     window.customElements.define('x-articleteaser', XArticleTeaser)
     window.customElements.define('x-memberstory', XMemberStory)
   </script>
