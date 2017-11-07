@@ -194,22 +194,22 @@
       data: JSON.parse(document.querySelector('script#data').textContent),
     }
 
-    function populateListWithData(dataname, generator) {
-      let list = document.querySelector(`[data-each="${dataname}"]`)
-      global.data[dataname].forEach(function (d) {
-        list.appendChild(generator.call(null, list.querySelector('template').content, d))
+    function populateListWithData(list, data, generator) {
+      data.forEach(function (d) {
+        list.appendChild(generator.call(null, list.querySelector('template').content.cloneNode(true), d))
       })
     }
-    function generatePromotion(frag, data) {
-      let returned = frag.cloneNode(true)
-      returned.querySelector('.c-Promotion').style.setProperty('background-image', `url('${data.image}')`)
-      returned.querySelector('.c-Promotion__Hn'  ).innerHTML = data.title
-      returned.querySelector('.c-Promotion__Cta' ).setAttribute('href', data.cta.url)
-      returned.querySelector('.c-Promotion__Cta' ).textContent = data.cta.text
-      returned.querySelector('.c-Promotion__Text').innerHTML = (Array.isArray(data.text)) ? data.text.join('') : data.text
-      return returned
+    function populateNamedListWithData(name, generator) {
+      populateListWithData(document.querySelector(`[data-each="${name}"]`), global.data[name], generator)
     }
-    populateListWithData('promotions', generatePromotion)
+    populateNamedListWithData('promotions', function generatePromotion(frag, datum) {
+      frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${datum.image}')`)
+      frag.querySelector('.c-Promotion__Hn'  ).innerHTML = datum.title
+      frag.querySelector('.c-Promotion__Cta' ).setAttribute('href', datum.cta.url)
+      frag.querySelector('.c-Promotion__Cta' ).textContent = datum.cta.text
+      frag.querySelector('.c-Promotion__Text').innerHTML = ((Array.isArray(datum.text)) ? datum.text.join('') : datum.text)
+      return frag
+    })
 
   </script>
   <script type="module">
