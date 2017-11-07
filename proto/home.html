@@ -29,6 +29,22 @@
     <a class="c-Stat__Cta c-Button" href="{{ cta.url }}">{{ cta.text }}</a>
   </p>
 </template>
+  <!-- REVIEW INDENTATION -->
+        <template id="x-portal">
+            <section class="c-Portal">
+              <h1>
+                <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
+                <span class="c-Portal__Hn h-Block">{{ title }}</span>
+              </h1>
+              <ul class="o-List c-Portal__List">
+                <template>
+                  <li class="o-List__Item c-Portal__List__Item">
+                    <a href="{{ url }}">{{ text }}</a>
+                  </li>
+                </template>
+              </ul>
+            </section>
+        </template>
     <!-- REVIEW INDENTATION -->
   <script id="data" type="application/json">
 {
@@ -75,68 +91,44 @@
       "text" : "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers."
     }
   ],
-  "portals": [
-    {
-      "title": "Membership",
-      "icon" : "nameplate",
-      "links": [
+  "portal": {
+    "membership": [
         { "text": "Manage My Membership", "url": "#0" },
         { "text": "Join ASCE", "url": "#0" },
         { "text": "a", "url": "#0" },
         { "text": "b", "url": "#0" }
-      ]
-    },
-    {
-      "title": "Continuing Education",
-      "icon" : "education",
-      "links": [
+    ],
+    "cont_ed": [
         { "text": "abcdec", "url": "#0" },
         { "text": "abcded", "url": "#0" },
         { "text": "abcdee", "url": "#0" },
         { "text": "abcdef", "url": "#0" }
-      ]
-    },
-    {
-      "title": "Publications",
-      "icon" : "book-open",
-      "links": [
+    ],
+    "pubs": [
         { "text": "abcdeg", "url": "#0" },
         { "text": "abcdeh", "url": "#0" },
         { "text": "abcdei", "url": "#0" },
         { "text": "abcdej", "url": "#0" }
-      ]
-    },
-    {
-      "title": "Conferences &amp; Events",
-      "icon" : "calendar",
-      "links": [
+    ],
+    "conf_events": [
         { "text": "abcde", "url": "#0" },
         { "text": "abcde", "url": "#0" },
         { "text": "abcde", "url": "#0" },
         { "text": "abcde", "url": "#0" }
-      ]
-    },
-    {
-      "title": "Professional",
-      "icon" : "address-book",
-      "links": [
+    ],
+    "professional": [
         { "text": "abcde", "url": "#0" },
         { "text": "abcde", "url": "#0" },
         { "text": "abcde", "url": "#0" },
         { "text": "abcde", "url": "#0" }
-      ]
-    },
-    {
-      "title": "Careers",
-      "icon" : "briefcase",
-      "links": [
+    ],
+    "careers": [
         { "text": "abcde", "url": "#0" },
         { "text": "abcde", "url": "#0" },
         { "text": "abcde", "url": "#0" },
         { "text": "abcde", "url": "#0" }
-      ]
-    }
-  ],
+    ]
+  },
   "asce7_body": [
       "<h2>ASCE 7 Online</h2>",
       "<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>",
@@ -247,23 +239,12 @@
     <section id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals" data-each="portals">
-        <template>
-          <li class="o-List__Item o-Grid__Item">
-            <section class="c-Portal">
-              <h1>
-                <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
-                <span class="c-Portal__Hn h-Block">{{ title }}</span>
-              </h1>
-              <ul class="o-List c-Portal__List">
-                <template>
-                  <li class="o-List__Item c-Portal__List__Item">
-                    <a href="{{ url }}">{{ text }}</a>
-                  </li>
-                </template>
-              </ul>
-            </section>
-          </li>
-        </template>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Membership"               icon="nameplate"    list="membership"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Continuing Education"     icon="education"    list="cont_ed"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Publications"             icon="book-open"    list="pubs"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Conferences &amp; Events" icon="calendar"     list="conf_events"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Professional"             icon="address-book" list="professional"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Careers"                  icon="briefcase"    list="careers"></x-portal></li>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -410,6 +391,17 @@
     function populateNamedListWithData(name, generator) {
       populateListWithData(document.querySelector(`[data-each="${name}"]`), global.data[name] || [], generator)
     }
+
+    window.customElements.define('x-portal', class XPortal extends HTMLElement {
+      constructor () {
+        super()
+        let returned = document.querySelector('template#x-portal').content.cloneNode(true)
+        returned.querySelector('.c-Portal__Icon').className = returned.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
+        returned.querySelector('.c-Portal__Hn'  ).innerHTML = this.getAttribute('title')
+        this.appendChild(returned)
+      }
+    })
+
     populateNamedListWithData('jobs', function (frag, datum) {
       frag.querySelector('.c-JobListing__Link').setAttribute('href', datum.url)
       frag.querySelector('.c-JobListing__Link').textContent = datum.title
@@ -425,15 +417,13 @@
       frag.querySelector('.c-Promotion__Text').innerHTML = ((typeof datum.text === 'string') ? datum.text : datum.text.join(''))
       return frag
     })
-    populateNamedListWithData('portals', function (frag, datum) {
-      frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', datum.icon)
-      frag.querySelector('.c-Portal__Hn'  ).innerHTML = datum.title
-      populateListWithData(frag.querySelector('.c-Portal__List'), datum.links, function (innerfrag, link) {
+    document.querySelectorAll('.c-Portal__List').forEach(function(list) {
+      let portalname = list.parentElement.parentElement.getAttribute('list')
+      populateListWithData(list, global.data.portal[portalname], function (innerfrag, link) {
         innerfrag.querySelector('.c-Portal__List__Item > a').setAttribute('href', link.url)
         innerfrag.querySelector('.c-Portal__List__Item > a').textContent = link.text
         return innerfrag
       })
-      return frag
     })
     populateNamedElementWithData('asce7_body', function (frag, datum) {
       frag.querySelector('div').innerHTML = ((typeof datum === 'string') ? datum : datum.join(''))
