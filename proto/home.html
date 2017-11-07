@@ -18,7 +18,6 @@
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
 
   <link rel="import" href="./template/x-stat.tpl.html"/>
-  <link rel="import" href="./template/x-articleteaser.tpl.html"/>
   <link rel="import" href="./template/x-memberstory.tpl.html"/>
   <script id="data" type="application/json">
 {
@@ -130,7 +129,11 @@
     { "text": "Visit ASCE Collaborate"      , "url": "#0" },
     { "text": "Find a committee"            , "url": "#0" }
   ],
-  "news": [],
+  "whats_happening": [
+    { "title": "ASCE’s New Infrastructure Report Card: Another D+, But Solutions Available", "url": "#0", "image": "reportcard.png", "datetime": "2017-03-09" },
+    { "title": "Emergency and Carryover Storage Project Earns OCEA"                        , "url": "#0", "image": "OCEA.png"      , "datetime": "2017-03-16" },
+    { "title": "Former Corps Chief Bostick Honored with OPAL Award"                        , "url": "#0", "image": "OPAL.png"      , "datetime": "2017-03-16" }
+  ],
   "member_stories": []
 }
   </script>
@@ -258,9 +261,18 @@
     </section>
     <section id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
-      <ul>
-        <li><x-articleteaser title="Emergency and Carryover Storage Project Earns OCEA" image="emergency.png" url="#0" datetime="2017-03-16"></x-articleteaser></li>
-        <li><x-articleteaser title="Former Corps Chief Bostick Honored with OPAL Award" image="opal.png" url="#0" datetime="2017-03-09"></x-articleteaser></li>
+      <ul class="o-List" data-each="whats_happening">
+        <template>
+          <li class="o-List__Item">
+            <article class="c-ArticleTeaser">
+              <img class="c-ArticleTeaser__Img" src="{{ image }}"/>
+              <h1 class="c-ArticleTeaser__Hn">
+                <a class="c-ArticleTeaser__Link" href="{{ url }}">{{ title }}</a>
+              </h1>
+              <p class="c-ArticleTeaser__Date">{{ datetime }}</p>
+            </article>
+          </li>
+        </template>
       </ul>
       <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
     </section>
@@ -284,7 +296,6 @@
       /** set to false to disable experimental web components features*/ ENABLE_WEB_COMPONENTS: true,
       template: {
         x_stat         : document.querySelector('link[href*="x-stat"]'         ).import.querySelector('template#x-stat'         ),
-        x_articleteaser: document.querySelector('link[href*="x-articleteaser"]').import.querySelector('template#x-articleteaser'),
         x_memberstory  : document.querySelector('link[href*="x-memberstory"]'  ).import.querySelector('template#x-memberstory'  ),
       },
       data: JSON.parse(document.querySelector('script#data').textContent),
@@ -348,15 +359,35 @@
       frag.querySelector('a').textContent = datum.text
       return frag
     })
+    populateNamedListWithData('whats_happening', function (frag, datum) {
+  const MONTHS = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+  function formatDate(date) { return `${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}` }
+      frag.querySelector('.c-ArticleTeaser__Img').setAttribute('src', datum.image)
+      frag.querySelector('.c-ArticleTeaser__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-ArticleTeaser__Link').textContent = datum.title
+      frag.querySelector('.c-ArticleTeaser__Date').innerHTML = formatDate(new Date(datum.datetime))
+      return frag
+    })
 
 
   </script>
   <script type="module">
     import { XStat          } from './class/XStat.class.js'
-    import { XArticleTeaser } from './class/XArticleTeaser.class.js'
     import { XMemberStory   } from './class/XMemberStory.class.js'
     window.customElements.define('x-stat', XStat)
-    window.customElements.define('x-articleteaser', XArticleTeaser)
     window.customElements.define('x-memberstory', XMemberStory)
   </script>
 </body>
