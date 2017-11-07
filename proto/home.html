@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>American Society of Civil Engineers</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/futura.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons/web/html_css/css/glyphicons.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-filetypes/web/html_css/css/glyphicons-filetypes.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-halflings/web/html_css/css/glyphicons-halflings.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
+
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.1.1/xmeter.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"/> -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700"/> -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
+
+  <!-- REVIEW INDENTATION -->
+<template id="x-stat">
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons/web/html_css/css/glyphicons.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-filetypes/web/html_css/css/glyphicons-filetypes.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-halflings/web/html_css/css/glyphicons-halflings.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.1.1/xmeter.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
+  <p class="c-Stat">
+    <i class="c-Stat__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
+    <span class="c-Stat__Num h-Block">{{ number }}</span>
+    <span class="c-Stat__Text h-Block">{{ text }}</span>
+    <br/>
+    <a class="c-Stat__Cta c-Button" href="{{ cta.url }}">{{ cta.text }}</a>
+  </p>
+</template>
+    <!-- REVIEW INDENTATION -->
+  <script id="data" type="application/json">
+{
+  "jobs": [
+    {
+      "title"       : "Geotechnical Engineer",
+      "organization": "SME",
+      "location"    : "Helix Water District",
+      "url"         : "#0"
+    },
+    {
+      "title"       : "Oregon DOT Intelligent Transportation/Traffic Engineer",
+      "organization": "Oregon Department of Transportation",
+      "location"    : "Portland, OR",
+      "url"         : "#0"
+    },
+    {
+      "title"       : "NRC Research Associateship Program",
+      "organization": "The National Academies of Science, Engineering, and Medicine",
+      "location"    : "Washington, DC",
+      "url"         : "#0"
+    },
+    {
+      "title"       : "Full Professor Faculty Position in Structural Engineering for Extreme Events",
+      "organization": "University of Nevada, Reno",
+      "location"    : "Reno, NV",
+      "url"         : "#0"
+    }
+  ],
+  "promotions": [
+    {
+      "title": "Dream Big: Engineering Our World",
+      "image": "dream-big.png",
+      "cta"  : { "text": "Find a screen", "url": "#0" },
+      "text" : [
+        "A giant-screen film about engineering will take viewers on a journey",
+        "of discovery from the world’s tallest building to a bridge higher than the clouds."
+      ]
+    },
+    {
+      "title": "Save America’s Infrastructure",
+      "image": "infrastructure.png",
+      "cta"  : { "text": "Read more", "url": "#0" },
+      "text" : "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers."
+    }
+  ],
+  "portals": [
+    {
+      "title": "Membership",
+      "icon" : "nameplate",
+      "links": [
+        { "text": "Manage My Membership", "url": "#0" },
+        { "text": "Join ASCE", "url": "#0" },
+        { "text": "a", "url": "#0" },
+        { "text": "b", "url": "#0" }
+      ]
+    },
+    {
+      "title": "Continuing Education",
+      "icon" : "education",
+      "links": [
+        { "text": "abcdec", "url": "#0" },
+        { "text": "abcded", "url": "#0" },
+        { "text": "abcdee", "url": "#0" },
+        { "text": "abcdef", "url": "#0" }
+      ]
+    },
+    {
+      "title": "Publications",
+      "icon" : "book-open",
+      "links": [
+        { "text": "abcdeg", "url": "#0" },
+        { "text": "abcdeh", "url": "#0" },
+        { "text": "abcdei", "url": "#0" },
+        { "text": "abcdej", "url": "#0" }
+      ]
+    },
+    {
+      "title": "Conferences &amp; Events",
+      "icon" : "calendar",
+      "links": [
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" }
+      ]
+    },
+    {
+      "title": "Professional",
+      "icon" : "address-book",
+      "links": [
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" }
+      ]
+    },
+    {
+      "title": "Careers",
+      "icon" : "briefcase",
+      "links": [
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" },
+        { "text": "abcde", "url": "#0" }
+      ]
+    }
+  ],
+  "asce7_body": [
+      "<h2>ASCE 7 Online</h2>",
+      "<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>",
+      "<a clas=\"c-Button\" href=\"#0\">Learn More</a>",
+      "<h2>ASCE 7 Hazard Tool</h2>",
+      "<p>Look up key design parameters as specified by ASCE 7.</p>",
+      "<a clas=\"c-Button\" href=\"#0\">Learn More</a>"
+  ],
+  "cemag_body": [
+    "<h2>Featured this Month</h2>",
+    "<article>",
+      "<h3>Topographic Transformation</h3>",
+      "<p><time datetime=\"2017-06\">June 2017</time></p>",
+      "<p>The formerly flat Governors Island, in New York City harbor, is home to...</p>",
+      "<p><a>Read more</a></p>",
+    "</article>"
+  ],
+  "tech_info_links": [
+    { "text": "Find a local group"   , "url": "#0" },
+    { "text": "Browse publications"  , "url": "#0" },
+    { "text": "Register for a course", "url": "#0" },
+    { "text": "Find a conference"    , "url": "#0" }
+  ],
+  "get_involved_links": [
+    { "text": "View volunteer opportunities", "url": "#0" },
+    { "text": "Find a Section or Branch"    , "url": "#0" },
+    { "text": "Visit ASCE Collaborate"      , "url": "#0" },
+    { "text": "Find a committee"            , "url": "#0" }
+  ],
+  "whats_happening": [
+    { "title": "ASCE’s New Infrastructure Report Card: Another D+, But Solutions Available", "url": "#0", "image": "reportcard.png", "datetime": "2017-03-09" },
+    { "title": "Emergency and Carryover Storage Project Earns OCEA"                        , "url": "#0", "image": "OCEA.png"      , "datetime": "2017-03-16" },
+    { "title": "Former Corps Chief Bostick Honored with OPAL Award"                        , "url": "#0", "image": "OPAL.png"      , "datetime": "2017-03-16" }
+  ],
+  "member_stories": [
+    { "name": "Katie Haslett"  , "title": "Student Member"                     , "image": "Haslett.png" , "quote": ["The impact of seeing successful..."] },
+    { "name": "Nakeia Jackson" , "title": "2017 New Faces of Civil Engineering", "image": "Jackson.png" , "quote": ["When you become an engineer..."] },
+    { "name": "Damani Nkeiruka", "title": "Distinguished Member"               , "image": "Nkeiruka.png", "quote": ["There are so many infrastructure and..."] }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="h-Hidden" href="#main">skip to main content</a>
+  <header>
+    <h1>American Society of Civil Engineers</h1>
+    <p>Header and Megamenu</p>
+  </header>
+  <main id="main">
+    <div id="hero">
+      <!-- QUESTION: is the background-image hard-coded? -->
+      <p>
+        <span>The 2017 Report Card for America’s Infrastructure is available now.</span>
+        <a href="#0">View the Report Card</a>
+      </p>
+    </div>
+    <section id="we-represent">
+      <blockquote>Civil Engineers are global leaders building a better quality of life.</blockquote>
+      <h1>We Represent:</h1>
+      <ul class="o-List o-Flex">
+        <li class="o-List__Item o-Flex__Item"><x-stat icon="group"  number="150000" text="Members"    ctatext="Join ASCE"         ctaurl="#0"></x-stat></li>
+        <li class="o-List__Item o-Flex__Item"><x-stat icon="map"    number="177"    text="Countries"  ctatext="Find a Chapter"    ctaurl="#0"></x-stat></li>
+        <li class="o-List__Item o-Flex__Item"><x-stat icon="shield" number="9"      text="Institutes" ctatext="Join an Institute" ctaurl="#0"></x-stat></li>
+      </ul>
+    </section>
+    <aside>ADVERTISEMENT</aside>
+    <section id="jobs">
+      <h1>Jobs</h1>
+      <!-- QUESTION: review the outline of this section -->
+      <section id="featured-jobs">
+        <h1>Featured Jobs</h1>
+        <ul class="o-List o-Grid" data-each="jobs" style="--cols: 2;">
+          <template>
+            <li class="o-List__Item o-Grid__Item">
+              <div class="c-JobListing">
+                <p class="c-JobListing__Hn"><a class="c-JobListing__Link" href="{{ url }}">{{ title }}</a></p>
+                <p class="c-JobListing__Org">{{ organization }}</p>
+                <p>
+                  <i class="c-JobListing__Icon glyphicons glyphicons-map-marker" role="none" aria-hidden="true"></i>
+                  <span class="c-JobListing__Loc">{{ location }}</span>
+                </p>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </section>
+      <section id="career-connections">
+        <h1>Career Connections</h1>
+        <!-- QUESTION: is everything in this section hard-coded? -->
+        <p><a href="#0">Visit ASCE Career Connections</a> for additional career resources.</p>
+        <p><a class="c-Button" href="#0">Find a job</a></p>
+      </section>
+    </section>
+    <section id="promotions">
+      <h1 class="h-Hidden">Promotions</h1>
+      <ul class="o-List" data-each="promotions">
+        <template>
+          <li class="o-List__Item">
+            <section class="c-Promotion" style="background-image: url('{{ image }}');">
+              <h1 class="c-Promotion__Hn">{{ title }}</h1>
+              <p class="c-Promotion__Text">{{ text }}</p>
+              <p><a class="c-Promotion__Cta c-Button" href="{{ cta.url }}">{{ cta.text }}</a></p>
+            </section>
+          </li>
+        </template>
+      </ul>
+    </section>
+    <section id="portals">
+      <h1 class="h-Hidden">Portals</h1>
+      <ol class="o-List o-Grid" style="--cols: 3;" data-each="portals">
+        <template>
+          <li class="o-List__Item o-Grid__Item">
+            <section class="c-Portal">
+              <h1>
+                <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
+                <span class="c-Portal__Hn h-Block">{{ title }}</span>
+              </h1>
+              <ul class="o-List c-Portal__List">
+                <template>
+                  <li class="o-List__Item c-Portal__List__Item">
+                    <a href="{{ url }}">{{ text }}</a>
+                  </li>
+                </template>
+              </ul>
+            </section>
+          </li>
+        </template>
+      </ol>
+    </section>
+    <aside>ADVERTISEMENT</aside>
+    <section id="asce-foundation">
+      <h1>ASCE Foundation</h1>
+      <!-- QUESTION: are this graf and stat hard-coded? -->
+      <p>Making a positive change in our communities is possible… but only if we
+        start now, set our sights high, and work together.</p>
+      <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0"></x-stat>
+    </section>
+    <section id="publication-highlights">
+      <h1 class="h-Hidden">Publication Highlights</h1>
+      <section id="asce7">
+        <!-- QUESTION: which parts of this are hard-coded? -->
+        <h1>ASCE 7</h1>
+        <p><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16</p>
+        <ul>
+          <li><a href="#0">Provisions &amp; Commentary</a></li>
+          <li><a href="#0">Guides &amp; more</a></li>
+        </ul>
+        <article data-if="asce7_body">
+          <template><div></div></template>
+        </article>
+      </section>
+      <section id="civil-engineering-magazine">
+        <!-- QUESTION: which parts of this are hard-coded? -->
+        <h1>Civil Engineering Magazine</h1>
+        <p>The Official magazine of the American Society of Civil Engineers.</p>
+        <ul>
+          <li><a href="#0">Learn More</a></li>
+        </ul>
+        <article data-if="cemag_body">
+          <template><div></div></template>
+        </article>
+      </section>
+    </section>
+    <section id="learn-contribute">
+      <h1 class="h-Hidden">Learn &amp; Contribute</h1>
+      <section id="technical-information">
+        <header>
+          <h1>Technical Infomation</h1>
+          <p>Access the latest technical information in your discipline.</p>
+        </header>
+        <ul data-each="tech_info_links">
+          <template>
+            <li><a href="{{ url }}">{{ text }}</a></li>
+          </template>
+        </ul>
+      </section>
+      <section id="get-involved">
+        <header>
+          <h1>Get Involved</h1>
+          <p>Dedicate your time and expertise to a cause that is important to you.</p>
+        </header>
+        <ul data-each="get_involved_links">
+          <template>
+            <li><a href="{{ url }}">{{ text }}</a></li>
+          </template>
+        </ul>
+      </section>
+    </section>
+    <section id="whats-happening">
+      <h1>What’s Happening at ASCE</h1>
+      <ul class="o-List" data-each="whats_happening">
+        <template>
+          <li class="o-List__Item">
+            <article class="c-ArticleTeaser">
+              <img class="c-ArticleTeaser__Img" src="{{ image }}"/>
+              <h1 class="c-ArticleTeaser__Hn">
+                <a class="c-ArticleTeaser__Link" href="{{ url }}">{{ title }}</a>
+              </h1>
+              <p class="c-ArticleTeaser__Date">{{ datetime }}</p>
+            </article>
+          </li>
+        </template>
+      </ul>
+      <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
+    </section>
+    <section id="member-stories">
+      <h1>ASCE Member Stories</h1>
+      <ul class="o-List" data-each="member_stories">
+        <template>
+          <li class="o-List__Item">
+            <article class="c-MemberStory">
+              <img class="c-MemberStory__Img" src="{{ image }}"/>
+              <h1 class="c-MemberStory__Hn">{{ name }}</h1>
+              <p class="c-MemberStory__SubHn">{{ title }}</p>
+              <blockquote class="c-MemberStory__Quote">{{ quote }}</blockquote>
+            </article>
+          </li>
+        </template>
+      </ul>
+    </section>
+    <p><a href="#0">Join ASCE</a></p>
+  </main>
+  <footer>
+    <p>ASCE Footer</p>
+  </footer>
+  <a class="h-Hidden" href="#top">jump to top</a>
+  <!-- <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script> -->
+  <script>
+    let global = {
+      formatDate(date) {
+        const MONTHS = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ]
+        return `${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}`
+      },
+      /** set to false to disable experimental web components features*/ ENABLE_WEB_COMPONENTS: true,
+      data: JSON.parse(document.querySelector('script#data').textContent),
+    }
+
+    function populateElementWithData(element, data, generator) {
+      if (generator) {
+        element.appendChild(generator.call(null, element.querySelector('template').content.cloneNode(true), data))
+      } else {
+        element.innerHTML += data.toString()
+      }
+    }
+    function populateListWithData(list, data, generator) {
+      data.forEach(function (d) {
+        if (generator) {
+          list.appendChild(generator.call(null, list.querySelector('template').content.cloneNode(true), d))
+        } else {
+          list.innerHTML += d.toString()
+        }
+      })
+    }
+    function populateNamedElementWithData(name, generator) {
+      populateElementWithData(document.querySelector(`[data-if="${name}"]`), global.data[name] || '', generator)
+    }
+    function populateNamedListWithData(name, generator) {
+      populateListWithData(document.querySelector(`[data-each="${name}"]`), global.data[name] || [], generator)
+    }
+    populateNamedListWithData('jobs', function (frag, datum) {
+      frag.querySelector('.c-JobListing__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-JobListing__Link').textContent = datum.title
+      frag.querySelector('.c-JobListing__Org' ).textContent = datum.organization
+      frag.querySelector('.c-JobListing__Loc' ).textContent = datum.location
+      return frag
+    })
+    populateNamedListWithData('promotions', function (frag, datum) {
+      frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${datum.image}')`)
+      frag.querySelector('.c-Promotion__Hn'  ).innerHTML = datum.title
+      frag.querySelector('.c-Promotion__Cta' ).setAttribute('href', datum.cta.url)
+      frag.querySelector('.c-Promotion__Cta' ).textContent = datum.cta.text
+      frag.querySelector('.c-Promotion__Text').innerHTML = ((typeof datum.text === 'string') ? datum.text : datum.text.join(''))
+      return frag
+    })
+    populateNamedListWithData('portals', function (frag, datum) {
+      frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', datum.icon)
+      frag.querySelector('.c-Portal__Hn'  ).innerHTML = datum.title
+      populateListWithData(frag.querySelector('.c-Portal__List'), datum.links, function (innerfrag, link) {
+        innerfrag.querySelector('.c-Portal__List__Item > a').setAttribute('href', link.url)
+        innerfrag.querySelector('.c-Portal__List__Item > a').textContent = link.text
+        return innerfrag
+      })
+      return frag
+    })
+    populateNamedElementWithData('asce7_body', function (frag, datum) {
+      frag.querySelector('div').innerHTML = ((typeof datum === 'string') ? datum : datum.join(''))
+      return frag
+    })
+    populateNamedElementWithData('cemag_body', function (frag, datum) {
+      frag.querySelector('div').innerHTML = ((typeof datum === 'string') ? datum : datum.join(''))
+      return frag
+    })
+    populateNamedListWithData('tech_info_links', function (frag, datum) {
+      frag.querySelector('a').setAttribute('href', datum.url)
+      frag.querySelector('a').textContent = datum.text
+      return frag
+    })
+    populateNamedListWithData('get_involved_links', function (frag, datum) {
+      frag.querySelector('a').setAttribute('href', datum.url)
+      frag.querySelector('a').textContent = datum.text
+      return frag
+    })
+    populateNamedListWithData('whats_happening', function (frag, datum) {
+      frag.querySelector('.c-ArticleTeaser__Img').setAttribute('src', datum.image)
+      frag.querySelector('.c-ArticleTeaser__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-ArticleTeaser__Link').textContent = datum.title
+      frag.querySelector('.c-ArticleTeaser__Date').innerHTML = global.formatDate(new Date(datum.datetime))
+      return frag
+    })
+    populateNamedListWithData('member_stories', function (frag, datum) {
+      frag.querySelector('.c-MemberStory__Img').setAttribute('src', datum.image)
+      frag.querySelector('.c-MemberStory__Hn').textContent = datum.name
+      frag.querySelector('.c-MemberStory__SubHn').textContent = datum.title
+      frag.querySelector('.c-MemberStory__Quote').innerHTML = ((typeof datum.quote === 'string') ? datum.quote : datum.quote.join(''))
+      return frag
+    })
+
+    window.customElements.define('x-stat', class XStat extends HTMLElement {
+      // REVIEW INDENTATION
+    constructor() {
+      super()
+      let returned = document.querySelector('template#x-stat').content.cloneNode(true)
+      returned.querySelector('.c-Stat__Icon').className = returned.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
+      returned.querySelector('.c-Stat__Num' ).innerHTML = this.getAttribute('number')
+      returned.querySelector('.c-Stat__Text').innerHTML = this.getAttribute('text')
+      returned.querySelector('.c-Stat__Cta' ).setAttribute('href', this.getAttribute('ctaurl'))
+      returned.querySelector('.c-Stat__Cta' ).innerHTML = this.getAttribute('ctatext')
+      while (this.firstChild) { this.firstChild.remove() }
+      if (global.ENABLE_WEB_COMPONENTS) {
+      let shadowroot = this.attachShadow({ mode: 'closed' })
+      shadowroot.appendChild(returned)
+      } else {
+        this.parentNode.replaceChild(returned, this)
+      }
+    }
+    })
+  </script>
+</body>
+</html>
