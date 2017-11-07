@@ -10,33 +10,20 @@
  *
  * # SETTINGS & TOOLS-----------------------PROJECT SETTINGS & MIXINS
  * __settings.less..........................variables
- * __tool.menufont.less.....................font styles for menu bars
- * __tool.logo.less.........................background-image styles for logos
- * __tool.ticket.less.......................Passes and Speaker Components
  *
  * # BASE-----------------------------------BARE UNCLASSED ELEMENTS
  * _dev.less................................development code
  * _base.less...............................bare, unclassed elements
  *
  * # OBJECTS--------------------------------REUSABLE STRUCTURAL PATTERNS
- * Flex--even...............................Flexbox with everything even
- * Tablist--program.........................Tablist extension for Progam Tabs organism
- * Runner...................................header and footer
- * Constrain................................keeps content at max width
- * GridFloat................................grid of items; legacy support
- * ListStacked..............................row of stackable items (Sponsors, Passes, Speakers, etc.)
- * Drawer...................................pull-out container
  *
  * # COMPONENTS-----------------------------SPECIFIC STYLE PATTERNS
- * Mast.....................................masthead for the site
  *
  * # ORGANISMS------------------------------SINGLE FUNCTIONAL INTERFACES
- * Site Header..............................header on every page of the site
  *
  * # THEMES & HELPERS-----------------------LOCATION-DEPENDENT STYLES
  *
  * # OVERRIDES------------------------------ATOMS & HACKS
- * _hack.atom.less..........................all uncategorized atoms
  * _hack.shame.less.........................hacks
  */
 
@@ -50,6 +37,36 @@
 //++++++++++++++++++++++++++++++++//
 //    # BASE
 //++++++++++++++++++++++++++++++++//
+html {
+  --layout-padding-base: 0.25;
+  --layout-padding-block : calc(~'var(--layout-padding-base) * var(--vru)');
+  --layout-padding-inline: calc(~'var(--layout-padding-base) * 2rem');
+  --layout-padding: var(--layout-padding-block) var(--layout-padding-inline);
+  @media screen and (min-width: 30rem) {
+    --layout-padding-base: 0.5;
+  }
+  @media screen and (min-width: 45rem) {
+  }
+  @media screen and (min-width: 60rem) {
+    --layout-padding-base: 1;
+  }
+  @media screen and (min-width: 75rem) {
+  }
+  @media screen and (min-width: 90rem) {
+    --layout-padding-base: 2;
+  }
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+}
+a {
+  color: #0c5fa8;
+  &:hover,
+  &:focus {
+    color: #19a1cf;
+  }
+}
 //++++ end # BASE ++++//
 
 
@@ -62,18 +79,31 @@
 // Patterns of structure that can be reused many times for many different purposes.
 // <header><dl>
 //   <dt>author</dt>  <dd>Chris Harvey</dd>
-//   <dt>updated</dt> <dd><time>2017-07-10</time></dd>
+//   <dt>updated</dt> <dd><time>2017-11-07</time></dd>
 // </dl></header>
 //
 // Weight: 1
 //
 // Styleguide Objects
 
-.o-Grid--jobs {
+.o-Grid--jobs,
+.o-Grid--foundation,
+.o-Grid--publications,
+.o-Grid--learnContribute,
+.o-Grid--whatsHappening {
   @media screen and (min-width: 45em) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.o-Grid--jobs,
+.o-Grid--publications,
+.o-Grid--learnContribute,
+.o-Grid--whatsHappening {
+  grid-row-gap   : var(--layout-padding-block);
+  grid-column-gap: var(--layout-padding-inline);
+}
+
 .o-Grid--portals {
   @media screen and (min-width: 45em) {
     grid-template-columns: repeat(3, 1fr);
@@ -82,10 +112,6 @@
 
 .o-Grid--foundation {
   @media screen and (min-width: 45em) {
-    grid-template-columns: repeat(2, 1fr);
-    & > p {
-      order: 1;
-    }
     & > x-stat {
       grid-row: ~'1 / 3';
       grid-column: ~'2 / 3';
@@ -95,11 +121,27 @@
 
 .o-Grid--whatsHappening {
   @media screen and (min-width: 45em) {
-    grid-template-columns: repeat(2, 1fr);
     & > li:first-of-type {
       grid-row: ~'1 / 3';
     }
   }
+}
+
+.o-Grid--represent {
+  @media screen and (min-width: 30em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.o-Grid--members {
+  @media screen and (min-width: 30em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+.o-Runner {
+  padding: var(--layout-padding);
 }
 
 //++++ end # OBJECTS ++++//
@@ -114,7 +156,7 @@
 // Patterns of look-and-feel that are each only used for one purpose.
 // <header><dl>
 //   <dt>author</dt>  <dd>Chris Harvey</dd>
-//   <dt>updated</dt> <dd><time>2017-07-10</time></dd>
+//   <dt>updated</dt> <dd><time>2017-11-07</time></dd>
 // </dl></header>
 //
 // Weight: 2
@@ -149,7 +191,6 @@
 
 .c-Pub {
   display: grid;
-  flex: 0 0 50%;
   @media screen and (min-width: 30em) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -166,6 +207,7 @@
 .c-Pub__Links {
 }
 .c-Pub__Body {
+  grid-column: ~'1 / 3';
 }
 
 .c-ArticleTeaser {
@@ -213,7 +255,7 @@
 // Compositions of Objects and Components that act together as a single interface.
 // <header><dl>
 //   <dt>author</dt>  <dd>Chris Harvey</dd>
-//   <dt>updated</dt> <dd><time>2017-07-10</time></dd>
+//   <dt>updated</dt> <dd><time>2017-11-07</time></dd>
 // </dl></header>
 //
 // Weight: 3
