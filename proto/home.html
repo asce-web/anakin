@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-halflings/web/html_css/css/glyphicons-halflings.css"/>
   <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
 
-  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.0.0/xmeter.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.1.1/xmeter.css"/>
   <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
 
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"/> -->
@@ -19,6 +19,12 @@
 
   <!-- REVIEW INDENTATION -->
 <template id="x-stat">
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons/web/html_css/css/glyphicons.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-filetypes/web/html_css/css/glyphicons-filetypes.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-halflings/web/html_css/css/glyphicons-halflings.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.1.1/xmeter.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
   <p class="c-Stat">
     <i class="c-Stat__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
     <span class="c-Stat__Num h-Block">{{ number }}</span>
@@ -170,9 +176,9 @@
     { "title": "Former Corps Chief Bostick Honored with OPAL Award"                        , "url": "#0", "image": "OPAL.png"      , "datetime": "2017-03-16" }
   ],
   "member_stories": [
-    { "name": "Katie Haslett"  , "title": "Student Member"                     , "image": "Haslett" , "quote": ["The impact of seeing successful..."] },
-    { "name": "Nakeia Jackson" , "title": "2017 New Faces of Civil Engineering", "image": "Jackson" , "quote": ["When you become an engineer..."] },
-    { "name": "Damani Nkeiruka", "title": "Distinguished Member"               , "image": "Nkeiruka", "quote": ["There are so many infrastructure and..."] }
+    { "name": "Katie Haslett"  , "title": "Student Member"                     , "image": "Haslett.png" , "quote": ["The impact of seeing successful..."] },
+    { "name": "Nakeia Jackson" , "title": "2017 New Faces of Civil Engineering", "image": "Jackson.png" , "quote": ["When you become an engineer..."] },
+    { "name": "Damani Nkeiruka", "title": "Distinguished Member"               , "image": "Nkeiruka.png", "quote": ["There are so many infrastructure and..."] }
   ]
 }
   </script>
@@ -265,7 +271,7 @@
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
-    <section>
+    <section id="asce-foundation">
       <h1>ASCE Foundation</h1>
       <!-- QUESTION: are this graf and stat hard-coded? -->
       <p>Making a positive change in our communities is possible… but only if we
@@ -274,7 +280,7 @@
     </section>
     <section id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
-      <section>
+      <section id="asce7">
         <!-- QUESTION: which parts of this are hard-coded? -->
         <h1>ASCE 7</h1>
         <p><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16</p>
@@ -286,7 +292,7 @@
           <template><div></div></template>
         </article>
       </section>
-      <section>
+      <section id="civil-engineering-magazine">
         <!-- QUESTION: which parts of this are hard-coded? -->
         <h1>Civil Engineering Magazine</h1>
         <p>The Official magazine of the American Society of Civil Engineers.</p>
