@@ -31,17 +31,6 @@ function compile(template) {
     //  * @type {string}
     //  */
     // data.foundation_blurb = `` // NOTE may need this later
-    /**
-     * Stories for Member Stories section.
-     * This array should have no more than 3 items.
-     * Each object in the array should have a name (string), title (string), image (string), and quote (string).
-     * @type {Array<{name:string, title:string, image:string, quote:string>}}
-     */
-    data.member_stories = [
-      { name: 'Katie Haslett', title: 'Student Member', image: '', quote: `The impact of seeing successful...` },
-      { name: 'Nakeia Jackson', title: '2017 New Faces of Civil Engineering', image: '', quote: `When you become an engineer...` },
-      { name: 'Damani Nkeiruka', title: 'Distinguished Member', image: '', quote: `There are so many infrastructure and...` },
-    ]
 
 
 
