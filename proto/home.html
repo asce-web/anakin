@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
   <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.1.1/xmeter.css"/>
   <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
+  <link rel="stylesheet" href="./css/home.css"/>
   <p class="c-Stat">
     <i class="c-Stat__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
     <span class="c-Stat__Num h-Block">{{ number }}</span>
@@ -202,10 +203,10 @@
     <section id="we-represent">
       <blockquote>Civil Engineers are global leaders building a better quality of life.</blockquote>
       <h1>We Represent:</h1>
-      <ul class="o-List o-Flex">
-        <li class="o-List__Item o-Flex__Item"><x-stat icon="group"  number="150000" text="Members"    ctatext="Join ASCE"         ctaurl="#0"></x-stat></li>
-        <li class="o-List__Item o-Flex__Item"><x-stat icon="map"    number="177"    text="Countries"  ctatext="Find a Chapter"    ctaurl="#0"></x-stat></li>
-        <li class="o-List__Item o-Flex__Item"><x-stat icon="shield" number="9"      text="Institutes" ctatext="Join an Institute" ctaurl="#0"></x-stat></li>
+      <ul class="o-List o-Flex-sK">
+        <li class="o-List__Item o-Flex__Item-sK"><x-stat icon="group"  number="150000" text="Members"    ctatext="Join ASCE"         ctaurl="#0"></x-stat></li>
+        <li class="o-List__Item o-Flex__Item-sK"><x-stat icon="map"    number="177"    text="Countries"  ctatext="Find a Chapter"    ctaurl="#0"></x-stat></li>
+        <li class="o-List__Item o-Flex__Item-sK"><x-stat icon="shield" number="9"      text="Institutes" ctatext="Join an Institute" ctaurl="#0"></x-stat></li>
       </ul>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -214,7 +215,7 @@
       <!-- QUESTION: review the outline of this section -->
       <section id="featured-jobs">
         <h1>Featured Jobs</h1>
-        <ul class="o-List o-Grid" data-each="jobs" style="--cols: 2;">
+        <ul class="o-List o-Grid o-Grid--jobs" data-each="jobs">
           <template>
             <li class="o-List__Item o-Grid__Item">
               <div class="c-JobListing">
@@ -252,7 +253,7 @@
     </section>
     <section id="portals">
       <h1 class="h-Hidden">Portals</h1>
-      <ol class="o-List o-Grid" style="--cols: 3;" data-each="portals">
+      <ol class="o-List o-Grid o-Grid--portals" data-each="portals">
         <template>
           <li class="o-List__Item o-Grid__Item">
             <section class="c-Portal">
@@ -273,42 +274,44 @@
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
-    <section id="asce-foundation">
+    <section id="asce-foundation" class="o-Grid o-Grid--foundation">
       <h1>ASCE Foundation</h1>
       <!-- QUESTION: are this graf and stat hard-coded? -->
       <p>Making a positive change in our communities is possible… but only if we
         start now, set our sights high, and work together.</p>
       <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0"></x-stat>
     </section>
-    <section id="publication-highlights">
+    <section id="publication-highlights" class="o-Flex-sM">
       <h1 class="h-Hidden">Publication Highlights</h1>
-      <section id="asce7">
+      <section id="asce7" class="o-Flex__Item-sM c-Pub">
         <!-- QUESTION: which parts of this are hard-coded? -->
-        <h1>ASCE 7</h1>
-        <p><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16</p>
-        <ul>
-          <li><a href="#0">Provisions &amp; Commentary</a></li>
-          <li><a href="#0">Guides &amp; more</a></li>
+        <img class="c-Pub__Img" src="asce7.png"/>
+        <h1 class="c-Pub__Hn">ASCE 7</h1>
+        <p class="c-Pub__Desc"><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16</p>
+        <ul class="o-List c-Pub__Links">
+          <li class="o-List__Item"><a href="#0">Provisions &amp; Commentary</a></li>
+          <li class="o-List__Item"><a href="#0">Guides &amp; more</a></li>
         </ul>
-        <article data-if="asce7_body">
+        <article class="c-Pub__Body" data-if="asce7_body">
           <template><div></div></template>
         </article>
       </section>
-      <section id="civil-engineering-magazine">
+      <section id="civil-engineering-magazine" class="o-Flex__Item-sM c-Pub">
         <!-- QUESTION: which parts of this are hard-coded? -->
-        <h1>Civil Engineering Magazine</h1>
-        <p>The Official magazine of the American Society of Civil Engineers.</p>
-        <ul>
-          <li><a href="#0">Learn More</a></li>
+        <img class="c-Pub__Img" src="civ-eng-mag.png"/>
+        <h1 class="c-Pub__Hn">Civil Engineering Magazine</h1>
+        <p class="c-Pub__Desc">The Official magazine of the American Society of Civil Engineers.</p>
+        <ul class="o-List c-Pub__Links">
+          <li class="o-List__Item"><a class="c-Button" href="#0">Learn More</a></li>
         </ul>
-        <article data-if="cemag_body">
+        <article class="c-Pub__Body" data-if="cemag_body">
           <template><div></div></template>
         </article>
       </section>
     </section>
-    <section id="learn-contribute">
+    <section id="learn-contribute" class="o-Flex-sM">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
-      <section id="technical-information">
+      <section id="technical-information" class="o-Flex__Item-sM">
         <header>
           <h1>Technical Infomation</h1>
           <p>Access the latest technical information in your discipline.</p>
@@ -319,7 +322,7 @@
           </template>
         </ul>
       </section>
-      <section id="get-involved">
+      <section id="get-involved" class="o-Flex__Item-sM">
         <header>
           <h1>Get Involved</h1>
           <p>Dedicate your time and expertise to a cause that is important to you.</p>
@@ -333,16 +336,16 @@
     </section>
     <section id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
-      <ul class="o-List" data-each="whats_happening">
+      <ul class="o-List o-Grid o-Grid--whatsHappening" data-each="whats_happening">
         <template>
-          <li class="o-List__Item">
-            <article class="c-ArticleTeaser">
+          <li class="o-List__Item o-Grid__Item">
+            <div class="c-ArticleTeaser">
               <img class="c-ArticleTeaser__Img" src="{{ image }}"/>
-              <h1 class="c-ArticleTeaser__Hn">
+              <p class="c-ArticleTeaser__Hn">
                 <a class="c-ArticleTeaser__Link" href="{{ url }}">{{ title }}</a>
-              </h1>
+              </p>
               <p class="c-ArticleTeaser__Date">{{ datetime }}</p>
-            </article>
+            </div>
           </li>
         </template>
       </ul>
@@ -350,15 +353,15 @@
     </section>
     <section id="member-stories">
       <h1>ASCE Member Stories</h1>
-      <ul class="o-List" data-each="member_stories">
+      <ul class="o-List o-Flex-sG" data-each="member_stories">
         <template>
-          <li class="o-List__Item">
-            <article class="c-MemberStory">
+          <li class="o-List__Item o-Flex__Item-sG">
+            <div class="c-MemberStory">
               <img class="c-MemberStory__Img" src="{{ image }}"/>
-              <h1 class="c-MemberStory__Hn">{{ name }}</h1>
+              <p class="c-MemberStory__Hn">{{ name }}</p>
               <p class="c-MemberStory__SubHn">{{ title }}</p>
               <blockquote class="c-MemberStory__Quote">{{ quote }}</blockquote>
-            </article>
+            </div>
           </li>
         </template>
       </ul>
