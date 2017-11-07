@@ -149,6 +149,7 @@
   </header>
   <main id="main">
     <div id="hero">
+      <!-- QUESTION: is the background-image hard-coded? -->
       <p>
         <span>The 2017 Report Card for America’s Infrastructure is available now.</span>
         <a href="#0">View the Report Card</a>
@@ -303,9 +304,26 @@
   <!-- <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script> -->
   <script>
     let global = {
+      formatDate(date) {
+        const MONTHS = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ]
+        return `${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}`
+      },
       /** set to false to disable experimental web components features*/ ENABLE_WEB_COMPONENTS: true,
       template: {
-        x_stat         : document.querySelector('link[href*="x-stat"]'         ).import.querySelector('template#x-stat'         ),
+        x_stat: document.querySelector('link[href*="x-stat"]').import.querySelector('template#x-stat'),
       },
       data: JSON.parse(document.querySelector('script#data').textContent),
     }
@@ -369,25 +387,10 @@
       return frag
     })
     populateNamedListWithData('whats_happening', function (frag, datum) {
-  const MONTHS = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ]
-  function formatDate(date) { return `${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}` }
       frag.querySelector('.c-ArticleTeaser__Img').setAttribute('src', datum.image)
       frag.querySelector('.c-ArticleTeaser__Link').setAttribute('href', datum.url)
       frag.querySelector('.c-ArticleTeaser__Link').textContent = datum.title
-      frag.querySelector('.c-ArticleTeaser__Date').innerHTML = formatDate(new Date(datum.datetime))
+      frag.querySelector('.c-ArticleTeaser__Date').innerHTML = global.formatDate(new Date(datum.datetime))
       return frag
     })
     populateNamedListWithData('member_stories', function (frag, datum) {
@@ -399,7 +402,7 @@
     })
   </script>
   <script type="module">
-    import { XStat          } from './class/XStat.class.js'
+    import { XStat } from './class/XStat.class.js'
     window.customElements.define('x-stat', XStat)
   </script>
 </body>
