@@ -21,13 +21,6 @@
 
   <!-- REVIEW INDENTATION -->
 <template id="x-stat">
-  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons/web/html_css/css/glyphicons.css"/>
-  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-filetypes/web/html_css/css/glyphicons-filetypes.css"/>
-  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-halflings/web/html_css/css/glyphicons-halflings.css"/>
-  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
-  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.1.1/xmeter.css"/>
-  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
-  <link rel="stylesheet" href="./css/home.css"/>
   <p class="c-Stat">
     <i class="c-Stat__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
     <span class="c-Stat__Num h-Block">{{ number }}</span>
@@ -392,7 +385,6 @@
         ]
         return `${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}`
       },
-      /** set to false to disable experimental web components features*/ ENABLE_WEB_COMPONENTS: true,
       data: JSON.parse(document.querySelector('script#data').textContent),
     }
 
@@ -487,12 +479,7 @@
       returned.querySelector('.c-Stat__Cta' ).setAttribute('href', this.getAttribute('ctaurl'))
       returned.querySelector('.c-Stat__Cta' ).innerHTML = this.getAttribute('ctatext')
       while (this.firstChild) { this.firstChild.remove() }
-      if (global.ENABLE_WEB_COMPONENTS) {
-      let shadowroot = this.attachShadow({ mode: 'closed' })
-      shadowroot.appendChild(returned)
-      } else {
-        this.parentNode.replaceChild(returned, this)
-      }
+      this.appendChild(returned)
     }
     })
   </script>
