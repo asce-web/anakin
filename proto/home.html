@@ -18,7 +18,6 @@
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
 
   <link rel="import" href="./template/x-stat.tpl.html"/>
-  <link rel="import" href="./template/x-promotion.tpl.html"/>
   <link rel="import" href="./template/x-portal.tpl.html"/>
   <link rel="import" href="./template/x-articleteaser.tpl.html"/>
   <link rel="import" href="./template/x-memberstory.tpl.html"/>
@@ -27,18 +26,18 @@
   "promotions": [
     {
       "title": "Dream Big: Engineering Our World",
+      "image": "dream-big.png",
+      "cta"  : { "text": "Find a screen", "url": "#0" },
       "text" : [
         "A giant-screen film about engineering will take viewers on a journey",
         "of discovery from the world’s tallest building to a bridge higher than the clouds."
-      ],
-      "cta"  : { "text": "Find a screen", "url": "#0" },
-      "image": "dream-big.png"
+      ]
     },
     {
       "title": "Save America’s Infrastructure",
-      "text" : "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers.",
+      "image": "infrastructure.png",
       "cta"  : { "text": "Read more", "url": "#0" },
-      "image": "infrastructure.png"
+      "text" : "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers."
     }
   ],
   "portal_links": {},
@@ -82,9 +81,11 @@
       <ul class="o-List" data-each="promotions">
         <template>
           <li class="o-List__Item">
-            <x-promotion title="{{ title }}" image="{{ image }}" ctatext="{{ cta.text }}" ctaurl="{{ cta.url }}">
-              {{ innerHTML }}
-            </x-promotion>
+            <section class="c-Promotion" style="background-image: url('{{ image }}');">
+              <h1 class="c-Promotion__Hn">{{ title }}</h1>
+              <p class="c-Promotion__Text">{{ text }}</p>
+              <p><a class="c-Promotion__Cta c-Button" href="{{ cta.url }}">{{ cta.text }}</a></p>
+            </section>
           </li>
         </template>
       </ul>
@@ -186,7 +187,6 @@
       /** set to false to disable experimental web components features*/ ENABLE_WEB_COMPONENTS: true,
       template: {
         x_stat         : document.querySelector('link[href*="x-stat"]'         ).import.querySelector('template#x-stat'         ),
-        x_promotion    : document.querySelector('link[href*="x-promotion"]'    ).import.querySelector('template#x-promotion'    ),
         x_portal       : document.querySelector('link[href*="x-portal"]'       ).import.querySelector('template#x-portal'       ),
         x_articleteaser: document.querySelector('link[href*="x-articleteaser"]').import.querySelector('template#x-articleteaser'),
         x_memberstory  : document.querySelector('link[href*="x-memberstory"]'  ).import.querySelector('template#x-memberstory'  ),
@@ -202,11 +202,11 @@
     }
     function generatePromotion(frag, data) {
       let returned = frag.cloneNode(true)
-      returned.querySelector('x-promotion').setAttribute('title', data.title)
-      returned.querySelector('x-promotion').setAttribute('image', data.image)
-      returned.querySelector('x-promotion').setAttribute('ctatext', data.cta.text)
-      returned.querySelector('x-promotion').setAttribute('ctaurl', data.cta.url)
-      returned.querySelector('x-promotion').innerHTML = (Array.isArray(data.text)) ? data.text.join('') : data.text
+      returned.querySelector('.c-Promotion').style.setProperty('background-image', `url('${data.image}')`)
+      returned.querySelector('.c-Promotion__Hn'  ).innerHTML = data.title
+      returned.querySelector('.c-Promotion__Cta' ).setAttribute('href', data.cta.url)
+      returned.querySelector('.c-Promotion__Cta' ).textContent = data.cta.text
+      returned.querySelector('.c-Promotion__Text').innerHTML = (Array.isArray(data.text)) ? data.text.join('') : data.text
       return returned
     }
     populateListWithData('promotions', generatePromotion)
@@ -214,12 +214,10 @@
   </script>
   <script type="module">
     import { XStat          } from './class/XStat.class.js'
-    import { XPromotion     } from './class/XPromotion.class.js'
     import { XPortal        } from './class/XPortal.class.js'
     import { XArticleTeaser } from './class/XArticleTeaser.class.js'
     import { XMemberStory   } from './class/XMemberStory.class.js'
     window.customElements.define('x-stat', XStat)
-    window.customElements.define('x-promotion', XPromotion)
     window.customElements.define('x-portal', XPortal)
     window.customElements.define('x-articleteaser', XArticleTeaser)
     window.customElements.define('x-memberstory', XMemberStory)
