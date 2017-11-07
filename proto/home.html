@@ -22,6 +22,34 @@
   <link rel="import" href="./template/x-portal.tpl.html"/>
   <link rel="import" href="./template/x-articleteaser.tpl.html"/>
   <link rel="import" href="./template/x-memberstory.tpl.html"/>
+  <script id="data" type="application/json">
+{
+  "promotions": [
+    {
+      "title": "Dream Big: Engineering Our World",
+      "text" : [
+        "A giant-screen film about engineering will take viewers on a journey",
+        "of discovery from the world’s tallest building to a bridge higher than the clouds."
+      ],
+      "cta"  : { "text": "Find a screen", "url": "#0" },
+      "image": "dream-big.png"
+    },
+    {
+      "title": "Save America’s Infrastructure",
+      "text" : "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers.",
+      "cta"  : { "text": "Read more", "url": "#0" },
+      "image": "infrastructure.png"
+    }
+  ],
+  "portal_links": {},
+  "asce7_body": "",
+  "cemag_body": "",
+  "tech_info_links": [],
+  "get_involved_links": [],
+  "news": [],
+  "member_stories": []
+}
+  </script>
 </head>
 <body>
   <a class="h-Hidden" href="#main">skip to main content</a>
@@ -51,13 +79,7 @@
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <x-promotion title="Dream Big: Engineering Our World" image="dream-big.png" ctatext="Find a screen" ctaurl="#0">
-        A giant-screen film about engineering will take viewers on a journey
-        of discovery from the world’s tallest building to a bridge higher than the clouds.
-      </x-promotion>
-      <x-promotion title="Save America’s Infrastructure" image="infrastructure.png" ctatext="Read more" ctaurl="#0">
-        Keep up with the latest in US infrastructure news from the American Society of Civil Engineers.
-      </x-promotion>
+      <ul class="o-List" data-each="promotions"></ul>
     </section>
     <section id="portals">
       <h1 class="h-Hidden">Portals</h1>
@@ -161,7 +183,29 @@
         x_articleteaser: document.querySelector('link[href*="x-articleteaser"]').import.querySelector('template#x-articleteaser'),
         x_memberstory  : document.querySelector('link[href*="x-memberstory"]'  ).import.querySelector('template#x-memberstory'  ),
       },
+      data: JSON.parse(document.querySelector('script#data').textContent),
     }
+
+    function populateListWithData(dataname, generator) {
+      let list = document.querySelector(`[data-each="${dataname}"]`)
+      global.data[dataname].forEach(function (item) {
+        list.appendChild(generator.call(null, item))
+      })
+    }
+    function generatePromotion(item) {
+      let returned = document.createElement('li')
+      returned.className = 'o-List__Item'
+      let element = document.createElement('x-promotion')
+      element.setAttribute('title', item.title)
+      element.setAttribute('image', item.image)
+      element.setAttribute('ctatext', item.cta.text)
+      element.setAttribute('ctaurl', item.cta.url)
+      element.innerHTML = (Array.isArray(item.text) ? item.text.join('') : item.text)
+      returned.appendChild(element)
+      return returned
+    }
+    populateListWithData('promotions', generatePromotion)
+
   </script>
   <script type="module">
     import { XStat          } from './class/XStat.class.js'

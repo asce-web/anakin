@@ -27,25 +27,6 @@ function compile(template) {
      */
     let data = {}
     /**
-     * Promotional sections.
-     * @type {Array<Object{title:string, text:string, cta:{text:string, url:string}, image:string}>}
-     */
-    data.promotions = [
-      {
-        title: 'Dream Big: Engineering Our World',
-        text : `A giant-screen film about engineering will take viewers on a journey
-          of discovery from the world’s tallest building to a bridge higher than the clouds.`,
-        cta  : { text: 'Find a screen', url: '#0' },
-        image: 'dream-big.png',
-      },
-      {
-        title: 'Save America’s Infrastructure',
-        text : `Keep up with the latest in US infrastructure news from the American Society of Civil Engineers.`,
-        cta  : { text: 'Read more', url: '#0' },
-        image: 'infrastructure.png',
-      },
-    ]
-    /**
      * Object containing links for each portal.
      * Each array should have no more than 4 items.
      * Each object in the array should have a text (string) and a url (string).
