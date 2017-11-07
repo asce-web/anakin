@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>American Society of Civil Engineers</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/futura.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons/web/html_css/css/glyphicons.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-filetypes/web/html_css/css/glyphicons-filetypes.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-halflings/web/html_css/css/glyphicons-halflings.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
+
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.0.0/xmeter.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"/> -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700"/> -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
+
+  <link rel="import" href="./template/x-stat.tpl.html"/>
+  <link rel="import" href="./template/x-promotion.tpl.html"/>
+  <link rel="import" href="./template/x-portal.tpl.html"/>
+  <link rel="import" href="./template/x-articleteaser.tpl.html"/>
+  <link rel="import" href="./template/x-memberstory.tpl.html"/>
+</head>
+<body>
+  <a class="h-Hidden" href="#main">skip to main content</a>
+  <header>
+    <h1>American Society of Civil Engineers</h1>
+    <p>Header and Megamenu</p>
+  </header>
+  <main id="main">
+    <div id="hero">
+      <p>
+        <span>The 2017 Report Card for America’s Infrastructure is available now.</span>
+        <a href="#0">View the Report Card</a>
+      </p>
+    </div>
+    <section id="we-represent">
+      <blockquote>Civil Engineers are global leaders building a better quality of life.</blockquote>
+      <h1>We Represent:</h1>
+      <ul class="o-List o-Flex">
+        <li class="o-List__Item o-Flex__Item"><x-stat icon="group"  number="150000" text="Members"    ctatext="Join ASCE"         ctaurl="#0"></x-stat></li>
+        <li class="o-List__Item o-Flex__Item"><x-stat icon="map"    number="177"    text="Countries"  ctatext="Find a Chapter"    ctaurl="#0"></x-stat></li>
+        <li class="o-List__Item o-Flex__Item"><x-stat icon="shield" number="9"      text="Institutes" ctatext="Join an Institute" ctaurl="#0"></x-stat></li>
+      </ul>
+    </section>
+    <aside>ADVERTISEMENT</aside>
+    <section id="jobs">
+      <h1>Jobs</h1>
+    </section>
+    <section id="promotions">
+      <h1 class="h-Hidden">Promotions</h1>
+      <x-promotion title="Dream Big: Engineering Our World" image="dream-big.png" ctatext="Find a screen" ctaurl="#0">
+        A giant-screen film about engineering will take viewers on a journey
+        of discovery from the world’s tallest building to a bridge higher than the clouds.
+      </x-promotion>
+      <x-promotion title="Save America’s Infrastructure" image="infrastructure.png" ctatext="Read more" ctaurl="#0">
+        Keep up with the latest in US infrastructure news from the American Society of Civil Engineers.
+      </x-promotion>
+    </section>
+    <section id="portals">
+      <h1 class="h-Hidden">Portals</h1>
+      <ol class="o-List o-Grid" style="--cols: 3;">
+        <li class="o-List__Item o-Grid__Item">
+          <x-portal title="Membership" icon="nameplate">
+            <item text="Manage My Membership" url="#0"></item>
+            <item text="Join ASCE" url="#1"></item>
+          </x-portal>
+        </li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Continuing Education"      icon="education"   ></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Publications"              icon="book-open"   ></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Conferences &amp; Events"  icon="calendar"    ></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Professional"              icon="address-book"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal title="Careers"                   icon="briefcase"   ></x-portal></li>
+      </ol>
+    </section>
+    <aside>ADVERTISEMENT</aside>
+    <section>
+      <h1>ASCE Foundation</h1>
+      <p>Making a positive change in our communities is possible… but only if we
+        start now, set our sights high, and work together.</p>
+      {{
+        new data.Stat({
+          icon  : 'donate',
+          number: 25,
+          text  : 'Programs Supported',
+          cta   : { text: 'Give a Gift' , url: '#0' },
+        })
+      }}
+    </section>
+    <section id="publication-highlights">
+      <h1 class="h-Hidden">Publication Highlights</h1>
+      <section>
+        <h1>ASCE 7</h1>
+        <p><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16</p>
+        <ul>
+          <li><a href="#0">Provisions &amp; Commentary</a></li>
+          <li><a href="#0">Guides &amp; more</a></li>
+        </ul>
+        <article>{{ data.asce7_body }}</article>
+      </section>
+      <section>
+        <h1>Civil Engineering Magazine</h1>
+        <p>The Official magazine of the American Society of Civil Engineers.</p>
+        <ul>
+          <li><a href="#0">Learn More</a></li>
+        </ul>
+        <article>{{ data.cemag_body }}</article>
+      </section>
+    </section>
+    <section id="learn-contribute">
+      <h1 class="h-Hidden">Learn &amp; Contribute</h1>
+      <section id="technical-information">
+        <header>
+          <h1>Technical Infomation</h1>
+          <p>Access the latest technical information in your discipline.</p>
+        </header>
+        <ul>{{ data.tech_info_links.map((item) =>
+          '<li><a href="'+ item.url +'">'+ item.text +'</a></li>').join('') }}</ul>
+      </section>
+      <section id="get-involved">
+        <header>
+          <h1>Get Involved</h1>
+          <p>Dedicate your time and expertise to a cause that is important to you.</p>
+        </header>
+        <ul>{{ data.get_involved_links.map((item) =>
+          '<li><a href="'+ item.url +'">'+ item.text +'</a></li>').join('') }}</ul>
+      </section>
+    </section>
+    <section id="whats-happening">
+      <h1>What’s Happening at ASCE</h1>
+      <ul>
+        <li><x-articleteaser title="Emergency and Carryover Storage Project Earns OCEA" image="emergency.png" url="#0" datetime="2017-03-16"></x-articleteaser></li>
+        <li><x-articleteaser title="Former Corps Chief Bostick Honored with OPAL Award" image="opal.png" url="#0" datetime="2017-03-09"></x-articleteaser></li>
+      </ul>
+      <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
+    </section>
+    <section id="member-stories">
+      <h1>ASCE Member Stories</h1>
+      <ul>
+        <li><x-memberstory name="Katie Haslett" title="Student Member" image="Haslett.png">The impact of seeing successful...</x-memberstory></li>
+        <li><x-memberstory name="Nakeia Jackson" title="2017 New Faces of Civil Engineering" image="Jackson.png">When you become an engineer...</x-memberstory></li>
+        <li><x-memberstory name="Damani Nkeiruka" title="Distinguished Member" image="Nkeiruka.png">There are so many infrastructure and...</x-memberstory></li>
+      </ul>
+    </section>
+    <p><a href="#0">Join ASCE</a></p>
+  </main>
+  <footer>
+    <p>ASCE Footer</p>
+  </footer>
+  <a class="h-Hidden" href="#top">jump to top</a>
+  <!-- <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script> -->
+  <script>
+    let global = {
+      /** set to false to disable experimental web components features*/ ENABLE_WEB_COMPONENTS: true,
+      template: {
+        x_stat         : document.querySelector('link[href*="x-stat"]'         ).import.querySelector('template#x-stat'         ),
+        x_promotion    : document.querySelector('link[href*="x-promotion"]'    ).import.querySelector('template#x-promotion'    ),
+        x_portal       : document.querySelector('link[href*="x-portal"]'       ).import.querySelector('template#x-portal'       ),
+        x_articleteaser: document.querySelector('link[href*="x-articleteaser"]').import.querySelector('template#x-articleteaser'),
+        x_memberstory  : document.querySelector('link[href*="x-memberstory"]'  ).import.querySelector('template#x-memberstory'  ),
+      },
+    }
+  </script>
+  <script type="module">
+    import { XStat          } from './class/XStat.class.js'
+    import { XPromotion     } from './class/XPromotion.class.js'
+    import { XPortal        } from './class/XPortal.class.js'
+    import { XArticleTeaser } from './class/XArticleTeaser.class.js'
+    import { XMemberStory   } from './class/XMemberStory.class.js'
+    window.customElements.define('x-stat', XStat)
+    window.customElements.define('x-promotion', XPromotion)
+    window.customElements.define('x-portal', XPortal)
+    window.customElements.define('x-articleteaser', XArticleTeaser)
+    window.customElements.define('x-memberstory', XMemberStory)
+  </script>
+</body>
+</html>
