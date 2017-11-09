@@ -61,6 +61,21 @@
         <article class="c-Pub__Body" data-text="{{ body }}">{{ database__content }}</article>
       </section>
   </template>
+  <template id="x-learncontrib">
+      <section class="o-Grid__Item c-LearnContrib">
+        <header class="c-LearnContrib__Head" style="background-image: url('{{ database__image }}');">
+          <h1 class="c-LearnContrib__Hn">{{ title }}</h1>
+          <p class="c-LearnContrib__Cap">{{ caption }}</p>
+        </header>
+        <ul class="o-List c-LearnContrib__List" data-list="{{ list }}">
+          <template>
+            <li class="o-List__Item c-LearnContrib__List__Item">
+              <a class="c-LearnContrib__Link" href="{{ database__url }}">{{ database__text }}</a>
+            </li>
+          </template>
+        </ul>
+      </section>
+  </template>
   <script id="data" type="application/json">
 {
   "hero": {
@@ -320,32 +335,12 @@
     </section>
     <section class="o-Grid o-Grid--learnContribute o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
-      <section class="o-Grid__Item c-LearnContrib" id="technical-information">
-        <header class="c-LearnContrib__Head" style="background-image: url('{{ image }}');">
-          <h1 class="c-LearnContrib__Hn">Technical Information</h1>
-          <p class="c-LearnContrib__Cap">Access the latest technical information in your discipline.</p>
-        </header>
-        <ul class="o-List c-LearnContrib__List" data-list="tech_info.links">
-          <template>
-            <li class="o-List__Item c-LearnContrib__List__Item">
-              <a class="c-LearnContrib__Link" href="{{ url }}">{{ text }}</a>
-            </li>
-          </template>
-        </ul>
-      </section>
-      <section class="o-Grid__Item" id="get-involved">
-        <header class="c-LearnContrib__Head" style="background-image: url('{{ image }}');">
-          <h1 class="c-LearnContrib__Hn">Get Involved</h1>
-          <p class="c-LearnContrib__Cap">Dedicate your time and expertise to a cause that is important to you.</p>
-        </header>
-        <ul class="o-List c-LearnContrib__List" data-list="get_involved.links">
-          <template>
-            <li class="o-List__Item c-LearnContrib__List__Item">
-              <a class="c-LearnContrib__Link" href="{{ url }}">{{ text }}</a>
-            </li>
-          </template>
-        </ul>
-      </section>
+      <x-learncontrib id="technical-information" name="Technical Information" list="tech_info.links">
+        Access the latest technical information in your discipline.
+      </x-learncontrib>
+      <x-learncontrib id="get-involved" name="Get Involved" list="get_involved.links">
+        Dedicate your time and expertise to a cause that is important to you.
+      </x-learncontrib>
     </section>
     <section class="o-Runner" id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
@@ -476,12 +471,21 @@ window.customElements.define('x-pub', class XPub extends HTMLElement {
   constructor () {
     super()
     let returned = document.querySelector('template#x-pub').content.cloneNode(true)
-    returned.querySelector('.c-Pub').id = this.getAttribute('x-id')
-    // returned.querySelector('.c-Pub').id = returned.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
     returned.querySelector('.c-Pub__Hn').textContent = this.getAttribute('name')
     returned.querySelector('.c-Pub__Cap').innerHTML = this.innerHTML // NOTE rich text
     returned.querySelector('.c-Pub__List').setAttribute('data-list', this.getAttribute('list'))
     returned.querySelector('.c-Pub__Body').setAttribute('data-text', this.getAttribute('body'))
+    while (this.childNodes.length) { this.firstChild.remove() }
+    this.appendChild(returned)
+  }
+})
+window.customElements.define('x-learncontrib', class XLearnContrib extends HTMLElement {
+  constructor () {
+    super()
+    let returned = document.querySelector('template#x-learncontrib').content.cloneNode(true)
+    returned.querySelector('.c-LearnContrib__Hn').textContent = this.getAttribute('name')
+    returned.querySelector('.c-LearnContrib__Cap').innerHTML = this.innerHTML // NOTE rich text
+    returned.querySelector('.c-LearnContrib__List').setAttribute('data-list', this.getAttribute('list'))
     while (this.childNodes.length) { this.firstChild.remove() }
     this.appendChild(returned)
   }
