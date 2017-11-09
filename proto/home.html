@@ -49,7 +49,8 @@
   <script id="data" type="application/json">
 {
   "hero": {
-    "image": "./images/hero.png"
+    "image": "./images/hero.png",
+    "caption": "The 2017 Report Card for America’s Infrastructure is available now."
   },
   "jobs": [
     {
@@ -82,16 +83,13 @@
       "title": "Dream Big: Engineering Our World",
       "image": "./images/timely.png",
       "cta"  : { "text": "Find a screen", "url": "#0" },
-      "text" : [
-        "A giant-screen film about engineering will take viewers on a journey",
-        "of discovery from the world’s tallest building to a bridge higher than the clouds."
-      ]
+      "caption": "A giant-screen film about engineering will take viewers on a journey of discovery from the world’s tallest building to a bridge higher than the clouds."
     },
     {
       "title": "Save America’s Infrastructure",
       "image": "./images/infrastructure.png",
       "cta"  : { "text": "Read more", "url": "#0" },
-      "text" : "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers."
+      "caption": "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers."
     }
   ],
   "portal": {
@@ -131,6 +129,9 @@
         { "text": "Career resources", "url": "#0" },
         { "text": "Code of Ethics", "url": "#0" }
     ]
+  },
+  "foundation": {
+    "caption": "Making a positive change in our communities is possible… but only if we start now, set our sights high, and work together."
   },
   "asce7": {
     "image": "./images/asce7.png"
@@ -188,32 +189,19 @@
       "name" : "Katie Haslett",
       "title": "Student Member",
       "image": "./images/member1.png",
-      "quote": [
-        "The impact of seeing successful female engineering professiors ",
-        "has motivated and inspired me to want to make a difference, ",
-        "and work towards making contributions that will affect the future ",
-        "and how things are done from an engineering perspective."
-      ]
+      "quote": "The impact of seeing successful female engineering professiors has motivated and inspired me to want to make a difference, and work towards making contributions that will affect the future and how things are done from an engineering perspective."
     },
     {
       "name" : "Nakeia Jackson",
       "title": "2017 New Faces of Civil Engineering",
       "image": "./images/member2.png",
-      "quote": [
-        "When you become an engineer, you are always proud of the work you create. ",
-        "Your work is your own creativity and it’s thrilling to make something ",
-        "on paper come to life."
-      ]
+      "quote": "When you become an engineer, you are always proud of the work you create. Your work is your own creativity and it’s thrilling to make something on paper come to life."
     },
     {
       "name" : "Damani Nkeiruka",
       "title": "Distinguished Member",
       "image": "./images/member3.png",
-      "quote": [
-        "There are so many infrastructure and transportation issues that need ",
-        "to be solved, and I am excited to bring my knowledge, passion, and ",
-        "can-do attitude into that field."
-      ]
+      "quote": "There are so many infrastructure and transportation issues that need to be solved, and I am excited to bring my knowledge, passion, and can-do attitude into that field."
     }
   ]
 }
@@ -228,7 +216,7 @@
   <main id="main">
     <div class="c-Hero" id="hero" style="background-image: url('{{ image }}');">
       <p class="c-Hero__Bar">
-        <span>The 2017 Report Card for America’s Infrastructure is available now.</span>
+        <span>{{ caption }}</span>
         <a href="#0">View the Report Card</a>
       </p>
     </div>
@@ -295,8 +283,7 @@
     <aside>ADVERTISEMENT</aside>
     <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation">
       <h1>ASCE Foundation</h1>
-      <p>Making a positive change in our communities is possible… but only if we
-        start now, set our sights high, and work together.</p>
+      <p>{{ caption }}</p>
       <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0"></x-stat>
     </section>
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
@@ -304,7 +291,7 @@
       <section class="o-Grid__Item c-Pub" id="asce7">
         <img class="c-Pub__Img" src="{{ image }}" alt=""/>
         <h1 class="c-Pub__Hn">ASCE 7</h1>
-        <p class="c-Pub__Desc"><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16</p>
+        <p class="c-Pub__Desc"><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16.</p>
         <ul class="o-List c-Pub__Links">
           <li class="o-List__Item"><a href="#0">Provisions &amp; Commentary</a></li>
           <li class="o-List__Item"><a href="#0">Guides &amp; more</a></li>
@@ -316,7 +303,7 @@
       <section class="o-Grid__Item c-Pub" id="civil-engineering-magazine">
         <img class="c-Pub__Img" src="{{ image }}" alt=""/>
         <h1 class="c-Pub__Hn">Civil Engineering Magazine</h1>
-        <p class="c-Pub__Desc">The Official magazine of the American Society of Civil Engineers.</p>
+        <p class="c-Pub__Desc">The official magazine of the American Society of Civil Engineers.</p>
         <ul class="o-List c-Pub__Links">
           <li class="o-List__Item"><a class="c-Button" href="#0">Learn More</a></li>
         </ul>
@@ -329,7 +316,7 @@
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
       <section class="o-Grid__Item" id="technical-information">
         <header style="background-image: url('{{ image }}');">
-          <h1>Technical Infomation</h1>
+          <h1>Technical Information</h1>
           <p>Access the latest technical information in your discipline.</p>
         </header>
         <ul data-each="tech_info_links">
@@ -446,6 +433,7 @@
     })
 
     document.querySelector('.c-Hero').style.setProperty('background-image', `url('${global.data.hero.image}')`)
+    document.querySelector('.c-Hero span').textContent = global.data.hero.caption
 
     populateNamedListWithData('jobs', function (frag, datum) {
       frag.querySelector('.c-JobListing__Link').setAttribute('href', datum.url)
@@ -459,7 +447,7 @@
       frag.querySelector('.c-Promotion__Hn'  ).textContent = datum.title
       frag.querySelector('.c-Promotion__Cta' ).setAttribute('href', datum.cta.url)
       frag.querySelector('.c-Promotion__Cta' ).textContent = datum.cta.text
-      frag.querySelector('.c-Promotion__Text').textContent = ((typeof datum.text === 'string') ? datum.text : datum.text.join(''))
+      frag.querySelector('.c-Promotion__Text').textContent = datum.caption
       return frag
     })
     document.querySelectorAll('.c-Portal__List').forEach(function(list) {
@@ -469,6 +457,9 @@
         return innerfrag
       })
     })
+
+    document.querySelector('#asce-foundation > p').textContent = global.data.foundation.caption
+
     document.querySelector('#asce7 .c-Pub__Img').setAttribute('src', global.data.asce7.image)
     populateNamedElementWithData('asce7_body', function (frag, datum) {
       let returned = document.createElement('div')
@@ -506,7 +497,7 @@
       frag.querySelector('.c-MemberStory__Img').setAttribute('src', datum.image)
       frag.querySelector('.c-MemberStory__Hn').textContent = datum.name
       frag.querySelector('.c-MemberStory__SubHn').textContent = datum.title
-      frag.querySelector('.c-MemberStory__Quote').textContent = ((typeof datum.quote === 'string') ? datum.quote : datum.quote.join(''))
+      frag.querySelector('.c-MemberStory__Quote').textContent = datum.quote
       return frag
     })
 
