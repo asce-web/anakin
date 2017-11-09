@@ -170,23 +170,23 @@
     ]
   },
   "tech_info": {
-    "image": "./images/techinfo.png"
-  },
-  "get_involved": {
-    "image": "./images/involved.png"
-  },
-  "tech_info_links": [
+    "image": "./images/techinfo.png",
+    "links": [
     { "text": "Find a local group"   , "url": "#0" },
     { "text": "Browse publications"  , "url": "#0" },
     { "text": "Register for a course", "url": "#0" },
     { "text": "Find a conference"    , "url": "#0" }
-  ],
-  "get_involved_links": [
+    ]
+  },
+  "get_involved": {
+    "image": "./images/involved.png",
+    "links": [
     { "text": "View volunteer opportunities", "url": "#0" },
     { "text": "Find a Section or Branch"    , "url": "#0" },
     { "text": "Visit ASCE Collaborate"      , "url": "#0" },
     { "text": "Find a committee"            , "url": "#0" }
-  ],
+    ]
+  },
   "whats_happening": [
     { "title": "ASCE’s New Infrastructure Report Card: Another D+, But Solutions Available", "url": "#0", "image": "./images/news1.png", "datetime": "2017-03-09" },
     { "title": "Emergency and Carryover Storage Project Earns OCEA"                        , "url": "#0", "image": "./images/news2.png", "datetime": "2017-03-16" },
@@ -242,7 +242,7 @@
       <h1>Jobs</h1>
       <section id="featured-jobs">
         <h1>Featured Jobs</h1>
-        <ul class="o-List o-Grid o-Grid--jobs" data-each="jobs">
+        <ul class="o-List o-Grid o-Grid--jobs" data-list="jobs">
           <template>
             <li class="o-List__Item o-Grid__Item">
               <div class="c-JobListing">
@@ -265,7 +265,7 @@
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <ul class="o-List" data-each="promotions">
+      <ul class="o-List" data-list="promotions">
         <template>
           <li class="o-List__Item">
             <section class="c-Promotion" style="background-image: url('{{ image }}');">
@@ -279,7 +279,7 @@
     </section>
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
-      <ol class="o-List o-Grid o-Grid--portals" data-each="portals">
+      <ol class="o-List o-Grid o-Grid--portals">
         <li class="o-List__Item o-Grid__Item"><x-portal name="Membership"           icon="nameplate"    list="membership"></x-portal></li>
         <li class="o-List__Item o-Grid__Item"><x-portal name="Continuing Education" icon="education"    list="cont_ed"></x-portal></li>
         <li class="o-List__Item o-Grid__Item"><x-portal name="Publications"         icon="book-open"    list="pubs"></x-portal></li>
@@ -300,7 +300,7 @@
         <img class="c-Pub__Img" src="{{ image }}" alt=""/>
         <h1 class="c-Pub__Hn">ASCE 7</h1>
         <p class="c-Pub__Desc"><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16.</p>
-        <ul class="o-List c-Pub__Links" data-each="asce7.links">
+        <ul class="o-List c-Pub__Links" data-list="asce7.links">
           <template>
             <li class="o-List__Item"><a href="{{ url }}">{{ text }}</a></li>
           </template>
@@ -311,7 +311,7 @@
         <img class="c-Pub__Img" src="{{ image }}" alt=""/>
         <h1 class="c-Pub__Hn">Civil Engineering Magazine</h1>
         <p class="c-Pub__Desc">The official magazine of the American Society of Civil Engineers.</p>
-        <ul class="o-List c-Pub__Links" data-each="cemag.links">
+        <ul class="o-List c-Pub__Links" data-list="cemag.links">
           <template>
             <li class="o-List__Item"><a href="{{ url }}">{{ text }}</a></li>
           </template>
@@ -326,7 +326,7 @@
           <h1>Technical Information</h1>
           <p>Access the latest technical information in your discipline.</p>
         </header>
-        <ul data-each="tech_info_links">
+        <ul data-list="tech_info.links">
           <template>
             <li><a href="{{ url }}">{{ text }}</a></li>
           </template>
@@ -337,7 +337,7 @@
           <h1>Get Involved</h1>
           <p>Dedicate your time and expertise to a cause that is important to you.</p>
         </header>
-        <ul data-each="get_involved_links">
+        <ul data-list="get_involved.links">
           <template>
             <li><a href="{{ url }}">{{ text }}</a></li>
           </template>
@@ -346,7 +346,7 @@
     </section>
     <section class="o-Runner" id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
-      <ul class="o-List o-Grid o-Grid--whatsHappening" data-each="whats_happening">
+      <ul class="o-List o-Grid o-Grid--whatsHappening" data-list="whats_happening">
         <template>
           <li class="o-List__Item o-Grid__Item">
             <div class="c-ArticleTeaser">
@@ -354,7 +354,7 @@
               <p class="c-ArticleTeaser__Hn">
                 <a class="c-ArticleTeaser__Link" href="{{ url }}">{{ title }}</a>
               </p>
-              <p class="c-ArticleTeaser__Date">{{ datetime }}</p>
+              <p class="c-ArticleTeaser__Date"><time datetime="{{ date_iso }}">{{ date_str }}</time></p>
             </div>
           </li>
         </template>
@@ -363,7 +363,7 @@
     </section>
     <section class="o-Runner" id="member-stories">
       <h1>ASCE Member Stories</h1>
-      <ul class="o-List o-Grid o-Grid--members" data-each="member_stories">
+      <ul class="o-List o-Grid o-Grid--members" data-list="member_stories">
         <template>
           <li class="o-List__Item o-Grid__Item">
             <div class="c-MemberStory">
@@ -404,19 +404,17 @@
       },
       data: JSON.parse(document.querySelector('script#data').textContent),
     }
-
     /**
      * @summary Fill an element with text.
      * @description If the text is plain, the element’s `.textContent` attribute is used.
      * If the text is rich (allowing HTML elements), the element’s `.innerHTML` attribute is used.
      * The text given can either be a string or an array of strings.
-     * @param   {string} selector the selector with which `document.querySelector()` is called. note the single selector.
+     * @param   {Element} element the element to modify
      * @param   {(string|Array<string>)} data the text to fill
      * @param   {boolean=} rich if `true`, use `innerHTML`; otherwise, use `textContent`
-     * @returns {Element} the modified DOM Element
+     * @returns {Element} the modified Element
      */
-    function populateElementWithText(selector, data, rich = false) {
-      let element = document.querySelector(selector)
+    function setElementText(element, data, rich = false) {
       if (rich) {
         element.innerHTML = ((typeof data === 'string') ? data : data.join('')) // NOTE flow content
       } else {
@@ -424,24 +422,41 @@
       }
       return element
     }
-    // function populateElementWithData(element, data, generator) {
-    //   if (generator) {
-    //     element.appendChild(generator.call(null, element.querySelector('template').content.cloneNode(true), data))
-    //   } else {
-    //     element.innerHTML += data.toString()
-    //   }
-    // }
-    function populateListWithData(list, data, generator) {
-      data.forEach(function (d) {
-        if (generator) {
-          list.appendChild(generator.call(null, list.querySelector('template').content.cloneNode(true), d))
-        } else {
-          list.innerHTML += d.toString()
-        }
-      })
+    /**
+     * Append to an element a document fragment, filled in with data.
+     * The element must have a single <template> element child.
+     * @param   {Element} element the element to modify
+     * @param   {!Object} data any non-nullible object
+     * @param   {?(function(DocumentFragment,!Object):DocumentFragment)=} generator a function that fills in a document fragment with data
+     * @returns {Element} the modified Element
+     */
+    function populateElementWithData(element, data, generator = null) {
+      let documentfragment;
+      try {
+        documentfragment = element.querySelector('template').content
+      } catch (e) {
+        throw new ReferenceError('The selected element does not have a <template> child.')
+      }
+      element.append((generator) ? generator.call(null, documentfragment.cloneNode(true), data) : data.toString())
+      return element
     }
-    function populateNamedListWithData(name, generator) {
-      populateListWithData(document.querySelector(`[data-each="${name}"]`), global.data[name] || [], generator)
+    /**
+     * Append to an element one or more document fragments, filled with data.
+     * The element must have a single <template> element child.
+     * @param   {Element} element the element to modify
+     * @param   {Array<!Object>} data any array of non-nullible objects
+     * @param   {?(function(DocumentFragment,!Object):DocumentFragment)=} generator a function that fills in a document fragment with data
+     * @returns {Element} the modified Element
+     */
+    function populateListWithData(element, data, generator = null) {
+      let documentfragment;
+      try {
+        documentfragment = element.querySelector('template').content
+      } catch (e) {
+        throw new ReferenceError('The selected element does not have a <template> child.')
+      }
+      element.append(...data.map((d) => (generator) ? generator.call(null, documentfragment.cloneNode(true), d) : d.toString()))
+      return element
     }
 
     window.customElements.define('x-portal', class XPortal extends HTMLElement {
@@ -460,14 +475,15 @@
     document.querySelector('.c-Hero__Bar a').setAttribute('href', global.data.hero.cta.url)
     document.querySelector('.c-Hero__Bar a').textContent = global.data.hero.cta.text
 
-    populateNamedListWithData('jobs', function (frag, datum) {
+    populateListWithData(document.querySelector('[data-list="jobs"]'), global.data.jobs, function (frag, datum) {
       frag.querySelector('.c-JobListing__Link').setAttribute('href', datum.url)
       frag.querySelector('.c-JobListing__Link').textContent = datum.title
       frag.querySelector('.c-JobListing__Org' ).textContent = datum.organization
       frag.querySelector('.c-JobListing__Loc' ).textContent = datum.location
       return frag
     })
-    populateNamedListWithData('promotions', function (frag, datum) {
+
+    populateListWithData(document.querySelector('[data-list="promotions"]'), global.data.promotions, function (frag, datum) {
       frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${datum.image}')`)
       frag.querySelector('.c-Promotion__Hn'  ).textContent = datum.title
       frag.querySelector('.c-Promotion__Cta' ).setAttribute('href', datum.cta.url)
@@ -483,44 +499,47 @@
       })
     })
 
-    document.querySelector('#asce-foundation > p').textContent = global.data.foundation.caption
+    setElementText(document.querySelector('#asce-foundation > p'), global.data.foundation.caption)
 
     document.querySelector('#asce7 .c-Pub__Img').setAttribute('src', global.data.asce7.image)
-    populateListWithData(document.querySelector('[data-each="asce7.links"]'), global.data.asce7.links, function (frag, datum) {
+    populateListWithData(document.querySelector('[data-list="asce7.links"]'), global.data.asce7.links, function (frag, datum) {
       frag.querySelector('a').setAttribute('href', datum.url)
       frag.querySelector('a').textContent = datum.text
       return frag
     })
-    populateElementWithText('[data-text="asce7.body"]', global.data.asce7.body, true)
+    setElementText(document.querySelector('[data-text="asce7.body"]'), global.data.asce7.body, true)
 
     document.querySelector('#civil-engineering-magazine .c-Pub__Img').setAttribute('src', global.data.cemag.image)
-    populateListWithData(document.querySelector('[data-each="cemag.links"]'), global.data.cemag.links, function (frag, datum) {
+    populateListWithData(document.querySelector('[data-list="cemag.links"]'), global.data.cemag.links, function (frag, datum) {
       frag.querySelector('a').setAttribute('href', datum.url)
       frag.querySelector('a').textContent = datum.text
       return frag
     })
-    populateElementWithText('[data-text="cemag.body"]', global.data.cemag.body, true)
+    setElementText(document.querySelector('[data-text="cemag.body"]'), global.data.cemag.body, true)
 
     document.querySelector('#technical-information header').style.setProperty('background-image', `url('${global.data.tech_info.image}')`)
-    populateNamedListWithData('tech_info_links', function (frag, datum) {
+    populateListWithData(document.querySelector('[data-list="tech_info.links"]'), global.data.tech_info.links, function (frag, datum) {
       frag.querySelector('a').setAttribute('href', datum.url)
       frag.querySelector('a').textContent = datum.text
       return frag
     })
     document.querySelector('#get-involved header').style.setProperty('background-image', `url('${global.data.get_involved.image}')`)
-    populateNamedListWithData('get_involved_links', function (frag, datum) {
+    populateListWithData(document.querySelector('[data-list="get_involved.links"]'), global.data.get_involved.links, function (frag, datum) {
       frag.querySelector('a').setAttribute('href', datum.url)
       frag.querySelector('a').textContent = datum.text
       return frag
     })
-    populateNamedListWithData('whats_happening', function (frag, datum) {
+
+    populateListWithData(document.querySelector('[data-list="whats_happening"]'), global.data.whats_happening, function (frag, datum) {
       frag.querySelector('.c-ArticleTeaser__Img').setAttribute('src', datum.image)
       frag.querySelector('.c-ArticleTeaser__Link').setAttribute('href', datum.url)
       frag.querySelector('.c-ArticleTeaser__Link').textContent = datum.title
-      frag.querySelector('.c-ArticleTeaser__Date').innerHTML = global.formatDate(new Date(datum.datetime))
+      frag.querySelector('.c-ArticleTeaser__Date > time').setAttribute('datetime', datum.datetime) // TODO use `HTMLTimeElement#dateTime` property
+      frag.querySelector('.c-ArticleTeaser__Date > time').textContent = global.formatDate(new Date(datum.datetime))
       return frag
     })
-    populateNamedListWithData('member_stories', function (frag, datum) {
+
+    populateListWithData(document.querySelector('[data-list="member_stories"]'), global.data.member_stories, function (frag, datum) {
       frag.querySelector('.c-MemberStory__Img').setAttribute('src', datum.image)
       frag.querySelector('.c-MemberStory__Hn').textContent = datum.name
       frag.querySelector('.c-MemberStory__SubHn').textContent = datum.title
