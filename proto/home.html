@@ -48,6 +48,9 @@
     <!-- REVIEW INDENTATION -->
   <script id="data" type="application/json">
 {
+  "hero": {
+    "image": "./images/hero.png"
+  },
   "jobs": [
     {
       "title"       : "Geotechnical Engineer",
@@ -129,6 +132,9 @@
         { "text": "Code of Ethics", "url": "#0" }
     ]
   },
+  "asce7": {
+    "image": "./images/asce7.png"
+  },
   "asce7_body": [
       "<h2>ASCE 7 Online</h2>",
       "<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>",
@@ -137,6 +143,9 @@
       "<p>Look up key design parameters as specified by ASCE 7.</p>",
       "<a clas=\"c-Button\" href=\"#0\">Learn More</a>"
   ],
+  "cemag": {
+    "image": "./images/cecover.png"
+  },
   "cemag_body": [
     "<h2>Featured this Month</h2>",
     "<article>",
@@ -151,6 +160,12 @@
       "<p><a href=\"#0\">Read more</a></p>",
     "</article>"
   ],
+  "tech_info": {
+    "image": "./images/techinfo.png"
+  },
+  "get_involved": {
+    "image": "./images/involved.png"
+  },
   "tech_info_links": [
     { "text": "Find a local group"   , "url": "#0" },
     { "text": "Browse publications"  , "url": "#0" },
@@ -211,7 +226,7 @@
     <p>Header and Megamenu</p>
   </header>
   <main id="main">
-    <div class="c-Hero" id="hero">
+    <div class="c-Hero" id="hero" style="background-image: url('{{ image }}');">
       <p class="c-Hero__Bar">
         <span>The 2017 Report Card for America’s Infrastructure is available now.</span>
         <a href="#0">View the Report Card</a>
@@ -287,7 +302,7 @@
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
       <section class="o-Grid__Item c-Pub" id="asce7">
-        <img class="c-Pub__Img" src="./images/asce7.png" alt=""/>
+        <img class="c-Pub__Img" src="{{ image }}" alt=""/>
         <h1 class="c-Pub__Hn">ASCE 7</h1>
         <p class="c-Pub__Desc"><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16</p>
         <ul class="o-List c-Pub__Links">
@@ -299,7 +314,7 @@
         </article>
       </section>
       <section class="o-Grid__Item c-Pub" id="civil-engineering-magazine">
-        <img class="c-Pub__Img" src="./images/cecover.png" alt=""/>
+        <img class="c-Pub__Img" src="{{ image }}" alt=""/>
         <h1 class="c-Pub__Hn">Civil Engineering Magazine</h1>
         <p class="c-Pub__Desc">The Official magazine of the American Society of Civil Engineers.</p>
         <ul class="o-List c-Pub__Links">
@@ -313,7 +328,7 @@
     <section class="o-Grid o-Grid--learnContribute o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
       <section class="o-Grid__Item" id="technical-information">
-        <header>
+        <header style="background-image: url('{{ image }}');">
           <h1>Technical Infomation</h1>
           <p>Access the latest technical information in your discipline.</p>
         </header>
@@ -324,7 +339,7 @@
         </ul>
       </section>
       <section class="o-Grid__Item" id="get-involved">
-        <header>
+        <header style="background-image: url('{{ image }}');">
           <h1>Get Involved</h1>
           <p>Dedicate your time and expertise to a cause that is important to you.</p>
         </header>
@@ -430,6 +445,8 @@
       }
     })
 
+    document.querySelector('.c-Hero').style.setProperty('background-image', `url('${global.data.hero.image}')`)
+
     populateNamedListWithData('jobs', function (frag, datum) {
       frag.querySelector('.c-JobListing__Link').setAttribute('href', datum.url)
       frag.querySelector('.c-JobListing__Link').textContent = datum.title
@@ -452,23 +469,27 @@
         return innerfrag
       })
     })
+    document.querySelector('#asce7 .c-Pub__Img').setAttribute('src', global.data.asce7.image)
     populateNamedElementWithData('asce7_body', function (frag, datum) {
       let returned = document.createElement('div')
       returned.innerHTML = ((typeof datum === 'string') ? datum : datum.join('')) // NOTE flow content
       frag.appendChild(returned)
       return frag
     })
+    document.querySelector('#civil-engineering-magazine .c-Pub__Img').setAttribute('src', global.data.cemag.image)
     populateNamedElementWithData('cemag_body', function (frag, datum) {
       let returned = document.createElement('div')
       returned.innerHTML = ((typeof datum === 'string') ? datum : datum.join('')) // NOTE flow content
       frag.appendChild(returned)
       return frag
     })
+    document.querySelector('#technical-information header').style.setProperty('background-image', `url('${global.data.tech_info.image}')`)
     populateNamedListWithData('tech_info_links', function (frag, datum) {
       frag.querySelector('a').setAttribute('href', datum.url)
       frag.querySelector('a').textContent = datum.text
       return frag
     })
+    document.querySelector('#get-involved header').style.setProperty('background-image', `url('${global.data.get_involved.image}')`)
     populateNamedListWithData('get_involved_links', function (frag, datum) {
       frag.querySelector('a').setAttribute('href', datum.url)
       frag.querySelector('a').textContent = datum.text
