@@ -224,8 +224,8 @@
   <main id="main">
     <div class="c-Hero" id="hero" style="background-image: url('{{ image }}');">
       <p class="c-Hero__Bar">
-        <span>{{ caption }}</span>
-        <a href="{{ ctaurl }}">{{ ctatext }}</a>
+        <span class="c-Hero__Cap">{{ caption }}</span>
+        <a class="c-Hero__Cta" href="{{ ctaurl }}">{{ ctatext }}</a>
       </p>
     </div>
     <section class="o-Runner" id="we-represent">
@@ -300,9 +300,11 @@
         <img class="c-Pub__Img" src="{{ image }}" alt=""/>
         <h1 class="c-Pub__Hn">ASCE 7</h1>
         <p class="c-Pub__Desc"><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16.</p>
-        <ul class="o-List c-Pub__Links" data-list="asce7.links">
+        <ul class="o-List c-Pub__List" data-list="asce7.links">
           <template>
-            <li class="o-List__Item"><a href="{{ url }}">{{ text }}</a></li>
+            <li class="o-List__Item c-Pub__List__Item">
+              <a class="c-Pub__Link" href="{{ url }}">{{ text }}</a>
+            </li>
           </template>
         </ul>
         <article class="c-Pub__Body" data-text="asce7.body">{{ content }}</article>
@@ -311,9 +313,11 @@
         <img class="c-Pub__Img" src="{{ image }}" alt=""/>
         <h1 class="c-Pub__Hn">Civil Engineering Magazine</h1>
         <p class="c-Pub__Desc">The official magazine of the American Society of Civil Engineers.</p>
-        <ul class="o-List c-Pub__Links" data-list="cemag.links">
+        <ul class="o-List c-Pub__List" data-list="cemag.links">
           <template>
-            <li class="o-List__Item"><a href="{{ url }}">{{ text }}</a></li>
+            <li class="o-List__Item c-Pub__List__Item">
+              <a class="c-Pub__Link" href="{{ url }}">{{ text }}</a>
+            </li>
           </template>
         </ul>
         <article class="c-Pub__Body" data-text="cemag.body">{{ content }}</article>
@@ -321,25 +325,29 @@
     </section>
     <section class="o-Grid o-Grid--learnContribute o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
-      <section class="o-Grid__Item" id="technical-information">
-        <header style="background-image: url('{{ image }}');">
-          <h1>Technical Information</h1>
-          <p>Access the latest technical information in your discipline.</p>
+      <section class="o-Grid__Item c-LearnContrib" id="technical-information">
+        <header class="c-LearnContrib__Head" style="background-image: url('{{ image }}');">
+          <h1 class="c-LearnContrib__Hn">Technical Information</h1>
+          <p class="c-LearnContrib__Cap">Access the latest technical information in your discipline.</p>
         </header>
-        <ul data-list="tech_info.links">
+        <ul class="o-List c-LearnContrib__List" data-list="tech_info.links">
           <template>
-            <li><a href="{{ url }}">{{ text }}</a></li>
+            <li class="o-List__Item c-LearnContrib__List__Item">
+              <a class="c-LearnContrib__Link" href="{{ url }}">{{ text }}</a>
+            </li>
           </template>
         </ul>
       </section>
       <section class="o-Grid__Item" id="get-involved">
-        <header style="background-image: url('{{ image }}');">
-          <h1>Get Involved</h1>
-          <p>Dedicate your time and expertise to a cause that is important to you.</p>
+        <header class="c-LearnContrib__Head" style="background-image: url('{{ image }}');">
+          <h1 class="c-LearnContrib__Hn">Get Involved</h1>
+          <p class="c-LearnContrib__Cap">Dedicate your time and expertise to a cause that is important to you.</p>
         </header>
-        <ul data-list="get_involved.links">
+        <ul class="o-List c-LearnContrib__List" data-list="get_involved.links">
           <template>
-            <li><a href="{{ url }}">{{ text }}</a></li>
+            <li class="o-List__Item c-LearnContrib__List__Item">
+              <a class="c-LearnContrib__Link" href="{{ url }}">{{ text }}</a>
+            </li>
           </template>
         </ul>
       </section>
@@ -503,30 +511,30 @@
 
     document.querySelector('#asce7 .c-Pub__Img').setAttribute('src', global.data.asce7.image)
     populateListWithData(document.querySelector('[data-list="asce7.links"]'), global.data.asce7.links, function (frag, datum) {
-      frag.querySelector('a').setAttribute('href', datum.url)
-      frag.querySelector('a').textContent = datum.text
+      frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-Pub__Link').textContent = datum.text
       return frag
     })
     setElementText(document.querySelector('[data-text="asce7.body"]'), global.data.asce7.body, true)
 
     document.querySelector('#civil-engineering-magazine .c-Pub__Img').setAttribute('src', global.data.cemag.image)
     populateListWithData(document.querySelector('[data-list="cemag.links"]'), global.data.cemag.links, function (frag, datum) {
-      frag.querySelector('a').setAttribute('href', datum.url)
-      frag.querySelector('a').textContent = datum.text
+      frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-Pub__Link').textContent = datum.text
       return frag
     })
     setElementText(document.querySelector('[data-text="cemag.body"]'), global.data.cemag.body, true)
 
     document.querySelector('#technical-information header').style.setProperty('background-image', `url('${global.data.tech_info.image}')`)
     populateListWithData(document.querySelector('[data-list="tech_info.links"]'), global.data.tech_info.links, function (frag, datum) {
-      frag.querySelector('a').setAttribute('href', datum.url)
-      frag.querySelector('a').textContent = datum.text
+      frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
       return frag
     })
     document.querySelector('#get-involved header').style.setProperty('background-image', `url('${global.data.get_involved.image}')`)
     populateListWithData(document.querySelector('[data-list="get_involved.links"]'), global.data.get_involved.links, function (frag, datum) {
-      frag.querySelector('a').setAttribute('href', datum.url)
-      frag.querySelector('a').textContent = datum.text
+      frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
       return frag
     })
 
