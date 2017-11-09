@@ -36,7 +36,7 @@
                 <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
                 <span class="c-Portal__Hn h-Block">{{ title }}</span>
               </h1>
-              <ul class="o-List c-Portal__List">
+              <ul class="o-List c-Portal__List" data-list="{{ list }}">
                 <template>
                   <li class="o-List__Item c-Portal__List__Item">
                     <a href="{{ url }}">{{ text }}</a>
@@ -46,8 +46,43 @@
             </section>
         </template>
     <!-- REVIEW INDENTATION -->
+  <template id="x-pub">
+      <section class="o-Grid__Item c-Pub">
+        <img class="c-Pub__Img" src="{{ database__image }}" alt=""/>
+        <h1 class="c-Pub__Hn">{{ title }}</h1>
+        <p class="c-Pub__Cap">{{ caption }}</p>
+        <ul class="o-List c-Pub__List" data-list="{{ list }}">
+          <template>
+            <li class="o-List__Item c-Pub__List__Item">
+              <a class="c-Pub__Link" href="{{ database__url }}">{{ database__text }}</a>
+            </li>
+          </template>
+        </ul>
+        <article class="c-Pub__Body" data-text="{{ body }}">{{ database__content }}</article>
+      </section>
+  </template>
+  <template id="x-learncontrib">
+      <section class="o-Grid__Item c-LearnContrib">
+        <header class="c-LearnContrib__Head" style="background-image: url('{{ database__image }}');">
+          <h1 class="c-LearnContrib__Hn">{{ title }}</h1>
+          <p class="c-LearnContrib__Cap">{{ caption }}</p>
+        </header>
+        <ul class="o-List c-LearnContrib__List" data-list="{{ list }}">
+          <template>
+            <li class="o-List__Item c-LearnContrib__List__Item">
+              <a class="c-LearnContrib__Link" href="{{ database__url }}">{{ database__text }}</a>
+            </li>
+          </template>
+        </ul>
+      </section>
+  </template>
   <script id="data" type="application/json">
 {
+  "hero": {
+    "image": "./images/hero.png",
+    "caption": "The 2017 Report Card for America’s Infrastructure is available now.",
+    "cta": { "text": "View the Report Card", "url": "#0" }
+  },
   "jobs": [
     {
       "title"       : "Geotechnical Engineer",
@@ -79,16 +114,13 @@
       "title": "Dream Big: Engineering Our World",
       "image": "./images/timely.png",
       "cta"  : { "text": "Find a screen", "url": "#0" },
-      "text" : [
-        "A giant-screen film about engineering will take viewers on a journey",
-        "of discovery from the world’s tallest building to a bridge higher than the clouds."
-      ]
+      "caption": "A giant-screen film about engineering will take viewers on a journey of discovery from the world’s tallest building to a bridge higher than the clouds."
     },
     {
       "title": "Save America’s Infrastructure",
       "image": "./images/infrastructure.png",
       "cta"  : { "text": "Read more", "url": "#0" },
-      "text" : "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers."
+      "caption": "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers."
     }
   ],
   "portal": {
@@ -129,18 +161,33 @@
         { "text": "Code of Ethics", "url": "#0" }
     ]
   },
-  "asce7_body": [
+  "foundation": {
+    "caption": "Making a positive change in our communities is possible… but only if we start now, set our sights high, and work together."
+  },
+  "asce7": {
+    "image": "./images/asce7.png",
+    "links": [
+      { "text": "Provisions & Commentary", "url": "#0" },
+      { "text": "Guides & more", "url": "#0" }
+    ],
+    "body": [
       "<h2>ASCE 7 Online</h2>",
       "<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>",
       "<a clas=\"c-Button\" href=\"#0\">Learn More</a>",
       "<h2>ASCE 7 Hazard Tool</h2>",
       "<p>Look up key design parameters as specified by ASCE 7.</p>",
       "<a clas=\"c-Button\" href=\"#0\">Learn More</a>"
-  ],
-  "cemag_body": [
+    ]
+  },
+  "cemag": {
+    "image": "./images/cecover.png",
+    "links": [
+      { "text": "Learn More", "url": "#0" }
+    ],
+    "body": [
     "<h2>Featured this Month</h2>",
     "<article>",
-      "<p><img src=\"./images/cefeatured.png\"/></p>",
+      "<p><img src=\"./images/cefeatured.png\" alt=\"\"/></p>",
       "<h3>Topographic Transformation</h3>",
       "<p><time datetime=\"2017-06\">June 2017</time></p>",
       "<p>The formerly flat Governors Island, in New York City harbor, is home ",
@@ -150,19 +197,26 @@
         "even where they are the steepest.</p>",
       "<p><a href=\"#0\">Read more</a></p>",
     "</article>"
-  ],
-  "tech_info_links": [
+    ]
+  },
+  "tech_info": {
+    "image": "./images/techinfo.png",
+    "links": [
     { "text": "Find a local group"   , "url": "#0" },
     { "text": "Browse publications"  , "url": "#0" },
     { "text": "Register for a course", "url": "#0" },
     { "text": "Find a conference"    , "url": "#0" }
-  ],
-  "get_involved_links": [
+    ]
+  },
+  "get_involved": {
+    "image": "./images/involved.png",
+    "links": [
     { "text": "View volunteer opportunities", "url": "#0" },
     { "text": "Find a Section or Branch"    , "url": "#0" },
     { "text": "Visit ASCE Collaborate"      , "url": "#0" },
     { "text": "Find a committee"            , "url": "#0" }
-  ],
+    ]
+  },
   "whats_happening": [
     { "title": "ASCE’s New Infrastructure Report Card: Another D+, But Solutions Available", "url": "#0", "image": "./images/news1.png", "datetime": "2017-03-09" },
     { "title": "Emergency and Carryover Storage Project Earns OCEA"                        , "url": "#0", "image": "./images/news2.png", "datetime": "2017-03-16" },
@@ -173,32 +227,19 @@
       "name" : "Katie Haslett",
       "title": "Student Member",
       "image": "./images/member1.png",
-      "quote": [
-        "The impact of seeing successful female engineering professiors ",
-        "has motivated and inspired me to want to make a difference, ",
-        "and work towards making contributions that will affect the future ",
-        "and how things are done from an engineering perspective."
-      ]
+      "quote": "The impact of seeing successful female engineering professiors has motivated and inspired me to want to make a difference, and work towards making contributions that will affect the future and how things are done from an engineering perspective."
     },
     {
       "name" : "Nakeia Jackson",
       "title": "2017 New Faces of Civil Engineering",
       "image": "./images/member2.png",
-      "quote": [
-        "When you become an engineer, you are always proud of the work you create. ",
-        "Your work is your own creativity and it’s thrilling to make something ",
-        "on paper come to life."
-      ]
+      "quote": "When you become an engineer, you are always proud of the work you create. Your work is your own creativity and it’s thrilling to make something on paper come to life."
     },
     {
       "name" : "Damani Nkeiruka",
       "title": "Distinguished Member",
       "image": "./images/member3.png",
-      "quote": [
-        "There are so many infrastructure and transportation issues that need ",
-        "to be solved, and I am excited to bring my knowledge, passion, and ",
-        "can-do attitude into that field."
-      ]
+      "quote": "There are so many infrastructure and transportation issues that need to be solved, and I am excited to bring my knowledge, passion, and can-do attitude into that field."
     }
   ]
 }
@@ -211,11 +252,10 @@
     <p>Header and Megamenu</p>
   </header>
   <main id="main">
-    <div class="c-Hero" id="hero">
-      <!-- QUESTION: is the background-image hard-coded? -->
+    <div class="c-Hero" id="hero" style="background-image: url('{{ image }}');">
       <p class="c-Hero__Bar">
-        <span>The 2017 Report Card for America’s Infrastructure is available now.</span>
-        <a href="#0">View the Report Card</a>
+        <span class="c-Hero__Cap">{{ caption }}</span>
+        <a class="c-Hero__Cta" href="{{ ctaurl }}">{{ ctatext }}</a>
       </p>
     </div>
     <section class="o-Runner" id="we-represent">
@@ -230,10 +270,9 @@
     <aside>ADVERTISEMENT</aside>
     <section class="o-Runner" id="jobs">
       <h1>Jobs</h1>
-      <!-- QUESTION: review the outline of this section -->
       <section id="featured-jobs">
         <h1>Featured Jobs</h1>
-        <ul class="o-List o-Grid o-Grid--jobs" data-each="jobs">
+        <ul class="o-List o-Grid o-Grid--jobs" data-list="jobs">
           <template>
             <li class="o-List__Item o-Grid__Item">
               <div class="c-JobListing">
@@ -250,14 +289,13 @@
       </section>
       <section id="career-connections">
         <h1>Career Connections</h1>
-        <!-- QUESTION: is everything in this section hard-coded? -->
         <p><a href="#0">Visit ASCE Career Connections</a> for additional career resources.</p>
         <p><a class="c-Button" href="#0">Find a job</a></p>
       </section>
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <ul class="o-List" data-each="promotions">
+      <ul class="o-List" data-list="promotions">
         <template>
           <li class="o-List__Item">
             <section class="c-Promotion" style="background-image: url('{{ image }}');">
@@ -271,87 +309,50 @@
     </section>
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
-      <ol class="o-List o-Grid o-Grid--portals" data-each="portals">
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Membership"               icon="nameplate"    list="membership"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Continuing Education"     icon="education"    list="cont_ed"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Publications"             icon="book-open"    list="pubs"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Conferences &amp; Events" icon="calendar"     list="conf_events"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Professional"             icon="address-book" list="professional"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Careers"                  icon="briefcase"    list="careers"></x-portal></li>
+      <ol class="o-List o-Grid o-Grid--portals">
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Membership"           icon="nameplate"    list="membership"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Continuing Education" icon="education"    list="cont_ed"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Publications"         icon="book-open"    list="pubs"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Conferences & Events" icon="calendar"     list="conf_events"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Professional"         icon="address-book" list="professional"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Careers"              icon="briefcase"    list="careers"></x-portal></li>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
     <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation">
       <h1>ASCE Foundation</h1>
-      <!-- QUESTION: are this graf and stat hard-coded? -->
-      <p>Making a positive change in our communities is possible… but only if we
-        start now, set our sights high, and work together.</p>
+      <p>{{ caption }}</p>
       <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0"></x-stat>
     </section>
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
-      <section class="o-Grid__Item c-Pub" id="asce7">
-        <!-- QUESTION: which parts of this are hard-coded? -->
-        <img class="c-Pub__Img" src="./images/asce7.png"/>
-        <h1 class="c-Pub__Hn">ASCE 7</h1>
-        <p class="c-Pub__Desc"><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16</p>
-        <ul class="o-List c-Pub__Links">
-          <li class="o-List__Item"><a href="#0">Provisions &amp; Commentary</a></li>
-          <li class="o-List__Item"><a href="#0">Guides &amp; more</a></li>
-        </ul>
-        <article class="c-Pub__Body" data-if="asce7_body">
-          <template><div></div></template>
-        </article>
-      </section>
-      <section class="o-Grid__Item c-Pub" id="civil-engineering-magazine">
-        <!-- QUESTION: which parts of this are hard-coded? -->
-        <img class="c-Pub__Img" src="./images/cecover.png"/>
-        <h1 class="c-Pub__Hn">Civil Engineering Magazine</h1>
-        <p class="c-Pub__Desc">The Official magazine of the American Society of Civil Engineers.</p>
-        <ul class="o-List c-Pub__Links">
-          <li class="o-List__Item"><a class="c-Button" href="#0">Learn More</a></li>
-        </ul>
-        <article class="c-Pub__Body" data-if="cemag_body">
-          <template><div></div></template>
-        </article>
-      </section>
+      <x-pub id="asce7" name="ASCE 7" list="asce7.links" body="asce7.body">
+        <cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16.
+      </x-pub>
+      <x-pub id="civil-engineering-magazine" name="Civil Engineering Magazine" list="cemag.links" body="cemag.body">
+        The official magazine of the American Society of Civil Engineers.
+      </x-pub>
     </section>
     <section class="o-Grid o-Grid--learnContribute o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
-      <section class="o-Grid__Item" id="technical-information">
-        <header>
-          <h1>Technical Infomation</h1>
-          <p>Access the latest technical information in your discipline.</p>
-        </header>
-        <ul data-each="tech_info_links">
-          <template>
-            <li><a href="{{ url }}">{{ text }}</a></li>
-          </template>
-        </ul>
-      </section>
-      <section class="o-Grid__Item" id="get-involved">
-        <header>
-          <h1>Get Involved</h1>
-          <p>Dedicate your time and expertise to a cause that is important to you.</p>
-        </header>
-        <ul data-each="get_involved_links">
-          <template>
-            <li><a href="{{ url }}">{{ text }}</a></li>
-          </template>
-        </ul>
-      </section>
+      <x-learncontrib id="technical-information" name="Technical Information" list="tech_info.links">
+        Access the latest technical information in your discipline.
+      </x-learncontrib>
+      <x-learncontrib id="get-involved" name="Get Involved" list="get_involved.links">
+        Dedicate your time and expertise to a cause that is important to you.
+      </x-learncontrib>
     </section>
     <section class="o-Runner" id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
-      <ul class="o-List o-Grid o-Grid--whatsHappening" data-each="whats_happening">
+      <ul class="o-List o-Grid o-Grid--whatsHappening" data-list="whats_happening">
         <template>
           <li class="o-List__Item o-Grid__Item">
             <div class="c-ArticleTeaser">
-              <img class="c-ArticleTeaser__Img" src="{{ image }}"/>
+              <img class="c-ArticleTeaser__Img" src="{{ image }}" alt=""/>
               <p class="c-ArticleTeaser__Hn">
                 <a class="c-ArticleTeaser__Link" href="{{ url }}">{{ title }}</a>
               </p>
-              <p class="c-ArticleTeaser__Date">{{ datetime }}</p>
+              <p class="c-ArticleTeaser__Date"><time datetime="{{ date_iso }}">{{ date_str }}</time></p>
             </div>
           </li>
         </template>
@@ -360,11 +361,11 @@
     </section>
     <section class="o-Runner" id="member-stories">
       <h1>ASCE Member Stories</h1>
-      <ul class="o-List o-Grid o-Grid--members" data-each="member_stories">
+      <ul class="o-List o-Grid o-Grid--members" data-list="member_stories">
         <template>
           <li class="o-List__Item o-Grid__Item">
             <div class="c-MemberStory">
-              <img class="c-MemberStory__Img" src="{{ image }}"/>
+              <img class="c-MemberStory__Img" src="{{ image }}" alt=""/>
               <p class="c-MemberStory__Hn">{{ name }}</p>
               <p class="c-MemberStory__SubHn">{{ title }}</p>
               <blockquote class="c-MemberStory__Quote">{{ quote }}</blockquote>
@@ -401,28 +402,59 @@
       },
       data: JSON.parse(document.querySelector('script#data').textContent),
     }
-
-    function populateElementWithData(element, data, generator) {
-      if (generator) {
-        element.appendChild(generator.call(null, element.querySelector('template').content.cloneNode(true), data))
+    /**
+     * @summary Fill an element with text.
+     * @description If the text is plain, the element’s `.textContent` attribute is used.
+     * If the text is rich (allowing HTML elements), the element’s `.innerHTML` attribute is used.
+     * The text given can either be a string or an array of strings.
+     * @param   {Element} element the element to modify
+     * @param   {(string|Array<string>)} data the text to fill
+     * @param   {boolean=} rich if `true`, use `innerHTML`; otherwise, use `textContent`
+     * @returns {Element} the modified Element
+     */
+    function setElementText(element, data, rich = false) {
+      if (rich) {
+        element.innerHTML = ((typeof data === 'string') ? data : data.join('')) // NOTE flow content
       } else {
-        element.innerHTML += data.toString()
+        element.textContent = ((typeof data === 'string') ? data : data.join('')) // NOTE flow content
       }
+      return element
     }
-    function populateListWithData(list, data, generator) {
-      data.forEach(function (d) {
-        if (generator) {
-          list.appendChild(generator.call(null, list.querySelector('template').content.cloneNode(true), d))
-        } else {
-          list.innerHTML += d.toString()
-        }
-      })
+    /**
+     * Append to an element a document fragment, filled in with data.
+     * The element must have a single <template> element child.
+     * @param   {Element} element the element to modify
+     * @param   {!Object} data any non-nullible object
+     * @param   {?(function(DocumentFragment,!Object):DocumentFragment)=} generator a function that fills in a document fragment with data
+     * @returns {Element} the modified Element
+     */
+    function populateElementWithData(element, data, generator = null) {
+      let documentfragment;
+      try {
+        documentfragment = element.querySelector('template').content
+      } catch (e) {
+        throw new ReferenceError('The selected element does not have a <template> child.')
+      }
+      element.append((generator) ? generator.call(null, documentfragment.cloneNode(true), data) : data.toString())
+      return element
     }
-    function populateNamedElementWithData(name, generator) {
-      populateElementWithData(document.querySelector(`[data-if="${name}"]`), global.data[name] || '', generator)
-    }
-    function populateNamedListWithData(name, generator) {
-      populateListWithData(document.querySelector(`[data-each="${name}"]`), global.data[name] || [], generator)
+    /**
+     * Append to an element one or more document fragments, filled with data.
+     * The element must have a single <template> element child.
+     * @param   {Element} element the element to modify
+     * @param   {Array<!Object>} data any array of non-nullible objects
+     * @param   {?(function(DocumentFragment,!Object):DocumentFragment)=} generator a function that fills in a document fragment with data
+     * @returns {Element} the modified Element
+     */
+    function populateListWithData(element, data, generator = null) {
+      let documentfragment;
+      try {
+        documentfragment = element.querySelector('template').content
+      } catch (e) {
+        throw new ReferenceError('The selected element does not have a <template> child.')
+      }
+      element.append(...data.map((d) => (generator) ? generator.call(null, documentfragment.cloneNode(true), d) : d.toString()))
+      return element
     }
 
     window.customElements.define('x-portal', class XPortal extends HTMLElement {
@@ -430,64 +462,109 @@
         super()
         let returned = document.querySelector('template#x-portal').content.cloneNode(true)
         returned.querySelector('.c-Portal__Icon').className = returned.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
-        returned.querySelector('.c-Portal__Hn'  ).innerHTML = this.getAttribute('title')
+        returned.querySelector('.c-Portal__Hn'  ).textContent = this.getAttribute('name')
+        returned.querySelector('.c-Portal__List').setAttribute('data-list', this.getAttribute('list'))
         this.appendChild(returned)
       }
     })
+window.customElements.define('x-pub', class XPub extends HTMLElement {
+  constructor () {
+    super()
+    let returned = document.querySelector('template#x-pub').content.cloneNode(true)
+    returned.querySelector('.c-Pub__Hn').textContent = this.getAttribute('name')
+    returned.querySelector('.c-Pub__Cap').innerHTML = this.innerHTML // NOTE rich text
+    returned.querySelector('.c-Pub__List').setAttribute('data-list', this.getAttribute('list'))
+    returned.querySelector('.c-Pub__Body').setAttribute('data-text', this.getAttribute('body'))
+    while (this.childNodes.length) { this.firstChild.remove() }
+    this.appendChild(returned)
+  }
+})
+window.customElements.define('x-learncontrib', class XLearnContrib extends HTMLElement {
+  constructor () {
+    super()
+    let returned = document.querySelector('template#x-learncontrib').content.cloneNode(true)
+    returned.querySelector('.c-LearnContrib__Hn').textContent = this.getAttribute('name')
+    returned.querySelector('.c-LearnContrib__Cap').innerHTML = this.innerHTML // NOTE rich text
+    returned.querySelector('.c-LearnContrib__List').setAttribute('data-list', this.getAttribute('list'))
+    while (this.childNodes.length) { this.firstChild.remove() }
+    this.appendChild(returned)
+  }
+})
 
-    populateNamedListWithData('jobs', function (frag, datum) {
+    document.querySelector('.c-Hero').style.setProperty('background-image', `url('${global.data.hero.image}')`)
+    document.querySelector('.c-Hero__Bar span').textContent = global.data.hero.caption
+    document.querySelector('.c-Hero__Bar a').setAttribute('href', global.data.hero.cta.url)
+    document.querySelector('.c-Hero__Bar a').textContent = global.data.hero.cta.text
+
+    populateListWithData(document.querySelector('[data-list="jobs"]'), global.data.jobs, function (frag, datum) {
       frag.querySelector('.c-JobListing__Link').setAttribute('href', datum.url)
       frag.querySelector('.c-JobListing__Link').textContent = datum.title
       frag.querySelector('.c-JobListing__Org' ).textContent = datum.organization
       frag.querySelector('.c-JobListing__Loc' ).textContent = datum.location
       return frag
     })
-    populateNamedListWithData('promotions', function (frag, datum) {
+
+    populateListWithData(document.querySelector('[data-list="promotions"]'), global.data.promotions, function (frag, datum) {
       frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${datum.image}')`)
-      frag.querySelector('.c-Promotion__Hn'  ).innerHTML = datum.title
+      frag.querySelector('.c-Promotion__Hn'  ).textContent = datum.title
       frag.querySelector('.c-Promotion__Cta' ).setAttribute('href', datum.cta.url)
       frag.querySelector('.c-Promotion__Cta' ).textContent = datum.cta.text
-      frag.querySelector('.c-Promotion__Text').innerHTML = ((typeof datum.text === 'string') ? datum.text : datum.text.join(''))
+      frag.querySelector('.c-Promotion__Text').textContent = datum.caption
       return frag
     })
     document.querySelectorAll('.c-Portal__List').forEach(function(list) {
-      let portalname = list.parentElement.parentElement.getAttribute('list')
-      populateListWithData(list, global.data.portal[portalname], function (innerfrag, link) {
+      populateListWithData(list, global.data.portal[list.getAttribute('data-list')], function (innerfrag, link) {
         innerfrag.querySelector('.c-Portal__List__Item > a').setAttribute('href', link.url)
         innerfrag.querySelector('.c-Portal__List__Item > a').textContent = link.text
         return innerfrag
       })
     })
-    populateNamedElementWithData('asce7_body', function (frag, datum) {
-      frag.querySelector('div').innerHTML = ((typeof datum === 'string') ? datum : datum.join(''))
+
+    setElementText(document.querySelector('#asce-foundation > p'), global.data.foundation.caption)
+
+    document.querySelector('#asce7 .c-Pub__Img').setAttribute('src', global.data.asce7.image)
+    populateListWithData(document.querySelector('[data-list="asce7.links"]'), global.data.asce7.links, function (frag, datum) {
+      frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-Pub__Link').textContent = datum.text
       return frag
     })
-    populateNamedElementWithData('cemag_body', function (frag, datum) {
-      frag.querySelector('div').innerHTML = ((typeof datum === 'string') ? datum : datum.join(''))
+    setElementText(document.querySelector('[data-text="asce7.body"]'), global.data.asce7.body, true)
+
+    document.querySelector('#civil-engineering-magazine .c-Pub__Img').setAttribute('src', global.data.cemag.image)
+    populateListWithData(document.querySelector('[data-list="cemag.links"]'), global.data.cemag.links, function (frag, datum) {
+      frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-Pub__Link').textContent = datum.text
       return frag
     })
-    populateNamedListWithData('tech_info_links', function (frag, datum) {
-      frag.querySelector('a').setAttribute('href', datum.url)
-      frag.querySelector('a').textContent = datum.text
+    setElementText(document.querySelector('[data-text="cemag.body"]'), global.data.cemag.body, true)
+
+    document.querySelector('#technical-information header').style.setProperty('background-image', `url('${global.data.tech_info.image}')`)
+    populateListWithData(document.querySelector('[data-list="tech_info.links"]'), global.data.tech_info.links, function (frag, datum) {
+      frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
       return frag
     })
-    populateNamedListWithData('get_involved_links', function (frag, datum) {
-      frag.querySelector('a').setAttribute('href', datum.url)
-      frag.querySelector('a').textContent = datum.text
+    document.querySelector('#get-involved header').style.setProperty('background-image', `url('${global.data.get_involved.image}')`)
+    populateListWithData(document.querySelector('[data-list="get_involved.links"]'), global.data.get_involved.links, function (frag, datum) {
+      frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
       return frag
     })
-    populateNamedListWithData('whats_happening', function (frag, datum) {
+
+    populateListWithData(document.querySelector('[data-list="whats_happening"]'), global.data.whats_happening, function (frag, datum) {
       frag.querySelector('.c-ArticleTeaser__Img').setAttribute('src', datum.image)
       frag.querySelector('.c-ArticleTeaser__Link').setAttribute('href', datum.url)
       frag.querySelector('.c-ArticleTeaser__Link').textContent = datum.title
-      frag.querySelector('.c-ArticleTeaser__Date').innerHTML = global.formatDate(new Date(datum.datetime))
+      frag.querySelector('.c-ArticleTeaser__Date > time').setAttribute('datetime', datum.datetime) // TODO use `HTMLTimeElement#dateTime` property
+      frag.querySelector('.c-ArticleTeaser__Date > time').textContent = global.formatDate(new Date(datum.datetime))
       return frag
     })
-    populateNamedListWithData('member_stories', function (frag, datum) {
+
+    populateListWithData(document.querySelector('[data-list="member_stories"]'), global.data.member_stories, function (frag, datum) {
       frag.querySelector('.c-MemberStory__Img').setAttribute('src', datum.image)
       frag.querySelector('.c-MemberStory__Hn').textContent = datum.name
       frag.querySelector('.c-MemberStory__SubHn').textContent = datum.title
-      frag.querySelector('.c-MemberStory__Quote').innerHTML = ((typeof datum.quote === 'string') ? datum.quote : datum.quote.join(''))
+      frag.querySelector('.c-MemberStory__Quote').textContent = datum.quote
       return frag
     })
 
@@ -497,11 +574,10 @@
       super()
       let returned = document.querySelector('template#x-stat').content.cloneNode(true)
       returned.querySelector('.c-Stat__Icon').className = returned.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
-      returned.querySelector('.c-Stat__Num' ).innerHTML = this.getAttribute('number')
-      returned.querySelector('.c-Stat__Text').innerHTML = this.getAttribute('text')
+      returned.querySelector('.c-Stat__Num' ).textContent = this.getAttribute('number')
+      returned.querySelector('.c-Stat__Text').textContent = this.getAttribute('text')
       returned.querySelector('.c-Stat__Cta' ).setAttribute('href', this.getAttribute('ctaurl'))
-      returned.querySelector('.c-Stat__Cta' ).innerHTML = this.getAttribute('ctatext')
-      while (this.firstChild) { this.firstChild.remove() }
+      returned.querySelector('.c-Stat__Cta' ).textContent = this.getAttribute('ctatext')
       this.appendChild(returned)
     }
     })
