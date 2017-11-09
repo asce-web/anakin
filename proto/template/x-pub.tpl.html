@@ -1,0 +1,15 @@
+<template>
+  <section class="o-Grid__Item c-Pub">
+    <img class="c-Pub__Img" src="{{ database__image }}" alt=""/>
+    <h1 class="c-Pub__Hn">{{ title }}</h1>
+    <p class="c-Pub__Cap">{{ caption }}</p>
+    <ul class="o-List c-Pub__List" data-list="{{ list }}">
+      <template>
+        <li class="o-List__Item c-Pub__List__Item">
+          <a class="c-Pub__Link" href="{{ database__url }}">{{ database__text }}</a>
+        </li>
+      </template>
+    </ul>
+    <article class="c-Pub__Body" data-text="{{ body }}">{{ database__content }}</article>
+  </section>
+</template>
