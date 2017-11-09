@@ -269,12 +269,12 @@
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals" data-each="portals">
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Membership"               icon="nameplate"    list="membership"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Continuing Education"     icon="education"    list="cont_ed"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Publications"             icon="book-open"    list="pubs"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Conferences &amp; Events" icon="calendar"     list="conf_events"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Professional"             icon="address-book" list="professional"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal title="Careers"                  icon="briefcase"    list="careers"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Membership"           icon="nameplate"    list="membership"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Continuing Education" icon="education"    list="cont_ed"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Publications"         icon="book-open"    list="pubs"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Conferences & Events" icon="calendar"     list="conf_events"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Professional"         icon="address-book" list="professional"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Careers"              icon="briefcase"    list="careers"></x-portal></li>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -424,7 +424,7 @@
         super()
         let returned = document.querySelector('template#x-portal').content.cloneNode(true)
         returned.querySelector('.c-Portal__Icon').className = returned.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
-        returned.querySelector('.c-Portal__Hn'  ).textContent = this.getAttribute('title')
+        returned.querySelector('.c-Portal__Hn'  ).textContent = this.getAttribute('name')
         returned.querySelector('.c-Portal__List').setAttribute('data-list', this.getAttribute('list'))
         this.appendChild(returned)
       }
