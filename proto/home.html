@@ -46,6 +46,21 @@
             </section>
         </template>
     <!-- REVIEW INDENTATION -->
+  <template id="x-pub">
+      <section class="o-Grid__Item c-Pub">
+        <img class="c-Pub__Img" src="{{ database__image }}" alt=""/>
+        <h1 class="c-Pub__Hn">{{ title }}</h1>
+        <p class="c-Pub__Cap">{{ caption }}</p>
+        <ul class="o-List c-Pub__List" data-list="{{ list }}">
+          <template>
+            <li class="o-List__Item c-Pub__List__Item">
+              <a class="c-Pub__Link" href="{{ database__url }}">{{ database__text }}</a>
+            </li>
+          </template>
+        </ul>
+        <article class="c-Pub__Body" data-text="{{ body }}">{{ database__content }}</article>
+      </section>
+  </template>
   <script id="data" type="application/json">
 {
   "hero": {
@@ -296,32 +311,12 @@
     </section>
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
-      <section class="o-Grid__Item c-Pub" id="asce7">
-        <img class="c-Pub__Img" src="{{ image }}" alt=""/>
-        <h1 class="c-Pub__Hn">ASCE 7</h1>
-        <p class="c-Pub__Desc"><cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16.</p>
-        <ul class="o-List c-Pub__List" data-list="asce7.links">
-          <template>
-            <li class="o-List__Item c-Pub__List__Item">
-              <a class="c-Pub__Link" href="{{ url }}">{{ text }}</a>
-            </li>
-          </template>
-        </ul>
-        <article class="c-Pub__Body" data-text="asce7.body">{{ content }}</article>
-      </section>
-      <section class="o-Grid__Item c-Pub" id="civil-engineering-magazine">
-        <img class="c-Pub__Img" src="{{ image }}" alt=""/>
-        <h1 class="c-Pub__Hn">Civil Engineering Magazine</h1>
-        <p class="c-Pub__Desc">The official magazine of the American Society of Civil Engineers.</p>
-        <ul class="o-List c-Pub__List" data-list="cemag.links">
-          <template>
-            <li class="o-List__Item c-Pub__List__Item">
-              <a class="c-Pub__Link" href="{{ url }}">{{ text }}</a>
-            </li>
-          </template>
-        </ul>
-        <article class="c-Pub__Body" data-text="cemag.body">{{ content }}</article>
-      </section>
+      <x-pub id="asce7" name="ASCE 7" list="asce7.links" body="asce7.body">
+        <cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16.
+      </x-pub>
+      <x-pub id="civil-engineering-magazine" name="Civil Engineering Magazine" list="cemag.links" body="cemag.body">
+        The official magazine of the American Society of Civil Engineers.
+      </x-pub>
     </section>
     <section class="o-Grid o-Grid--learnContribute o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
@@ -477,6 +472,20 @@
         this.appendChild(returned)
       }
     })
+window.customElements.define('x-pub', class XPub extends HTMLElement {
+  constructor () {
+    super()
+    let returned = document.querySelector('template#x-pub').content.cloneNode(true)
+    returned.querySelector('.c-Pub').id = this.getAttribute('x-id')
+    // returned.querySelector('.c-Pub').id = returned.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
+    returned.querySelector('.c-Pub__Hn').textContent = this.getAttribute('name')
+    returned.querySelector('.c-Pub__Cap').innerHTML = this.innerHTML // NOTE rich text
+    returned.querySelector('.c-Pub__List').setAttribute('data-list', this.getAttribute('list'))
+    returned.querySelector('.c-Pub__Body').setAttribute('data-text', this.getAttribute('body'))
+    while (this.childNodes.length) { this.firstChild.remove() }
+    this.appendChild(returned)
+  }
+})
 
     document.querySelector('.c-Hero').style.setProperty('background-image', `url('${global.data.hero.image}')`)
     document.querySelector('.c-Hero__Bar span').textContent = global.data.hero.caption
