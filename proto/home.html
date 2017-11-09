@@ -139,23 +139,22 @@
     "links": [
       { "text": "Provisions & Commentary", "url": "#0" },
       { "text": "Guides & more", "url": "#0" }
-    ]
-  },
-  "asce7_body": [
+    ],
+    "body": [
       "<h2>ASCE 7 Online</h2>",
       "<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>",
       "<a clas=\"c-Button\" href=\"#0\">Learn More</a>",
       "<h2>ASCE 7 Hazard Tool</h2>",
       "<p>Look up key design parameters as specified by ASCE 7.</p>",
       "<a clas=\"c-Button\" href=\"#0\">Learn More</a>"
-  ],
+    ]
+  },
   "cemag": {
     "image": "./images/cecover.png",
     "links": [
       { "text": "Learn More", "url": "#0" }
-    ]
-  },
-  "cemag_body": [
+    ],
+    "body": [
     "<h2>Featured this Month</h2>",
     "<article>",
       "<p><img src=\"./images/cefeatured.png\" alt=\"\"/></p>",
@@ -168,7 +167,8 @@
         "even where they are the steepest.</p>",
       "<p><a href=\"#0\">Read more</a></p>",
     "</article>"
-  ],
+    ]
+  },
   "tech_info": {
     "image": "./images/techinfo.png"
   },
@@ -305,9 +305,7 @@
             <li class="o-List__Item"><a href="{{ url }}">{{ text }}</a></li>
           </template>
         </ul>
-        <article class="c-Pub__Body" data-if="asce7_body">
-          <template></template>
-        </article>
+        <article class="c-Pub__Body" data-text="asce7.body">{{ content }}</article>
       </section>
       <section class="o-Grid__Item c-Pub" id="civil-engineering-magazine">
         <img class="c-Pub__Img" src="{{ image }}" alt=""/>
@@ -318,9 +316,7 @@
             <li class="o-List__Item"><a href="{{ url }}">{{ text }}</a></li>
           </template>
         </ul>
-        <article class="c-Pub__Body" data-if="cemag_body">
-          <template></template>
-        </article>
+        <article class="c-Pub__Body" data-text="cemag.body">{{ content }}</article>
       </section>
     </section>
     <section class="o-Grid o-Grid--learnContribute o-Runner" id="learn-contribute">
@@ -409,13 +405,32 @@
       data: JSON.parse(document.querySelector('script#data').textContent),
     }
 
-    function populateElementWithData(element, data, generator) {
-      if (generator) {
-        element.appendChild(generator.call(null, element.querySelector('template').content.cloneNode(true), data))
+    /**
+     * @summary Fill an element with text.
+     * @description If the text is plain, the element’s `.textContent` attribute is used.
+     * If the text is rich (allowing HTML elements), the element’s `.innerHTML` attribute is used.
+     * The text given can either be a string or an array of strings.
+     * @param   {string} selector the selector with which `document.querySelector()` is called. note the single selector.
+     * @param   {(string|Array<string>)} data the text to fill
+     * @param   {boolean=} rich if `true`, use `innerHTML`; otherwise, use `textContent`
+     * @returns {Element} the modified DOM Element
+     */
+    function populateElementWithText(selector, data, rich = false) {
+      let element = document.querySelector(selector)
+      if (rich) {
+        element.innerHTML = ((typeof data === 'string') ? data : data.join('')) // NOTE flow content
       } else {
-        element.innerHTML += data.toString()
+        element.textContent = ((typeof data === 'string') ? data : data.join('')) // NOTE flow content
       }
+      return element
     }
+    // function populateElementWithData(element, data, generator) {
+    //   if (generator) {
+    //     element.appendChild(generator.call(null, element.querySelector('template').content.cloneNode(true), data))
+    //   } else {
+    //     element.innerHTML += data.toString()
+    //   }
+    // }
     function populateListWithData(list, data, generator) {
       data.forEach(function (d) {
         if (generator) {
@@ -424,9 +439,6 @@
           list.innerHTML += d.toString()
         }
       })
-    }
-    function populateNamedElementWithData(name, generator) {
-      populateElementWithData(document.querySelector(`[data-if="${name}"]`), global.data[name] || '', generator)
     }
     function populateNamedListWithData(name, generator) {
       populateListWithData(document.querySelector(`[data-each="${name}"]`), global.data[name] || [], generator)
@@ -479,12 +491,7 @@
       frag.querySelector('a').textContent = datum.text
       return frag
     })
-    populateNamedElementWithData('asce7_body', function (frag, datum) {
-      let returned = document.createElement('div')
-      returned.innerHTML = ((typeof datum === 'string') ? datum : datum.join('')) // NOTE flow content
-      frag.appendChild(returned)
-      return frag
-    })
+    populateElementWithText('[data-text="asce7.body"]', global.data.asce7.body, true)
 
     document.querySelector('#civil-engineering-magazine .c-Pub__Img').setAttribute('src', global.data.cemag.image)
     populateListWithData(document.querySelector('[data-each="cemag.links"]'), global.data.cemag.links, function (frag, datum) {
@@ -492,12 +499,8 @@
       frag.querySelector('a').textContent = datum.text
       return frag
     })
-    populateNamedElementWithData('cemag_body', function (frag, datum) {
-      let returned = document.createElement('div')
-      returned.innerHTML = ((typeof datum === 'string') ? datum : datum.join('')) // NOTE flow content
-      frag.appendChild(returned)
-      return frag
-    })
+    populateElementWithText('[data-text="cemag.body"]', global.data.cemag.body, true)
+
     document.querySelector('#technical-information header').style.setProperty('background-image', `url('${global.data.tech_info.image}')`)
     populateNamedListWithData('tech_info_links', function (frag, datum) {
       frag.querySelector('a').setAttribute('href', datum.url)
