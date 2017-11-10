@@ -132,9 +132,9 @@ window.customElements.define('x-learncontrib', class XLearnContrib extends HTMLE
 //////////////// FILL IN ALL THE DATA ////////////////
 //////// Hero ////////
 document.querySelector('.c-Hero').style.setProperty('background-image', `url('${global.database.hero.image}')`)
-document.querySelector('.c-Hero__Bar span').textContent = global.database.hero.caption
-document.querySelector('.c-Hero__Bar a').setAttribute('href', global.database.hero.cta.url)
-document.querySelector('.c-Hero__Bar a').textContent = global.database.hero.cta.text
+document.querySelector('.c-Hero__Cap').textContent = global.database.hero.caption
+document.querySelector('.c-Hero__Cta').setAttribute('href', global.database.hero.cta.url)
+document.querySelector('.c-Hero__Cta').textContent = global.database.hero.cta.text
 
 
 //////// Jobs ////////
@@ -161,8 +161,8 @@ populateListWithData(document.querySelector('[data-list="promotions"]'), global.
 //////// Portals ////////
 document.querySelectorAll('.c-Portal__List').forEach(function(list) {
   populateListWithData(list, global.database.portal[list.getAttribute('data-list')], function (innerfrag, link) {
-    innerfrag.querySelector('.c-Portal__List__Item > a').setAttribute('href', link.url)
-    innerfrag.querySelector('.c-Portal__List__Item > a').textContent = link.text
+    innerfrag.querySelector('.c-Portal__Link').setAttribute('href', link.url)
+    innerfrag.querySelector('.c-Portal__Link').textContent = link.text
     return innerfrag
   })
 })
@@ -193,7 +193,7 @@ setElementText(document.querySelector('[data-text="cemag.body"]'), global.databa
 
 
 //////// Technical Information ////////
-document.querySelector('#technical-information header').style.setProperty('background-image', `url('${global.database.tech_info.image}')`)
+document.querySelector('#technical-information .c-LearnContrib__Head').style.setProperty('background-image', `url('${global.database.tech_info.image}')`)
 populateListWithData(document.querySelector('[data-list="tech_info.links"]'), global.database.tech_info.links, function (frag, datum) {
   frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
   frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
@@ -202,7 +202,7 @@ populateListWithData(document.querySelector('[data-list="tech_info.links"]'), gl
 
 
 //////// Get Involved ////////
-document.querySelector('#get-involved header').style.setProperty('background-image', `url('${global.database.get_involved.image}')`)
+document.querySelector('#get-involved .c-LearnContrib__Head').style.setProperty('background-image', `url('${global.database.get_involved.image}')`)
 populateListWithData(document.querySelector('[data-list="get_involved.links"]'), global.database.get_involved.links, function (frag, datum) {
   frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
   frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
