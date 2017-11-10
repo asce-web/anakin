@@ -97,38 +97,74 @@ window.customElements.define('x-portal', class XPortal extends HTMLElement {
   constructor () {
     super()
     let returned = document.querySelector('link[rel="import"][href$="x-portal.tpl.html"]').import.querySelector('template').content.cloneNode(true)
-    returned.querySelector('.c-Portal').setAttribute('data-data', this.getAttribute('data'))
     returned.querySelector('.c-Portal__Icon').className = returned.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
     returned.querySelector('.c-Portal__Hn'  ).textContent = this.getAttribute('name')
     this.appendChild(returned)
+  }
+  populate(data) {
+    populateListWithData(this.querySelector('.c-Portal__List'), data, function (frag, datum) {
+      frag.querySelector('.c-Portal__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-Portal__Link').textContent = datum.text
+      return frag
+    })
   }
 })
 window.customElements.define('x-pub', class XPub extends HTMLElement {
   constructor () {
     super()
     let returned = document.querySelector('link[rel="import"][href$="x-pub.tpl.html"]').import.querySelector('template').content.cloneNode(true)
-    returned.querySelector('.c-Pub').setAttribute('data-data') = this.getAttribute('data')
     returned.querySelector('.c-Pub__Hn').textContent = this.getAttribute('name')
     returned.querySelector('.c-Pub__Cap').innerHTML = this.innerHTML // NOTE rich text
     while (this.childNodes.length) { this.firstChild.remove() }
     this.appendChild(returned)
+  }
+  populate(data) {
+    this.querySelector('.c-Pub__Img').setAttribute('src', data.image)
+    populateListWithData(this.querySelector('.c-Pub__List'), data.links, function (frag, datum) {
+      frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-Pub__Link').textContent = datum.text
+      return frag
+    })
+    setElementText(this.querySelector('.c-Pub__Body'), data.body, true)
   }
 })
 window.customElements.define('x-learncontrib', class XLearnContrib extends HTMLElement {
   constructor () {
     super()
     let returned = document.querySelector('link[rel="import"][href$="x-learncontrib.tpl.html"]').import.querySelector('template').content.cloneNode(true)
-    returned.querySelector('.c-LearnContrib').setAttribute('data-data', this.getAttribute('data'))
     returned.querySelector('.c-LearnContrib__Hn').textContent = this.getAttribute('name')
     returned.querySelector('.c-LearnContrib__Cap').innerHTML = this.innerHTML // NOTE rich text
     while (this.childNodes.length) { this.firstChild.remove() }
     this.appendChild(returned)
   }
+  populate(data) {
+    this.querySelector('.c-LearnContrib__Head').style.setProperty('background-image', `url('${data.image}')`)
+    populateListWithData(this.querySelector('.c-LearnContrib__List'), data.links, function (frag, datum) {
+      frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
+      frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
+      return frag
+    })
+  }
 })
 
 
 
-//////////////// FILL IN ALL THE DATA ////////////////
+//////////////// POPULATE ALL THE DATA ////////////////
+//////// Custom Element Population ////////
+document.querySelectorAll('x-portal').forEach(function (portal) {
+  let dataname = portal.getAttribute('data').split('.')[1]
+  portal.populate(global.database.portal[dataname])
+})
+
+document.querySelectorAll('x-pub').forEach(function (pub) {
+  pub.populate(global.database[pub.getAttribute('data')])
+})
+
+document.querySelectorAll('x-learncontrib').forEach(function (lc) {
+  lc.populate(global.database[lc.getAttribute('data')])
+})
+
+
 //////// Hero ////////
 document.querySelector('.c-Hero').style.setProperty('background-image', `url('${global.database.hero.image}')`)
 document.querySelector('.c-Hero__Cap').textContent = global.database.hero.caption
@@ -157,44 +193,8 @@ populateListWithData(document.querySelector('[data-list="promotions"]'), global.
 })
 
 
-//////// Portals ////////
-document.querySelectorAll('.c-Portal').forEach(function (portal) {
-  let dataname = portal.getAttribute('data-data').split('.')
-  populateListWithData(portal.querySelector('.c-Portal__List'), global.database[dataname[0]][dataname[1]], function (frag, datum) {
-    frag.querySelector('.c-Portal__Link').setAttribute('href', datum.url)
-    frag.querySelector('.c-Portal__Link').textContent = datum.text
-    return frag
-  })
-})
-
-
 //////// Foundation ////////
 setElementText(document.querySelector('#asce-foundation > p'), global.database.foundation.caption)
-
-
-//////// Publication Highlights ////////
-document.querySelectorAll('.c-Pub').forEach(function (publication) {
-  let dataname = publication.getAttribute('data-data')
-  publication.querySelector('.c-Pub__Img').setAttribute('src', global.database[dataname].image)
-  populateListWithData(publication.querySelector('.c-Pub__List'), global.database[dataname].links, function (frag, datum) {
-    frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url)
-    frag.querySelector('.c-Pub__Link').textContent = datum.text
-    return frag
-  })
-  setElementText(publication.querySelector('.c-Pub__Body'), global.database[dataname].body, true)
-})
-
-
-//////// Learn & Contribute ////////
-document.querySelectorAll('.c-LearnContrib').forEach(function (lc) {
-  let dataname = lc.getAttribute('data-data')
-  lc.querySelector('.c-LearnContrib__Head').style.setProperty('background-image', `url('${global.database[dataname].image}')`)
-  populateListWithData(lc.querySelector('.c-LearnContrib__List'), global.database[dataname].links, function (frag, datum) {
-    frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
-    frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
-    return frag
-  })
-})
 
 
 //////// What’s Happening ////////
