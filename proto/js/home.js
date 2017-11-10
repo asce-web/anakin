@@ -107,10 +107,9 @@ window.customElements.define('x-pub', class XPub extends HTMLElement {
   constructor () {
     super()
     let returned = document.querySelector('link[rel="import"][href$="x-pub.tpl.html"]').import.querySelector('template').content.cloneNode(true)
+    returned.querySelector('.c-Pub').setAttribute('data-data') = this.getAttribute('data')
     returned.querySelector('.c-Pub__Hn').textContent = this.getAttribute('name')
     returned.querySelector('.c-Pub__Cap').innerHTML = this.innerHTML // NOTE rich text
-    returned.querySelector('.c-Pub__List').setAttribute('data-list', this.getAttribute('list'))
-    returned.querySelector('.c-Pub__Body').setAttribute('data-text', this.getAttribute('body'))
     while (this.childNodes.length) { this.firstChild.remove() }
     this.appendChild(returned)
   }
@@ -173,24 +172,17 @@ document.querySelectorAll('.c-Portal').forEach(function (portal) {
 setElementText(document.querySelector('#asce-foundation > p'), global.database.foundation.caption)
 
 
-//////// ASCE 7 ////////
-document.querySelector('#asce7 .c-Pub__Img').setAttribute('src', global.database.asce7.image)
-populateListWithData(document.querySelector('[data-list="asce7.links"]'), global.database.asce7.links, function (frag, datum) {
-  frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url)
-  frag.querySelector('.c-Pub__Link').textContent = datum.text
-  return frag
+//////// Publication Highlights ////////
+document.querySelectorAll('.c-Pub').forEach(function (publication) {
+  let dataname = publication.getAttribute('data-data')
+  publication.querySelector('.c-Pub__Img').setAttribute('src', global.database[dataname].image)
+  populateListWithData(publication.querySelector('.c-Pub__List'), global.database[dataname].links, function (frag, datum) {
+    frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url)
+    frag.querySelector('.c-Pub__Link').textContent = datum.text
+    return frag
+  })
+  setElementText(publication.querySelector('.c-Pub__Body'), global.database[dataname].body, true)
 })
-setElementText(document.querySelector('[data-text="asce7.body"]'), global.database.asce7.body, true)
-
-
-//////// CE Magazine ////////
-document.querySelector('#civil-engineering-magazine .c-Pub__Img').setAttribute('src', global.database.cemag.image)
-populateListWithData(document.querySelector('[data-list="cemag.links"]'), global.database.cemag.links, function (frag, datum) {
-  frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url)
-  frag.querySelector('.c-Pub__Link').textContent = datum.text
-  return frag
-})
-setElementText(document.querySelector('[data-text="cemag.body"]'), global.database.cemag.body, true)
 
 
 //////// Technical Information ////////
