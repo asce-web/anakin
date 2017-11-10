@@ -200,10 +200,10 @@
     <p>Header and Megamenu</p>
   </header>
   <main id="main">
-    <div class="c-Hero" id="hero" style="background-image: url('{{ image }}');">
+    <div class="c-Hero" id="hero" style="background-image: url('{{ database__image }}');">
       <p class="c-Hero__Bar">
-        <span class="c-Hero__Cap">{{ caption }}</span>
-        <a class="c-Hero__Cta" href="{{ ctaurl }}">{{ ctatext }}</a>
+        <span class="c-Hero__Cap">{{ database__caption }}</span>
+        <a class="c-Hero__Cta" href="{{ database__cta__url }}">{{ database__cta__text }}</a>
       </p>
     </div>
     <section class="o-Runner" id="we-represent">
@@ -224,11 +224,11 @@
           <template>
             <li class="o-List__Item o-Grid__Item">
               <div class="c-JobListing">
-                <p class="c-JobListing__Hn"><a class="c-JobListing__Link" href="{{ url }}">{{ title }}</a></p>
-                <p class="c-JobListing__Org">{{ organization }}</p>
+                <p class="c-JobListing__Hn"><a class="c-JobListing__Link" href="{{ database__url }}">{{ database__title }}</a></p>
+                <p class="c-JobListing__Org">{{ database__organization }}</p>
                 <p>
                   <i class="c-JobListing__Icon glyphicons glyphicons-map-marker" role="none" aria-hidden="true"></i>
-                  <span class="c-JobListing__Loc">{{ location }}</span>
+                  <span class="c-JobListing__Loc">{{ database__location }}</span>
                 </p>
               </div>
             </li>
@@ -246,10 +246,10 @@
       <ul class="o-List" data-list="promotions">
         <template>
           <li class="o-List__Item">
-            <section class="c-Promotion" style="background-image: url('{{ image }}');">
-              <h1 class="c-Promotion__Hn">{{ title }}</h1>
-              <p class="c-Promotion__Text">{{ text }}</p>
-              <p><a class="c-Promotion__Cta c-Button" href="{{ cta.url }}">{{ cta.text }}</a></p>
+            <section class="c-Promotion" style="background-image: url('{{ database__image }}');">
+              <h1 class="c-Promotion__Hn">{{ database__title }}</h1>
+              <p class="c-Promotion__Text">{{ database__caption }}</p>
+              <p><a class="c-Promotion__Cta c-Button" href="{{ database__cta__url }}">{{ database__cta__text }}</a></p>
             </section>
           </li>
         </template>
@@ -258,35 +258,35 @@
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals">
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Membership"           icon="nameplate"    list="membership"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Continuing Education" icon="education"    list="cont_ed"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Publications"         icon="book-open"    list="pubs"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Conferences & Events" icon="calendar"     list="conf_events"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Professional"         icon="address-book" list="professional"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Careers"              icon="briefcase"    list="careers"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Membership"           icon="nameplate"    data="portal.membership"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Continuing Education" icon="education"    data="portal.cont_ed"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Publications"         icon="book-open"    data="portal.pubs"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Conferences & Events" icon="calendar"     data="portal.conf_events"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Professional"         icon="address-book" data="portal.professional"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Careers"              icon="briefcase"    data="portal.careers"></x-portal></li>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
     <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation">
       <h1>ASCE Foundation</h1>
-      <p>{{ caption }}</p>
+      <p>{{ database__caption }}</p>
       <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0"></x-stat>
     </section>
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
-      <x-pub id="asce7" name="ASCE 7" list="asce7.links" body="asce7.body">
+      <x-pub id="asce7" name="ASCE 7" data="asce7">
         <cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16.
       </x-pub>
-      <x-pub id="civil-engineering-magazine" name="Civil Engineering Magazine" list="cemag.links" body="cemag.body">
+      <x-pub id="civil-engineering-magazine" name="Civil Engineering Magazine" data="cemag">
         The official magazine of the American Society of Civil Engineers.
       </x-pub>
     </section>
     <section class="o-Grid o-Grid--learnContribute o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
-      <x-learncontrib id="technical-information" name="Technical Information" list="tech_info.links">
+      <x-learncontrib id="technical-information" name="Technical Information" data="tech_info">
         Access the latest technical information in your discipline.
       </x-learncontrib>
-      <x-learncontrib id="get-involved" name="Get Involved" list="get_involved.links">
+      <x-learncontrib id="get-involved" name="Get Involved" data="get_involved">
         Dedicate your time and expertise to a cause that is important to you.
       </x-learncontrib>
     </section>
@@ -296,11 +296,11 @@
         <template>
           <li class="o-List__Item o-Grid__Item">
             <div class="c-ArticleTeaser">
-              <img class="c-ArticleTeaser__Img" src="{{ image }}" alt=""/>
+              <img class="c-ArticleTeaser__Img" src="{{ database__image }}" alt=""/>
               <p class="c-ArticleTeaser__Hn">
-                <a class="c-ArticleTeaser__Link" href="{{ url }}">{{ title }}</a>
+                <a class="c-ArticleTeaser__Link" href="{{ database__url }}">{{ database__title }}</a>
               </p>
-              <p class="c-ArticleTeaser__Date"><time datetime="{{ date_iso }}">{{ date_str }}</time></p>
+              <p class="c-ArticleTeaser__Date"><time datetime="{{ database__datetime }}">{{ database__datetime_formatted }}</time></p>
             </div>
           </li>
         </template>
@@ -313,10 +313,10 @@
         <template>
           <li class="o-List__Item o-Grid__Item">
             <div class="c-MemberStory">
-              <img class="c-MemberStory__Img" src="{{ image }}" alt=""/>
-              <p class="c-MemberStory__Hn">{{ name }}</p>
-              <p class="c-MemberStory__SubHn">{{ title }}</p>
-              <blockquote class="c-MemberStory__Quote">{{ quote }}</blockquote>
+              <img class="c-MemberStory__Img" src="{{ database__image }}" alt=""/>
+              <p class="c-MemberStory__Hn">{{ database__name }}</p>
+              <p class="c-MemberStory__SubHn">{{ database__title }}</p>
+              <blockquote class="c-MemberStory__Quote">{{ database__quote }}</blockquote>
             </div>
           </li>
         </template>

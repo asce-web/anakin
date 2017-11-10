@@ -2,12 +2,12 @@
   <section class="c-Portal">
     <h1>
       <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
-      <span class="c-Portal__Hn h-Block">{{ title }}</span>
+      <span class="c-Portal__Hn h-Block">{{ name }}</span>
     </h1>
-    <ul class="o-List c-Portal__List" data-list="{{ list }}">
+    <ul class="o-List c-Portal__List">
       <template>
         <li class="o-List__Item c-Portal__List__Item">
-          <a class="c-Portal__Link" href="{{ url }}">{{ text }}</a>
+          <a class="c-Portal__Link" href="{{ database__url }}">{{ database__text }}</a>
         </li>
       </template>
     </ul>
