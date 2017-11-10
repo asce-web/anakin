@@ -200,10 +200,10 @@
     <p>Header and Megamenu</p>
   </header>
   <main id="main">
-    <div class="c-Hero" id="hero" style="background-image: url('{{ image }}');">
+    <div class="c-Hero" id="hero" style="background-image: url('{{ database__image }}');">
       <p class="c-Hero__Bar">
-        <span class="c-Hero__Cap">{{ caption }}</span>
-        <a class="c-Hero__Cta" href="{{ ctaurl }}">{{ ctatext }}</a>
+        <span class="c-Hero__Cap">{{ database__caption }}</span>
+        <a class="c-Hero__Cta" href="{{ database__cta__url }}">{{ database__cta__text }}</a>
       </p>
     </div>
     <section class="o-Runner" id="we-represent">
@@ -224,11 +224,11 @@
           <template>
             <li class="o-List__Item o-Grid__Item">
               <div class="c-JobListing">
-                <p class="c-JobListing__Hn"><a class="c-JobListing__Link" href="{{ url }}">{{ title }}</a></p>
-                <p class="c-JobListing__Org">{{ organization }}</p>
+                <p class="c-JobListing__Hn"><a class="c-JobListing__Link" href="{{ database__url }}">{{ database__title }}</a></p>
+                <p class="c-JobListing__Org">{{ database__organization }}</p>
                 <p>
                   <i class="c-JobListing__Icon glyphicons glyphicons-map-marker" role="none" aria-hidden="true"></i>
-                  <span class="c-JobListing__Loc">{{ location }}</span>
+                  <span class="c-JobListing__Loc">{{ database__location }}</span>
                 </p>
               </div>
             </li>
@@ -246,10 +246,10 @@
       <ul class="o-List" data-list="promotions">
         <template>
           <li class="o-List__Item">
-            <section class="c-Promotion" style="background-image: url('{{ image }}');">
-              <h1 class="c-Promotion__Hn">{{ title }}</h1>
-              <p class="c-Promotion__Text">{{ text }}</p>
-              <p><a class="c-Promotion__Cta c-Button" href="{{ cta.url }}">{{ cta.text }}</a></p>
+            <section class="c-Promotion" style="background-image: url('{{ database__image }}');">
+              <h1 class="c-Promotion__Hn">{{ database__title }}</h1>
+              <p class="c-Promotion__Text">{{ database__caption }}</p>
+              <p><a class="c-Promotion__Cta c-Button" href="{{ database__cta__url }}">{{ database__cta__text }}</a></p>
             </section>
           </li>
         </template>
@@ -269,7 +269,7 @@
     <aside>ADVERTISEMENT</aside>
     <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation">
       <h1>ASCE Foundation</h1>
-      <p>{{ caption }}</p>
+      <p>{{ database__caption }}</p>
       <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0"></x-stat>
     </section>
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
@@ -296,11 +296,11 @@
         <template>
           <li class="o-List__Item o-Grid__Item">
             <div class="c-ArticleTeaser">
-              <img class="c-ArticleTeaser__Img" src="{{ image }}" alt=""/>
+              <img class="c-ArticleTeaser__Img" src="{{ database__image }}" alt=""/>
               <p class="c-ArticleTeaser__Hn">
-                <a class="c-ArticleTeaser__Link" href="{{ url }}">{{ title }}</a>
+                <a class="c-ArticleTeaser__Link" href="{{ database__url }}">{{ database__title }}</a>
               </p>
-              <p class="c-ArticleTeaser__Date"><time datetime="{{ date_iso }}">{{ date_str }}</time></p>
+              <p class="c-ArticleTeaser__Date"><time datetime="{{ database__datetime }}">{{ database__datetime_formatted }}</time></p>
             </div>
           </li>
         </template>
@@ -313,10 +313,10 @@
         <template>
           <li class="o-List__Item o-Grid__Item">
             <div class="c-MemberStory">
-              <img class="c-MemberStory__Img" src="{{ image }}" alt=""/>
-              <p class="c-MemberStory__Hn">{{ name }}</p>
-              <p class="c-MemberStory__SubHn">{{ title }}</p>
-              <blockquote class="c-MemberStory__Quote">{{ quote }}</blockquote>
+              <img class="c-MemberStory__Img" src="{{ database__image }}" alt=""/>
+              <p class="c-MemberStory__Hn">{{ database__name }}</p>
+              <p class="c-MemberStory__SubHn">{{ database__title }}</p>
+              <blockquote class="c-MemberStory__Quote">{{ database__quote }}</blockquote>
             </div>
           </li>
         </template>

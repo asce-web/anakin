@@ -1,7 +1,7 @@
 <template>
   <section class="o-Grid__Item c-Pub">
     <img class="c-Pub__Img" src="{{ database__image }}" alt=""/>
-    <h1 class="c-Pub__Hn">{{ title }}</h1>
+    <h1 class="c-Pub__Hn">{{ name }}</h1>
     <p class="c-Pub__Cap">{{ caption }}</p>
     <ul class="o-List c-Pub__List">
       <template>
@@ -10,6 +10,6 @@
         </li>
       </template>
     </ul>
-    <article class="c-Pub__Body">{{ database__content }}</article>
+    <article class="c-Pub__Body">{{ database__body }}</article>
   </section>
 </template>
