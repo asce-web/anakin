@@ -97,9 +97,9 @@ window.customElements.define('x-portal', class XPortal extends HTMLElement {
   constructor () {
     super()
     let returned = document.querySelector('link[rel="import"][href$="x-portal.tpl.html"]').import.querySelector('template').content.cloneNode(true)
+    returned.querySelector('.c-Portal').setAttribute('data-data', this.getAttribute('data'))
     returned.querySelector('.c-Portal__Icon').className = returned.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
     returned.querySelector('.c-Portal__Hn'  ).textContent = this.getAttribute('name')
-    returned.querySelector('.c-Portal__List').setAttribute('data-list', this.getAttribute('list'))
     this.appendChild(returned)
   }
 })
@@ -159,11 +159,12 @@ populateListWithData(document.querySelector('[data-list="promotions"]'), global.
 
 
 //////// Portals ////////
-document.querySelectorAll('.c-Portal__List').forEach(function(list) {
-  populateListWithData(list, global.database.portal[list.getAttribute('data-list')], function (innerfrag, link) {
-    innerfrag.querySelector('.c-Portal__Link').setAttribute('href', link.url)
-    innerfrag.querySelector('.c-Portal__Link').textContent = link.text
-    return innerfrag
+document.querySelectorAll('.c-Portal').forEach(function (portal) {
+  let dataname = portal.getAttribute('data-data').split('.')
+  populateListWithData(portal.querySelector('.c-Portal__List'), global.database[dataname[0]][dataname[1]], function (frag, datum) {
+    frag.querySelector('.c-Portal__Link').setAttribute('href', datum.url)
+    frag.querySelector('.c-Portal__Link').textContent = datum.text
+    return frag
   })
 })
 
