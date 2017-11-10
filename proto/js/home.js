@@ -118,9 +118,9 @@ window.customElements.define('x-learncontrib', class XLearnContrib extends HTMLE
   constructor () {
     super()
     let returned = document.querySelector('link[rel="import"][href$="x-learncontrib.tpl.html"]').import.querySelector('template').content.cloneNode(true)
+    returned.querySelector('.c-LearnContrib').setAttribute('data-data', this.getAttribute('data'))
     returned.querySelector('.c-LearnContrib__Hn').textContent = this.getAttribute('name')
     returned.querySelector('.c-LearnContrib__Cap').innerHTML = this.innerHTML // NOTE rich text
-    returned.querySelector('.c-LearnContrib__List').setAttribute('data-list', this.getAttribute('list'))
     while (this.childNodes.length) { this.firstChild.remove() }
     this.appendChild(returned)
   }
@@ -185,21 +185,15 @@ document.querySelectorAll('.c-Pub').forEach(function (publication) {
 })
 
 
-//////// Technical Information ////////
-document.querySelector('#technical-information .c-LearnContrib__Head').style.setProperty('background-image', `url('${global.database.tech_info.image}')`)
-populateListWithData(document.querySelector('[data-list="tech_info.links"]'), global.database.tech_info.links, function (frag, datum) {
-  frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
-  frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
-  return frag
-})
-
-
-//////// Get Involved ////////
-document.querySelector('#get-involved .c-LearnContrib__Head').style.setProperty('background-image', `url('${global.database.get_involved.image}')`)
-populateListWithData(document.querySelector('[data-list="get_involved.links"]'), global.database.get_involved.links, function (frag, datum) {
-  frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
-  frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
-  return frag
+//////// Learn & Contribute ////////
+document.querySelectorAll('.c-LearnContrib').forEach(function (lc) {
+  let dataname = lc.getAttribute('data-data')
+  lc.querySelector('.c-LearnContrib__Head').style.setProperty('background-image', `url('${global.database[dataname].image}')`)
+  populateListWithData(lc.querySelector('.c-LearnContrib__List'), global.database[dataname].links, function (frag, datum) {
+    frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
+    frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
+    return frag
+  })
 })
 
 
