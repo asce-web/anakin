@@ -15,6 +15,8 @@
     "doc": "docs/api"
   },
   "scripts": {
+    "serve": "harp server -p 9000",
+    "build": "gulp lessc:home",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
