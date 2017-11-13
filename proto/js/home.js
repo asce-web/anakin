@@ -212,7 +212,7 @@ populateListWithData(document.querySelector('[data-list="whats_happening"]'), gl
 populateListWithData(document.querySelector('[data-list="member_stories"]'), global.database.member_stories, function (frag, datum) {
   frag.querySelector('.c-MemberStory__Img').setAttribute('src', datum.image)
   frag.querySelector('.c-MemberStory__Hn').textContent = datum.name
-  frag.querySelector('.c-MemberStory__SubHn').textContent = datum.title
+  frag.querySelector('.c-MemberStory__SubHn').textContent = datum.grade
   frag.querySelector('.c-MemberStory__Quote').textContent = datum.quote
   return frag
 })
