@@ -89,18 +89,20 @@ function populateListWithData(element, data, generator = null) {
  * A Featured Statistic
  */
 class Stat {
-  constructor({icon, number, text, cta}) {
+  constructor({icon, number, text, cta, type}) {
     this._icon    = icon
     this._number  = number
     this._text    = text
     this._ctatext = cta.text
     this._ctaurl  = cta.url
+    this._type    = type
   }
   get icon()    { return this._icon }
   get number()  { return +this._number }
   get text()    { return this._text }
   get ctatext() { return this._ctatext }
   get ctaurl()  { return this._ctaurl }
+  get itemtype() { return `http://schema.org/${this._type || 'Action'}` }
 }
 /**
  * A Portal to an internal page. Features action items.
@@ -161,13 +163,15 @@ window.customElements.define('x-stat', class XStat extends HTMLElement {
       number: this.getAttribute('number'),
       text  : this.getAttribute('text'),
       cta   : { text: this.getAttribute('ctatext'), url : this.getAttribute('ctaurl') },
+      type  : this.getAttribute('type'),
     })
     let frag = XStat.TEMPLATE.content.cloneNode(true)
     frag.querySelector('.c-Stat__Icon').className = frag.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', instance.icon)
     frag.querySelector('.c-Stat__Num' ).textContent = instance.number
     frag.querySelector('.c-Stat__Text').textContent = instance.text
+    frag.querySelector('.c-Stat__Cta' ).parentNode.setAttribute('itemtype', instance.itemtype)
     frag.querySelector('.c-Stat__Cta' ).setAttribute('href', instance.ctaurl) // TODO use HTMLAnchorElement#href
-    frag.querySelector('.c-Stat__Cta' ).textContent = instance.ctatext
+    frag.querySelector('.c-Stat__Cta > span').textContent = instance.ctatext
     this.appendChild(frag)
   }
   // HACK for class constants: using a static getter. call with `XStat.TEMPLATE` (no parentheses)

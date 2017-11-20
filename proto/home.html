@@ -207,12 +207,9 @@
       <blockquote>Civil Engineers are global leaders building a better quality of life.</blockquote>
       <h1>We Represent:</h1>
       <ul class="o-List o-Grid o-Grid--represent">
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="group"  number="150000" text="Members"    ctatext="Join ASCE"         ctaurl="#0"></x-stat></li>
-        <!-- TODO: add itemprop="potentialAction" itemscope="" itemtype="http://schema.org/JoinAction" to "Join ASCE" CTA -->
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="map"    number="177"    text="Countries"  ctatext="Find a Chapter"    ctaurl="#0"></x-stat></li>
-        <!-- TODO: add itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" to "Find a Chapter" CTA -->
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="shield" number="9"      text="Institutes" ctatext="Join an Institute" ctaurl="#0"></x-stat></li>
-        <!-- TODO: add itemprop="potentialAction" itemscope="" itemtype="http://schema.org/JoinAction" to "Join an Institute" CTA -->
+        <li class="o-List__Item o-Grid__Item"><x-stat icon="group"  number="150000" text="Members"    ctatext="Join ASCE"         ctaurl="#0" type="JoinAction"></x-stat></li>
+        <li class="o-List__Item o-Grid__Item"><x-stat icon="map"    number="177"    text="Countries"  ctatext="Find a Chapter"    ctaurl="#0" type="SearchAction"></x-stat></li>
+        <li class="o-List__Item o-Grid__Item"><x-stat icon="shield" number="9"      text="Institutes" ctatext="Join an Institute" ctaurl="#0" type="JoinAction"></x-stat></li>
       </ul>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -270,8 +267,7 @@
     <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
       <h1 itemprop="name">ASCE Foundation</h1>
       <p itemprop="description">Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.</p>
-      <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0"></x-stat>
-      <!-- TODO: add itemprop="potentialAction" itemscope="" itemtype="http://schema.org/DonateAction" to "Give a Gift" CTA -->
+      <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0" type="DonateAction"></x-stat>
     </section>
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
