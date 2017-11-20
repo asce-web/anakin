@@ -153,7 +153,7 @@ class Pub {
 /**
  * An item in the Actions section.
  */
-class LearnContrib {
+class HomeAction {
   constructor({name, caption, image, links, body}) {
     this._name    = name
     this._caption = caption
@@ -245,30 +245,30 @@ window.customElements.define('x-pub', class XPub extends HTMLElement {
     return document.querySelector('link[rel="import"][href$="x-pub.tpl.html"]').import.querySelector('template')
   }
 })
-window.customElements.define('x-learncontrib', class XLearnContrib extends HTMLElement {
+window.customElements.define('x-homeaction', class XHomeAction extends HTMLElement {
   constructor () {
     super()
     let data = global.database[this.getAttribute('data')]
-    let instance = new LearnContrib({
+    let instance = new HomeAction({
       name   : this.getAttribute('name'),
       caption: this.innerHTML,
       image  : data.image,
       links  : data.links,
     })
-    let frag = XLearnContrib.TEMPLATE.content.cloneNode(true)
-    frag.querySelector('.c-LearnContrib__Hn').textContent = instance.name
-    frag.querySelector('.c-LearnContrib__Cap').innerHTML = instance.caption
-    frag.querySelector('.c-LearnContrib__Head').style.setProperty('background-image', instance.image)
-    populateListWithData(frag.querySelector('.c-LearnContrib__List'), instance.links, function (frag, datum) {
-      frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url) // TODO use HTMLAnchorElement#href
-      frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
+    let frag = XHomeAction.TEMPLATE.content.cloneNode(true)
+    frag.querySelector('.c-HomeAction__Hn').textContent = instance.name
+    frag.querySelector('.c-HomeAction__Cap').innerHTML = instance.caption
+    frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', instance.image)
+    populateListWithData(frag.querySelector('.c-HomeAction__List'), instance.links, function (frag, datum) {
+      frag.querySelector('.c-HomeAction__Link').setAttribute('href', datum.url) // TODO use HTMLAnchorElement#href
+      frag.querySelector('.c-HomeAction__Link').textContent = datum.text
       return frag
     })
     while (this.childNodes.length) { this.firstChild.remove() }
     this.appendChild(frag)
   }
   static get TEMPLATE() {
-    return document.querySelector('link[rel="import"][href$="x-learncontrib.tpl.html"]').import.querySelector('template')
+    return document.querySelector('link[rel="import"][href$="x-homeaction.tpl.html"]').import.querySelector('template')
   }
 })
 
