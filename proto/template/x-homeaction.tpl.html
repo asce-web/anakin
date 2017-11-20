@@ -6,8 +6,10 @@
     </header>
     <ul class="o-List c-HomeAction__List">
       <template>
-        <li class="o-List__Item c-HomeAction__List__Item">
-          <a class="c-HomeAction__Link" href="{{ url }}">{{ text }}</a>
+        <li class="o-List__Item c-HomeAction__List__Item" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/Action">
+          <a class="c-HomeAction__Link" href="{{ url }}" itemprop="url">
+            <span itemprop="name">{{ text }}</span>
+          </a>
         </li>
       </template>
     </ul>

@@ -1,12 +1,16 @@
 <template>
-  <section class="o-Grid__Item c-Pub">
-    <img class="c-Pub__Img" src="{{ image }}" alt=""/>
-    <h1 class="c-Pub__Hn"><cite>{{ name }}</cite></h1>
-    <p class="c-Pub__Cap">{{ caption }}</p>
+  <section class="o-Grid__Item c-Pub" itemscope="" itemtype="http://schema.org/PublicationIssue">
+    <img class="c-Pub__Img" src="{{ image }}" alt="" itemprop="image thumbnailUrl"/>
+    <h1 class="c-Pub__Hn">
+      <cite itemprop="name">{{ name }}</cite>
+    </h1>
+    <p class="c-Pub__Cap" itemprop="description">{{ caption }}</p>
     <ul class="o-List c-Pub__List">
       <template>
-        <li class="o-List__Item c-Pub__List__Item">
-          <a class="c-Pub__Link" href="{{ url }}">{{ text }}</a>
+        <li class="o-List__Item c-Pub__List__Item" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/ReadAction">
+          <a class="c-Pub__Link" href="{{ url }}" itemprop="url">
+            <span itemprop="name">{{ text }}</span>
+          </a>
         </li>
       </template>
     </ul>

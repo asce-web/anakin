@@ -39,7 +39,7 @@
       "url"         : "#0"
     },
     {
-      "title"       : "Oregon DOT Intelligent Transportation/Traffic Engineer",
+      "title"       : "Traffic Engineer",
       "organization": "Oregon Department of Transportation",
       "location"    : "Portland, OR",
       "url"         : "#0"
@@ -190,10 +190,10 @@
 }
   </script>
 </head>
-<body>
+<body itemscope="" itemtype="http://schema.org/NGO">
   <a class="h-Hidden" href="#main">skip to main content</a>
   <header>
-    <h1>American Society of Civil Engineers</h1>
+    <h1 itemprop="name">American Society of Civil Engineers</h1>
     <p>Header and Megamenu</p>
   </header>
   <main id="main">
@@ -207,9 +207,9 @@
       <blockquote>Civil Engineers are global leaders building a better quality of life.</blockquote>
       <h1>We Represent:</h1>
       <ul class="o-List o-Grid o-Grid--represent">
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="group"  number="150000" text="Members"    ctatext="Join ASCE"         ctaurl="#0"></x-stat></li>
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="map"    number="177"    text="Countries"  ctatext="Find a Chapter"    ctaurl="#0"></x-stat></li>
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="shield" number="9"      text="Institutes" ctatext="Join an Institute" ctaurl="#0"></x-stat></li>
+        <li class="o-List__Item o-Grid__Item"><x-stat icon="group"  number="150000" text="Members"    ctatext="Join ASCE"         ctaurl="#0" type="JoinAction"></x-stat></li>
+        <li class="o-List__Item o-Grid__Item"><x-stat icon="map"    number="177"    text="Countries"  ctatext="Find a Chapter"    ctaurl="#0" type="SearchAction"></x-stat></li>
+        <li class="o-List__Item o-Grid__Item"><x-stat icon="shield" number="9"      text="Institutes" ctatext="Join an Institute" ctaurl="#0" type="JoinAction"></x-stat></li>
       </ul>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -255,19 +255,19 @@
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals">
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Membership"           icon="nameplate"    data="portal.membership"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Continuing Education" icon="education"    data="portal.cont_ed"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Publications"         icon="book-open"    data="portal.pubs"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Conferences & Events" icon="calendar"     data="portal.conf_events"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Professional"         icon="address-book" data="portal.professional"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Careers"              icon="briefcase"    data="portal.careers"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Membership"           icon="nameplate"    url="#0" data="portal.membership"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Continuing Education" icon="education"    url="#0" data="portal.cont_ed"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Publications"         icon="book-open"    url="#0" data="portal.pubs"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Conferences & Events" icon="calendar"     url="#0" data="portal.conf_events"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Professional"         icon="address-book" url="#0" data="portal.professional"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Careers"              icon="briefcase"    url="#0" data="portal.careers"></x-portal></li>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
-    <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation">
-      <h1>ASCE Foundation</h1>
-      <p>Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.</p>
-      <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0"></x-stat>
+    <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
+      <h1 itemprop="name">ASCE Foundation</h1>
+      <p itemprop="description">Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.</p>
+      <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0" type="DonateAction"></x-stat>
     </section>
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
@@ -292,12 +292,16 @@
       <ul class="o-List o-Grid o-Grid--whatsHappening" data-list="whats_happening">
         <template>
           <li class="o-List__Item o-Grid__Item">
-            <div class="c-ArticleTeaser">
-              <img class="c-ArticleTeaser__Img" src="{{ database__image }}" alt=""/>
+            <div class="c-ArticleTeaser" itemscope="" itemtype="http://schema.org/NewsArticle">
+              <img class="c-ArticleTeaser__Img" src="{{ database__image }}" alt="" itemprop="image thumbnailUrl"/>
               <p class="c-ArticleTeaser__Hn">
-                <a class="c-ArticleTeaser__Link" href="{{ database__url }}">{{ database__title }}</a>
+                <a class="c-ArticleTeaser__Link" href="{{ database__url }}" itemprop="url mainEntityOfPage">
+                  <cite itemprop="headline">{{ database__title }}</cite>
+                </a>
               </p>
-              <p class="c-ArticleTeaser__Date"><time datetime="{{ database__datetime }}">{{ database__datetime_formatted }}</time></p>
+              <p class="c-ArticleTeaser__Date">
+                <time datetime="{{ database__datetime }}" itemprop="datePublished">{{ database__datetime_formatted }}</time>
+              </p>
             </div>
           </li>
         </template>
@@ -309,10 +313,10 @@
       <ul class="o-List o-Grid o-Grid--members" data-list="member_stories">
         <template>
           <li class="o-List__Item o-Grid__Item">
-            <div class="c-MemberStory">
-              <img class="c-MemberStory__Img" src="{{ database__image }}" alt=""/>
-              <p class="c-MemberStory__Hn">{{ database__name }}</p>
-              <p class="c-MemberStory__SubHn">{{ database__grade }}</p>
+            <div class="c-MemberStory" itemprop="member" itemscope="" itemtype="http://schema.org/Person">
+              <img class="c-MemberStory__Img" src="{{ database__image }}" alt="" itemprop="image"/>
+              <p class="c-MemberStory__Hn" itemprop="name">{{ database__name }}</p>
+              <p class="c-MemberStory__SubHn" itemprop="description">{{ database__grade }}</p>
               <blockquote class="c-MemberStory__Quote">{{ database__quote }}</blockquote>
             </div>
           </li>
