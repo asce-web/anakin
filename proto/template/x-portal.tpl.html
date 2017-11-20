@@ -1,9 +1,10 @@
 <template>
   <section class="c-Portal" itemscope="" itemtype="http://schema.org/WebPage">
     <h1>
-      <!-- TODO: add `a[itemprop="url"]` inside heading -->
-      <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
-      <span class="c-Portal__Hn h-Block" itemprop="name">{{ name }}</span>
+      <a class="h-Block" href="{{ url }}" itemprop="url">
+        <i class="c-Portal__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
+        <span class="c-Portal__Hn h-Block" itemprop="name">{{ name }}</span>
+      </a>
     </h1>
     <ul class="o-List c-Portal__List">
       <template>
