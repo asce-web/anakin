@@ -24,24 +24,6 @@ let global = {
   database: JSON.parse(document.querySelector('script#database').textContent),
 }
 /**
- * @summary Fill an element with text.
- * @description If the text is plain, the element’s `.textContent` attribute is used.
- * If the text is rich (allowing HTML elements), the element’s `.innerHTML` attribute is used.
- * The text given can either be a string or an array of strings.
- * @param   {Element} element the element to modify
- * @param   {(string|Array<string>)} data the text to fill
- * @param   {boolean=} rich if `true`, use `innerHTML`; otherwise, use `textContent`
- * @returns {Element} the modified Element
- */
-function setElementText(element, data, rich = false) {
-  if (rich) {
-    element.innerHTML = ((typeof data === 'string') ? data : data.join('')) // NOTE flow content
-  } else {
-    element.textContent = ((typeof data === 'string') ? data : data.join(''))
-  }
-  return element
-}
-/**
  * @summary Append to an element a document fragment, filled in with data.
  * @description The element must have a single <template> element child.
  * @param   {Element} element the element to modify
@@ -301,10 +283,6 @@ populateListWithData(document.querySelector('[data-list="promotions"]'), global.
   frag.querySelector('.c-Promotion__Text').textContent = datum.caption
   return frag
 })
-
-
-//////// Foundation ////////
-setElementText(document.querySelector('#asce-foundation > p'), global.database.foundation.caption)
 
 
 //////// What’s Happening ////////
