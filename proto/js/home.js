@@ -37,7 +37,7 @@ function setElementText(element, data, rich = false) {
   if (rich) {
     element.innerHTML = ((typeof data === 'string') ? data : data.join('')) // NOTE flow content
   } else {
-    element.textContent = ((typeof data === 'string') ? data : data.join('')) // NOTE flow content
+    element.textContent = ((typeof data === 'string') ? data : data.join(''))
   }
   return element
 }
@@ -80,91 +80,201 @@ function populateListWithData(element, data, generator = null) {
 
 
 
+//////////////// DATA TYPE DEFINITIONS ////////////////
+// NOTE: Data Types serve as an API for many different custom elements.
+// Data Types are de-coupled from their display (i.e., custom elements),
+// so we can instantiate a data type once with the data we need, and then
+// render it with any display we want.
+//
+// When a custom element is constructed, it automatically instantiates a data type,
+// and then uses the fields and methods available to that instance to render HTML.
+// This technique may seem more complicated than simply rendering HTML with
+// the custom element’s attributes and content; indeed, it does have more steps.
+// However, the benefit of using data types is that it has a more structured API,
+// which standardizes its usage for different custom elements using the same data type.
+//
+// For example, a `DateRange` data type (with a start date, end date, name, etc.)
+// could be used in the definition of both `<x-importantdate>` and `<x-session>` custom elements,
+// even though those custom elements might have different markup structures and styles.
+// When we make a `<x-session startdate="2017-11-20T17:29:41.162Z">` element,
+// the value of the `[startdate]` attribute would be sent into a `new DateRange()` instance.
+// Then our `XSession` class would access the start date via some `instance.getStartDate()` method,
+// rather than `this.getAttribute('startdate')`.
+// The `DateRange#getStartDate()` method would standardize the formatting and output
+// of the start date, so we don’t have to do it multiple times in each custom element.
+////////////////  ////////////////
+/**
+ * A Featured Statistic
+ */
+class Stat {
+  constructor({icon, number, text, cta}) {
+    this._icon    = icon
+    this._number  = number
+    this._text    = text
+    this._ctatext = cta.text
+    this._ctaurl  = cta.url
+  }
+  get icon()    { return this._icon }
+  get number()  { return +this._number }
+  get text()    { return this._text }
+  get ctatext() { return this._ctatext }
+  get ctaurl()  { return this._ctaurl }
+}
+/**
+ * A Portal to an internal page. Features action items.
+ */
+class Portal {
+  constructor({name, icon, links}) {
+    this._name  = name
+    this._icon  = icon
+    this._links = links
+  }
+  get name()  { return this._name }
+  get icon()  { return this._icon }
+  get links() { return this._links }
+}
+/**
+ * A Featured Publication.
+ */
+class Pub {
+  constructor({name, caption, image, links, body}) {
+    this._name    = name
+    this._caption = caption
+    this._image   = image
+    this._links   = links
+    this._body    = body
+  }
+  get name()    { return this._name }
+  get caption() { return this._caption }
+  get image()   { return this._image }
+  get links()   { return this._links.slice() }
+  get body()    { return (typeof this._body === 'string') ? this._body : this._body.join('') }
+}
+/**
+ * An item in the Actions section.
+ */
+class LearnContrib {
+  constructor({name, caption, image, links, body}) {
+    this._name    = name
+    this._caption = caption
+    this._image   = image
+    this._links   = links
+    this._body    = body
+  }
+  get name()    { return this._name }
+  get caption() { return this._caption }
+  get image()   { return `url('${this._image}')` }
+  get links()   { return this._links.slice() }
+  get body()    { return (typeof this._body === 'string') ? this._body : this._body.join('') }
+}
+
+
+
 //////////////// CUSTOM ELEMENT DEFINITIONS ////////////////
 window.customElements.define('x-stat', class XStat extends HTMLElement {
   constructor() {
     super()
-    let returned = document.querySelector('link[rel="import"][href$="x-stat.tpl.html"]').import.querySelector('template').content.cloneNode(true)
-    returned.querySelector('.c-Stat__Icon').className = returned.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
-    returned.querySelector('.c-Stat__Num' ).textContent = this.getAttribute('number')
-    returned.querySelector('.c-Stat__Text').textContent = this.getAttribute('text')
-    returned.querySelector('.c-Stat__Cta' ).setAttribute('href', this.getAttribute('ctaurl'))
-    returned.querySelector('.c-Stat__Cta' ).textContent = this.getAttribute('ctatext')
-    this.appendChild(returned)
+    let instance = new Stat({
+      icon  : this.getAttribute('icon'),
+      number: this.getAttribute('number'),
+      text  : this.getAttribute('text'),
+      cta   : { text: this.getAttribute('ctatext'), url : this.getAttribute('ctaurl') },
+    })
+    let frag = XStat.TEMPLATE.content.cloneNode(true)
+    frag.querySelector('.c-Stat__Icon').className = frag.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', instance.icon)
+    frag.querySelector('.c-Stat__Num' ).textContent = instance.number
+    frag.querySelector('.c-Stat__Text').textContent = instance.text
+    frag.querySelector('.c-Stat__Cta' ).setAttribute('href', instance.ctaurl) // TODO use HTMLAnchorElement#href
+    frag.querySelector('.c-Stat__Cta' ).textContent = instance.ctatext
+    this.appendChild(frag)
+  }
+  // HACK for class constants: using a static getter. call with `XStat.TEMPLATE` (no parentheses)
+  // class constants will be available in a future version of JS.
+  static get TEMPLATE() {
+    return document.querySelector('link[rel="import"][href$="x-stat.tpl.html"]').import.querySelector('template')
   }
 })
 window.customElements.define('x-portal', class XPortal extends HTMLElement {
   constructor () {
     super()
-    let returned = document.querySelector('link[rel="import"][href$="x-portal.tpl.html"]').import.querySelector('template').content.cloneNode(true)
-    returned.querySelector('.c-Portal__Icon').className = returned.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', this.getAttribute('icon'))
-    returned.querySelector('.c-Portal__Hn'  ).textContent = this.getAttribute('name')
-    this.appendChild(returned)
-  }
-  populate(data) {
-    populateListWithData(this.querySelector('.c-Portal__List'), data, function (frag, datum) {
-      frag.querySelector('.c-Portal__Link').setAttribute('href', datum.url)
+    let data = global.database.portal[this.getAttribute('data').split('.')[1]]
+    let instance = new Portal({
+      name : this.getAttribute('name'),
+      icon : this.getAttribute('icon'),
+      links: data, // `data` is the array of links
+    })
+    let frag = XPortal.TEMPLATE.content.cloneNode(true)
+    frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', instance.icon)
+    frag.querySelector('.c-Portal__Hn'  ).textContent = instance.name
+    populateListWithData(frag.querySelector('.c-Portal__List'), instance.links, function (frag, datum) {
+      frag.querySelector('.c-Portal__Link').setAttribute('href', datum.url) // TODO use HTMLAnchorElement#href
       frag.querySelector('.c-Portal__Link').textContent = datum.text
       return frag
     })
+    this.appendChild(frag)
+  }
+  static get TEMPLATE() {
+    return document.querySelector('link[rel="import"][href$="x-portal.tpl.html"]').import.querySelector('template')
   }
 })
 window.customElements.define('x-pub', class XPub extends HTMLElement {
   constructor () {
     super()
-    let returned = document.querySelector('link[rel="import"][href$="x-pub.tpl.html"]').import.querySelector('template').content.cloneNode(true)
-    returned.querySelector('.c-Pub__Hn').textContent = this.getAttribute('name')
-    returned.querySelector('.c-Pub__Cap').innerHTML = this.innerHTML // NOTE rich text
-    while (this.childNodes.length) { this.firstChild.remove() }
-    this.appendChild(returned)
-  }
-  populate(data) {
-    this.querySelector('.c-Pub__Img').setAttribute('src', data.image)
-    populateListWithData(this.querySelector('.c-Pub__List'), data.links, function (frag, datum) {
-      frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url)
+    let data = global.database[this.getAttribute('data')]
+    let instance = new Pub({
+      name   : this.getAttribute('name'),
+      caption: this.innerHTML,
+      image  : data.image,
+      links  : data.links,
+      body   : data.body,
+    })
+    let frag = XPub.TEMPLATE.content.cloneNode(true)
+    frag.querySelector('.c-Pub__Hn'  ).textContent = instance.name
+    frag.querySelector('.c-Pub__Cap' ).innerHTML = instance.caption
+    frag.querySelector('.c-Pub__Img' ).setAttribute('src', instance.image) // TODO use HTMLImageElement#src
+    frag.querySelector('.c-Pub__Body').innerHTML = instance.body
+    populateListWithData(frag.querySelector('.c-Pub__List'), instance.links, function (frag, datum) {
+      frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url) // TODO use HTMLAnchorElement#href
       frag.querySelector('.c-Pub__Link').textContent = datum.text
       return frag
     })
-    setElementText(this.querySelector('.c-Pub__Body'), data.body, true)
+    while (this.childNodes.length) { this.firstChild.remove() }
+    this.appendChild(frag)
+  }
+  static get TEMPLATE() {
+    return document.querySelector('link[rel="import"][href$="x-pub.tpl.html"]').import.querySelector('template')
   }
 })
 window.customElements.define('x-learncontrib', class XLearnContrib extends HTMLElement {
   constructor () {
     super()
-    let returned = document.querySelector('link[rel="import"][href$="x-learncontrib.tpl.html"]').import.querySelector('template').content.cloneNode(true)
-    returned.querySelector('.c-LearnContrib__Hn').textContent = this.getAttribute('name')
-    returned.querySelector('.c-LearnContrib__Cap').innerHTML = this.innerHTML // NOTE rich text
-    while (this.childNodes.length) { this.firstChild.remove() }
-    this.appendChild(returned)
-  }
-  populate(data) {
-    this.querySelector('.c-LearnContrib__Head').style.setProperty('background-image', `url('${data.image}')`)
-    populateListWithData(this.querySelector('.c-LearnContrib__List'), data.links, function (frag, datum) {
-      frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url)
+    let data = global.database[this.getAttribute('data')]
+    let instance = new LearnContrib({
+      name   : this.getAttribute('name'),
+      caption: this.innerHTML,
+      image  : data.image,
+      links  : data.links,
+    })
+    let frag = XLearnContrib.TEMPLATE.content.cloneNode(true)
+    frag.querySelector('.c-LearnContrib__Hn').textContent = instance.name
+    frag.querySelector('.c-LearnContrib__Cap').innerHTML = instance.caption
+    frag.querySelector('.c-LearnContrib__Head').style.setProperty('background-image', instance.image)
+    populateListWithData(frag.querySelector('.c-LearnContrib__List'), instance.links, function (frag, datum) {
+      frag.querySelector('.c-LearnContrib__Link').setAttribute('href', datum.url) // TODO use HTMLAnchorElement#href
       frag.querySelector('.c-LearnContrib__Link').textContent = datum.text
       return frag
     })
+    while (this.childNodes.length) { this.firstChild.remove() }
+    this.appendChild(frag)
+  }
+  static get TEMPLATE() {
+    return document.querySelector('link[rel="import"][href$="x-learncontrib.tpl.html"]').import.querySelector('template')
   }
 })
 
 
 
 //////////////// POPULATE ALL THE DATA ////////////////
-//////// Custom Element Population ////////
-document.querySelectorAll('x-portal').forEach(function (portal) {
-  let dataname = portal.getAttribute('data').split('.')[1]
-  portal.populate(global.database.portal[dataname])
-})
-
-document.querySelectorAll('x-pub').forEach(function (pub) {
-  pub.populate(global.database[pub.getAttribute('data')])
-})
-
-document.querySelectorAll('x-learncontrib').forEach(function (lc) {
-  lc.populate(global.database[lc.getAttribute('data')])
-})
-
-
 //////// Hero ////////
 document.querySelector('.c-Hero').style.setProperty('background-image', `url('${global.database.hero.image}')`)
 document.querySelector('.c-Hero__Cap').textContent = global.database.hero.caption
