@@ -22,7 +22,7 @@
   <link rel="import" href="./template/x-stat.tpl.html"/>
   <link rel="import" href="./template/x-portal.tpl.html"/>
   <link rel="import" href="./template/x-pub.tpl.html"/>
-  <link rel="import" href="./template/x-learncontrib.tpl.html"/>
+  <link rel="import" href="./template/x-homeaction.tpl.html"/>
     <!-- TODO move database to a separate file -->
   <script id="database" type="application/json" title="sample database">
 {
@@ -108,9 +108,6 @@
         { "text": "Career resources", "url": "#0" },
         { "text": "Code of Ethics", "url": "#0" }
     ]
-  },
-  "foundation": {
-    "caption": "Making a positive change in our communities is possible… but only if we start now, set our sights high, and work together."
   },
   "asce7": {
     "image": "./images/asce7.png",
@@ -269,7 +266,7 @@
     <aside>ADVERTISEMENT</aside>
     <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation">
       <h1>ASCE Foundation</h1>
-      <p>{{ database__caption }}</p>
+      <p>Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.</p>
       <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0"></x-stat>
     </section>
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
@@ -281,14 +278,14 @@
         The official magazine of the American Society of Civil Engineers.
       </x-pub>
     </section>
-    <section class="o-Grid o-Grid--learnContribute o-Runner" id="learn-contribute">
+    <section class="o-Grid o-Grid--homeActions o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
-      <x-learncontrib id="technical-information" name="Technical Information" data="tech_info">
+      <x-homeaction id="technical-information" name="Technical Information" data="tech_info">
         Access the latest technical information in your discipline.
-      </x-learncontrib>
-      <x-learncontrib id="get-involved" name="Get Involved" data="get_involved">
+      </x-homeaction>
+      <x-homeaction id="get-involved" name="Get Involved" data="get_involved">
         Dedicate your time and expertise to a cause that is important to you.
-      </x-learncontrib>
+      </x-homeaction>
     </section>
     <section class="o-Runner" id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
