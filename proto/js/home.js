@@ -211,7 +211,7 @@ window.customElements.define('x-pub', class XPub extends HTMLElement {
       body   : data.body,
     })
     let frag = XPub.TEMPLATE.content.cloneNode(true)
-    frag.querySelector('.c-Pub__Hn'  ).textContent = instance.name
+    frag.querySelector('.c-Pub__Hn > cite').textContent = instance.name
     frag.querySelector('.c-Pub__Cap' ).innerHTML = instance.caption
     frag.querySelector('.c-Pub__Img' ).setAttribute('src', instance.image) // TODO use HTMLImageElement#src
     frag.querySelector('.c-Pub__Body').innerHTML = instance.body
