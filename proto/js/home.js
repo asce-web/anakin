@@ -131,7 +131,7 @@ class Portal {
   }
   get name()  { return this._name }
   get icon()  { return this._icon }
-  get links() { return this._links }
+  get links() { return this._links.slice() }
 }
 /**
  * A Featured Publication.
@@ -181,14 +181,14 @@ window.customElements.define('x-stat', class XStat extends HTMLElement {
       cta   : { text: this.getAttribute('ctatext'), url : this.getAttribute('ctaurl') },
     })
     let frag = XStat.TEMPLATE.content.cloneNode(true)
-    frag.querySelector('.c-Stat__Icon').className = frag.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', instance.icon)
+    frag.querySelector('.c-Stat__Icon').className   = frag.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', instance.icon)
     frag.querySelector('.c-Stat__Num' ).textContent = instance.number
     frag.querySelector('.c-Stat__Text').textContent = instance.text
-    frag.querySelector('.c-Stat__Cta' ).setAttribute('href', instance.ctaurl) // TODO use HTMLAnchorElement#href
+    frag.querySelector('.c-Stat__Cta' ).href        = instance.ctaurl
     frag.querySelector('.c-Stat__Cta' ).textContent = instance.ctatext
     this.appendChild(frag)
   }
-  // HACK for class constants: using a static getter. call with `XStat.TEMPLATE` (no parentheses)
+  // HACK for class constants: using a static getter. call with `XStat.TEMPLATE` (no parentheses).
   // class constants will be available in a future version of JS.
   static get TEMPLATE() {
     return document.querySelector('link[rel="import"][href$="x-stat.tpl.html"]').import.querySelector('template')
@@ -207,7 +207,7 @@ window.customElements.define('x-portal', class XPortal extends HTMLElement {
     frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', instance.icon)
     frag.querySelector('.c-Portal__Hn'  ).textContent = instance.name
     populateListWithData(frag.querySelector('.c-Portal__List'), instance.links, function (frag, datum) {
-      frag.querySelector('.c-Portal__Link').setAttribute('href', datum.url) // TODO use HTMLAnchorElement#href
+      frag.querySelector('.c-Portal__Link').href        = datum.url
       frag.querySelector('.c-Portal__Link').textContent = datum.text
       return frag
     })
@@ -230,11 +230,11 @@ window.customElements.define('x-pub', class XPub extends HTMLElement {
     })
     let frag = XPub.TEMPLATE.content.cloneNode(true)
     frag.querySelector('.c-Pub__Hn'  ).textContent = instance.name
-    frag.querySelector('.c-Pub__Cap' ).innerHTML = instance.caption
-    frag.querySelector('.c-Pub__Img' ).setAttribute('src', instance.image) // TODO use HTMLImageElement#src
-    frag.querySelector('.c-Pub__Body').innerHTML = instance.body
+    frag.querySelector('.c-Pub__Cap' ).innerHTML   = instance.caption
+    frag.querySelector('.c-Pub__Img' ).src         = instance.image
+    frag.querySelector('.c-Pub__Body').innerHTML   = instance.body
     populateListWithData(frag.querySelector('.c-Pub__List'), instance.links, function (frag, datum) {
-      frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url) // TODO use HTMLAnchorElement#href
+      frag.querySelector('.c-Pub__Link').href        = datum.url
       frag.querySelector('.c-Pub__Link').textContent = datum.text
       return frag
     })
@@ -260,7 +260,7 @@ window.customElements.define('x-homeaction', class XHomeAction extends HTMLEleme
     frag.querySelector('.c-HomeAction__Cap').innerHTML = instance.caption
     frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', instance.image)
     populateListWithData(frag.querySelector('.c-HomeAction__List'), instance.links, function (frag, datum) {
-      frag.querySelector('.c-HomeAction__Link').setAttribute('href', datum.url) // TODO use HTMLAnchorElement#href
+      frag.querySelector('.c-HomeAction__Link').href        = datum.url
       frag.querySelector('.c-HomeAction__Link').textContent = datum.text
       return frag
     })
@@ -278,13 +278,13 @@ window.customElements.define('x-homeaction', class XHomeAction extends HTMLEleme
 //////// Hero ////////
 document.querySelector('.c-Hero').style.setProperty('background-image', `url('${global.database.hero.image}')`)
 document.querySelector('.c-Hero__Cap').textContent = global.database.hero.caption
-document.querySelector('.c-Hero__Cta').setAttribute('href', global.database.hero.cta.url)
+document.querySelector('.c-Hero__Cta').href        = global.database.hero.cta.url
 document.querySelector('.c-Hero__Cta').textContent = global.database.hero.cta.text
 
 
 //////// Jobs ////////
 populateListWithData(document.querySelector('[data-list="jobs"]'), global.database.jobs, function (frag, datum) {
-  frag.querySelector('.c-JobListing__Link').setAttribute('href', datum.url)
+  frag.querySelector('.c-JobListing__Link').href        = datum.url
   frag.querySelector('.c-JobListing__Link').textContent = datum.title
   frag.querySelector('.c-JobListing__Org' ).textContent = datum.organization
   frag.querySelector('.c-JobListing__Loc' ).textContent = datum.location
@@ -296,7 +296,7 @@ populateListWithData(document.querySelector('[data-list="jobs"]'), global.databa
 populateListWithData(document.querySelector('[data-list="promotions"]'), global.database.promotions, function (frag, datum) {
   frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${datum.image}')`)
   frag.querySelector('.c-Promotion__Hn'  ).textContent = datum.title
-  frag.querySelector('.c-Promotion__Cta' ).setAttribute('href', datum.cta.url)
+  frag.querySelector('.c-Promotion__Cta' ).href        = datum.cta.url
   frag.querySelector('.c-Promotion__Cta' ).textContent = datum.cta.text
   frag.querySelector('.c-Promotion__Text').textContent = datum.caption
   return frag
@@ -309,10 +309,10 @@ setElementText(document.querySelector('#asce-foundation > p'), global.database.f
 
 //////// What’s Happening ////////
 populateListWithData(document.querySelector('[data-list="whats_happening"]'), global.database.whats_happening, function (frag, datum) {
-  frag.querySelector('.c-ArticleTeaser__Img').setAttribute('src', datum.image)
-  frag.querySelector('.c-ArticleTeaser__Link').setAttribute('href', datum.url)
+  frag.querySelector('.c-ArticleTeaser__Img' ).src         = datum.image
+  frag.querySelector('.c-ArticleTeaser__Link').href        = datum.url
   frag.querySelector('.c-ArticleTeaser__Link').textContent = datum.title
-  frag.querySelector('.c-ArticleTeaser__Date > time').setAttribute('datetime', datum.datetime) // TODO use `HTMLTimeElement#dateTime` property
+  frag.querySelector('.c-ArticleTeaser__Date > time').datetime    = datum.datetime
   frag.querySelector('.c-ArticleTeaser__Date > time').textContent = global.formatDate(new Date(datum.datetime))
   return frag
 })
@@ -320,8 +320,8 @@ populateListWithData(document.querySelector('[data-list="whats_happening"]'), gl
 
 //////// Member Stories ////////
 populateListWithData(document.querySelector('[data-list="member_stories"]'), global.database.member_stories, function (frag, datum) {
-  frag.querySelector('.c-MemberStory__Img').setAttribute('src', datum.image)
-  frag.querySelector('.c-MemberStory__Hn').textContent = datum.name
+  frag.querySelector('.c-MemberStory__Img'  ).src         = datum.image
+  frag.querySelector('.c-MemberStory__Hn'   ).textContent = datum.name
   frag.querySelector('.c-MemberStory__SubHn').textContent = datum.grade
   frag.querySelector('.c-MemberStory__Quote').textContent = datum.quote
   return frag
