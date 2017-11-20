@@ -298,7 +298,7 @@ populateListWithData(document.querySelector('[data-list="whats_happening"]'), gl
   frag.querySelector('.c-ArticleTeaser__Img'        ).src         = datum.image
   frag.querySelector('.c-ArticleTeaser__Link'       ).href        = datum.url
   frag.querySelector('.c-ArticleTeaser__Link > cite').textContent = datum.title
-  frag.querySelector('.c-ArticleTeaser__Date > time').datetime    = datum.datetime
+  frag.querySelector('.c-ArticleTeaser__Date > time').dateTime    = datum.datetime
   frag.querySelector('.c-ArticleTeaser__Date > time').textContent = global.formatDate(new Date(datum.datetime))
   return frag
 })
