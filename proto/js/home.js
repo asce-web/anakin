@@ -217,7 +217,7 @@ window.customElements.define('x-pub', class XPub extends HTMLElement {
     frag.querySelector('.c-Pub__Body').innerHTML = instance.body
     populateListWithData(frag.querySelector('.c-Pub__List'), instance.links, function (frag, datum) {
       frag.querySelector('.c-Pub__Link').setAttribute('href', datum.url) // TODO use HTMLAnchorElement#href
-      frag.querySelector('.c-Pub__Link').textContent = datum.text
+      frag.querySelector('.c-Pub__Link > span').textContent = datum.text
       return frag
     })
     while (this.childNodes.length) { this.firstChild.remove() }
@@ -243,7 +243,7 @@ window.customElements.define('x-homeaction', class XHomeAction extends HTMLEleme
     frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', instance.image)
     populateListWithData(frag.querySelector('.c-HomeAction__List'), instance.links, function (frag, datum) {
       frag.querySelector('.c-HomeAction__Link').setAttribute('href', datum.url) // TODO use HTMLAnchorElement#href
-      frag.querySelector('.c-HomeAction__Link').textContent = datum.text
+      frag.querySelector('.c-HomeAction__Link > span').textContent = datum.text
       return frag
     })
     while (this.childNodes.length) { this.firstChild.remove() }
