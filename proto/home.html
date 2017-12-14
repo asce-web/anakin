@@ -73,40 +73,40 @@
   ],
   "portal": {
     "membership": [
-        { "text": "Manage My Membership", "url": "#0" },
-        { "text": "Join ASCE", "url": "#0" },
-        { "text": "Renew my membership", "url": "#0" },
-        { "text": "View member benefits", "url": "#0" }
+      { "text": "Manage My Membership", "url": "#0" },
+      { "text": "Join ASCE", "url": "#0" },
+      { "text": "Renew my membership", "url": "#0" },
+      { "text": "View member benefits", "url": "#0" }
     ],
     "cont_ed": [
-        { "text": "View my courses", "url": "#0" },
-        { "text": "Browse course catalog", "url": "#0" },
-        { "text": "P.E. Exam Review", "url": "#0" },
-        { "text": "5 Free webinars", "url": "#0" }
+      { "text": "View my courses", "url": "#0" },
+      { "text": "Browse course catalog", "url": "#0" },
+      { "text": "P.E. Exam Review", "url": "#0" },
+      { "text": "5 Free webinars", "url": "#0" }
     ],
     "pubs": [
-        { "text": "Browse the ASCE Library", "url": "#0" },
-        { "text": "Browse the bookstore", "url": "#0" },
-        { "text": "Bridges calendar", "url": "#0" },
-        { "text": "Find a journal", "url": "#0" }
+      { "text": "Browse the ASCE Library", "url": "#0" },
+      { "text": "Browse the bookstore", "url": "#0" },
+      { "text": "Bridges calendar", "url": "#0" },
+      { "text": "Find a journal", "url": "#0" }
     ],
     "conf_events": [
-        { "text": "View the calendar", "url": "#0" },
-        { "text": "Submit a papaer", "url": "#0" },
-        { "text": "Annual ASCE Convention", "url": "#0" },
-        { "text": "ASCE Week", "url": "#0" }
+      { "text": "View the calendar", "url": "#0" },
+      { "text": "Submit a papaer", "url": "#0" },
+      { "text": "Annual ASCE Convention", "url": "#0" },
+      { "text": "ASCE Week", "url": "#0" }
     ],
-    "professional": [
-        { "text": "Key Contact Program", "url": "#0" },
-        { "text": "Report Card for America’s Infrastructure", "url": "#0" },
-        { "text": "Sustainability", "url": "#0" },
-        { "text": "ASCE Grand Challenge", "url": "#0" }
+    "initiatives": [
+      { "text": "Key Contact Program", "url": "#0" },
+      { "text": "Report Card for America’s Infrastructure", "url": "#0" },
+      { "text": "Sustainability", "url": "#0" },
+      { "text": "ASCE Grand Challenge", "url": "#0" }
     ],
     "careers": [
-        { "text": "Career Connections", "url": "#0" },
-        { "text": "Getting Licensed &amp; Certified", "url": "#0" },
-        { "text": "Career resources", "url": "#0" },
-        { "text": "Code of Ethics", "url": "#0" }
+      { "text": "Career Connections", "url": "#0" },
+      { "text": "Getting Licensed &amp; Certified", "url": "#0" },
+      { "text": "Career resources", "url": "#0" },
+      { "text": "Code of Ethics", "url": "#0" }
     ]
   },
   "asce7": {
@@ -204,12 +204,12 @@
       </p>
     </div>
     <section class="o-Runner" id="we-represent">
-      <blockquote>Civil Engineers are global leaders building a better quality of life.</blockquote>
+      <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
       <h1>We Represent:</h1>
       <ul class="o-List o-Grid o-Grid--represent">
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="group"  number="150000" text="Members"    ctatext="Join ASCE"         ctaurl="#0" type="JoinAction"></x-stat></li>
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="map"    number="177"    text="Countries"  ctatext="Find a Chapter"    ctaurl="#0" type="SearchAction"></x-stat></li>
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="shield" number="9"      text="Institutes" ctatext="Join an Institute" ctaurl="#0" type="JoinAction"></x-stat></li>
+        <li class="o-List__Item o-Grid__Item"><x-stat icon="group"  number="150000" text="Members"    type="JoinAction"   ctatext="Join ASCE"           ctaurl="//www.asce.org/join/"></x-stat></li>
+        <li class="o-List__Item o-Grid__Item"><x-stat icon="map"    number="177"    text="Countries"  type="SearchAction" ctatext="Find a Local Group"  ctaurl="//www.asce.org/membership-communities/"></x-stat></li>
+        <li class="o-List__Item o-Grid__Item"><x-stat icon="shield" number="9"      text="Institutes" type="JoinAction"   ctatext="Select an Institute" ctaurl="//www.asce.org/routing-page/technical-areas/"></x-stat></li>
       </ul>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -255,19 +255,31 @@
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals">
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Membership"           icon="nameplate"    url="#0" data="portal.membership"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Continuing Education" icon="education"    url="#0" data="portal.cont_ed"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Publications"         icon="book-open"    url="#0" data="portal.pubs"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Conferences & Events" icon="calendar"     url="#0" data="portal.conf_events"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Professional"         icon="address-book" url="#0" data="portal.professional"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Careers"              icon="briefcase"    url="#0" data="portal.careers"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Membership"           icon="nameplate"    data="portal.membership"  url="//www.asce.org/membership_and_communities/"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Continuing Education" icon="education"    data="portal.cont_ed"     url="//www.asce.org/continuing_education/"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Publications"         icon="book-open"    data="portal.pubs"        url="//www.asce.org/publications/"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Conferences & Events" icon="calendar"     data="portal.conf_events" url="//www.asce.org/conferences_events/"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Initiatives"          icon="address-book" data="portal.initiatives" url="//www.asce.org/our_initiatives/"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item"><x-portal name="Careers"              icon="briefcase"    data="portal.careers"     url="//www.asce.org/careers/"></x-portal></li>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
     <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
       <h1 itemprop="name">ASCE Foundation</h1>
       <p itemprop="description">Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.</p>
-      <x-stat icon="donate" number="25" text="Programs Supported" ctatext="Give a Gift" ctaurl="#0" type="DonateAction"></x-stat>
+      <div class="c-Stat">
+        <i class="c-Stat__Icon h-Block glyphicons glyphicons-donate" role="none" aria-hidden="true"></i>
+        <p>
+          <span class="c-Stat__Text h-Block">Your Foundation!<br/>
+            Your Future!<br/>
+            You can make a difference!</span>
+        </p>
+        <p itemprop="potentialAction" itemscope="" itemtype="http://schema.org/DonateAction">
+          <a class="c-Stat__Cta c-Button" href="//www.ascefoundation.org/ways-to-give/one-time-gift/" rel="external" itemprop="url">
+            <span itemprop="name">Donate Today</span>
+          </a>
+        </p>
+      </div>
     </section>
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>

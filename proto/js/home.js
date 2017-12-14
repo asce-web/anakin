@@ -169,7 +169,7 @@ window.customElements.define('x-stat', class XStat extends HTMLElement {
     })
     let frag = XStat.TEMPLATE.content.cloneNode(true)
     frag.querySelector('.c-Stat__Icon'      ).className   = frag.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', instance.icon)
-    frag.querySelector('.c-Stat__Num'       ).textContent = instance.number
+    frag.querySelector('.c-Stat__Num'       ).textContent = instance.number.toLocaleString('en')
     frag.querySelector('.c-Stat__Text'      ).textContent = instance.text
     frag.querySelector('.c-Stat__Cta'       ).href        = instance.ctaurl
     frag.querySelector('.c-Stat__Cta > span').textContent = instance.ctatext
