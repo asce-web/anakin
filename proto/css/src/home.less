@@ -182,12 +182,13 @@ a {
 }
 .c-Stat {
   @media not all and (min-width: 30em) {
+    grid-template-rows   : repeat(2, auto);
     grid-template-columns: repeat(2, 1fr);
   }
 }
 .c-Stat__Icon {
   @media not all and (min-width: 30em) {
-    grid-row: ~'1 / 4';
+    grid-row: ~'1 / -1';
   }
 }
 .c-Stat__Num {
