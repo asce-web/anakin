@@ -114,7 +114,7 @@ a {
 
 .o-Grid--foundation {
   @media screen and (min-width: 45em) {
-    & > x-stat {
+    & > .c-Stat {
       grid-row: ~'1 / 3';
       grid-column: ~'2 / 3';
     }
@@ -181,9 +181,6 @@ a {
   display: grid;
 }
 .c-Stat {
-  br {
-    display: none;
-  }
   @media not all and (min-width: 30em) {
     grid-template-columns: repeat(2, 1fr);
   }
