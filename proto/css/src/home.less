@@ -99,11 +99,26 @@ a {
 }
 
 .o-Grid--jobs,
+.o-Grid--foundation,
+.o-Grid--whatsHappening {
+  @media screen and (min-width: 45em) {
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+.o-Grid--jobs,
 .o-Grid--publications,
 .o-Grid--homeActions,
 .o-Grid--whatsHappening {
   grid-row-gap   : var(--layout-padding-block);
   grid-column-gap: var(--layout-padding-inline);
+}
+
+.o-Grid--represent,
+.o-Grid--members {
+  @media screen and (min-width: 30em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .o-Grid--portals {
@@ -115,8 +130,7 @@ a {
 .o-Grid--foundation {
   @media screen and (min-width: 45em) {
     & > .c-Stat {
-      grid-row: ~'1 / 3';
-      grid-column: ~'2 / 3';
+      grid-area: ~'1 / 2 / -1 / -1';
     }
   }
 }
@@ -124,20 +138,8 @@ a {
 .o-Grid--whatsHappening {
   @media screen and (min-width: 45em) {
     & > li:first-of-type {
-      grid-row: ~'1 / 3';
+      grid-row: ~'1 / -1';
     }
-  }
-}
-
-.o-Grid--represent {
-  @media screen and (min-width: 30em) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.o-Grid--members {
-  @media screen and (min-width: 30em) {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -182,8 +184,7 @@ a {
 }
 .c-Stat {
   @media not all and (min-width: 30em) {
-    grid-template-rows   : repeat(2, auto);
-    grid-template-columns: repeat(2, 1fr);
+    grid-template: repeat(2, auto) ~'/' repeat(2, 1fr);
   }
 }
 .c-Stat__Icon {
@@ -214,12 +215,12 @@ a {
 .c-Pub {
   display: grid;
   @media screen and (min-width: 30em) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template: repeat(4, auto) ~'/' repeat(2, 1fr);
   }
 }
 .c-Pub__Img {
   @media screen and (min-width: 30em) {
-    grid-row: ~'1 / 4';
+    grid-row: ~'1 / -2';
   }
 }
 .c-Pub__Hn {
@@ -234,7 +235,7 @@ a {
 .c-Pub__Link {
 }
 .c-Pub__Body {
-  grid-column: ~'1 / 3';
+  grid-column: ~'1 / -1';
 }
 
 .c-HomeAction {
@@ -254,15 +255,15 @@ a {
 
 .c-ArticleTeaser {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template: repeat(2, auto) ~'/' repeat(2, 1fr);
   @media not all and (min-width: 30em) {
     li:first-of-type > & {
-      grid-template-columns: unset;
+      grid-template: unset;
     }
   }
 }
 .c-ArticleTeaser__Img {
-  grid-row: ~'1 / 3';
+  grid-row: ~'1 / -1';
 }
 .c-ArticleTeaser__Hn {
   cite { font-style: unset; }
@@ -272,17 +273,17 @@ a {
 
 .c-MemberStory {
   display: grid;
-  grid-template: repeat(3, 1fr) ~'/' repeat(2, 1fr);
+  grid-template: repeat(3, auto) ~'/' repeat(2, 1fr);
 }
 .c-MemberStory__Img {
-  grid-row: ~'1 / 3';
+  grid-row: ~'1 / -2';
 }
 .c-MemberStory__Hn {
 }
 .c-MemberStory__SubHn {
 }
 .c-MemberStory__Quote {
-  grid-column: ~'1 / 3';
+  grid-column: ~'1 / -1';
 }
 
 .c-Tagline {
