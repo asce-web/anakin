@@ -255,9 +255,14 @@ a {
 
 .c-ArticleTeaser {
   display: grid;
-  grid-template: repeat(2, auto) ~'/' repeat(2, 1fr);
+  grid-template: repeat(2, auto) ~'/' 25% 75%;
+  grid-column-gap: calc(0.5 ~'*' var(--layout-padding-inline));
   @media not all and (min-width: 30em) {
-    li:first-of-type > & {
+    grid-template-columns: 33.33333% 66.66666%;
+  }
+  li:first-of-type > & {
+    grid-template-columns: 37.5% 62.5%;
+    @media not all and (min-width: 30em) {
       grid-template: unset;
     }
   }
