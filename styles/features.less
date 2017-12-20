@@ -1,4 +1,4 @@
-.double_col {  
+.double_col {
   ul:extend(.row) {
     display: flex;
     flex-direction: row;
@@ -20,7 +20,7 @@
           max-width: 220px;
           margin-bottom: 20px;
           margin-right: 20px;
-          
+
           img {
             width: 100%;
             margin: 0;
@@ -49,7 +49,7 @@
   color: black; // `beige` has contrast ratio of 2.1. `black` is 9.
   p {
     margin: 0;
-    padding: 0;  
+    padding: 0;
   }
 }
 
@@ -91,4 +91,338 @@
 }
 .magazine main .content-main .featured-image .caption > *:last-child {
   margin-bottom: 0; /*override default for paragraphs*/
+}
+
+// Regions Map - /regions_sections_branches
+.regions-map-area {
+  .region {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  .region-color {
+    width: 1.375rem;
+    height: 1.375rem;
+    float: left;
+    margin-top: 0;
+    margin-right: 0.5em;
+    border: 1px solid #333;
+  }
+  .region_name {
+    display: inline;
+    margin-right: 1.5em;
+  }
+  .region1,
+  #region-1 {
+    fill: rgb(165,0,38);
+    fill-opacity: 1;
+    stroke: black;
+    stroke-opacity: 1;
+    stroke-width: 0.5;
+    background-color: rgba(165,0,38,1);
+  }
+  .region2,
+  #region-2 {
+    fill: rgb(215,48,39);
+    fill-opacity: 1;
+    stroke: black;
+    stroke-opacity: 1;
+    stroke-width: 0.5;
+    background-color: rgba(215,48,39,1);
+  }
+  .region3,
+  #region-3 {
+    fill: rgb(244,109,67);
+    fill-opacity: 1;
+    stroke: black;
+    stroke-opacity: 1;
+    stroke-width: 0.5;
+    background-color: rgba(244,109,67,1);
+  }
+  .region4,
+  #region-4 {
+    fill: rgb(253,174,97);
+    fill-opacity: 1;
+    stroke: black;
+    stroke-opacity: 1;
+    stroke-width: 0.5;
+    background-color: rgba(253,174,97,1);
+  }
+  .region5,
+  #region-5 {
+    fill: rgb(254,224,144);
+    fill-opacity: 1;
+    stroke: black;
+    stroke-opacity: 1;
+    stroke-width: 0.5;
+    background-color: rgba(254,224,144,1);
+  }
+  .region6,
+  #region-6 {
+    fill: rgb(224,243,248);
+    fill-opacity: 1;
+    stroke: black;
+    stroke-opacity: 1;
+    stroke-width: 0.5;
+    background-color: rgba(224,243,248,1);
+  }
+  .region7,
+  #region-7 {
+    fill: rgb(171,217,233);
+    fill-opacity: 1;
+    stroke: black;
+    stroke-opacity: 1;
+    stroke-width: 0.5;
+    background-color: rgba(171,217,233,1);
+  }
+  .region8,
+  #region-8 {
+    fill: rgb(116,173,209);
+    fill-opacity: 1;
+    stroke: black;
+    stroke-opacity: 1;
+    stroke-width: 0.5;
+    background-color: rgba(116,173,209,1);
+  }
+  .region9,
+  #region-9 {
+    fill: rgb(69,117,180);
+    fill-opacity: 1;
+    stroke: black;
+    stroke-opacity: 1;
+    stroke-width: 0.5;
+    background-color: rgba(69,117,180,1);
+  }
+  .region10,
+  #region-10 {
+    fill: rgb(49,54,149);
+    fill-opacity: 1;
+    stroke: rgb(217,217,217);
+    stroke-opacity: 0.5;
+    stroke-width: 0.5;
+    background-color: rgba(49,54,149,1);
+  }
+  text > textPath {
+    fill: rgb(0,0,0);
+    stroke: rgb(0,0,0);
+  }
+  #CA-QC > text > textPath,
+  #CA-NL > text > textPath,
+  #CA-NB > text > textPath,
+  #CA-QC > text > textPath,
+  #US-ME > text > textPath,
+  #US-VT > text > textPath,
+  #US-NH > text > textPath,
+  #US-MA > text > textPath,
+  #US-NY > text > textPath,
+  #US-PA > text > textPath,
+  #US-CA > text > textPath {
+    fill: rgb(255,255,255);
+    stroke: rgb(255,255,255);
+  }
+  path.line {
+    stroke: rgb(0,0,0);
+  }
+  circle {
+    fill: rgb(255,255,255);
+    fill-opacity: 1;
+    stroke-width: 2;
+  }
+  #circle-1 {
+    stroke: rgb(165,0,38);
+  }
+  #circle-2 {
+    stroke: rgb(215,48,39);
+  }
+  #circle-3 {
+    stroke: rgb(244,109,67);
+  }
+  #circle-4 {
+    stroke: rgb(253,174,97);
+  }
+  #circle-5 {
+    stroke: rgb(254,224,144);
+  }
+  #circle-6 {
+    stroke: rgb(224,243,248);
+  }
+  #circle-7 {
+    stroke: rgb(171,217,233);
+  }
+  #circle-8 {
+    stroke: rgb(116,173,209);
+  }
+  #circle-9 {
+    stroke: rgb(69,117,180);
+  }
+  #circle-10 {
+    stroke: rgb(49,54,149);
+  }
+
+  div.map {
+    display: block;
+    padding: 0;
+    margin: 0 0 30px 0;
+    width: 100%;
+    height: auto;
+    border: 1px solid rgb(235,237,237);
+    background-color: rgb(255,255,255);
+  }
+  div.northAmerica {
+    width: 100%;
+    height: auto;
+    margin: 0 0 0.25rem 0;
+  }
+  div.secondColumn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+  }
+  div.world {
+    width: 66.667%;
+    height: auto;
+    position: relative;
+    bottom: 0;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+  div.key {
+    width: 33.333%;
+    height: auto;
+    padding: 0.5em 0.5em 0em 0.5em;
+    margin-bottom: 0;
+    background-color: rgba(244,244,245,1);
+    border-top: 1px solid rgb(235,237,237);
+    border-right: 1px solid rgb(235,237,237);
+  }
+  .key_palette {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  div.key > h4 {
+    margin-bottom: 1em;
+  }
+  div.key > div > a {
+    margin: 0 0 0.5em 0;
+  }
+  .section {
+    margin-bottom: 20px;
+  }
+  .right-column {
+    width: 100%;
+    height: auto 0;
+    float: right;
+  }
+  .column-bg {
+    background-color: rgb(232, 234, 235);
+    width: 100%;
+    height: auto 0;
+    padding: 20px 20px 5px 20px;
+    margin-bottom: 5px;
+  }
+  .sample-container {
+    margin-bottom: 20px;
+  }
+  .rectangle {
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    background-color: rgb(252, 252, 252);
+  }
+  .curve {
+    border-radius: 3px;
+  }
+  .tabs {
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 767px) {
+  .regions-map-area {
+    div.map {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    div.northAmerica {
+      width: 100%;
+      height: auto;
+      margin-top: 0;
+    }
+    div.secondColumn {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      height: auto;
+      margin-top: 0;
+    }
+    div.world {
+      width: 100%;
+      height: auto;
+      position: relative;
+      bottom: 0;
+    }
+    div.key {
+      width: 100%;
+      height: auto;
+      padding: 0.5em 1em;
+      margin-bottom: 1rem;
+      background-color: rgba(244,244,245,1);
+      border: none;
+      /*border-top: 1px solid #ddd;
+      border-right: none;
+      border-bottom: 1px solid #ddd;
+      border-left: none;*/
+    }
+    .key_palette {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .right-column {
+      width: 256px;
+      height: auto 0;
+      float: left;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .regions-map-area {
+    .right-column {
+      width: 256px;
+      height: auto 0;
+      float: left;
+    }
+    .ads {
+      width: 100%;
+      height: auto;
+      display: inline-flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .regions-map-area {
+    div.logo {
+      margin-top: 26px;
+      max-height: 60px;
+      padding: 0;
+    }
+  }
+}
+@media (min-width: 1440px) {
+
 }
