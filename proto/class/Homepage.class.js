@@ -40,7 +40,7 @@ class Homepage {
    * @param   {{icon:string, number:number, text:string, type:string, ctatext:string, ctaurl:string}} stat the statistic to display
    * @returns {string} HTML output
    */
-  weRepresentStat(stat) {
+  xStat(stat) {
     let frag = Homepage.NAMED_TEMPLATES.xStat.cloneNode(true)
     frag.querySelector('.c-Stat__Icon'      ).className   = frag.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', stat.icon)
     frag.querySelector('.c-Stat__Num'       ).textContent = stat.number.toLocaleString('en')
@@ -74,15 +74,15 @@ class Homepage {
 
   /**
    * @summary Portal display.
-   * @param   {{name:string, icon:string, url:string, data:string}} port the portal to display
+   * @param   {{name:string, icon:string, url:string, data:string}} port the portal data to display
    * @param   {string} port.name the heading
    * @param   {string} port.icon the subclass of Glyphicon
    * @param   {string} port.url  the url the heading is linked to
    * @param   {string} port.data the identifier property of `portal` in the database (pointing to an array)
    * @returns {string} HTML output
    */
-  portal(port) {
-    let frag = Homepage.NAMED_TEMPLATES.portal.cloneNode(true)
+  xPortal(port) {
+    let frag = Homepage.NAMED_TEMPLATES.xPortal.cloneNode(true)
     frag.querySelector('h1 > a').href = port.url
     frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', port.icon)
     frag.querySelector('.c-Portal__Hn'  ).textContent = port.name
@@ -91,6 +91,33 @@ class Homepage {
       innerfrag.querySelector('.c-Portal__Link').href        = link.url
       innerfrag.querySelector('.c-Portal__Link').textContent = link.text
       frag.querySelector('.c-Portal__List').append(innerfrag)
+    })
+
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(frag)
+    return returned.innerHTML
+  }
+
+  /**
+   * @summary Featured Publication display.
+   * @param   {!Objecxt} pub the publication data to display
+   * @param   {string} pub.id the ID
+   * @param   {string} pub.name the heading
+   * @param   {string} pub.caption the caption
+   * @returns {string} HTML output
+   */
+  xPub(pub) {
+    let frag = Homepage.NAMED_TEMPLATES.xPub.cloneNode(true)
+    frag.querySelector('.c-Pub').id = pub.id
+    frag.querySelector('.c-Pub__Hn > cite').textContent = pub.name
+    frag.querySelector('.c-Pub__Cap' ).innerHTML = pub.caption
+    frag.querySelector('.c-Pub__Img' ).src       = this._DATA[pub.id]image
+    frag.querySelector('.c-Pub__Body').innerHTML = (typeof this._DATA[pub.id].body === 'string') ? pub.body : pub.body.join('')
+    this._DATA[pub.id].links.forEach(function (link) {
+      let innerfrag = frag.querySelector('.c-Pub__List > template').content.cloneNode(true)
+      innerfrag.querySelector('.c-Pub__Link'       ).href        = link.url
+      innerfrag.querySelector('.c-Pub__Link > span').textContent = link.text
+      frag.querySelector('.c-c-Pub__List').append(innerfrag)
     })
 
     let returned = new jsdom.JSDOM().window.document.createElement('div')
@@ -129,7 +156,14 @@ Homepage.NAMED_TEMPLATES = {
    * @summary Template for Portal.
    * @const {DocumentFragment}
    */
-  portal: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-portal.tpl.html'), 'utf8'))
+  xPortal: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-portal.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Portal.
+   * @const {DocumentFragment}
+   */
+  xPub: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-pub.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 }
 

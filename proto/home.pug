@@ -36,9 +36,9 @@ html(lang="en").
       <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
       <h1>We Represent:</h1>
       <ul class="o-List o-Grid o-Grid--represent">
-        <li class="o-List__Item o-Grid__Item">!{homepage.weRepresentStat({ icon: "group" , number: 150000, text: "Members"   , type: "JoinAction"  , ctatext: "Join ASCE"          , ctaurl: "//www.asce.org/join/" })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.weRepresentStat({ icon: "map"   , number: 177   , text: "Countries" , type: "SearchAction", ctatext: "Find a Local Group" , ctaurl: "//www.asce.org/membership-communities/" })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.weRepresentStat({ icon: "shield", number: 9     , text: "Institutes", type: "JoinAction"  , ctatext: "Select an Institute", ctaurl: "//www.asce.org/routing-page/technical-areas/" })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xStat({ icon: "group" , number: 150000, text: "Members"   , type: "JoinAction"  , ctatext: "Join ASCE"          , ctaurl: "//www.asce.org/join/" })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xStat({ icon: "map"   , number: 177   , text: "Countries" , type: "SearchAction", ctatext: "Find a Local Group" , ctaurl: "//www.asce.org/membership-communities/" })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xStat({ icon: "shield", number: 9     , text: "Institutes", type: "JoinAction"  , ctatext: "Select an Institute", ctaurl: "//www.asce.org/routing-page/technical-areas/" })}</li>
       </ul>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -74,12 +74,12 @@ html(lang="en").
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals">
-        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Membership'          , icon: 'nameplate'   , url: '//www.asce.org/membership_and_communities/', data: 'membership'  })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Continuing Education', icon: 'education'   , url: '//www.asce.org/continuing_education/'      , data: 'cont_ed'     })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Publications'        , icon: 'book-open'   , url: '//www.asce.org/publications/'              , data: 'pubs'        })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Conferences & Events', icon: 'calendar'    , url: '//www.asce.org/conferences_events/'        , data: 'conf_events' })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Initiatives'         , icon: 'address-book', url: '//www.asce.org/our_initiatives/'           , data: 'initiatives' })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Careers'             , icon: 'briefcase'   , url: '//www.asce.org/careers/'                   , data: 'careers'     })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ name: 'Membership'          , icon: 'nameplate'   , url: '//www.asce.org/membership_and_communities/', data: 'membership'  })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ name: 'Continuing Education', icon: 'education'   , url: '//www.asce.org/continuing_education/'      , data: 'cont_ed'     })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ name: 'Publications'        , icon: 'book-open'   , url: '//www.asce.org/publications/'              , data: 'pubs'        })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ name: 'Conferences & Events', icon: 'calendar'    , url: '//www.asce.org/conferences_events/'        , data: 'conf_events' })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ name: 'Initiatives'         , icon: 'address-book', url: '//www.asce.org/our_initiatives/'           , data: 'initiatives' })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ name: 'Careers'             , icon: 'briefcase'   , url: '//www.asce.org/careers/'                   , data: 'careers'     })}</li>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -102,12 +102,20 @@ html(lang="en").
     </section>
     <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
-      <x-pub id="asce7" name="ASCE 7" data="asce7">
-        <cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16.
-      </x-pub>
-      <x-pub id="civil-engineering-magazine" name="Civil Engineering Magazine" data="cemag">
-        The official magazine of the American Society of Civil Engineers.
-      </x-pub>
+      -
+        // TODO make this a dynamic array
+        let asce7 = {
+          id     : 'asce7',
+          name   : 'ASCE 7',
+          caption: `<cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16.`,
+        }
+        let cemag = {
+          id     : 'civil-engineering-magazine',
+          name   : 'Civil Engineering Magazine',
+          caption: `The official magazine of the American Society of Civil Engineers.`,
+        }
+      <div data-pug-wrapper>!{homepage.xPub(asce7)}</div>
+      <div data-pug-wrapper>!{homepage.xPub(cemag)}</div>
     </section>
     <section class="o-Grid o-Grid--homeActions o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>

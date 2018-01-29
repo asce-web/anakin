@@ -86,23 +86,6 @@ function populateListWithData(element, data, generator = null) {
 // of the start date, so we don’t have to do it multiple times in each custom element.
 ////////////////  ////////////////
 /**
- * A Featured Publication.
- */
-class Pub {
-  constructor({name, caption, image, links, body}) {
-    this._name    = name
-    this._caption = caption
-    this._image   = image
-    this._links   = links
-    this._body    = body
-  }
-  get name()    { return this._name }
-  get caption() { return this._caption }
-  get image()   { return this._image }
-  get links()   { return this._links.slice() }
-  get body()    { return (typeof this._body === 'string') ? this._body : this._body.join('') }
-}
-/**
  * An item in the Actions section.
  */
 class HomeAction {
@@ -123,34 +106,6 @@ class HomeAction {
 
 
 //////////////// CUSTOM ELEMENT DEFINITIONS ////////////////
-window.customElements.define('x-pub', class XPub extends HTMLElement {
-  constructor () {
-    super()
-    let data = global.database[this.getAttribute('data')]
-    let instance = new Pub({
-      name   : this.getAttribute('name'),
-      caption: this.innerHTML,
-      image  : data.image,
-      links  : data.links,
-      body   : data.body,
-    })
-    let frag = XPub.TEMPLATE.content.cloneNode(true)
-    frag.querySelector('.c-Pub__Hn > cite').textContent = instance.name
-    frag.querySelector('.c-Pub__Cap' ).innerHTML = instance.caption
-    frag.querySelector('.c-Pub__Img' ).src       = instance.image
-    frag.querySelector('.c-Pub__Body').innerHTML = instance.body
-    populateListWithData(frag.querySelector('.c-Pub__List'), instance.links, function (frag, datum) {
-      frag.querySelector('.c-Pub__Link'       ).href        = datum.url
-      frag.querySelector('.c-Pub__Link > span').textContent = datum.text
-      return frag
-    })
-    while (this.childNodes.length) { this.firstChild.remove() }
-    this.appendChild(frag)
-  }
-  static get TEMPLATE() {
-    return document.querySelector('link[rel="import"][href$="x-pub.tpl.html"]').import.querySelector('template')
-  }
-})
 window.customElements.define('x-homeaction', class XHomeAction extends HTMLElement {
   constructor () {
     super()
