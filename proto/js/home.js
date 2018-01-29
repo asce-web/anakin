@@ -85,53 +85,10 @@ function populateListWithData(element, data, generator = null) {
 // The `DateRange#getStartDate()` method would standardize the formatting and output
 // of the start date, so we don’t have to do it multiple times in each custom element.
 ////////////////  ////////////////
-/**
- * An item in the Actions section.
- */
-class HomeAction {
-  constructor({name, caption, image, links, body}) {
-    this._name    = name
-    this._caption = caption
-    this._image   = image
-    this._links   = links
-    this._body    = body
-  }
-  get name()    { return this._name }
-  get caption() { return this._caption }
-  get image()   { return `url('${this._image}')` }
-  get links()   { return this._links.slice() }
-  get body()    { return (typeof this._body === 'string') ? this._body : this._body.join('') }
-}
 
 
 
 //////////////// CUSTOM ELEMENT DEFINITIONS ////////////////
-window.customElements.define('x-homeaction', class XHomeAction extends HTMLElement {
-  constructor () {
-    super()
-    let data = global.database[this.getAttribute('data')]
-    let instance = new HomeAction({
-      name   : this.getAttribute('name'),
-      caption: this.innerHTML,
-      image  : data.image,
-      links  : data.links,
-    })
-    let frag = XHomeAction.TEMPLATE.content.cloneNode(true)
-    frag.querySelector('.c-HomeAction__Hn'  ).textContent = instance.name
-    frag.querySelector('.c-HomeAction__Cap' ).innerHTML   = instance.caption
-    frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', instance.image)
-    populateListWithData(frag.querySelector('.c-HomeAction__List'), instance.links, function (frag, datum) {
-      frag.querySelector('.c-HomeAction__Link'       ).href        = datum.url
-      frag.querySelector('.c-HomeAction__Link > span').textContent = datum.text
-      return frag
-    })
-    while (this.childNodes.length) { this.firstChild.remove() }
-    this.appendChild(frag)
-  }
-  static get TEMPLATE() {
-    return document.querySelector('link[rel="import"][href$="x-homeaction.tpl.html"]').import.querySelector('template')
-  }
-})
 
 
 

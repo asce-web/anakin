@@ -100,7 +100,7 @@ class Homepage {
 
   /**
    * @summary Featured Publication display.
-   * @param   {!Objecxt} pub the publication data to display
+   * @param   {{id:string, name:string, caption:string}} pub the publication data to display
    * @param   {string} pub.id the ID
    * @param   {string} pub.name the heading
    * @param   {string} pub.caption the caption
@@ -111,18 +111,54 @@ class Homepage {
     frag.querySelector('.c-Pub').id = pub.id
     frag.querySelector('.c-Pub__Hn > cite').textContent = pub.name
     frag.querySelector('.c-Pub__Cap' ).innerHTML = pub.caption
-    frag.querySelector('.c-Pub__Img' ).src       = this._DATA[pub.id]image
-    frag.querySelector('.c-Pub__Body').innerHTML = (typeof this._DATA[pub.id].body === 'string') ? pub.body : pub.body.join('')
+    frag.querySelector('.c-Pub__Img' ).src       = this._DATA[pub.id].image
+    frag.querySelector('.c-Pub__Body').innerHTML = Homepage.contentString(this._DATA[pub.id].body)
     this._DATA[pub.id].links.forEach(function (link) {
       let innerfrag = frag.querySelector('.c-Pub__List > template').content.cloneNode(true)
       innerfrag.querySelector('.c-Pub__Link'       ).href        = link.url
       innerfrag.querySelector('.c-Pub__Link > span').textContent = link.text
-      frag.querySelector('.c-c-Pub__List').append(innerfrag)
+      frag.querySelector('.c-Pub__List').append(innerfrag)
     })
 
     let returned = new jsdom.JSDOM().window.document.createElement('div')
     returned.append(frag)
     return returned.innerHTML
+  }
+
+  /**
+   * @summary Home Action display.
+   * @param   {{id:string, name:string, caption:string}} act the action data to display
+   * @param   {string} act.id the ID
+   * @param   {string} act.name the heading
+   * @param   {string} act.caption the caption
+   * @returns {string} HTML output
+   */
+  xHomeAction(act) {
+    let frag = Homepage.NAMED_TEMPLATES.xHomeAction.cloneNode(true)
+    frag.querySelector('.c-HomeAction').id = act.id
+    frag.querySelector('.c-HomeAction__Hn'  ).textContent = act.name
+    frag.querySelector('.c-HomeAction__Cap' ).innerHTML   = act.caption
+    frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', `url('${this._DATA[act.id].image}')`)
+    this._DATA[act.id].links.forEach(function (link) {
+      let innerfrag = frag.querySelector('.c-HomeAction__List > template').content.cloneNode(true)
+      innerfrag.querySelector('.c-HomeAction__Link'       ).href        = link.url
+      innerfrag.querySelector('.c-HomeAction__Link > span').textContent = link.text
+      frag.querySelector('.c-HomeAction__List').append(innerfrag)
+    })
+
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(frag)
+    return returned.innerHTML
+  }
+
+
+  /**
+   * @summary Content-ify.
+   * @param   {(string|Array<string>)} thing
+   * @returns {string} `(typeof thing === 'string') ? thing : thing.join('')`
+   */
+  static contentString(thing) {
+    return (typeof thing === 'string') ? thing : thing.join('')
   }
 }
 
@@ -160,11 +196,19 @@ Homepage.NAMED_TEMPLATES = {
     .window.document.querySelector('template').content,
 
   /**
-   * @summary Template for Portal.
+   * @summary Template for Featured Publication.
    * @const {DocumentFragment}
    */
   xPub: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-pub.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Home Action.
+   * @const {DocumentFragment}
+   */
+  xHomeAction: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-homeaction.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
 }
 
 module.exports = Homepage
