@@ -151,6 +151,40 @@ class Homepage {
     return returned.innerHTML
   }
 
+  /**
+   * What’s Happening section display.
+   * @returns {string} HTML output
+   */
+  whatsHappening() {
+    function formatDate(date) {
+      return `${[
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ][date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}`
+    }
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(...this._DATA.whats_happening.map(function (article) {
+      let frag = Homepage.NAMED_TEMPLATES.whatsHappening.cloneNode(true)
+      frag.querySelector('.c-ArticleTeaser__Img'        ).src         = article.image
+      frag.querySelector('.c-ArticleTeaser__Link'       ).href        = article.url
+      frag.querySelector('.c-ArticleTeaser__Link > cite').textContent = article.title
+      frag.querySelector('.c-ArticleTeaser__Date > time').dateTime    = article.datetime
+      frag.querySelector('.c-ArticleTeaser__Date > time').textContent = formatDate(new Date(article.datetime))
+      return frag
+    }))
+    return returned.innerHTML
+  }
+
 
   /**
    * @summary Content-ify.
@@ -209,6 +243,12 @@ Homepage.NAMED_TEMPLATES = {
   xHomeAction: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-homeaction.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
+  /**
+   * @summary Template for What’s Happening section.
+   * @const {DocumentFragment}
+   */
+  whatsHappening: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/whats-happening.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
 }
 
 module.exports = Homepage

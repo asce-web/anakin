@@ -4,23 +4,6 @@
  * @type {!Object}
  */
 let global = {
-  formatDate(date) {
-    const MONTHS = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ]
-    return `${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}`
-  },
   database: JSON.parse(document.querySelector('script#database').textContent),
 }
 /**
@@ -99,17 +82,6 @@ populateListWithData(document.querySelector('[data-list="jobs"]'), global.databa
   frag.querySelector('.c-JobListing__Link').textContent = datum.title
   frag.querySelector('.c-JobListing__Org' ).textContent = datum.organization
   frag.querySelector('.c-JobListing__Loc' ).textContent = datum.location
-  return frag
-})
-
-
-//////// What’s Happening ////////
-populateListWithData(document.querySelector('[data-list="whats_happening"]'), global.database.whats_happening, function (frag, datum) {
-  frag.querySelector('.c-ArticleTeaser__Img'        ).src         = datum.image
-  frag.querySelector('.c-ArticleTeaser__Link'       ).href        = datum.url
-  frag.querySelector('.c-ArticleTeaser__Link > cite').textContent = datum.title
-  frag.querySelector('.c-ArticleTeaser__Date > time').dateTime    = datum.datetime
-  frag.querySelector('.c-ArticleTeaser__Date > time').textContent = global.formatDate(new Date(datum.datetime))
   return frag
 })
 

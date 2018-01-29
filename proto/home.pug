@@ -136,23 +136,7 @@ html(lang="en").
     </section>
     <section class="o-Runner" id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
-      <ul class="o-List o-Grid o-Grid--whatsHappening" data-list="whats_happening">
-        <template>
-          <li class="o-List__Item o-Grid__Item">
-            <div class="c-ArticleTeaser" itemscope="" itemtype="http://schema.org/NewsArticle">
-              <img class="c-ArticleTeaser__Img" src="{{ database__image }}" alt="" itemprop="image thumbnailUrl"/>
-              <p class="c-ArticleTeaser__Hn">
-                <a class="c-ArticleTeaser__Link" href="{{ database__url }}" itemprop="url mainEntityOfPage">
-                  <cite itemprop="headline">{{ database__title }}</cite>
-                </a>
-              </p>
-              <p class="c-ArticleTeaser__Date">
-                <time datetime="{{ database__datetime }}" itemprop="datePublished">{{ database__datetime_formatted }}</time>
-              </p>
-            </div>
-          </li>
-        </template>
-      </ul>
+      <ul class="o-List o-Grid o-Grid--whatsHappening">!{homepage.whatsHappening()}</ul>
       <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
     </section>
     <section class="o-Runner" id="member-stories">
