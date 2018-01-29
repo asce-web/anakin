@@ -265,13 +265,6 @@ window.customElements.define('x-homeaction', class XHomeAction extends HTMLEleme
 
 
 //////////////// POPULATE ALL THE DATA ////////////////
-//////// Hero ////////
-document.querySelector('.c-Hero').style.setProperty('background-image', `url('${global.database.hero.image}')`)
-document.querySelector('.c-Hero__Cap').textContent = global.database.hero.caption
-document.querySelector('.c-Hero__Cta').href        = global.database.hero.cta.url
-document.querySelector('.c-Hero__Cta').textContent = global.database.hero.cta.text
-
-
 //////// Jobs ////////
 populateListWithData(document.querySelector('[data-list="jobs"]'), global.database.jobs, function (frag, datum) {
   frag.querySelector('.c-JobListing__Link').href        = datum.url

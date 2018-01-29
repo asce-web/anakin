@@ -25,7 +25,14 @@ class Homepage {
    */
   hero() {
     let frag = Homepage.NAMED_TEMPLATES.hero
-    return '<b>hello</b> <em>world</em>'
+    frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${this._DATA.hero.image}')`)
+    frag.querySelector('.c-Hero__Cap').textContent = this._DATA.hero.caption
+    frag.querySelector('.c-Hero__Cta').href        = this._DATA.hero.cta.url
+    frag.querySelector('.c-Hero__Cta').textContent = this._DATA.hero.cta.text
+
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(frag)
+    return returned.innerHTML
   }
 }
 
@@ -38,7 +45,8 @@ Homepage.NAMED_TEMPLATES = {
    * @summary Template for hero section.
    * @const {DocumentFragment}
    */
-  hero: {},
+  hero: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/hero.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
 }
 
 module.exports = Homepage
