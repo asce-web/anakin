@@ -1,0 +1,163 @@
+{
+  "hero": {
+    "image": "./images/hero.png",
+    "caption": "The 2017 Report Card for America’s Infrastructure is available now.",
+    "cta": { "text": "View the Report Card", "url": "#0" }
+  },
+  "jobs": [
+    {
+      "title"       : "Geotechnical Engineer",
+      "organization": "SME",
+      "location"    : "Helix Water District",
+      "url"         : "#0"
+    },
+    {
+      "title"       : "Traffic Engineer",
+      "organization": "Oregon Department of Transportation",
+      "location"    : "Portland, OR",
+      "url"         : "#0"
+    },
+    {
+      "title"       : "NRC Research Associateship Program",
+      "organization": "The National Academies of Science, Engineering, and Medicine",
+      "location"    : "Washington, DC",
+      "url"         : "#0"
+    },
+    {
+      "title"       : "Full Professor Faculty Position in Structural Engineering for Extreme Events",
+      "organization": "University of Nevada, Reno",
+      "location"    : "Reno, NV",
+      "url"         : "#0"
+    }
+  ],
+  "promotions": [
+    {
+      "title": "Dream Big: Engineering Our World",
+      "image": "./images/timely.png",
+      "cta"  : { "text": "Find a screen", "url": "#0" },
+      "caption": "A giant-screen film about engineering will take viewers on a journey of discovery from the world’s tallest building to a bridge higher than the clouds."
+    },
+    {
+      "title": "Save America’s Infrastructure",
+      "image": "./images/infrastructure.png",
+      "cta"  : { "text": "Read more", "url": "#0" },
+      "caption": "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers."
+    }
+  ],
+  "portal": {
+    "membership": [
+      { "text": "Manage My Membership", "url": "#0" },
+      { "text": "Join ASCE", "url": "#0" },
+      { "text": "Renew my membership", "url": "#0" },
+      { "text": "View member benefits", "url": "#0" }
+    ],
+    "cont_ed": [
+      { "text": "View my courses", "url": "#0" },
+      { "text": "Browse course catalog", "url": "#0" },
+      { "text": "P.E. Exam Review", "url": "#0" },
+      { "text": "5 Free webinars", "url": "#0" }
+    ],
+    "pubs": [
+      { "text": "Browse the ASCE Library", "url": "#0" },
+      { "text": "Browse the bookstore", "url": "#0" },
+      { "text": "Bridges calendar", "url": "#0" },
+      { "text": "Find a journal", "url": "#0" }
+    ],
+    "conf_events": [
+      { "text": "View the calendar", "url": "#0" },
+      { "text": "Submit a papaer", "url": "#0" },
+      { "text": "Annual ASCE Convention", "url": "#0" },
+      { "text": "ASCE Week", "url": "#0" }
+    ],
+    "initiatives": [
+      { "text": "Key Contact Program", "url": "#0" },
+      { "text": "Report Card for America’s Infrastructure", "url": "#0" },
+      { "text": "Sustainability", "url": "#0" },
+      { "text": "ASCE Grand Challenge", "url": "#0" }
+    ],
+    "careers": [
+      { "text": "Career Connections", "url": "#0" },
+      { "text": "Getting Licensed &amp; Certified", "url": "#0" },
+      { "text": "Career resources", "url": "#0" },
+      { "text": "Code of Ethics", "url": "#0" }
+    ]
+  },
+  "asce7": {
+    "image": "./images/asce7.png",
+    "links": [
+      { "text": "Provisions & commentary", "url": "#0" },
+      { "text": "Guides & more", "url": "#0" }
+    ],
+    "body": [
+      "<h2>ASCE 7 Online</h2>",
+      "<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>",
+      "<p><a class=\"c-Button\" href=\"#0\">Get digital access</a></p>",
+      "<h2>ASCE 7 Hazard Tool</h2>",
+      "<p>Look up key design parameters as specified by ASCE 7.</p>",
+      "<p><a class=\"c-Button\" href=\"#0\">Search design parameters</a></p>"
+    ]
+  },
+  "cemag": {
+    "image": "./images/cecover.png",
+    "links": [
+      { "text": "Read CE Magazine", "url": "#0" }
+    ],
+    "body": [
+    "<h2>Featured this Month</h2>",
+    "<article>",
+      "<p><img src=\"./images/cefeatured.png\" alt=\"\"/></p>",
+      "<h3>Topographic Transformation</h3>",
+      "<p><time datetime=\"2017-06\">June 2017</time></p>",
+      "<p>The formerly flat Governors Island, in New York City harbor, is home ",
+        "to four artificial hills that provide spectacular views of the ",
+        "surrounding scenery. Rising as much as 70 ft above the island surface, ",
+        "the hills were very carefully designed and engineered to remain stable ",
+        "even where they are the steepest.</p>",
+      "<p><a href=\"#0\">Continue &rarr;</a></p>",
+    "</article>"
+    ]
+  },
+  "tech_info": {
+    "image": "./images/techinfo.png",
+    "links": [
+    { "text": "Find a local group"   , "url": "#0" },
+    { "text": "Browse publications"  , "url": "#0" },
+    { "text": "Register for a course", "url": "#0" },
+    { "text": "Find a conference"    , "url": "#0" }
+    ]
+  },
+  "get_involved": {
+    "image": "./images/involved.png",
+    "links": [
+    { "text": "View volunteer opportunities", "url": "#0" },
+    { "text": "Find a Section or Branch"    , "url": "#0" },
+    { "text": "Visit ASCE Collaborate"      , "url": "#0" },
+    { "text": "Find a committee"            , "url": "#0" }
+    ]
+  },
+  "whats_happening": [
+    { "title": "ASCE’s New Infrastructure Report Card: Another D+, But Solutions Available", "url": "#0", "image": "./images/news1.png", "datetime": "2017-03-09" },
+    { "title": "Emergency and Carryover Storage Project Earns OCEA"                        , "url": "#0", "image": "./images/news2.png", "datetime": "2017-03-16" },
+    { "title": "Former Corps Chief Bostick Honored with OPAL Award"                        , "url": "#0", "image": "./images/news3.png", "datetime": "2017-03-16" }
+  ],
+  "member_stories": [
+    {
+      "name" : "Katie Haslett",
+      "grade": "Student Member",
+      "image": "./images/member1.png",
+      "quote": "The impact of seeing successful female engineering professiors has motivated and inspired me to want to make a difference, and work towards making contributions that will affect the future and how things are done from an engineering perspective."
+    },
+    {
+      "name" : "Nakeia Jackson",
+      "grade": "2017 New Faces of Civil Engineering",
+      "image": "./images/member2.png",
+      "quote": "When you become an engineer, you are always proud of the work you create. Your work is your own creativity and it’s thrilling to make something on paper come to life."
+    },
+    {
+      "name" : "Damani Nkeiruka",
+      "grade": "Distinguished Member",
+      "image": "./images/member3.png",
+      "quote": "There are so many infrastructure and transportation issues that need to be solved, and I am excited to bring my knowledge, passion, and can-do attitude into that field."
+    }
+  ]
+}

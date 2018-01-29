@@ -8,6 +8,7 @@ gulp.task('pug:home', function () {
     .pipe(pug({
       basedir: './',
       locals: {
+        database: require('./proto/data.json'),
       },
     }))
     .pipe(gulp.dest('./proto/'))
