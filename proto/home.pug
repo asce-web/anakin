@@ -19,7 +19,6 @@ html(lang="en").
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700"/> -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
 
-  <link rel="import" href="./template/x-stat.tpl.html"/>
   <link rel="import" href="./template/x-portal.tpl.html"/>
   <link rel="import" href="./template/x-pub.tpl.html"/>
   <link rel="import" href="./template/x-homeaction.tpl.html"/>
@@ -37,9 +36,9 @@ html(lang="en").
       <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
       <h1>We Represent:</h1>
       <ul class="o-List o-Grid o-Grid--represent">
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="group"  number="150000" text="Members"    type="JoinAction"   ctatext="Join ASCE"           ctaurl="//www.asce.org/join/"></x-stat></li>
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="map"    number="177"    text="Countries"  type="SearchAction" ctatext="Find a Local Group"  ctaurl="//www.asce.org/membership-communities/"></x-stat></li>
-        <li class="o-List__Item o-Grid__Item"><x-stat icon="shield" number="9"      text="Institutes" type="JoinAction"   ctatext="Select an Institute" ctaurl="//www.asce.org/routing-page/technical-areas/"></x-stat></li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.weRepresentStat({ icon: "group" , number: 150000, text: "Members"   , type: "JoinAction"  , ctatext: "Join ASCE"          , ctaurl: "//www.asce.org/join/" })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.weRepresentStat({ icon: "map"   , number: 177   , text: "Countries" , type: "SearchAction", ctatext: "Find a Local Group" , ctaurl: "//www.asce.org/membership-communities/" })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.weRepresentStat({ icon: "shield", number: 9     , text: "Institutes", type: "JoinAction"  , ctatext: "Select an Institute", ctaurl: "//www.asce.org/routing-page/technical-areas/" })}</li>
       </ul>
     </section>
     <aside>ADVERTISEMENT</aside>

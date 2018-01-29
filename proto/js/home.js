@@ -86,25 +86,6 @@ function populateListWithData(element, data, generator = null) {
 // of the start date, so we don’t have to do it multiple times in each custom element.
 ////////////////  ////////////////
 /**
- * A Featured Statistic
- */
-class Stat {
-  constructor({icon, number, text, cta, type}) {
-    this._icon    = icon
-    this._number  = number
-    this._text    = text
-    this._ctatext = cta.text
-    this._ctaurl  = cta.url
-    this._type    = type
-  }
-  get icon()    { return this._icon }
-  get number()  { return +this._number }
-  get text()    { return this._text }
-  get ctatext() { return this._ctatext }
-  get ctaurl()  { return this._ctaurl }
-  get itemtype() { return `http://schema.org/${this._type || 'Action'}` }
-}
-/**
  * A Portal to an internal page. Features action items.
  */
 class Portal {
@@ -157,31 +138,6 @@ class HomeAction {
 
 
 //////////////// CUSTOM ELEMENT DEFINITIONS ////////////////
-window.customElements.define('x-stat', class XStat extends HTMLElement {
-  constructor() {
-    super()
-    let instance = new Stat({
-      icon  : this.getAttribute('icon'),
-      number: this.getAttribute('number'),
-      text  : this.getAttribute('text'),
-      cta   : { text: this.getAttribute('ctatext'), url : this.getAttribute('ctaurl') },
-      type  : this.getAttribute('type'),
-    })
-    let frag = XStat.TEMPLATE.content.cloneNode(true)
-    frag.querySelector('.c-Stat__Icon'      ).className   = frag.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', instance.icon)
-    frag.querySelector('.c-Stat__Num'       ).textContent = instance.number.toLocaleString('en')
-    frag.querySelector('.c-Stat__Text'      ).textContent = instance.text
-    frag.querySelector('.c-Stat__Cta'       ).href        = instance.ctaurl
-    frag.querySelector('.c-Stat__Cta > span').textContent = instance.ctatext
-    frag.querySelector('.c-Stat__Cta'       ).parentNode.setAttribute('itemtype', instance.itemtype)
-    this.appendChild(frag)
-  }
-  // HACK for class constants: using a static getter. call with `XStat.TEMPLATE` (no parentheses).
-  // class constants will be available in a future version of JS.
-  static get TEMPLATE() {
-    return document.querySelector('link[rel="import"][href$="x-stat.tpl.html"]').import.querySelector('template')
-  }
-})
 window.customElements.define('x-portal', class XPortal extends HTMLElement {
   constructor () {
     super()

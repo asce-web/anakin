@@ -20,15 +20,33 @@ class Homepage {
   }
 
   /**
-   * @summary Hero display.
+   * @summary Hero section display.
    * @returns {string} HTML output
    */
   hero() {
-    let frag = Homepage.NAMED_TEMPLATES.hero
+    let frag = Homepage.NAMED_TEMPLATES.hero.cloneNode(true)
     frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${this._DATA.hero.image}')`)
     frag.querySelector('.c-Hero__Cap').textContent = this._DATA.hero.caption
     frag.querySelector('.c-Hero__Cta').href        = this._DATA.hero.cta.url
     frag.querySelector('.c-Hero__Cta').textContent = this._DATA.hero.cta.text
+
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(frag)
+    return returned.innerHTML
+  }
+
+  /**
+   * @summary We Represent section display.
+   * @returns {string} HTML output
+   */
+  weRepresentStat(stat) {
+    let frag = Homepage.NAMED_TEMPLATES.xStat.cloneNode(true)
+    frag.querySelector('.c-Stat__Icon'      ).className   = frag.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', stat.icon)
+    frag.querySelector('.c-Stat__Num'       ).textContent = stat.number.toLocaleString('en')
+    frag.querySelector('.c-Stat__Text'      ).textContent = stat.text
+    frag.querySelector('.c-Stat__Cta'       ).href        = stat.ctaurl
+    frag.querySelector('.c-Stat__Cta > span').textContent = stat.ctatext
+    frag.querySelector('.c-Stat__Cta'       ).parentNode.setAttribute('itemtype', `http://schema.org/${stat.type || 'Action'}`)
 
     let returned = new jsdom.JSDOM().window.document.createElement('div')
     returned.append(frag)
@@ -42,10 +60,16 @@ class Homepage {
  */
 Homepage.NAMED_TEMPLATES = {
   /**
-   * @summary Template for hero section.
+   * @summary Template for Hero section.
    * @const {DocumentFragment}
    */
   hero: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/hero.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+  /**
+   * @summary Template for We Represent section.
+   * @const {DocumentFragment}
+   */
+  xStat: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-stat.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 }
 
