@@ -231,17 +231,6 @@ populateListWithData(document.querySelector('[data-list="jobs"]'), global.databa
 })
 
 
-//////// Timely Promos ////////
-populateListWithData(document.querySelector('[data-list="promotions"]'), global.database.promotions, function (frag, datum) {
-  frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${datum.image}')`)
-  frag.querySelector('.c-Promotion__Hn'  ).textContent = datum.title
-  frag.querySelector('.c-Promotion__Cta' ).href        = datum.cta.url
-  frag.querySelector('.c-Promotion__Cta' ).textContent = datum.cta.text
-  frag.querySelector('.c-Promotion__Text').textContent = datum.caption
-  return frag
-})
-
-
 //////// What’s Happening ////////
 populateListWithData(document.querySelector('[data-list="whats_happening"]'), global.database.whats_happening, function (frag, datum) {
   frag.querySelector('.c-ArticleTeaser__Img'        ).src         = datum.image

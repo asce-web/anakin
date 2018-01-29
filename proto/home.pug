@@ -69,17 +69,7 @@ html(lang="en").
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <ul class="o-List" data-list="promotions">
-        <template>
-          <li class="o-List__Item">
-            <section class="c-Promotion" style="background-image: url('{{ database__image }}');">
-              <h1 class="c-Promotion__Hn">{{ database__title }}</h1>
-              <p class="c-Promotion__Text">{{ database__caption }}</p>
-              <p><a class="c-Promotion__Cta c-Button" href="{{ database__cta__url }}">{{ database__cta__text }}</a></p>
-            </section>
-          </li>
-        </template>
-      </ul>
+      <ul class="o-List">!{homepage.timelyPromos()}</ul>
     </section>
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
