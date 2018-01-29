@@ -74,12 +74,12 @@ html(lang="en").
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals">
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Membership"           icon="nameplate"    data="portal.membership"  url="//www.asce.org/membership_and_communities/"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Continuing Education" icon="education"    data="portal.cont_ed"     url="//www.asce.org/continuing_education/"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Publications"         icon="book-open"    data="portal.pubs"        url="//www.asce.org/publications/"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Conferences & Events" icon="calendar"     data="portal.conf_events" url="//www.asce.org/conferences_events/"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Initiatives"          icon="address-book" data="portal.initiatives" url="//www.asce.org/our_initiatives/"></x-portal></li>
-        <li class="o-List__Item o-Grid__Item"><x-portal name="Careers"              icon="briefcase"    data="portal.careers"     url="//www.asce.org/careers/"></x-portal></li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Membership'          , icon: 'nameplate'   , url: '//www.asce.org/membership_and_communities/', data: 'membership'  })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Continuing Education', icon: 'education'   , url: '//www.asce.org/continuing_education/'      , data: 'cont_ed'     })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Publications'        , icon: 'book-open'   , url: '//www.asce.org/publications/'              , data: 'pubs'        })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Conferences & Events', icon: 'calendar'    , url: '//www.asce.org/conferences_events/'        , data: 'conf_events' })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Initiatives'         , icon: 'address-book', url: '//www.asce.org/our_initiatives/'           , data: 'initiatives' })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.portal({ name: 'Careers'             , icon: 'briefcase'   , url: '//www.asce.org/careers/'                   , data: 'careers'     })}</li>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>

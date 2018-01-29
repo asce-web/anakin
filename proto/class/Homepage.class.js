@@ -37,6 +37,7 @@ class Homepage {
 
   /**
    * @summary Featured Statistic display.
+   * @param   {{icon:string, number:number, text:string, type:string, ctatext:string, ctaurl:string}} stat the statistic to display
    * @returns {string} HTML output
    */
   weRepresentStat(stat) {
@@ -70,6 +71,32 @@ class Homepage {
     }))
     return returned.innerHTML
   }
+
+  /**
+   * @summary Portal display.
+   * @param   {{name:string, icon:string, url:string, data:string}} port the portal to display
+   * @param   {string} port.name the heading
+   * @param   {string} port.icon the subclass of Glyphicon
+   * @param   {string} port.url  the url the heading is linked to
+   * @param   {string} port.data the identifier property of `portal` in the database (pointing to an array)
+   * @returns {string} HTML output
+   */
+  portal(port) {
+    let frag = Homepage.NAMED_TEMPLATES.portal.cloneNode(true)
+    frag.querySelector('h1 > a').href = port.url
+    frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', port.icon)
+    frag.querySelector('.c-Portal__Hn'  ).textContent = port.name
+    this._DATA.portal[port.data].forEach(function (link) {
+      let innerfrag = frag.querySelector('.c-Portal__List > template').content.cloneNode(true)
+      innerfrag.querySelector('.c-Portal__Link').href        = link.url
+      innerfrag.querySelector('.c-Portal__Link').textContent = link.text
+      frag.querySelector('.c-Portal__List').append(innerfrag)
+    })
+
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(frag)
+    return returned.innerHTML
+  }
 }
 
 /**
@@ -85,17 +112,24 @@ Homepage.NAMED_TEMPLATES = {
     .window.document.querySelector('template').content,
 
   /**
-   * @summary Template for We Represent section.
+   * @summary Template for Featured Statistic.
    * @const {DocumentFragment}
    */
   xStat: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-stat.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
-   * @summary Template for We Represent section.
+   * @summary Template for Promotions section.
    * @const {DocumentFragment}
    */
   timelyPromos: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/timely-promos.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Portal.
+   * @const {DocumentFragment}
+   */
+  portal: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-portal.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 }
 

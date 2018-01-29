@@ -86,21 +86,6 @@ function populateListWithData(element, data, generator = null) {
 // of the start date, so we don’t have to do it multiple times in each custom element.
 ////////////////  ////////////////
 /**
- * A Portal to an internal page. Features action items.
- */
-class Portal {
-  constructor({name, url, icon, links}) {
-    this._name  = name
-    this._url   = url
-    this._icon  = icon
-    this._links = links
-  }
-  get name()  { return this._name }
-  get url()   { return this._url }
-  get icon()  { return this._icon }
-  get links() { return this._links.slice() }
-}
-/**
  * A Featured Publication.
  */
 class Pub {
@@ -138,31 +123,6 @@ class HomeAction {
 
 
 //////////////// CUSTOM ELEMENT DEFINITIONS ////////////////
-window.customElements.define('x-portal', class XPortal extends HTMLElement {
-  constructor () {
-    super()
-    let data = global.database.portal[this.getAttribute('data').split('.')[1]]
-    let instance = new Portal({
-      name : this.getAttribute('name'),
-      url  : this.getAttribute('url'),
-      icon : this.getAttribute('icon'),
-      links: data, // `data` is the array of links
-    })
-    let frag = XPortal.TEMPLATE.content.cloneNode(true)
-    frag.querySelector('h1 > a').href = instance.url
-    frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', instance.icon)
-    frag.querySelector('.c-Portal__Hn'  ).textContent = instance.name
-    populateListWithData(frag.querySelector('.c-Portal__List'), instance.links, function (frag, datum) {
-      frag.querySelector('.c-Portal__Link').href        = datum.url
-      frag.querySelector('.c-Portal__Link').textContent = datum.text
-      return frag
-    })
-    this.appendChild(frag)
-  }
-  static get TEMPLATE() {
-    return document.querySelector('link[rel="import"][href$="x-portal.tpl.html"]').import.querySelector('template')
-  }
-})
 window.customElements.define('x-pub', class XPub extends HTMLElement {
   constructor () {
     super()
