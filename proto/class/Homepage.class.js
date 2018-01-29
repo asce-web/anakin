@@ -185,6 +185,23 @@ class Homepage {
     return returned.innerHTML
   }
 
+  /**
+   * Member Stories section display.
+   * @returns {string} HTML output
+   */
+  memberStories() {
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(...this._DATA.member_stories.map(function (member) {
+      let frag = Homepage.NAMED_TEMPLATES.memberStories.cloneNode(true)
+      frag.querySelector('.c-MemberStory__Img'  ).src         = member.image
+      frag.querySelector('.c-MemberStory__Hn'   ).textContent = member.name
+      frag.querySelector('.c-MemberStory__SubHn').textContent = member.grade
+      frag.querySelector('.c-MemberStory__Quote').textContent = member.quote
+      return frag
+    }))
+    return returned.innerHTML
+  }
+
 
   /**
    * @summary Content-ify.
@@ -248,6 +265,13 @@ Homepage.NAMED_TEMPLATES = {
    * @const {DocumentFragment}
    */
   whatsHappening: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/whats-happening.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for What’s Happening section.
+   * @const {DocumentFragment}
+   */
+  memberStories: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/member-stories.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 }
 

@@ -84,13 +84,3 @@ populateListWithData(document.querySelector('[data-list="jobs"]'), global.databa
   frag.querySelector('.c-JobListing__Loc' ).textContent = datum.location
   return frag
 })
-
-
-//////// Member Stories ////////
-populateListWithData(document.querySelector('[data-list="member_stories"]'), global.database.member_stories, function (frag, datum) {
-  frag.querySelector('.c-MemberStory__Img'  ).src         = datum.image
-  frag.querySelector('.c-MemberStory__Hn'   ).textContent = datum.name
-  frag.querySelector('.c-MemberStory__SubHn').textContent = datum.grade
-  frag.querySelector('.c-MemberStory__Quote').textContent = datum.quote
-  return frag
-})

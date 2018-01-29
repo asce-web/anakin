@@ -141,18 +141,7 @@ html(lang="en").
     </section>
     <section class="o-Runner" id="member-stories">
       <h1>ASCE Member Stories</h1>
-      <ul class="o-List o-Grid o-Grid--members" data-list="member_stories">
-        <template>
-          <li class="o-List__Item o-Grid__Item">
-            <div class="c-MemberStory" itemprop="member" itemscope="" itemtype="http://schema.org/Person">
-              <img class="c-MemberStory__Img" src="{{ database__image }}" alt="" itemprop="image"/>
-              <p class="c-MemberStory__Hn" itemprop="name">{{ database__name }}</p>
-              <p class="c-MemberStory__SubHn" itemprop="description">{{ database__grade }}</p>
-              <blockquote class="c-MemberStory__Quote">{{ database__quote }}</blockquote>
-            </div>
-          </li>
-        </template>
-      </ul>
+      <ul class="o-List o-Grid o-Grid--members">!{homepage.memberStories()}</ul>
     </section>
     <p><a href="#0">Join ASCE</a></p>
   </main>
