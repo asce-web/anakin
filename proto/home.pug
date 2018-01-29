@@ -32,6 +32,7 @@ html(lang="en").
     <p>Header and Megamenu</p>
   </header>
   <main id="main">
+    <div data-pug-wrapper>!{homepage.hero()}</div>
     <div class="c-Hero" id="hero" style="background-image: url('{{ database__image }}');">
       <p class="c-Hero__Bar">
         <span class="c-Hero__Cap">{{ database__caption }}</span>
