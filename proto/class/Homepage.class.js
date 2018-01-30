@@ -26,9 +26,9 @@ class Homepage {
   xHero() {
     let frag = Homepage.NAMED_TEMPLATES.xHero.cloneNode(true)
     frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${this._DATA.hero.image}')`)
-    frag.querySelector('.c-Hero__Cap').textContent = this._DATA.hero.caption
-    frag.querySelector('.c-Hero__Cta').href        = this._DATA.hero.cta.url
-    frag.querySelector('.c-Hero__Cta').textContent = this._DATA.hero.cta.text
+    frag.querySelector('slot[name="hero-caption"]').textContent = this._DATA.hero.caption
+    frag.querySelector('a'                        ).href        = this._DATA.hero.cta.url
+    frag.querySelector('a'                        ).textContent = this._DATA.hero.cta.text
 
     let returned = new jsdom.JSDOM().window.document.createElement('div')
     returned.append(frag)
@@ -37,17 +37,18 @@ class Homepage {
 
   /**
    * @summary Featured Statistic display.
-   * @param   {{icon:string, number:number, text:string, type:string, ctatext:string, ctaurl:string}} stat the statistic to display
+   * @param   {{icon:string, number:number, text:string, type:string, cta:{text:string, url:string}}} stat the statistic to display
    * @returns {string} HTML output
    */
   xStat(stat) {
     let frag = Homepage.NAMED_TEMPLATES.xStat.cloneNode(true)
-    frag.querySelector('.c-Stat__Icon'      ).className   = frag.querySelector('.c-Stat__Icon').className.replace('{{ icon }}', stat.icon)
-    frag.querySelector('.c-Stat__Num'       ).textContent = stat.number.toLocaleString('en')
-    frag.querySelector('.c-Stat__Text'      ).textContent = stat.text
-    frag.querySelector('.c-Stat__Cta'       ).href        = stat.ctaurl
-    frag.querySelector('.c-Stat__Cta > span').textContent = stat.ctatext
-    frag.querySelector('.c-Stat__Cta'       ).parentNode.setAttribute('itemtype', `http://schema.org/${stat.type || 'Action'}`)
+    frag.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', stat.icon)
+    frag.querySelector('slot[name="stat-number"]').textContent = stat.number.toLocaleString('en')
+    frag.querySelector('slot[name="stat-text"]'  ).textContent = stat.text
+    let action = frag.querySelector('[itemprop="potentialAction"]')
+    action.setAttribute('itemtype', `http://schema.org/${stat.type || 'Action'}`)
+    action.querySelector('[itemprop="url"]' ).href        = stat.cta.url
+    action.querySelector('[itemprop="name"]').textContent = stat.cta.text
 
     let returned = new jsdom.JSDOM().window.document.createElement('div')
     returned.append(frag)
@@ -66,14 +67,14 @@ class Homepage {
   xPortal(port) {
     let frag = Homepage.NAMED_TEMPLATES.xPortal.cloneNode(true)
     frag.querySelector('.c-Portal').id = port.id
-    frag.querySelector('h1 > a').href = port.url
-    frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', port.icon)
-    frag.querySelector('.c-Portal__Hn'  ).textContent = port.name
+    frag.querySelector('[itemprop="url"]').href = port.url
+    frag.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', port.icon)
+    frag.querySelector('[itemprop="name"]').textContent = port.name
     this._DATA.portal[port.id].forEach(function (link) {
-      let innerfrag = frag.querySelector('.c-Portal__List > template').content.cloneNode(true)
-      innerfrag.querySelector('.c-Portal__Link').href        = link.url
-      innerfrag.querySelector('.c-Portal__Link').textContent = link.text
-      frag.querySelector('.c-Portal__List').append(innerfrag)
+      let innerfrag = frag.querySelector('template').content.cloneNode(true)
+      innerfrag.querySelector('[itemprop="significantLink"]').href        = link.url
+      innerfrag.querySelector('[itemprop="significantLink"]').textContent = link.text
+      frag.querySelector('template').parentNode.append(innerfrag)
     })
 
     let returned = new jsdom.JSDOM().window.document.createElement('div')
@@ -95,15 +96,15 @@ class Homepage {
   xPub(pub) {
     let frag = Homepage.NAMED_TEMPLATES.xPub.cloneNode(true)
     frag.querySelector('.c-Pub').id = pub.id
-    frag.querySelector('.c-Pub__Hn > cite').textContent = pub.name
-    frag.querySelector('.c-Pub__Cap' ).innerHTML = pub.caption
-    frag.querySelector('.c-Pub__Img' ).src       = pub.image
-    frag.querySelector('.c-Pub__Body').innerHTML = pub.body
+    frag.querySelector('[itemprop~="image"]'     ).src         = pub.image
+    frag.querySelector('[itemprop="name"]'       ).textContent = pub.name
+    frag.querySelector('[itemprop="description"]').innerHTML   = pub.caption
+    frag.querySelector('article'                 ).innerHTML   = pub.body
     pub.links.forEach(function (link) {
-      let innerfrag = frag.querySelector('.c-Pub__List > template').content.cloneNode(true)
-      innerfrag.querySelector('.c-Pub__Link'       ).href        = link.url
-      innerfrag.querySelector('.c-Pub__Link > span').textContent = link.text
-      frag.querySelector('.c-Pub__List').append(innerfrag)
+      let innerfrag = frag.querySelector('template').content.cloneNode(true)
+      innerfrag.querySelector('[itemprop="url"]' ).href        = link.url
+      innerfrag.querySelector('[itemprop="name"]').textContent = link.text
+      frag.querySelector('template').parentNode.append(innerfrag)
     })
 
     let returned = new jsdom.JSDOM().window.document.createElement('div')
@@ -124,14 +125,14 @@ class Homepage {
   xHomeAction(act) {
     let frag = Homepage.NAMED_TEMPLATES.xHomeAction.cloneNode(true)
     frag.querySelector('.c-HomeAction').id = act.id
+    frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', `url('${act.image}')`)
     frag.querySelector('.c-HomeAction__Hn'  ).textContent = act.name
     frag.querySelector('.c-HomeAction__Cap' ).innerHTML   = act.caption
-    frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', `url('${act.image}')`)
     act.links.forEach(function (link) {
-      let innerfrag = frag.querySelector('.c-HomeAction__List > template').content.cloneNode(true)
-      innerfrag.querySelector('.c-HomeAction__Link'       ).href        = link.url
-      innerfrag.querySelector('.c-HomeAction__Link > span').textContent = link.text
-      frag.querySelector('.c-HomeAction__List').append(innerfrag)
+      let innerfrag = frag.querySelector('template').content.cloneNode(true)
+      innerfrag.querySelector('[itemprop="url"]' ).href        = link.url
+      innerfrag.querySelector('[itemprop="name"]').textContent = link.text
+      frag.querySelector('template').parentNode.append(innerfrag)
     })
 
     let returned = new jsdom.JSDOM().window.document.createElement('div')
@@ -193,10 +194,10 @@ class Homepage {
     let returned = new jsdom.JSDOM().window.document.createElement('div')
     returned.append(...this._DATA.jobs.map(function (job) {
       let frag = Homepage.NAMED_TEMPLATES.jobs.cloneNode(true)
-      frag.querySelector('.c-JobListing__Link').href        = job.url
-      frag.querySelector('.c-JobListing__Link').textContent = job.title
-      frag.querySelector('.c-JobListing__Org' ).textContent = job.organization
-      frag.querySelector('.c-JobListing__Loc' ).textContent = job.location
+      frag.querySelector('[itemprop="url"]').href        = job.url
+      frag.querySelector('[itemprop="url"]').textContent = job.title
+      frag.querySelector('[itemprop="hiringOrganization"] > [itemprop="name"]').textContent = job.organization
+      frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = job.location
       return frag
     }))
     return returned.innerHTML
@@ -226,11 +227,11 @@ class Homepage {
     let returned = new jsdom.JSDOM().window.document.createElement('div')
     returned.append(...this._DATA.whats_happening.map(function (article) {
       let frag = Homepage.NAMED_TEMPLATES.whatsHappening.cloneNode(true)
-      frag.querySelector('.c-ArticleTeaser__Img'        ).src         = article.image
-      frag.querySelector('.c-ArticleTeaser__Link'       ).href        = article.url
-      frag.querySelector('.c-ArticleTeaser__Link > cite').textContent = article.title
-      frag.querySelector('.c-ArticleTeaser__Date > time').dateTime    = article.datetime
-      frag.querySelector('.c-ArticleTeaser__Date > time').textContent = formatDate(new Date(article.datetime))
+      frag.querySelector('[itemprop~="image"]'       ).src         = article.image
+      frag.querySelector('[itemprop~="url"]'         ).href        = article.url
+      frag.querySelector('[itemprop~="headline"]'    ).textContent = article.title
+      frag.querySelector('[itemprop="datePublished"]').dateTime    = article.datetime
+      frag.querySelector('[itemprop="datePublished"]').textContent = formatDate(new Date(article.datetime))
       return frag
     }))
     return returned.innerHTML
@@ -244,10 +245,10 @@ class Homepage {
     let returned = new jsdom.JSDOM().window.document.createElement('div')
     returned.append(...this._DATA.member_stories.map(function (member) {
       let frag = Homepage.NAMED_TEMPLATES.memberStories.cloneNode(true)
-      frag.querySelector('.c-MemberStory__Img'  ).src         = member.image
-      frag.querySelector('.c-MemberStory__Hn'   ).textContent = member.name
-      frag.querySelector('.c-MemberStory__SubHn').textContent = member.grade
-      frag.querySelector('.c-MemberStory__Quote').textContent = member.quote
+      frag.querySelector('[itemprop="image"]'      ).src         = member.image
+      frag.querySelector('[itemprop="name"]'       ).textContent = member.name
+      frag.querySelector('[itemprop="description"]').textContent = member.grade
+      frag.querySelector('blockquote'              ).textContent = member.quote
       return frag
     }))
     return returned.innerHTML

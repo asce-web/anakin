@@ -8,7 +8,7 @@
       <template>
         <li class="o-List__Item c-HomeAction__List__Item" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/Action">
           <a class="c-HomeAction__Link" href="{{ url }}" itemprop="url">
-            <span itemprop="name">{{ text }}</span>
+            <slot itemprop="name">{{ text }}</slot>
           </a>
         </li>
       </template>

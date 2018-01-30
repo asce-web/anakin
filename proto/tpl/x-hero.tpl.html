@@ -1,8 +1,8 @@
 <template>
-  <div class="c-Hero" id="hero" style="background-image: url('{{ database__image }}');">
+  <div class="c-Hero" id="hero" style="background-image: url('{{ image }}');">
     <p class="c-Hero__Bar">
-      <span class="c-Hero__Cap">{{ database__caption }}</span>
-      <a class="c-Hero__Cta" href="{{ database__cta__url }}">{{ database__cta__text }}</a>
+      <slot class="c-Hero__Cap" name="hero-caption">{{ caption }}</slot>
+      <a class="c-Hero__Cta" href="{{ cta_url }}">{{ cta_text }}</a>
     </p>
   </div>
 </template>

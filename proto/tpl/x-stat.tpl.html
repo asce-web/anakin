@@ -1,13 +1,13 @@
 <template>
   <div class="c-Stat">
-    <i class="c-Stat__Icon h-Block glyphicons glyphicons-{{ icon }}" role="none" aria-hidden="true"></i>
+    <i class="c-Stat__Icon h-Block glyphicons glyphicons-{{ icon }}" aria-hidden="true"></i>
     <p>
-      <span class="c-Stat__Num h-Block">{{ number }}</span>
-      <span class="c-Stat__Text h-Block">{{ text }}</span>
+      <slot class="c-Stat__Num  h-Block" name="stat-number">{{ number }}</slot>
+      <slot class="c-Stat__Text h-Block" name="stat-text">{{ text }}</slot>
     </p>
     <p itemprop="potentialAction" itemscope="" itemtype="{{ type }}">
-      <a class="c-Stat__Cta c-Button" href="{{ ctaurl }}" itemprop="url">
-        <span itemprop="name">{{ ctatext }}</span>
+      <a class="c-Stat__Cta c-Button" href="{{ cta_url }}" itemprop="url">
+        <slot itemprop="name">{{ cta_text }}</slot>
       </a>
     </p>
   </div>
