@@ -1,0 +1,16 @@
+<template>
+  <li class="o-List__Item o-Grid__Item">
+    <div class="c-JobListing" itemscope="" itemtype="http://schema.org/JobPosting">
+      <p class="c-JobListing__Hn" itemprop="name title"><a class="c-JobListing__Link" href="{{ url }}" itemprop="url">{{ title }}</a></p>
+      <p class="c-JobListing__Org" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
+        <slot itemprop="name">{{ organization }}</slot>
+      </p>
+      <p>
+        <i class="c-JobListing__Icon glyphicons glyphicons-map-marker" aria-hidden="true"></i>
+        <span class="c-JobListing__Loc" itemprop="jobLocation" itemscope="" itemtype="http://schema.org/Place">
+          <slot itemprop="name">{{ location }}</slot>
+        </span>
+      </p>
+    </div>
+  </li>
+</template>

@@ -1,0 +1,109 @@
+doctype html
+html(lang="en").
+<head>
+  <title>American Society of Civil Engineers</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/futura.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons/web/html_css/css/glyphicons.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-filetypes/web/html_css/css/glyphicons-filetypes.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-halflings/web/html_css/css/glyphicons-halflings.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
+
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.1.1/css/xmeter.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
+
+  <link rel="stylesheet" href="./css/home.css"/>
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700"/> -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
+
+  <link rel="import" href="./template/x-portal.tpl.html"/>
+  <link rel="import" href="./template/x-pub.tpl.html"/>
+  <link rel="import" href="./template/x-homeaction.tpl.html"/>
+  <script id="database" type="application/json" title="sample database">!{JSON.stringify(database, null, 2)}</script>
+</head>
+<body itemscope="" itemtype="http://schema.org/NGO">
+  <a class="h-Hidden" href="#main">skip to main content</a>
+  <header>
+    <h1 itemprop="name">American Society of Civil Engineers</h1>
+    <p>Header and Megamenu</p>
+  </header>
+  <main id="main">
+    <header data-pug-wrapper>!{homepage.xHero()}</header>
+    <section class="o-Runner" id="we-represent">
+      <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
+      <h1>We Represent:</h1>
+      <ul class="o-List o-Grid o-Grid--represent">
+        <li class="o-List__Item o-Grid__Item">!{homepage.xStat({ icon: "group" , number: 150000, text: "Members"   , type: "JoinAction"  , cta: { text: "Join ASCE"          , url: "//www.asce.org/join/" } })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xStat({ icon: "map"   , number: 177   , text: "Countries" , type: "SearchAction", cta: { text: "Find a Local Group" , url: "//www.asce.org/membership-communities/" } })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xStat({ icon: "shield", number: 9     , text: "Institutes", type: "JoinAction"  , cta: { text: "Select an Institute", url: "//www.asce.org/routing-page/technical-areas/" } })}</li>
+      </ul>
+    </section>
+    <section id="promotions">
+      <h1 class="h-Hidden">Promotions</h1>
+      <ul class="o-List">!{homepage.timelyPromos()}</ul>
+    </section>
+    <section class="o-Runner" id="portals">
+      <h1 class="h-Hidden">Portals</h1>
+      <ol class="o-List o-Grid o-Grid--portals">
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'membership'          , name: 'Membership'          , icon: 'nameplate'   , url: '//www.asce.org/membership_and_communities/' })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'continuing-education', name: 'Continuing Education', icon: 'education'   , url: '//www.asce.org/continuing_education/'       })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'publications'        , name: 'Publications'        , icon: 'book-open'   , url: '//www.asce.org/publications/'               })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'conferences-events'  , name: 'Conferences & Events', icon: 'calendar'    , url: '//www.asce.org/conferences_events/'         })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'initiatives'         , name: 'Initiatives'         , icon: 'address-book', url: '//www.asce.org/our_initiatives/'            })}</li>
+        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'careers'             , name: 'Careers'             , icon: 'briefcase'   , url: '//www.asce.org/careers/'                    })}</li>
+      </ol>
+    </section>
+    <aside>ADVERTISEMENT</aside>
+    <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
+      <h1 itemprop="name">ASCE Foundation</h1>
+      <p itemprop="description">Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.</p>
+      <div class="c-Stat">
+        <i class="c-Stat__Icon h-Block glyphicons glyphicons-donate" role="none" aria-hidden="true"></i>
+        <p>
+          <span class="c-Stat__Text h-Block">Your Foundation!<br/>
+            Your Future!<br/>
+            You can make a difference!</span>
+        </p>
+        <p itemprop="potentialAction" itemscope="" itemtype="http://schema.org/DonateAction">
+          <a class="c-Stat__Cta c-Button" href="//www.ascefoundation.org/ways-to-give/one-time-gift/" rel="external" itemprop="url">
+            <span itemprop="name">Donate Today</span>
+          </a>
+        </p>
+      </div>
+    </section>
+    <section class="o-Runner" id="publication-highlights">
+      <h1 class="h-Hidden">Publication Highlights</h1>
+      <ul class="o-List o-Grid o-Grid--publications">!{homepage.publicationHighlights()}</ul>
+    </section>
+    <section class="o-Runner" id="learn-contribute">
+      <h1 class="h-Hidden">Learn &amp; Contribute</h1>
+      <ul class="o-List o-Grid o-Grid--homeActions">!{homepage.homeActions()}</ul>
+    </section>
+    <section class="o-Runner" id="jobs">
+      <h1>Jobs</h1>
+      <ul class="o-List o-Grid o-Grid--jobs">!{homepage.jobs()}</ul>
+      <footer>
+        <p><a href="#0">Find a job</a></p>
+      </footer>
+    </section>
+    <section class="o-Runner" id="whats-happening">
+      <h1>What’s Happening at ASCE</h1>
+      <ul class="o-List o-Grid o-Grid--whatsHappening">!{homepage.whatsHappening()}</ul>
+      <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
+    </section>
+    <section class="o-Runner" id="member-stories">
+      <h1>ASCE Member Stories</h1>
+      <ul class="o-List o-Grid o-Grid--members">!{homepage.memberStories()}</ul>
+    </section>
+    <p><a href="#0">Join ASCE</a></p>
+    <aside>ADVERTISEMENT</aside>
+  </main>
+  <footer>
+    <p>ASCE Footer</p>
+  </footer>
+  <a class="h-Hidden" href="#top">jump to top</a>
+  <!-- <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script> -->
+</body>

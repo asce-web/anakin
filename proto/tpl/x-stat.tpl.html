@@ -1,0 +1,14 @@
+<template>
+  <div class="c-Stat">
+    <i class="c-Stat__Icon h-Block glyphicons glyphicons-{{ icon }}" aria-hidden="true"></i>
+    <p>
+      <slot class="c-Stat__Num  h-Block" name="stat-number">{{ number }}</slot>
+      <slot class="c-Stat__Text h-Block" name="stat-text">{{ text }}</slot>
+    </p>
+    <p itemprop="potentialAction" itemscope="" itemtype="{{ type }}">
+      <a class="c-Stat__Cta c-Button" href="{{ cta_url }}" itemprop="url">
+        <slot itemprop="name">{{ cta_text }}</slot>
+      </a>
+    </p>
+  </div>
+</template>

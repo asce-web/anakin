@@ -1,5 +1,5 @@
 <template>
-  <section class="o-Grid__Item c-Pub" itemscope="" itemtype="http://schema.org/PublicationIssue">
+  <section id="{{ id }}" class="c-Pub" itemscope="" itemtype="http://schema.org/PublicationIssue">
     <img class="c-Pub__Img" src="{{ image }}" alt="" itemprop="image thumbnailUrl"/>
     <h1 class="c-Pub__Hn">
       <cite itemprop="name">{{ name }}</cite>
@@ -9,7 +9,7 @@
       <template>
         <li class="o-List__Item c-Pub__List__Item" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/ReadAction">
           <a class="c-Pub__Link" href="{{ url }}" itemprop="url">
-            <span itemprop="name">{{ text }}</span>
+            <slot itemprop="name">{{ text }}</slot>
           </a>
         </li>
       </template>

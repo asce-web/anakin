@@ -1,5 +1,5 @@
 <template>
-  <section class="o-Grid__Item c-HomeAction">
+  <section id="{{ id }}" class="c-HomeAction">
     <header class="c-HomeAction__Head" style="background-image: url('{{ image }}');">
       <h1 class="c-HomeAction__Hn">{{ name }}</h1>
       <p class="c-HomeAction__Cap">{{ caption }}</p>
@@ -8,7 +8,7 @@
       <template>
         <li class="o-List__Item c-HomeAction__List__Item" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/Action">
           <a class="c-HomeAction__Link" href="{{ url }}" itemprop="url">
-            <span itemprop="name">{{ text }}</span>
+            <slot itemprop="name">{{ text }}</slot>
           </a>
         </li>
       </template>

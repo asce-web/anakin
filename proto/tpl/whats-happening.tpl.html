@@ -1,0 +1,15 @@
+<template>
+  <li class="o-List__Item o-Grid__Item">
+    <div class="c-ArticleTeaser" itemscope="" itemtype="http://schema.org/NewsArticle">
+      <img class="c-ArticleTeaser__Img" src="{{ image }}" alt="" itemprop="image thumbnailUrl"/>
+      <p class="c-ArticleTeaser__Hn">
+        <a class="c-ArticleTeaser__Link" href="{{ url }}" itemprop="url mainEntityOfPage">
+          <cite itemprop="name headline">{{ title }}</cite>
+        </a>
+      </p>
+      <p class="c-ArticleTeaser__Date">
+        <time datetime="{{ datetime }}" itemprop="datePublished">{{ datetime-formatted }}</time>
+      </p>
+    </div>
+  </li>
+</template>
