@@ -4,32 +4,6 @@
     "caption": "The 2017 Report Card for America’s Infrastructure is available now.",
     "cta": { "text": "View the Report Card", "url": "#0" }
   },
-  "jobs": [
-    {
-      "title"       : "Geotechnical Engineer",
-      "organization": "SME",
-      "location"    : "Helix Water District",
-      "url"         : "#0"
-    },
-    {
-      "title"       : "Traffic Engineer",
-      "organization": "Oregon Department of Transportation",
-      "location"    : "Portland, OR",
-      "url"         : "#0"
-    },
-    {
-      "title"       : "NRC Research Associateship Program",
-      "organization": "The National Academies of Science, Engineering, and Medicine",
-      "location"    : "Washington, DC",
-      "url"         : "#0"
-    },
-    {
-      "title"       : "Full Professor Faculty Position in Structural Engineering for Extreme Events",
-      "organization": "University of Nevada, Reno",
-      "location"    : "Reno, NV",
-      "url"         : "#0"
-    }
-  ],
   "promotions": [
     {
       "title": "Dream Big: Engineering Our World",
@@ -135,6 +109,32 @@
     { "text": "Find a committee"            , "url": "#0" }
     ]
   },
+  "jobs": [
+    {
+      "title"       : "Geotechnical Engineer",
+      "organization": "SME",
+      "location"    : "Helix Water District",
+      "url"         : "#0"
+    },
+    {
+      "title"       : "Traffic Engineer",
+      "organization": "Oregon Department of Transportation",
+      "location"    : "Portland, OR",
+      "url"         : "#0"
+    },
+    {
+      "title"       : "NRC Research Associateship Program",
+      "organization": "The National Academies of Science, Engineering, and Medicine",
+      "location"    : "Washington, DC",
+      "url"         : "#0"
+    },
+    {
+      "title"       : "Full Professor Faculty Position in Structural Engineering for Extreme Events",
+      "organization": "University of Nevada, Reno",
+      "location"    : "Reno, NV",
+      "url"         : "#0"
+    }
+  ],
   "whats_happening": [
     { "title": "ASCE’s New Infrastructure Report Card: Another D+, But Solutions Available", "url": "#0", "image": "./images/news1.png", "datetime": "2017-03-09" },
     { "title": "Emergency and Carryover Storage Project Earns OCEA"                        , "url": "#0", "image": "./images/news2.png", "datetime": "2017-03-16" },

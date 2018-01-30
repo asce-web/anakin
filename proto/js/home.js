@@ -76,11 +76,3 @@ function populateListWithData(element, data, generator = null) {
 
 
 //////////////// POPULATE ALL THE DATA ////////////////
-//////// Jobs ////////
-populateListWithData(document.querySelector('[data-list="jobs"]'), global.database.jobs, function (frag, datum) {
-  frag.querySelector('.c-JobListing__Link').href        = datum.url
-  frag.querySelector('.c-JobListing__Link').textContent = datum.title
-  frag.querySelector('.c-JobListing__Org' ).textContent = datum.organization
-  frag.querySelector('.c-JobListing__Loc' ).textContent = datum.location
-  return frag
-})

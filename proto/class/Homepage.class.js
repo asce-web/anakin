@@ -152,6 +152,23 @@ class Homepage {
   }
 
   /**
+   * Jobs section display.
+   * @returns {string} HTML output
+   */
+  jobs() {
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(...this._DATA.jobs.map(function (job) {
+      let frag = Homepage.NAMED_TEMPLATES.jobs.cloneNode(true)
+      frag.querySelector('.c-JobListing__Link').href        = job.url
+      frag.querySelector('.c-JobListing__Link').textContent = job.title
+      frag.querySelector('.c-JobListing__Org' ).textContent = job.organization
+      frag.querySelector('.c-JobListing__Loc' ).textContent = job.location
+      return frag
+    }))
+    return returned.innerHTML
+  }
+
+  /**
    * What’s Happening section display.
    * @returns {string} HTML output
    */
@@ -258,6 +275,13 @@ Homepage.NAMED_TEMPLATES = {
    * @const {DocumentFragment}
    */
   xHomeAction: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-homeaction.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Jobs section.
+   * @const {DocumentFragment}
+   */
+  jobs: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/jobs.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**

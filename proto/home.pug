@@ -41,32 +41,6 @@ html(lang="en").
         <li class="o-List__Item o-Grid__Item">!{homepage.xStat({ icon: "shield", number: 9     , text: "Institutes", type: "JoinAction"  , ctatext: "Select an Institute", ctaurl: "//www.asce.org/routing-page/technical-areas/" })}</li>
       </ul>
     </section>
-    <aside>ADVERTISEMENT</aside>
-    <section class="o-Runner" id="jobs">
-      <h1>Jobs</h1>
-      <section id="featured-jobs">
-        <h1>Featured Jobs</h1>
-        <ul class="o-List o-Grid o-Grid--jobs" data-list="jobs">
-          <template>
-            <li class="o-List__Item o-Grid__Item">
-              <div class="c-JobListing">
-                <p class="c-JobListing__Hn"><a class="c-JobListing__Link" href="{{ database__url }}">{{ database__title }}</a></p>
-                <p class="c-JobListing__Org">{{ database__organization }}</p>
-                <p>
-                  <i class="c-JobListing__Icon glyphicons glyphicons-map-marker" role="none" aria-hidden="true"></i>
-                  <span class="c-JobListing__Loc">{{ database__location }}</span>
-                </p>
-              </div>
-            </li>
-          </template>
-        </ul>
-      </section>
-      <section id="career-connections">
-        <h1>Career Connections</h1>
-        <p><a href="#0">Visit ASCE Career Connections</a> for additional career resources.</p>
-        <p><a class="c-Button" href="#0">Find a job</a></p>
-      </section>
-    </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
       <ul class="o-List">!{homepage.timelyPromos()}</ul>
@@ -134,6 +108,13 @@ html(lang="en").
       <div data-pug-wrapper>!{homepage.xHomeAction(tech_info)}</div>
       <div data-pug-wrapper>!{homepage.xHomeAction(get_involved)}</div>
     </section>
+    <section class="o-Runner" id="jobs">
+      <h1>Jobs</h1>
+      <ul class="o-List o-Grid o-Grid--jobs">!{homepage.jobs()}</ul>
+      <footer>
+        <p><a href="#0">Find a job</a></p>
+      </footer>
+    </section>
     <section class="o-Runner" id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
       <ul class="o-List o-Grid o-Grid--whatsHappening">!{homepage.whatsHappening()}</ul>
@@ -144,6 +125,7 @@ html(lang="en").
       <ul class="o-List o-Grid o-Grid--members">!{homepage.memberStories()}</ul>
     </section>
     <p><a href="#0">Join ASCE</a></p>
+    <aside>ADVERTISEMENT</aside>
   </main>
   <footer>
     <p>ASCE Footer</p>
