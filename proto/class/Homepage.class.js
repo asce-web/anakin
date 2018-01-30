@@ -57,18 +57,19 @@ class Homepage {
   /**
    * @summary Portal display.
    * @param   {{name:string, icon:string, url:string, data:string}} port the portal data to display
+   * @param   {string} port.id the identifier property of `portal` in the database (pointing to an array)
    * @param   {string} port.name the heading
    * @param   {string} port.icon the subclass of Glyphicon
    * @param   {string} port.url  the url the heading is linked to
-   * @param   {string} port.data the identifier property of `portal` in the database (pointing to an array)
    * @returns {string} HTML output
    */
   xPortal(port) {
     let frag = Homepage.NAMED_TEMPLATES.xPortal.cloneNode(true)
+    frag.querySelector('.c-Portal').id = port.id
     frag.querySelector('h1 > a').href = port.url
     frag.querySelector('.c-Portal__Icon').className = frag.querySelector('.c-Portal__Icon').className.replace('{{ icon }}', port.icon)
     frag.querySelector('.c-Portal__Hn'  ).textContent = port.name
-    this._DATA.portal[port.data].forEach(function (link) {
+    this._DATA.portal[port.id].forEach(function (link) {
       let innerfrag = frag.querySelector('.c-Portal__List > template').content.cloneNode(true)
       innerfrag.querySelector('.c-Portal__Link').href        = link.url
       innerfrag.querySelector('.c-Portal__Link').textContent = link.text

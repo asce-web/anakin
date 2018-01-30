@@ -25,19 +25,19 @@
       { "text": "Renew my membership", "url": "#0" },
       { "text": "View member benefits", "url": "#0" }
     ],
-    "cont_ed": [
+    "continuing-education": [
       { "text": "View my courses", "url": "#0" },
       { "text": "Browse course catalog", "url": "#0" },
       { "text": "P.E. Exam Review", "url": "#0" },
       { "text": "5 Free webinars", "url": "#0" }
     ],
-    "pubs": [
+    "publications": [
       { "text": "Browse the ASCE Library", "url": "#0" },
       { "text": "Browse the bookstore", "url": "#0" },
       { "text": "Bridges calendar", "url": "#0" },
       { "text": "Find a journal", "url": "#0" }
     ],
-    "conf_events": [
+    "conferences-events": [
       { "text": "View the calendar", "url": "#0" },
       { "text": "Submit a papaer", "url": "#0" },
       { "text": "Annual ASCE Convention", "url": "#0" },
