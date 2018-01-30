@@ -74,22 +74,9 @@ html(lang="en").
         </p>
       </div>
     </section>
-    <section class="o-Grid o-Grid--publications o-Runner" id="publication-highlights">
+    <section class="o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
-      -
-        // TODO make this a dynamic array
-        let asce7 = {
-          id     : 'asce7',
-          name   : 'ASCE 7',
-          caption: `<cite>Minimum Design Loads and Associated Criteria for Buildings and Other Structures</cite>, ASCE/SEI 7-16.`,
-        }
-        let cemag = {
-          id     : 'civil-engineering-magazine',
-          name   : 'Civil Engineering Magazine',
-          caption: `The official magazine of the American Society of Civil Engineers.`,
-        }
-      <div data-pug-wrapper>!{homepage.xPub(asce7)}</div>
-      <div data-pug-wrapper>!{homepage.xPub(cemag)}</div>
+      <ul class="o-List o-Grid o-Grid--publications">!{homepage.publicationHighlights()}</ul>
     </section>
     <section class="o-Grid o-Grid--homeActions o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>

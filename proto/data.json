@@ -56,41 +56,29 @@
       { "text": "Code of Ethics", "url": "#0" }
     ]
   },
-  "asce7": {
-    "image": "./images/asce7.png",
-    "links": [
-      { "text": "Provisions & commentary", "url": "#0" },
-      { "text": "Guides & more", "url": "#0" }
-    ],
-    "body": [
-      "<h2>ASCE 7 Online</h2>",
-      "<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>",
-      "<p><a class=\"c-Button\" href=\"#0\">Get digital access</a></p>",
-      "<h2>ASCE 7 Hazard Tool</h2>",
-      "<p>Look up key design parameters as specified by ASCE 7.</p>",
-      "<p><a class=\"c-Button\" href=\"#0\">Search design parameters</a></p>"
-    ]
-  },
-  "civil-engineering-magazine": {
-    "image": "./images/cecover.png",
-    "links": [
-      { "text": "Read CE Magazine", "url": "#0" }
-    ],
-    "body": [
-    "<h2>Featured this Month</h2>",
-    "<article>",
-      "<p><img src=\"./images/cefeatured.png\" alt=\"\"/></p>",
-      "<h3>Topographic Transformation</h3>",
-      "<p><time datetime=\"2017-06\">June 2017</time></p>",
-      "<p>The formerly flat Governors Island, in New York City harbor, is home ",
-        "to four artificial hills that provide spectacular views of the ",
-        "surrounding scenery. Rising as much as 70 ft above the island surface, ",
-        "the hills were very carefully designed and engineered to remain stable ",
-        "even where they are the steepest.</p>",
-      "<p><a href=\"#0\">Continue &rarr;</a></p>",
-    "</article>"
-    ]
-  },
+  "publication-highlights": [
+    {
+      "id"     : "asce7",
+      "name"   : "ASCE 7",
+      "caption": "Minimum Design Loads and Associated Criteria for Buildings and Other Structures, ASCE/SEI 7-16.",
+      "image"  : "./images/asce7.png",
+      "links"  : [
+        { "text": "Provisions & commentary", "url": "#0" },
+        { "text": "Guides & more", "url": "#0" }
+      ],
+      "body": "<h2>ASCE 7 Online</h2>\n<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>\n<p><a class=\"c-Button\" href=\"#0\">Get digital access</a></p>\n<h2>ASCE 7 Hazard Tool</h2>\n<p>Look up key design parameters as specified by ASCE 7.</p>\n<p><a class=\"c-Button\" href=\"#0\">Search design parameters</a></p>"
+    },
+    {
+      "id"     : "civil-engineering-magazine",
+      "name"   : "Civil Engineering Magazine",
+      "caption": "The official magazine of the American Society of Civil Engineers.",
+      "image"  : "./images/cecover.png",
+      "links"  : [
+        { "text": "Read CE Magazine", "url": "#0" }
+      ],
+      "body": "<h2>Featured this Month</h2>\n<article>\n  <p><img src=\"./images/cefeatured.png\" alt=\"\"/></p>\n  <h3>Topographic Transformation</h3>\n  <p><time datetime=\"2017-06\">June 2017</time></p>\n  <p>The formerly flat Governors Island, in New York City harbor, is home \n    to four artificial hills that provide spectacular views of the \n    surrounding scenery. Rising as much as 70 ft above the island surface, \n    the hills were very carefully designed and engineered to remain stable \n    even where they are the steepest.</p>\n  <p><a href=\"#0\">Continue &rarr;</a></p>\n</article>"
+    }
+  ],
   "technical-information": {
     "image": "./images/techinfo.png",
     "links": [

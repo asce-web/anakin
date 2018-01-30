@@ -87,6 +87,9 @@ class Homepage {
    * @param   {string} pub.id the ID
    * @param   {string} pub.name the heading
    * @param   {string} pub.caption the caption
+   * @param   {string} pub.image url to image
+   * @param   {Array<{text:string, url:string}>} pub.links list of links
+   * @param   {string} pub.body rich body text
    * @returns {string} HTML output
    */
   xPub(pub) {
@@ -94,9 +97,9 @@ class Homepage {
     frag.querySelector('.c-Pub').id = pub.id
     frag.querySelector('.c-Pub__Hn > cite').textContent = pub.name
     frag.querySelector('.c-Pub__Cap' ).innerHTML = pub.caption
-    frag.querySelector('.c-Pub__Img' ).src       = this._DATA[pub.id].image
-    frag.querySelector('.c-Pub__Body').innerHTML = Homepage.contentString(this._DATA[pub.id].body)
-    this._DATA[pub.id].links.forEach(function (link) {
+    frag.querySelector('.c-Pub__Img' ).src       = pub.image
+    frag.querySelector('.c-Pub__Body').innerHTML = pub.body
+    pub.links.forEach(function (link) {
       let innerfrag = frag.querySelector('.c-Pub__List > template').content.cloneNode(true)
       innerfrag.querySelector('.c-Pub__Link'       ).href        = link.url
       innerfrag.querySelector('.c-Pub__Link > span').textContent = link.text
@@ -149,6 +152,20 @@ class Homepage {
       frag.querySelector('.c-Promotion__Text').textContent = promo.caption
       return frag
     }))
+    return returned.innerHTML
+  }
+
+  /**
+   * Publication Highlights section display.
+   * @returns {string} HTML output
+   */
+  publicationHighlights() {
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(...this._DATA['publication-highlights'].map(function (pub) {
+      let frag = Homepage.NAMED_TEMPLATES.publicationHighlights.cloneNode(true)
+      frag.querySelector('li').innerHTML = this.xPub(pub)
+      return frag
+    }, this))
     return returned.innerHTML
   }
 
@@ -219,16 +236,6 @@ class Homepage {
     }))
     return returned.innerHTML
   }
-
-
-  /**
-   * @summary Content-ify.
-   * @param   {(string|Array<string>)} thing
-   * @returns {string} `(typeof thing === 'string') ? thing : thing.join('')`
-   */
-  static contentString(thing) {
-    return (typeof thing === 'string') ? thing : thing.join('')
-  }
 }
 
 /**
@@ -276,6 +283,13 @@ Homepage.NAMED_TEMPLATES = {
    * @const {DocumentFragment}
    */
   timelyPromos: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/timely-promos.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Publication Highlights section.
+   * @const {DocumentFragment}
+   */
+  publicationHighlights: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/publication-highlights.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
