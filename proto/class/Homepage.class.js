@@ -55,24 +55,6 @@ class Homepage {
   }
 
   /**
-   * @summary Timely Promotions section display.
-   * @returns {string} HTML output
-   */
-  timelyPromos() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA.promotions.map(function (promo) {
-      let frag = Homepage.NAMED_TEMPLATES.timelyPromos.cloneNode(true)
-      frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${promo.image}')`)
-      frag.querySelector('.c-Promotion__Hn'  ).textContent = promo.title
-      frag.querySelector('.c-Promotion__Cta' ).href        = promo.cta.url
-      frag.querySelector('.c-Promotion__Cta' ).textContent = promo.cta.text
-      frag.querySelector('.c-Promotion__Text').textContent = promo.caption
-      return frag
-    }))
-    return returned.innerHTML
-  }
-
-  /**
    * @summary Portal display.
    * @param   {{name:string, icon:string, url:string, data:string}} port the portal data to display
    * @param   {string} port.name the heading
@@ -148,6 +130,24 @@ class Homepage {
 
     let returned = new jsdom.JSDOM().window.document.createElement('div')
     returned.append(frag)
+    return returned.innerHTML
+  }
+
+  /**
+   * @summary Timely Promotions section display.
+   * @returns {string} HTML output
+   */
+  timelyPromos() {
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(...this._DATA.promotions.map(function (promo) {
+      let frag = Homepage.NAMED_TEMPLATES.timelyPromos.cloneNode(true)
+      frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${promo.image}')`)
+      frag.querySelector('.c-Promotion__Hn'  ).textContent = promo.title
+      frag.querySelector('.c-Promotion__Cta' ).href        = promo.cta.url
+      frag.querySelector('.c-Promotion__Cta' ).textContent = promo.cta.text
+      frag.querySelector('.c-Promotion__Text').textContent = promo.caption
+      return frag
+    }))
     return returned.innerHTML
   }
 
@@ -246,7 +246,28 @@ Homepage.NAMED_TEMPLATES = {
    * @summary Template for Featured Statistic.
    * @const {DocumentFragment}
    */
-  xStat: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-stat.tpl.html'), 'utf8'))
+  xStat: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-stat.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Portal.
+   * @const {DocumentFragment}
+   */
+  xPortal: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-portal.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Featured Publication.
+   * @const {DocumentFragment}
+   */
+  xPub: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-pub.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Home Action.
+   * @const {DocumentFragment}
+   */
+  xHomeAction: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-homeaction.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
@@ -254,27 +275,6 @@ Homepage.NAMED_TEMPLATES = {
    * @const {DocumentFragment}
    */
   timelyPromos: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/timely-promos.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Portal.
-   * @const {DocumentFragment}
-   */
-  xPortal: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-portal.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Featured Publication.
-   * @const {DocumentFragment}
-   */
-  xPub: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-pub.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Home Action.
-   * @const {DocumentFragment}
-   */
-  xHomeAction: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../template/x-homeaction.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
