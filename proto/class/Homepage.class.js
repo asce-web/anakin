@@ -23,8 +23,8 @@ class Homepage {
    * @summary Hero section display.
    * @returns {string} HTML output
    */
-  hero() {
-    let frag = Homepage.NAMED_TEMPLATES.hero.cloneNode(true)
+  xHero() {
+    let frag = Homepage.NAMED_TEMPLATES.xHero.cloneNode(true)
     frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${this._DATA.hero.image}')`)
     frag.querySelector('.c-Hero__Cap').textContent = this._DATA.hero.caption
     frag.querySelector('.c-Hero__Cta').href        = this._DATA.hero.cta.url
@@ -263,7 +263,7 @@ Homepage.NAMED_TEMPLATES = {
    * @summary Template for Hero section.
    * @const {DocumentFragment}
    */
-  hero: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/hero.tpl.html'), 'utf8'))
+  xHero: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-hero.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
