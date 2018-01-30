@@ -78,22 +78,9 @@ html(lang="en").
       <h1 class="h-Hidden">Publication Highlights</h1>
       <ul class="o-List o-Grid o-Grid--publications">!{homepage.publicationHighlights()}</ul>
     </section>
-    <section class="o-Grid o-Grid--homeActions o-Runner" id="learn-contribute">
+    <section class="o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
-      -
-        // TODO make this a dynamic array
-        let tech_info = {
-          id     : 'technical-information',
-          name   : 'Technical Information',
-          caption: `Access the latest technical information in your discipline.`,
-        }
-        let get_involved = {
-          id     : 'get-involved',
-          name   : 'Get Involved',
-          caption: `Dedicate your time and expertise to a cause that is important to you.`,
-        }
-      <div data-pug-wrapper>!{homepage.xHomeAction(tech_info)}</div>
-      <div data-pug-wrapper>!{homepage.xHomeAction(get_involved)}</div>
+      <ul class="o-List o-Grid o-Grid--homeActions">!{homepage.homeActions()}</ul>
     </section>
     <section class="o-Runner" id="jobs">
       <h1>Jobs</h1>

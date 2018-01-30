@@ -117,6 +117,8 @@ class Homepage {
    * @param   {string} act.id the ID
    * @param   {string} act.name the heading
    * @param   {string} act.caption the caption
+   * @param   {string} act.image url to image
+   * @param   {Array<{text:string, url:string}>} act.links list of links
    * @returns {string} HTML output
    */
   xHomeAction(act) {
@@ -124,8 +126,8 @@ class Homepage {
     frag.querySelector('.c-HomeAction').id = act.id
     frag.querySelector('.c-HomeAction__Hn'  ).textContent = act.name
     frag.querySelector('.c-HomeAction__Cap' ).innerHTML   = act.caption
-    frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', `url('${this._DATA[act.id].image}')`)
-    this._DATA[act.id].links.forEach(function (link) {
+    frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', `url('${act.image}')`)
+    act.links.forEach(function (link) {
       let innerfrag = frag.querySelector('.c-HomeAction__List > template').content.cloneNode(true)
       innerfrag.querySelector('.c-HomeAction__Link'       ).href        = link.url
       innerfrag.querySelector('.c-HomeAction__Link > span').textContent = link.text
@@ -164,6 +166,20 @@ class Homepage {
     returned.append(...this._DATA['publication-highlights'].map(function (pub) {
       let frag = Homepage.NAMED_TEMPLATES.publicationHighlights.cloneNode(true)
       frag.querySelector('li').innerHTML = this.xPub(pub)
+      return frag
+    }, this))
+    return returned.innerHTML
+  }
+
+  /**
+   * Publication Highlights section display.
+   * @returns {string} HTML output
+   */
+  homeActions() {
+    let returned = new jsdom.JSDOM().window.document.createElement('div')
+    returned.append(...this._DATA['home-actions'].map(function (act) {
+      let frag = Homepage.NAMED_TEMPLATES.homeActions.cloneNode(true)
+      frag.querySelector('li').innerHTML = this.xHomeAction(act)
       return frag
     }, this))
     return returned.innerHTML
@@ -290,6 +306,13 @@ Homepage.NAMED_TEMPLATES = {
    * @const {DocumentFragment}
    */
   publicationHighlights: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/publication-highlights.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Home Actions section.
+   * @const {DocumentFragment}
+   */
+  homeActions: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/home-actions.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**

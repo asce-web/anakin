@@ -79,24 +79,32 @@
       "body": "<h2>Featured this Month</h2>\n<article>\n  <p><img src=\"./images/cefeatured.png\" alt=\"\"/></p>\n  <h3>Topographic Transformation</h3>\n  <p><time datetime=\"2017-06\">June 2017</time></p>\n  <p>The formerly flat Governors Island, in New York City harbor, is home \n    to four artificial hills that provide spectacular views of the \n    surrounding scenery. Rising as much as 70 ft above the island surface, \n    the hills were very carefully designed and engineered to remain stable \n    even where they are the steepest.</p>\n  <p><a href=\"#0\">Continue &rarr;</a></p>\n</article>"
     }
   ],
-  "technical-information": {
-    "image": "./images/techinfo.png",
-    "links": [
-    { "text": "Find a local group"   , "url": "#0" },
-    { "text": "Browse publications"  , "url": "#0" },
-    { "text": "Register for a course", "url": "#0" },
-    { "text": "Find a conference"    , "url": "#0" }
-    ]
-  },
-  "get-involved": {
-    "image": "./images/involved.png",
-    "links": [
-    { "text": "View volunteer opportunities", "url": "#0" },
-    { "text": "Find a Section or Branch"    , "url": "#0" },
-    { "text": "Visit ASCE Collaborate"      , "url": "#0" },
-    { "text": "Find a committee"            , "url": "#0" }
-    ]
-  },
+  "home-actions": [
+    {
+      "id"     : "technical-information",
+      "name"   : "Technical Information",
+      "caption": "Access the latest technical information in your discipline.",
+      "image"  : "./images/techinfo.png",
+      "links"  : [
+        { "text": "Find a local group"   , "url": "#0" },
+        { "text": "Browse publications"  , "url": "#0" },
+        { "text": "Register for a course", "url": "#0" },
+        { "text": "Find a conference"    , "url": "#0" }
+      ]
+    },
+    {
+      "id"     : "get-involved",
+      "name"   : "Get Involved",
+      "caption": "Dedicate your time and expertise to a cause that is important to you.",
+      "image"  : "./images/involved.png",
+      "links"  : [
+        { "text": "View volunteer opportunities", "url": "#0" },
+        { "text": "Find a Section or Branch"    , "url": "#0" },
+        { "text": "Visit ASCE Collaborate"      , "url": "#0" },
+        { "text": "Find a committee"            , "url": "#0" }
+      ]
+    }
+  ],
   "jobs": [
     {
       "title"       : "Geotechnical Engineer",
