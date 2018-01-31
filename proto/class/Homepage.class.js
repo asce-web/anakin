@@ -14,7 +14,7 @@ const xjs = {
 class Homepage {
   /**
    * @summary Construct a new Homepage object.
-   * @param {!Object=} jsondata a JSON object containing the data
+   * @param {!Object=} jsondata a JSON object containing the site instance data
    */
   constructor(jsondata) {
     /**
@@ -24,23 +24,14 @@ class Homepage {
     this._DATA = jsondata
   }
 
-  /**
-   * @summary Hero section display.
-   * @param   {{image:string, caption:string, cta:{text:string, url:string}}} hero the hero image and contents
-   * @returns {string} HTML output
-   */
-  xHero(hero) {
-    let frag = Homepage.NAMED_TEMPLATES.xHero.cloneNode(true)
-    frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${hero.image}')`)
-    frag.querySelector('slot[name="hero-caption"]').textContent = hero.caption
-    frag.querySelector('a'                        ).href        = hero.cta.url
-    frag.querySelector('a'                        ).textContent = hero.cta.text
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
 
   /**
    * @summary Featured Statistic display.
-   * @param   {{icon:string, number:number, text:string, type:string, cta:{text:string, url:string}}} stat the statistic to display
+   * @param   {!Object} stat the statistic to display
+   * @param   {string} stat.icon the classname of the glyphicon
+   * @param   {number} stat.number the featured numerical value
+   * @param   {string} stat.text the featured textual value
+   * @param   {{text:string, url:string}} stat.cta call-to-action
    * @returns {string} HTML output
    */
   xStat(stat) {
@@ -56,23 +47,8 @@ class Homepage {
   }
 
   /**
-   * @summary Timely Promo display.
-   * @param   {{title:string, image:string, caption:string, cta:{text:string, url:string}}} promo the promotion to display
-   * @returns {string} HTML output
-   */
-  xPromo(promo) {
-    let frag = Homepage.NAMED_TEMPLATES.xPromo.cloneNode(true)
-    frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${promo.image}')`)
-    frag.querySelector('.c-Promotion__Hn'  ).textContent = promo.title
-    frag.querySelector('.c-Promotion__Text').textContent = promo.caption
-    frag.querySelector('.c-Promotion__Cta' ).href        = promo.cta.url
-    frag.querySelector('.c-Promotion__Cta' ).textContent = promo.cta.text
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  /**
    * @summary Portal display.
-   * @param   {{name:string, icon:string, url:string, data:string}} port the portal data to display
+   * @param   {!Object} port the portal data to display
    * @param   {string} port.id the identifier property of `portal` in the database (pointing to an array)
    * @param   {string} port.name the heading
    * @param   {string} port.icon the subclass of Glyphicon
@@ -94,9 +70,46 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
+
+  /**
+   * @summary Hero section display.
+   * @param   {!Object} hero the hero image and contents
+   * @param   {string} hero.image url to hero image
+   * @param   {string} hero.caption text caption
+   * @param   {{text:string, url:string}} hero.cta call-to-action
+   * @returns {string} HTML output
+   */
+  xHero(hero) {
+    let frag = Homepage.NAMED_TEMPLATES.xHero.cloneNode(true)
+    frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${hero.image}')`)
+    frag.querySelector('slot[name="hero-caption"]').textContent = hero.caption
+    frag.querySelector('a'                        ).href        = hero.cta.url
+    frag.querySelector('a'                        ).textContent = hero.cta.text
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
+  /**
+   * @summary Timely Promo display.
+   * @param   {!Object} promo the promotion to display
+   * @param   {string} promo.title promo heading
+   * @param   {string} promo.image url to promo image
+   * @param   {string} promo.caption text caption
+   * @param   {{text:string, url:string}} promo.cta call-to-action
+   * @returns {string} HTML output
+   */
+  xPromo(promo) {
+    let frag = Homepage.NAMED_TEMPLATES.xPromo.cloneNode(true)
+    frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${promo.image}')`)
+    frag.querySelector('.c-Promotion__Hn'  ).textContent = promo.title
+    frag.querySelector('.c-Promotion__Text').textContent = promo.caption
+    frag.querySelector('.c-Promotion__Cta' ).href        = promo.cta.url
+    frag.querySelector('.c-Promotion__Cta' ).textContent = promo.cta.text
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
   /**
    * @summary Featured Publication display.
-   * @param   {{id:string, name:string, caption:string}} pub the publication data to display
+   * @param   {!Object} pub the publication data to display
    * @param   {string} pub.id the ID
    * @param   {string} pub.name the heading
    * @param   {string} pub.caption the caption
@@ -122,52 +135,8 @@ class Homepage {
   }
 
   /**
-   * @summary Job Listing display.
-   * @param   {{}} job the job data to display
-   * @returns {string} HTML output
-   */
-  xJob(job) {
-    let frag = Homepage.NAMED_TEMPLATES.xJob.cloneNode(true)
-    frag.querySelector('[itemprop="url"]').href        = job.url
-    frag.querySelector('[itemprop="url"]').textContent = job.title
-    frag.querySelector('[itemprop="hiringOrganization"] > [itemprop="name"]').textContent = job.organization
-    frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = job.location
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  /**
-   * @summary Article Teaser display.
-   * @param   {{}} article the article data to display
-   * @returns {string} HTML output
-   */
-  xArticle(article) {
-    let frag = Homepage.NAMED_TEMPLATES.xArticle.cloneNode(true)
-    frag.querySelector('[itemprop~="image"]'       ).src         = article.image
-    frag.querySelector('[itemprop~="url"]'         ).href        = article.url
-    frag.querySelector('[itemprop~="headline"]'    ).textContent = article.title
-    frag.querySelector('[itemprop="datePublished"]').dateTime    = article.datetime
-    frag.querySelector('[itemprop="datePublished"]').textContent = xjs.Date.format(new Date(article.datetime), 'F j, Y')
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  /**
-   * @summary Member Story display.
-   * @param   {{}} member the member data to display
-   * @returns {string} HTML output
-   */
-  xMember(member) {
-    let frag = Homepage.NAMED_TEMPLATES.xMember.cloneNode(true)
-    frag.querySelector('[itemprop="image"]'      ).src         = member.image
-    frag.querySelector('[itemprop="name"]'       ).textContent = member.name
-    frag.querySelector('[itemprop="description"]').textContent = member.grade
-    frag.querySelector('blockquote'              ).textContent = member.quote
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-
-  /**
    * @summary Home Action display.
-   * @param   {{id:string, name:string, caption:string}} act the action data to display
+   * @param   {!Object} act the action data to display
    * @param   {string} act.id the ID
    * @param   {string} act.name the heading
    * @param   {string} act.caption the caption
@@ -189,6 +158,62 @@ class Homepage {
     })
     return new xjs.DocumentFragment(frag).innerHTML()
   }
+
+  /**
+   * @summary Job Listing display.
+   * @param   {!Object} job the job data to display
+   * @param   {string} job.title the job title
+   * @param   {string} job.organization the hiring organization
+   * @param   {string} job.location the location of the job (as text)
+   * @param   {string} job.url the url to link to
+   * @returns {string} HTML output
+   */
+  xJob(job) {
+    let frag = Homepage.NAMED_TEMPLATES.xJob.cloneNode(true)
+    frag.querySelector('[itemprop="url"]').href        = job.url
+    frag.querySelector('[itemprop="url"]').textContent = job.title
+    frag.querySelector('[itemprop="hiringOrganization"] > [itemprop="name"]').textContent = job.organization
+    frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = job.location
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
+  /**
+   * @summary Article Teaser display.
+   * @param   {!Object} article the article data to display
+   * @param   {string} article.title the article title or headline
+   * @param   {string} article.image url to a thumbnail
+   * @param   {string} article.url the url to link to
+   * @param   {string} article.datetime the publish date
+   * @returns {string} HTML output
+   */
+  xArticle(article) {
+    let frag = Homepage.NAMED_TEMPLATES.xArticle.cloneNode(true)
+    frag.querySelector('[itemprop~="image"]'       ).src         = article.image
+    frag.querySelector('[itemprop~="url"]'         ).href        = article.url
+    frag.querySelector('[itemprop~="headline"]'    ).textContent = article.title
+    frag.querySelector('[itemprop="datePublished"]').dateTime    = article.datetime
+    frag.querySelector('[itemprop="datePublished"]').textContent = xjs.Date.format(new Date(article.datetime), 'F j, Y')
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
+  /**
+   * @summary Member Story display.
+   * @param   {!Object} member the member data to display
+   * @param   {string} member.name the name of the member (as a string)
+   * @param   {string} member.grade type of member, title, or subheading
+   * @param   {string} member.image url to a headshot photo
+   * @param   {string} member.quote quote by the member
+   * @returns {string} HTML output
+   */
+  xMember(member) {
+    let frag = Homepage.NAMED_TEMPLATES.xMember.cloneNode(true)
+    frag.querySelector('[itemprop="image"]'      ).src         = member.image
+    frag.querySelector('[itemprop="name"]'       ).textContent = member.name
+    frag.querySelector('[itemprop="description"]').textContent = member.grade
+    frag.querySelector('blockquote'              ).textContent = member.quote
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
 
 
   /**
@@ -279,6 +304,9 @@ class Homepage {
   }
 }
 
+
+
+
 /**
  * @summary A set of templates marking up data types.
  * @const {Object<DocumentFragment>}
@@ -354,6 +382,9 @@ Homepage.NAMED_TEMPLATES = {
   xMember: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-member.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 }
+
+
+
 
 /**
  * @summary Hard-coded data for the markup.

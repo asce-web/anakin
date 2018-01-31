@@ -132,9 +132,24 @@
     }
   ],
   "whats-happening": [
-    { "title": "ASCE’s New Infrastructure Report Card: Another D+, But Solutions Available", "url": "#0", "image": "./images/news1.png", "datetime": "2017-03-09" },
-    { "title": "Emergency and Carryover Storage Project Earns OCEA"                        , "url": "#0", "image": "./images/news2.png", "datetime": "2017-03-16" },
-    { "title": "Former Corps Chief Bostick Honored with OPAL Award"                        , "url": "#0", "image": "./images/news3.png", "datetime": "2017-03-16" }
+    {
+      "title": "ASCE’s New Infrastructure Report Card: Another D+, But Solutions Available",
+      "image": "./images/news1.png",
+      "url": "#0",
+      "datetime": "2017-03-09"
+    },
+    {
+      "title": "Emergency and Carryover Storage Project Earns OCEA",
+      "image": "./images/news2.png",
+      "url": "#0",
+      "datetime": "2017-03-16"
+    },
+    {
+      "title": "Former Corps Chief Bostick Honored with OPAL Award",
+      "image": "./images/news3.png",
+      "url": "#0",
+      "datetime": "2017-03-16"
+    }
   ],
   "member-stories": [
     {
