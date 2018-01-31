@@ -248,9 +248,15 @@ class Homepage {
       }, this)
     }).call(this)
     document.querySelector('#promotions > ul').innerHTML = this.timelyPromos()
-    document.querySelectorAll('#portals > ol > li').forEach(function (item, n) {
-      item.innerHTML = this.xPortal(Homepage.DATA.portals[n])
-    }, this)
+    ;(function () {
+      let container = document.querySelector('#portals > ol')
+      let template = container.querySelector('template').content
+      Homepage.DATA.portals.forEach(function (port) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xPortal(port)
+        container.append(frag)
+      }, this)
+    }).call(this)
     document.querySelector('#publication-highlights > ul').innerHTML = this.publicationHighlights()
     document.querySelector('#learn-contribute > ul'      ).innerHTML = this.homeActions()
     document.querySelector('#jobs > ul'                  ).innerHTML = this.jobs()
