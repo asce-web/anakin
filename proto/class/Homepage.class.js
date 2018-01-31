@@ -3,6 +3,10 @@ const path = require('path')
 
 const jsdom = require('jsdom')
 
+const xjs = {
+  Date: require('extrajs').Date,
+}
+
 /**
  * ASCE Homepage.
  */
@@ -208,22 +212,6 @@ class Homepage {
    * @returns {string} HTML output
    */
   whatsHappening() {
-    function formatDate(date) {
-      return `${[
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ][date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}`
-    }
     let returned = new jsdom.JSDOM().window.document.createElement('div')
     returned.append(...this._DATA.whats_happening.map(function (article) {
       let frag = Homepage.NAMED_TEMPLATES.whatsHappening.cloneNode(true)
@@ -231,7 +219,7 @@ class Homepage {
       frag.querySelector('[itemprop~="url"]'         ).href        = article.url
       frag.querySelector('[itemprop~="headline"]'    ).textContent = article.title
       frag.querySelector('[itemprop="datePublished"]').dateTime    = article.datetime
-      frag.querySelector('[itemprop="datePublished"]').textContent = formatDate(new Date(article.datetime))
+      frag.querySelector('[itemprop="datePublished"]').textContent = xjs.Date.format(new Date(article.datetime), 'F j, Y')
       return frag
     }))
     return returned.innerHTML
