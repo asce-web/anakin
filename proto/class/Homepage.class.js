@@ -253,6 +253,30 @@ class Homepage {
     }))
     return returned.innerHTML
   }
+
+
+  /**
+   * @summary Compile HTML markup from a template file.
+   * @description This method takes an entire HTML template file and compiles the static output.
+   * @returns {string} compiled HTML output
+   */
+  compile() {
+    const document = Homepage.NAMED_TEMPLATES.homeDocument
+    document.querySelector('main > header').innerHTML = this.xHero()
+    document.querySelectorAll('#we-represent > ul > li').forEach(function (item, n) {
+      item.innerHTML = this.xStat(Homepage.DATA.stats[n])
+    }, this)
+    document.querySelector('#promotions > ul').innerHTML = this.timelyPromos()
+    document.querySelectorAll('#portals > ol > li').forEach(function (item, n) {
+      item.innerHTML = this.xPortal(Homepage.DATA.portals[n])
+    }, this)
+    document.querySelector('#publication-highlights > ul').innerHTML = this.publicationHighlights()
+    document.querySelector('#learn-contribute > ul'      ).innerHTML = this.homeActions()
+    document.querySelector('#jobs > ul'                  ).innerHTML = this.jobs()
+    document.querySelector('#whats-happening > ul'       ).innerHTML = this.whatsHappening()
+    document.querySelector('#member-stories > ul'        ).innerHTML = this.memberStories()
+    return `<!doctype html>` + document.documentElement.outerHTML
+  }
 }
 
 /**
@@ -260,6 +284,13 @@ class Homepage {
  * @const {Object<DocumentFragment>}
  */
 Homepage.NAMED_TEMPLATES = {
+  /**
+   * @summary Main Template for whole page.
+   * @const {Document}
+   */
+  homeDocument: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/home.tpl.html'), 'utf8'))
+    .window.document,
+
   /**
    * @summary Template for Hero section.
    * @const {DocumentFragment}
@@ -336,6 +367,27 @@ Homepage.NAMED_TEMPLATES = {
    */
   memberStories: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/member-stories.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
+}
+
+/**
+ * @summary Hard-coded data for the markup.
+ * @description This is *not* the user-input data, which is passed to the constructor.
+ * @const {!Object}
+ */
+Homepage.DATA = {
+  stats: [
+    { icon: "group" , number: 150000, text: "Members"   , type: "JoinAction"  , cta: { text: "Join ASCE"          , url: "//www.asce.org/join/"                         } },
+    { icon: "map"   , number: 177   , text: "Countries" , type: "SearchAction", cta: { text: "Find a Local Group" , url: "//www.asce.org/membership-communities/"       } },
+    { icon: "shield", number: 9     , text: "Institutes", type: "JoinAction"  , cta: { text: "Select an Institute", url: "//www.asce.org/routing-page/technical-areas/" } },
+  ],
+  portals: [
+    { id: 'membership'          , name: 'Membership'          , icon: 'nameplate'   , url: '//www.asce.org/membership_and_communities/' },
+    { id: 'continuing-education', name: 'Continuing Education', icon: 'education'   , url: '//www.asce.org/continuing_education/'       },
+    { id: 'publications'        , name: 'Publications'        , icon: 'book-open'   , url: '//www.asce.org/publications/'               },
+    { id: 'conferences-events'  , name: 'Conferences & Events', icon: 'calendar'    , url: '//www.asce.org/conferences_events/'         },
+    { id: 'initiatives'         , name: 'Initiatives'         , icon: 'address-book', url: '//www.asce.org/our_initiatives/'            },
+    { id: 'careers'             , name: 'Careers'             , icon: 'briefcase'   , url: '//www.asce.org/careers/'                    },
+  ],
 }
 
 module.exports = Homepage

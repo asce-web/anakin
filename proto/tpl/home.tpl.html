@@ -1,5 +1,5 @@
-doctype html
-html(lang="en").
+<!doctype html>
+<html lang="en">
 <head>
   <title>American Society of Civil Engineers</title>
   <meta charset="utf-8"/>
@@ -18,11 +18,6 @@ html(lang="en").
 
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700"/> -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
-
-  <link rel="import" href="./template/x-portal.tpl.html"/>
-  <link rel="import" href="./template/x-pub.tpl.html"/>
-  <link rel="import" href="./template/x-homeaction.tpl.html"/>
-  <script id="database" type="application/json" title="sample database">!{JSON.stringify(database, null, 2)}</script>
 </head>
 <body itemscope="" itemtype="http://schema.org/NGO">
   <a class="h-Hidden" href="#main">skip to main content</a>
@@ -31,29 +26,29 @@ html(lang="en").
     <p>Header and Megamenu</p>
   </header>
   <main id="main">
-    <header data-pug-wrapper>!{homepage.xHero()}</header>
+    <header>{{ xHero }}</header>
     <section class="o-Runner" id="we-represent">
       <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
       <h1>We Represent:</h1>
       <ul class="o-List o-Grid o-Grid--represent">
-        <li class="o-List__Item o-Grid__Item">!{homepage.xStat({ icon: "group" , number: 150000, text: "Members"   , type: "JoinAction"  , cta: { text: "Join ASCE"          , url: "//www.asce.org/join/" } })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.xStat({ icon: "map"   , number: 177   , text: "Countries" , type: "SearchAction", cta: { text: "Find a Local Group" , url: "//www.asce.org/membership-communities/" } })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.xStat({ icon: "shield", number: 9     , text: "Institutes", type: "JoinAction"  , cta: { text: "Select an Institute", url: "//www.asce.org/routing-page/technical-areas/" } })}</li>
+        <li class="o-List__Item o-Grid__Item">{{ xStat }}</li>
+        <li class="o-List__Item o-Grid__Item">{{ xStat }}</li>
+        <li class="o-List__Item o-Grid__Item">{{ xStat }}</li>
       </ul>
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <ul class="o-List">!{homepage.timelyPromos()}</ul>
+      <ul class="o-List">{{ timelyPromos }}</ul>
     </section>
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals">
-        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'membership'          , name: 'Membership'          , icon: 'nameplate'   , url: '//www.asce.org/membership_and_communities/' })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'continuing-education', name: 'Continuing Education', icon: 'education'   , url: '//www.asce.org/continuing_education/'       })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'publications'        , name: 'Publications'        , icon: 'book-open'   , url: '//www.asce.org/publications/'               })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'conferences-events'  , name: 'Conferences & Events', icon: 'calendar'    , url: '//www.asce.org/conferences_events/'         })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'initiatives'         , name: 'Initiatives'         , icon: 'address-book', url: '//www.asce.org/our_initiatives/'            })}</li>
-        <li class="o-List__Item o-Grid__Item">!{homepage.xPortal({ id: 'careers'             , name: 'Careers'             , icon: 'briefcase'   , url: '//www.asce.org/careers/'                    })}</li>
+        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
+        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
+        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
+        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
+        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
+        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -76,27 +71,27 @@ html(lang="en").
     </section>
     <section class="o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
-      <ul class="o-List o-Grid o-Grid--publications">!{homepage.publicationHighlights()}</ul>
+      <ul class="o-List o-Grid o-Grid--publications">{{ publicationHighlights }}</ul>
     </section>
     <section class="o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
-      <ul class="o-List o-Grid o-Grid--homeActions">!{homepage.homeActions()}</ul>
+      <ul class="o-List o-Grid o-Grid--homeActions">{{ homeActions }}</ul>
     </section>
     <section class="o-Runner" id="jobs">
       <h1>Jobs</h1>
-      <ul class="o-List o-Grid o-Grid--jobs">!{homepage.jobs()}</ul>
+      <ul class="o-List o-Grid o-Grid--jobs">{{ jobs }}</ul>
       <footer>
         <p><a href="#0">Find a job</a></p>
       </footer>
     </section>
     <section class="o-Runner" id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
-      <ul class="o-List o-Grid o-Grid--whatsHappening">!{homepage.whatsHappening()}</ul>
+      <ul class="o-List o-Grid o-Grid--whatsHappening">{{ whatsHappening }}</ul>
       <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
     </section>
     <section class="o-Runner" id="member-stories">
       <h1>ASCE Member Stories</h1>
-      <ul class="o-List o-Grid o-Grid--members">!{homepage.memberStories()}</ul>
+      <ul class="o-List o-Grid o-Grid--members">{{ memberStories }}</ul>
     </section>
     <p><a href="#0">Join ASCE</a></p>
     <aside>ADVERTISEMENT</aside>
@@ -107,3 +102,4 @@ html(lang="en").
   <a class="h-Hidden" href="#top">jump to top</a>
   <!-- <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script> -->
 </body>
+</html>

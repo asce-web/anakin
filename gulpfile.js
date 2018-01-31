@@ -1,20 +1,14 @@
+const fs = require('fs')
+
 const gulp = require('gulp')
-const pug = require('gulp-pug')
 const less         = require('gulp-less')
 const autoprefixer = require('gulp-autoprefixer')
 
 const Homepage = require('./proto/class/Homepage.class.js')
 
-gulp.task('pug:home', function () {
-  return gulp.src(__dirname + '/proto/home.pug')
-    .pipe(pug({
-      basedir: './',
-      locals: {
-        database: require('./proto/data.json'),
-        homepage: new Homepage(require('./proto/data.json')),
-      },
-    }))
-    .pipe(gulp.dest('./proto/'))
+gulp.task('home:compile', function (callback) {
+  let contents = new Homepage(require('./proto/data.json')).compile()
+  return fs.writeFile('./proto/home.html', contents, 'utf8', callback) // send callback here to maintain async dependency
 })
 
 gulp.task('lessc:home', function () {
