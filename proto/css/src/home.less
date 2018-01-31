@@ -197,6 +197,15 @@ a {
   float: inline-end;
 }
 
+.c-BigAssIcon {
+  background-color: purple;
+  color: white;
+  border-radius: 50%;
+  width: 4rem; height: 4rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
 .c-Stat {
   display: grid;
   justify-items: center;
@@ -207,11 +216,6 @@ a {
   }
 }
 .c-Stat__Icon {
-  background-color: purple;
-  color: white;
-  border-radius: 50%;
-  width: 4rem; height: 4rem;
-  font-size: 2em;
   @media not all and (min-width: 30em) {
     grid-row: 1 ~'/' -1;
   }
@@ -227,9 +231,15 @@ a {
 
 .c-Portal {
 }
+.c-Portal__Head {
+  display: grid;
+  justify-items: center;
+}
 .c-Portal__Icon {
 }
 .c-Portal__Hn {
+  .font-size-el(@g-font-size-kilo); // undo base h1
+  font-weight: 300;
 }
 .c-Portal__List {
 }
