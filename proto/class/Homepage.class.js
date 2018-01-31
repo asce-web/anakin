@@ -3,13 +3,18 @@ const path = require('path')
 
 const jsdom = require('jsdom')
 
+const xjs = {
+  Date: require('extrajs').Date,
+  DocumentFragment: require('extrajs-dom').DocumentFragment,
+}
+
 /**
  * ASCE Homepage.
  */
 class Homepage {
   /**
    * @summary Construct a new Homepage object.
-   * @param {!Object=} jsondata a JSON object containing the data
+   * @param {!Object=} jsondata a JSON object containing the site instance data
    */
   constructor(jsondata) {
     /**
@@ -19,25 +24,14 @@ class Homepage {
     this._DATA = jsondata
   }
 
-  /**
-   * @summary Hero section display.
-   * @returns {string} HTML output
-   */
-  xHero() {
-    let frag = Homepage.NAMED_TEMPLATES.xHero.cloneNode(true)
-    frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${this._DATA.hero.image}')`)
-    frag.querySelector('slot[name="hero-caption"]').textContent = this._DATA.hero.caption
-    frag.querySelector('a'                        ).href        = this._DATA.hero.cta.url
-    frag.querySelector('a'                        ).textContent = this._DATA.hero.cta.text
-
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(frag)
-    return returned.innerHTML
-  }
 
   /**
    * @summary Featured Statistic display.
-   * @param   {{icon:string, number:number, text:string, type:string, cta:{text:string, url:string}}} stat the statistic to display
+   * @param   {!Object} stat the statistic to display
+   * @param   {string} stat.icon the classname of the glyphicon
+   * @param   {number} stat.number the featured numerical value
+   * @param   {string} stat.text the featured textual value
+   * @param   {{text:string, url:string}} stat.cta call-to-action
    * @returns {string} HTML output
    */
   xStat(stat) {
@@ -49,15 +43,12 @@ class Homepage {
     action.setAttribute('itemtype', `http://schema.org/${stat.type || 'Action'}`)
     action.querySelector('[itemprop="url"]' ).href        = stat.cta.url
     action.querySelector('[itemprop="name"]').textContent = stat.cta.text
-
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(frag)
-    return returned.innerHTML
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
    * @summary Portal display.
-   * @param   {{name:string, icon:string, url:string, data:string}} port the portal data to display
+   * @param   {!Object} port the portal data to display
    * @param   {string} port.id the identifier property of `portal` in the database (pointing to an array)
    * @param   {string} port.name the heading
    * @param   {string} port.icon the subclass of Glyphicon
@@ -70,21 +61,55 @@ class Homepage {
     frag.querySelector('[itemprop="url"]').href = port.url
     frag.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', port.icon)
     frag.querySelector('[itemprop="name"]').textContent = port.name
-    this._DATA.portal[port.id].forEach(function (link) {
+    this._DATA['portals'][port.id].forEach(function (link) {
       let innerfrag = frag.querySelector('template').content.cloneNode(true)
       innerfrag.querySelector('[itemprop="significantLink"]').href        = link.url
       innerfrag.querySelector('[itemprop="significantLink"]').textContent = link.text
       frag.querySelector('template').parentNode.append(innerfrag)
     })
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
 
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(frag)
-    return returned.innerHTML
+
+  /**
+   * @summary Hero section display.
+   * @param   {!Object} hero the hero image and contents
+   * @param   {string} hero.image url to hero image
+   * @param   {string} hero.caption text caption
+   * @param   {{text:string, url:string}} hero.cta call-to-action
+   * @returns {string} HTML output
+   */
+  xHero(hero) {
+    let frag = Homepage.NAMED_TEMPLATES.xHero.cloneNode(true)
+    frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${hero.image}')`)
+    frag.querySelector('slot[name="hero-caption"]').textContent = hero.caption
+    frag.querySelector('a'                        ).href        = hero.cta.url
+    frag.querySelector('a'                        ).textContent = hero.cta.text
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
+  /**
+   * @summary Timely Promo display.
+   * @param   {!Object} promo the promotion to display
+   * @param   {string} promo.title promo heading
+   * @param   {string} promo.image url to promo image
+   * @param   {string} promo.caption text caption
+   * @param   {{text:string, url:string}} promo.cta call-to-action
+   * @returns {string} HTML output
+   */
+  xPromo(promo) {
+    let frag = Homepage.NAMED_TEMPLATES.xPromo.cloneNode(true)
+    frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${promo.image}')`)
+    frag.querySelector('.c-Promotion__Hn'  ).textContent = promo.title
+    frag.querySelector('.c-Promotion__Text').textContent = promo.caption
+    frag.querySelector('.c-Promotion__Cta' ).href        = promo.cta.url
+    frag.querySelector('.c-Promotion__Cta' ).textContent = promo.cta.text
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
    * @summary Featured Publication display.
-   * @param   {{id:string, name:string, caption:string}} pub the publication data to display
+   * @param   {!Object} pub the publication data to display
    * @param   {string} pub.id the ID
    * @param   {string} pub.name the heading
    * @param   {string} pub.caption the caption
@@ -106,15 +131,12 @@ class Homepage {
       innerfrag.querySelector('[itemprop="name"]').textContent = link.text
       frag.querySelector('template').parentNode.append(innerfrag)
     })
-
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(frag)
-    return returned.innerHTML
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
    * @summary Home Action display.
-   * @param   {{id:string, name:string, caption:string}} act the action data to display
+   * @param   {!Object} act the action data to display
    * @param   {string} act.id the ID
    * @param   {string} act.name the heading
    * @param   {string} act.caption the caption
@@ -134,125 +156,64 @@ class Homepage {
       innerfrag.querySelector('[itemprop="name"]').textContent = link.text
       frag.querySelector('template').parentNode.append(innerfrag)
     })
-
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(frag)
-    return returned.innerHTML
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
-   * @summary Timely Promotions section display.
+   * @summary Job Listing display.
+   * @param   {!Object} job the job data to display
+   * @param   {string} job.title the job title
+   * @param   {string} job.organization the hiring organization
+   * @param   {string} job.location the location of the job (as text)
+   * @param   {string} job.url the url to link to
    * @returns {string} HTML output
    */
-  timelyPromos() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA.promotions.map(function (promo) {
-      let frag = Homepage.NAMED_TEMPLATES.timelyPromos.cloneNode(true)
-      frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${promo.image}')`)
-      frag.querySelector('.c-Promotion__Hn'  ).textContent = promo.title
-      frag.querySelector('.c-Promotion__Cta' ).href        = promo.cta.url
-      frag.querySelector('.c-Promotion__Cta' ).textContent = promo.cta.text
-      frag.querySelector('.c-Promotion__Text').textContent = promo.caption
-      return frag
-    }))
-    return returned.innerHTML
+  xJob(job) {
+    let frag = Homepage.NAMED_TEMPLATES.xJob.cloneNode(true)
+    frag.querySelector('[itemprop="url"]').href        = job.url
+    frag.querySelector('[itemprop="url"]').textContent = job.title
+    frag.querySelector('[itemprop="hiringOrganization"] > [itemprop="name"]').textContent = job.organization
+    frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = job.location
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
-   * Publication Highlights section display.
+   * @summary Article Teaser display.
+   * @param   {!Object} article the article data to display
+   * @param   {string} article.title the article title or headline
+   * @param   {string} article.image url to a thumbnail
+   * @param   {string} article.url the url to link to
+   * @param   {string} article.datetime the publish date
    * @returns {string} HTML output
    */
-  publicationHighlights() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA['publication-highlights'].map(function (pub) {
-      let frag = Homepage.NAMED_TEMPLATES.publicationHighlights.cloneNode(true)
-      frag.querySelector('li').innerHTML = this.xPub(pub)
-      return frag
-    }, this))
-    return returned.innerHTML
+  xArticle(article) {
+    let frag = Homepage.NAMED_TEMPLATES.xArticle.cloneNode(true)
+    frag.querySelector('[itemprop~="image"]'       ).src         = article.image
+    frag.querySelector('[itemprop~="url"]'         ).href        = article.url
+    frag.querySelector('[itemprop~="headline"]'    ).textContent = article.title
+    frag.querySelector('[itemprop="datePublished"]').dateTime    = article.datetime
+    frag.querySelector('[itemprop="datePublished"]').textContent = xjs.Date.format(new Date(article.datetime), 'F j, Y')
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
-   * Publication Highlights section display.
+   * @summary Member Story display.
+   * @param   {!Object} member the member data to display
+   * @param   {string} member.name the name of the member (as a string)
+   * @param   {string} member.grade type of member, title, or subheading
+   * @param   {string} member.image url to a headshot photo
+   * @param   {string} member.quote quote by the member
    * @returns {string} HTML output
    */
-  homeActions() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA['home-actions'].map(function (act) {
-      let frag = Homepage.NAMED_TEMPLATES.homeActions.cloneNode(true)
-      frag.querySelector('li').innerHTML = this.xHomeAction(act)
-      return frag
-    }, this))
-    return returned.innerHTML
+  xMember(member) {
+    let frag = Homepage.NAMED_TEMPLATES.xMember.cloneNode(true)
+    frag.querySelector('[itemprop="image"]'      ).src         = member.image
+    frag.querySelector('[itemprop="name"]'       ).textContent = member.name
+    frag.querySelector('[itemprop="description"]').textContent = member.grade
+    frag.querySelector('blockquote'              ).textContent = member.quote
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-  /**
-   * Jobs section display.
-   * @returns {string} HTML output
-   */
-  jobs() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA.jobs.map(function (job) {
-      let frag = Homepage.NAMED_TEMPLATES.jobs.cloneNode(true)
-      frag.querySelector('[itemprop="url"]').href        = job.url
-      frag.querySelector('[itemprop="url"]').textContent = job.title
-      frag.querySelector('[itemprop="hiringOrganization"] > [itemprop="name"]').textContent = job.organization
-      frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = job.location
-      return frag
-    }))
-    return returned.innerHTML
-  }
-
-  /**
-   * What’s Happening section display.
-   * @returns {string} HTML output
-   */
-  whatsHappening() {
-    function formatDate(date) {
-      return `${[
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ][date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getFullYear()}`
-    }
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA.whats_happening.map(function (article) {
-      let frag = Homepage.NAMED_TEMPLATES.whatsHappening.cloneNode(true)
-      frag.querySelector('[itemprop~="image"]'       ).src         = article.image
-      frag.querySelector('[itemprop~="url"]'         ).href        = article.url
-      frag.querySelector('[itemprop~="headline"]'    ).textContent = article.title
-      frag.querySelector('[itemprop="datePublished"]').dateTime    = article.datetime
-      frag.querySelector('[itemprop="datePublished"]').textContent = formatDate(new Date(article.datetime))
-      return frag
-    }))
-    return returned.innerHTML
-  }
-
-  /**
-   * Member Stories section display.
-   * @returns {string} HTML output
-   */
-  memberStories() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA.member_stories.map(function (member) {
-      let frag = Homepage.NAMED_TEMPLATES.memberStories.cloneNode(true)
-      frag.querySelector('[itemprop="image"]'      ).src         = member.image
-      frag.querySelector('[itemprop="name"]'       ).textContent = member.name
-      frag.querySelector('[itemprop="description"]').textContent = member.grade
-      frag.querySelector('blockquote'              ).textContent = member.quote
-      return frag
-    }))
-    return returned.innerHTML
-  }
 
 
   /**
@@ -262,22 +223,121 @@ class Homepage {
    */
   compile() {
     const document = Homepage.NAMED_TEMPLATES.homeDocument
-    document.querySelector('main > header').innerHTML = this.xHero()
-    document.querySelectorAll('#we-represent > ul > li').forEach(function (item, n) {
-      item.innerHTML = this.xStat(Homepage.DATA.stats[n])
-    }, this)
-    document.querySelector('#promotions > ul').innerHTML = this.timelyPromos()
-    document.querySelectorAll('#portals > ol > li').forEach(function (item, n) {
-      item.innerHTML = this.xPortal(Homepage.DATA.portals[n])
-    }, this)
-    document.querySelector('#publication-highlights > ul').innerHTML = this.publicationHighlights()
-    document.querySelector('#learn-contribute > ul'      ).innerHTML = this.homeActions()
-    document.querySelector('#jobs > ul'                  ).innerHTML = this.jobs()
-    document.querySelector('#whats-happening > ul'       ).innerHTML = this.whatsHappening()
-    document.querySelector('#member-stories > ul'        ).innerHTML = this.memberStories()
+
+    function populateList(listselector, data, renderer) {
+      let container = document.querySelector(listselector)
+      let template = container.querySelector('template').content
+      data.forEach(function (item) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = renderer.call(this, item)
+        container.append(frag)
+      }, this)
+    }
+
+    // ++++ HARD-CODED DATA ++++ //
+    populateList.call(this, '#we-represent > ul', Homepage.DATA.stats  , this.xStat  )
+    populateList.call(this, '#portals      > ol', Homepage.DATA.portals, this.xPortal)
+    /*
+    ;(function () {
+      let container = document.querySelector('#we-represent > ul')
+      let template = container.querySelector('template').content
+      Homepage.DATA.stats.forEach(function (stat) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xStat(stat)
+        container.append(frag)
+      }, this)
+    }).call(this)
+    ;(function () {
+      let container = document.querySelector('#portals > ol')
+      let template = container.querySelector('template').content
+      Homepage.DATA.portals.forEach(function (port) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xPortal(port)
+        container.append(frag)
+      }, this)
+    }).call(this)
+     */
+
+    // ++++ USER-INPUT DATA ++++ //
+    document.querySelector('main > header').innerHTML = this.xHero(this._DATA['hero'])
+    populateList.call(this, '#promotions             > ul', this._DATA['promotions'            ], this.xPromo     )
+    populateList.call(this, '#publication-highlights > ul', this._DATA['publication-highlights'], this.xPub       )
+    populateList.call(this, '#learn-contribute       > ul', this._DATA['learn-contribute'      ], this.xHomeAction)
+    populateList.call(this, '#jobs                   > ul', this._DATA['jobs'                  ], this.xJob       )
+    populateList.call(this, '#whats-happening        > ul', this._DATA['whats-happening'       ], this.xArticle   )
+    populateList.call(this, '#member-stories         > ul', this._DATA['member-stories'        ], this.xMember    )
+    /*
+    ;[
+      ['#promotions             > ul', this._DATA['promotions'            ], this.xPromo     ],
+      ['#publication-highlights > ul', this._DATA['publication-highlights'], this.xPub       ],
+      ['#learn-contribute       > ul', this._DATA['learn-contribute'      ], this.xHomeAction],
+      ['#jobs                   > ul', this._DATA['jobs'                  ], this.xJob       ],
+      ['#whats-happening        > ul', this._DATA['whats-happening'       ], this.xArticle   ],
+      ['#member-stories         > ul', this._DATA['member-stories'        ], this.xMember    ],
+    ].forEach((params) => populateList.call(this, ...params))
+     */
+    /*
+    ;(function () {
+      let container = document.querySelector('#promotions > ul')
+      let template = container.querySelector('template').content
+      this._DATA['promotions'].forEach(function (promo) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xPromo(promo)
+        container.append(frag)
+      }, this)
+    }).call(this)
+    ;(function () {
+      let container = document.querySelector('#publication-highlights > ul')
+      let template = container.querySelector('template').content
+      this._DATA['publication-highlights'].forEach(function (pub) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xPub(pub)
+        container.append(frag)
+      }, this)
+    }).call(this)
+    ;(function () {
+      let container = document.querySelector('#learn-contribute > ul')
+      let template = container.querySelector('template').content
+      this._DATA['learn-contribute'].forEach(function (act) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xHomeAction(act)
+        container.append(frag)
+      }, this)
+    }).call(this)
+    ;(function () {
+      let container = document.querySelector('#jobs > ul')
+      let template = container.querySelector('template').content
+      this._DATA['jobs'].forEach(function (job) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xJob(job)
+        container.append(frag)
+      }, this)
+    }).call(this)
+    ;(function () {
+      let container = document.querySelector('#whats-happening > ul')
+      let template = container.querySelector('template').content
+      this._DATA['whats-happening'].forEach(function (article) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xArticle(article)
+        container.append(frag)
+      }, this)
+    }).call(this)
+    ;(function () {
+      let container = document.querySelector('#member-stories > ul')
+      let template = container.querySelector('template').content
+      this._DATA['member-stories'].forEach(function (member) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xMember(member)
+        container.append(frag)
+      }, this)
+    }).call(this)
+     */
     return `<!doctype html>` + document.documentElement.outerHTML
   }
 }
+
+
+
 
 /**
  * @summary A set of templates marking up data types.
@@ -306,6 +366,13 @@ Homepage.NAMED_TEMPLATES = {
     .window.document.querySelector('template').content,
 
   /**
+   * @summary Template for Timely Promo.
+   * @const {DocumentFragment}
+   */
+  xPromo: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-promo.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
    * @summary Template for Portal.
    * @const {DocumentFragment}
    */
@@ -327,47 +394,29 @@ Homepage.NAMED_TEMPLATES = {
     .window.document.querySelector('template').content,
 
   /**
-   * @summary Template for Promotions section.
+   * @summary Template for Job Listing.
    * @const {DocumentFragment}
    */
-  timelyPromos: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/timely-promos.tpl.html'), 'utf8'))
+  xJob: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-job.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
-   * @summary Template for Publication Highlights section.
+   * @summary Template for Article Teaser.
    * @const {DocumentFragment}
    */
-  publicationHighlights: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/publication-highlights.tpl.html'), 'utf8'))
+  xArticle: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-article.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
-   * @summary Template for Home Actions section.
+   * @summary Template for Member Story.
    * @const {DocumentFragment}
    */
-  homeActions: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/home-actions.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Jobs section.
-   * @const {DocumentFragment}
-   */
-  jobs: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/jobs.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for What’s Happening section.
-   * @const {DocumentFragment}
-   */
-  whatsHappening: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/whats-happening.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for What’s Happening section.
-   * @const {DocumentFragment}
-   */
-  memberStories: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/member-stories.tpl.html'), 'utf8'))
+  xMember: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-member.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 }
+
+
+
 
 /**
  * @summary Hard-coded data for the markup.

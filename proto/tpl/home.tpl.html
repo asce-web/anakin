@@ -31,24 +31,25 @@
       <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
       <h1>We Represent:</h1>
       <ul class="o-List o-Grid o-Grid--represent">
-        <li class="o-List__Item o-Grid__Item">{{ xStat }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ xStat }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ xStat }}</li>
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xStat }}</li>
+        </template>
       </ul>
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <ul class="o-List">{{ timelyPromos }}</ul>
+      <ul class="o-List">
+        <template>
+          <li class="o-List__Item">{{ xPromo }}</li>
+        </template>
+      </ul>
     </section>
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals">
-        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
-        <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xPortal }}</li>
+        </template>
       </ol>
     </section>
     <aside>ADVERTISEMENT</aside>
@@ -71,27 +72,47 @@
     </section>
     <section class="o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
-      <ul class="o-List o-Grid o-Grid--publications">{{ publicationHighlights }}</ul>
+      <ul class="o-List o-Grid o-Grid--publications">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xPub }}</li>
+        </template>
+      </ul>
     </section>
     <section class="o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
-      <ul class="o-List o-Grid o-Grid--homeActions">{{ homeActions }}</ul>
+      <ul class="o-List o-Grid o-Grid--homeActions">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xHomeAction }}</li>
+        </template>
+      </ul>
     </section>
     <section class="o-Runner" id="jobs">
       <h1>Jobs</h1>
-      <ul class="o-List o-Grid o-Grid--jobs">{{ jobs }}</ul>
+      <ul class="o-List o-Grid o-Grid--jobs">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xJob }}</li>
+        </template>
+      </ul>
       <footer>
         <p><a href="#0">Find a job</a></p>
       </footer>
     </section>
     <section class="o-Runner" id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
-      <ul class="o-List o-Grid o-Grid--whatsHappening">{{ whatsHappening }}</ul>
+      <ul class="o-List o-Grid o-Grid--whatsHappening">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xArticle }}</li>
+        </template>
+      </ul>
       <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
     </section>
     <section class="o-Runner" id="member-stories">
       <h1>ASCE Member Stories</h1>
-      <ul class="o-List o-Grid o-Grid--members">{{ memberStories }}</ul>
+      <ul class="o-List o-Grid o-Grid--members">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xMember }}</li>
+        </template>
+      </ul>
     </section>
     <p><a href="#0">Join ASCE</a></p>
     <aside>ADVERTISEMENT</aside>
