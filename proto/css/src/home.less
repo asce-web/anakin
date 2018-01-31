@@ -2,8 +2,8 @@
 /*================================*\
     anakin  |  home.less
 \*================================*/
-// @import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
-// @import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
 
 
 
@@ -199,6 +199,7 @@ a {
 
 .c-Stat {
   display: grid;
+  justify-items: center;
 }
 .c-Stat {
   @media not all and (min-width: 30em) {
@@ -206,11 +207,18 @@ a {
   }
 }
 .c-Stat__Icon {
+  background-color: purple;
+  color: white;
+  border-radius: 50%;
+  width: 4rem; height: 4rem;
+  font-size: 2em;
   @media not all and (min-width: 30em) {
     grid-row: 1 ~'/' -1;
   }
 }
 .c-Stat__Num {
+  font-size: (@g-font-size-kilo * 1em);
+  font-weight: 600;
 }
 .c-Stat__Text {
 }
@@ -310,6 +318,9 @@ a {
 }
 
 .c-Tagline {
+  margin-top: var(--lh);
+  .font-size-el(@g-font-size-kilo);
+  font-weight: 600;
 }
 
 
