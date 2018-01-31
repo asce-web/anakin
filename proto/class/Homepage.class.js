@@ -238,9 +238,15 @@ class Homepage {
   compile() {
     const document = Homepage.NAMED_TEMPLATES.homeDocument
     document.querySelector('main > header').innerHTML = this.xHero(this._DATA.hero)
-    document.querySelectorAll('#we-represent > ul > li').forEach(function (item, n) {
-      item.innerHTML = this.xStat(Homepage.DATA.stats[n])
-    }, this)
+    ;(function () {
+      let container = document.querySelector('#we-represent > ul')
+      let template = container.querySelector('template').content
+      Homepage.DATA.stats.forEach(function (stat) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xStat(stat)
+        container.append(frag)
+      }, this)
+    }).call(this)
     document.querySelector('#promotions > ul').innerHTML = this.timelyPromos()
     document.querySelectorAll('#portals > ol > li').forEach(function (item, n) {
       item.innerHTML = this.xPortal(Homepage.DATA.portals[n])
