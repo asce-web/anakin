@@ -88,6 +88,13 @@ a {
 //
 // Styleguide Objects
 
+.o-Constrain {
+  // TODO import from xmeter v6.3
+  max-width: 90rem;
+  margin-left: auto; margin-right: auto;
+}
+
+
 .o-Grid--jobs,
 .o-Grid--foundation,
 .o-Grid--publications,
@@ -171,12 +178,23 @@ a {
 }
 
 .c-Hero {
+  height: 50vh;
+  position: relative; // for the bar
+  background-size: cover;
+  background-position: center;
 }
 .c-Hero__Bar {
+  background-color: blue; // TODO skin
+  position: absolute;
+  bottom: 0;
+  left: 0; right:0;
+  padding: calc(var(--lh) ~'/' 2) 1rem;
 }
 .c-Hero__Cap {
 }
 .c-Hero__Cta {
+  float: right;
+  float: inline-end;
 }
 
 .c-Stat {
