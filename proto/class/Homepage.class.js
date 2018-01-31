@@ -85,7 +85,7 @@ class Homepage {
     frag.querySelector('[itemprop="url"]').href = port.url
     frag.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', port.icon)
     frag.querySelector('[itemprop="name"]').textContent = port.name
-    this._DATA.portal[port.id].forEach(function (link) {
+    this._DATA['portals'][port.id].forEach(function (link) {
       let innerfrag = frag.querySelector('template').content.cloneNode(true)
       innerfrag.querySelector('[itemprop="significantLink"]').href        = link.url
       innerfrag.querySelector('[itemprop="significantLink"]').textContent = link.text
@@ -220,11 +220,11 @@ class Homepage {
     }).call(this)
 
     // ++++ USER-INPUT DATA ++++ //
-    document.querySelector('main > header').innerHTML = this.xHero(this._DATA.hero)
+    document.querySelector('main > header').innerHTML = this.xHero(this._DATA['hero'])
     ;(function () {
       let container = document.querySelector('#promotions > ul')
       let template = container.querySelector('template').content
-      this._DATA.promotions.forEach(function (promo) {
+      this._DATA['promotions'].forEach(function (promo) {
         let frag = template.cloneNode(true)
         frag.querySelector('li').innerHTML = this.xPromo(promo)
         container.append(frag)
@@ -242,7 +242,7 @@ class Homepage {
     ;(function () {
       let container = document.querySelector('#learn-contribute > ul')
       let template = container.querySelector('template').content
-      this._DATA['home-actions'].forEach(function (act) {
+      this._DATA['learn-contribute'].forEach(function (act) {
         let frag = template.cloneNode(true)
         frag.querySelector('li').innerHTML = this.xHomeAction(act)
         container.append(frag)
@@ -251,7 +251,7 @@ class Homepage {
     ;(function () {
       let container = document.querySelector('#jobs > ul')
       let template = container.querySelector('template').content
-      this._DATA.jobs.forEach(function (job) {
+      this._DATA['jobs'].forEach(function (job) {
         let frag = template.cloneNode(true)
         frag.querySelector('li').innerHTML = this.xJob(job)
         container.append(frag)

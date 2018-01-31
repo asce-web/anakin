@@ -18,7 +18,7 @@
       "cta"  : { "text": "Read more", "url": "#0" }
     }
   ],
-  "portal": {
+  "portals": {
     "membership": [
       { "text": "Manage My Membership", "url": "#0" },
       { "text": "Join ASCE", "url": "#0" },
@@ -79,7 +79,7 @@
       "body": "<h2>Featured this Month</h2>\n<article>\n  <p><img src=\"./images/cefeatured.png\" alt=\"\"/></p>\n  <h3>Topographic Transformation</h3>\n  <p><time datetime=\"2017-06\">June 2017</time></p>\n  <p>The formerly flat Governors Island, in New York City harbor, is home \n    to four artificial hills that provide spectacular views of the \n    surrounding scenery. Rising as much as 70 ft above the island surface, \n    the hills were very carefully designed and engineered to remain stable \n    even where they are the steepest.</p>\n  <p><a href=\"#0\">Continue &rarr;</a></p>\n</article>"
     }
   ],
-  "home-actions": [
+  "learn-contribute": [
     {
       "id"     : "technical-information",
       "name"   : "Technical Information",
