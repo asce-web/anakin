@@ -72,11 +72,19 @@
     </section>
     <section class="o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
-      <ul class="o-List o-Grid o-Grid--publications">{{ publicationHighlights }}</ul>
+      <ul class="o-List o-Grid o-Grid--publications">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xPub }}</li>
+        </template>
+      </ul>
     </section>
     <section class="o-Runner" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
-      <ul class="o-List o-Grid o-Grid--homeActions">{{ homeActions }}</ul>
+      <ul class="o-List o-Grid o-Grid--homeActions">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xHomeAction }}</li>
+        </template>
+      </ul>
     </section>
     <section class="o-Runner" id="jobs">
       <h1>Jobs</h1>

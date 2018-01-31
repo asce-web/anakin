@@ -190,34 +190,6 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-  /**
-   * Publication Highlights section display.
-   * @returns {string} HTML output
-   */
-  publicationHighlights() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA['publication-highlights'].map(function (pub) {
-      let frag = Homepage.NAMED_TEMPLATES.publicationHighlights.cloneNode(true)
-      frag.querySelector('li').innerHTML = this.xPub(pub)
-      return frag
-    }, this))
-    return returned.innerHTML
-  }
-
-  /**
-   * Publication Highlights section display.
-   * @returns {string} HTML output
-   */
-  homeActions() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA['home-actions'].map(function (act) {
-      let frag = Homepage.NAMED_TEMPLATES.homeActions.cloneNode(true)
-      frag.querySelector('li').innerHTML = this.xHomeAction(act)
-      return frag
-    }, this))
-    return returned.innerHTML
-  }
-
 
   /**
    * @summary Compile HTML markup from a template file.
@@ -258,8 +230,24 @@ class Homepage {
         container.append(frag)
       }, this)
     }).call(this)
-    document.querySelector('#publication-highlights > ul').innerHTML = this.publicationHighlights()
-    document.querySelector('#learn-contribute > ul'      ).innerHTML = this.homeActions()
+    ;(function () {
+      let container = document.querySelector('#publication-highlights > ul')
+      let template = container.querySelector('template').content
+      this._DATA['publication-highlights'].forEach(function (pub) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xPub(pub)
+        container.append(frag)
+      }, this)
+    }).call(this)
+    ;(function () {
+      let container = document.querySelector('#learn-contribute > ul')
+      let template = container.querySelector('template').content
+      this._DATA['home-actions'].forEach(function (act) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xHomeAction(act)
+        container.append(frag)
+      }, this)
+    }).call(this)
     ;(function () {
       let container = document.querySelector('#jobs > ul')
       let template = container.querySelector('template').content
@@ -343,20 +331,6 @@ Homepage.NAMED_TEMPLATES = {
    * @const {DocumentFragment}
    */
   xHomeAction: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-homeaction.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Publication Highlights section.
-   * @const {DocumentFragment}
-   */
-  publicationHighlights: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/publication-highlights.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Home Actions section.
-   * @const {DocumentFragment}
-   */
-  homeActions: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/home-actions.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
