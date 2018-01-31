@@ -26,14 +26,15 @@ class Homepage {
 
   /**
    * @summary Hero section display.
+   * @param   {{image:string, caption:string, cta:{text:string, url:string}}} hero the hero image and contents
    * @returns {string} HTML output
    */
-  xHero() {
+  xHero(hero) {
     let frag = Homepage.NAMED_TEMPLATES.xHero.cloneNode(true)
-    frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${this._DATA.hero.image}')`)
-    frag.querySelector('slot[name="hero-caption"]').textContent = this._DATA.hero.caption
-    frag.querySelector('a'                        ).href        = this._DATA.hero.cta.url
-    frag.querySelector('a'                        ).textContent = this._DATA.hero.cta.text
+    frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${hero.image}')`)
+    frag.querySelector('slot[name="hero-caption"]').textContent = hero.caption
+    frag.querySelector('a'                        ).href        = hero.cta.url
+    frag.querySelector('a'                        ).textContent = hero.cta.text
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
@@ -236,7 +237,7 @@ class Homepage {
    */
   compile() {
     const document = Homepage.NAMED_TEMPLATES.homeDocument
-    document.querySelector('main > header').innerHTML = this.xHero()
+    document.querySelector('main > header').innerHTML = this.xHero(this._DATA.hero)
     document.querySelectorAll('#we-represent > ul > li').forEach(function (item, n) {
       item.innerHTML = this.xStat(Homepage.DATA.stats[n])
     }, this)
