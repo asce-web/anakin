@@ -122,12 +122,12 @@ class Homepage {
   }
 
   /**
-   * @summary Job display.
+   * @summary Job Listing display.
    * @param   {{}} job the job data to display
    * @returns {string} HTML output
    */
   xJob(job) {
-    let frag = Homepage.NAMED_TEMPLATES.jobs.cloneNode(true).querySelector('.c-JobListing')
+    let frag = Homepage.NAMED_TEMPLATES.xJob.cloneNode(true)
     frag.querySelector('[itemprop="url"]').href        = job.url
     frag.querySelector('[itemprop="url"]').textContent = job.title
     frag.querySelector('[itemprop="hiringOrganization"] > [itemprop="name"]').textContent = job.organization
@@ -141,7 +141,7 @@ class Homepage {
    * @returns {string} HTML output
    */
   xArticle(article) {
-    let frag = Homepage.NAMED_TEMPLATES.whatsHappening.cloneNode(true).querySelector('.c-ArticleTeaser')
+    let frag = Homepage.NAMED_TEMPLATES.xArticle.cloneNode(true)
     frag.querySelector('[itemprop~="image"]'       ).src         = article.image
     frag.querySelector('[itemprop~="url"]'         ).href        = article.url
     frag.querySelector('[itemprop~="headline"]'    ).textContent = article.title
@@ -156,7 +156,7 @@ class Homepage {
    * @returns {string} HTML output
    */
   xMember(member) {
-    let frag = Homepage.NAMED_TEMPLATES.memberStories.cloneNode(true).querySelector('.c-MemberStory')
+    let frag = Homepage.NAMED_TEMPLATES.xMember.cloneNode(true)
     frag.querySelector('[itemprop="image"]'      ).src         = member.image
     frag.querySelector('[itemprop="name"]'       ).textContent = member.name
     frag.querySelector('[itemprop="description"]').textContent = member.grade
@@ -366,24 +366,24 @@ Homepage.NAMED_TEMPLATES = {
     .window.document.querySelector('template').content,
 
   /**
-   * @summary Template for Jobs section.
+   * @summary Template for Job Listing.
    * @const {DocumentFragment}
    */
-  jobs: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/jobs.tpl.html'), 'utf8'))
+  xJob: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-job.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
-   * @summary Template for What’s Happening section.
+   * @summary Template for Article Teaser.
    * @const {DocumentFragment}
    */
-  whatsHappening: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/whats-happening.tpl.html'), 'utf8'))
+  xArticle: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-article.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
-   * @summary Template for What’s Happening section.
+   * @summary Template for Member Story.
    * @const {DocumentFragment}
    */
-  memberStories: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/member-stories.tpl.html'), 'utf8'))
+  xMember: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-member.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 }
 
