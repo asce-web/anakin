@@ -80,19 +80,31 @@
     </section>
     <section class="o-Runner" id="jobs">
       <h1>Jobs</h1>
-      <ul class="o-List o-Grid o-Grid--jobs">{{ jobs }}</ul>
+      <ul class="o-List o-Grid o-Grid--jobs">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xJob }}</li>
+        </template>
+      </ul>
       <footer>
         <p><a href="#0">Find a job</a></p>
       </footer>
     </section>
     <section class="o-Runner" id="whats-happening">
       <h1>What’s Happening at ASCE</h1>
-      <ul class="o-List o-Grid o-Grid--whatsHappening">{{ whatsHappening }}</ul>
+      <ul class="o-List o-Grid o-Grid--whatsHappening">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xArticle }}</li>
+        </template>
+      </ul>
       <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
     </section>
     <section class="o-Runner" id="member-stories">
       <h1>ASCE Member Stories</h1>
-      <ul class="o-List o-Grid o-Grid--members">{{ memberStories }}</ul>
+      <ul class="o-List o-Grid o-Grid--members">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ xMember }}</li>
+        </template>
+      </ul>
     </section>
     <p><a href="#0">Join ASCE</a></p>
     <aside>ADVERTISEMENT</aside>

@@ -218,36 +218,6 @@ class Homepage {
     return returned.innerHTML
   }
 
-  /**
-   * Jobs section display.
-   * @returns {string} HTML output
-   */
-  jobs() {
-    return this._DATA.jobs.map((job) => `
-      <li class="o-List__Item o-Grid__Item">${this.xJob(job)}</li>
-    `).join('')
-  }
-
-  /**
-   * What’s Happening section display.
-   * @returns {string} HTML output
-   */
-  whatsHappening() {
-    return this._DATA.whats_happening.map((article) => `
-      <li class="o-List__Item o-Grid__Item">${this.xArticle(article)}</li>
-    `).join('')
-  }
-
-  /**
-   * Member Stories section display.
-   * @returns {string} HTML output
-   */
-  memberStories() {
-    return this._DATA.member_stories.map((member) => `
-      <li class="o-List__Item o-Grid__Item">${this.xMember(member)}</li>
-    `).join('')
-  }
-
 
   /**
    * @summary Compile HTML markup from a template file.
@@ -290,9 +260,33 @@ class Homepage {
     }).call(this)
     document.querySelector('#publication-highlights > ul').innerHTML = this.publicationHighlights()
     document.querySelector('#learn-contribute > ul'      ).innerHTML = this.homeActions()
-    document.querySelector('#jobs > ul'                  ).innerHTML = this.jobs()
-    document.querySelector('#whats-happening > ul'       ).innerHTML = this.whatsHappening()
-    document.querySelector('#member-stories > ul'        ).innerHTML = this.memberStories()
+    ;(function () {
+      let container = document.querySelector('#jobs > ul')
+      let template = container.querySelector('template').content
+      this._DATA.jobs.forEach(function (job) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xJob(job)
+        container.append(frag)
+      }, this)
+    }).call(this)
+    ;(function () {
+      let container = document.querySelector('#whats-happening > ul')
+      let template = container.querySelector('template').content
+      this._DATA['whats-happening'].forEach(function (article) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xArticle(article)
+        container.append(frag)
+      }, this)
+    }).call(this)
+    ;(function () {
+      let container = document.querySelector('#member-stories > ul')
+      let template = container.querySelector('template').content
+      this._DATA['member-stories'].forEach(function (member) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xMember(member)
+        container.append(frag)
+      }, this)
+    }).call(this)
     return `<!doctype html>` + document.documentElement.outerHTML
   }
 }
