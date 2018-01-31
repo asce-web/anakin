@@ -122,6 +122,50 @@ class Homepage {
   }
 
   /**
+   * @summary Job display.
+   * @param   {{}} job the job data to display
+   * @returns {string} HTML output
+   */
+  xJob(job) {
+    let frag = Homepage.NAMED_TEMPLATES.jobs.cloneNode(true).querySelector('.c-JobListing')
+    frag.querySelector('[itemprop="url"]').href        = job.url
+    frag.querySelector('[itemprop="url"]').textContent = job.title
+    frag.querySelector('[itemprop="hiringOrganization"] > [itemprop="name"]').textContent = job.organization
+    frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = job.location
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
+  /**
+   * @summary Article Teaser display.
+   * @param   {{}} article the article data to display
+   * @returns {string} HTML output
+   */
+  xArticle(article) {
+    let frag = Homepage.NAMED_TEMPLATES.whatsHappening.cloneNode(true).querySelector('.c-ArticleTeaser')
+    frag.querySelector('[itemprop~="image"]'       ).src         = article.image
+    frag.querySelector('[itemprop~="url"]'         ).href        = article.url
+    frag.querySelector('[itemprop~="headline"]'    ).textContent = article.title
+    frag.querySelector('[itemprop="datePublished"]').dateTime    = article.datetime
+    frag.querySelector('[itemprop="datePublished"]').textContent = xjs.Date.format(new Date(article.datetime), 'F j, Y')
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
+  /**
+   * @summary Member Story display.
+   * @param   {{}} member the member data to display
+   * @returns {string} HTML output
+   */
+  xMember(member) {
+    let frag = Homepage.NAMED_TEMPLATES.memberStories.cloneNode(true).querySelector('.c-MemberStory')
+    frag.querySelector('[itemprop="image"]'      ).src         = member.image
+    frag.querySelector('[itemprop="name"]'       ).textContent = member.name
+    frag.querySelector('[itemprop="description"]').textContent = member.grade
+    frag.querySelector('blockquote'              ).textContent = member.quote
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
+
+  /**
    * @summary Home Action display.
    * @param   {{id:string, name:string, caption:string}} act the action data to display
    * @param   {string} act.id the ID
@@ -179,16 +223,9 @@ class Homepage {
    * @returns {string} HTML output
    */
   jobs() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA.jobs.map(function (job) {
-      let frag = Homepage.NAMED_TEMPLATES.jobs.cloneNode(true)
-      frag.querySelector('[itemprop="url"]').href        = job.url
-      frag.querySelector('[itemprop="url"]').textContent = job.title
-      frag.querySelector('[itemprop="hiringOrganization"] > [itemprop="name"]').textContent = job.organization
-      frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = job.location
-      return frag
-    }))
-    return returned.innerHTML
+    return this._DATA.jobs.map((job) => `
+      <li class="o-List__Item o-Grid__Item">${this.xJob(job)}</li>
+    `).join('')
   }
 
   /**
@@ -196,17 +233,9 @@ class Homepage {
    * @returns {string} HTML output
    */
   whatsHappening() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA.whats_happening.map(function (article) {
-      let frag = Homepage.NAMED_TEMPLATES.whatsHappening.cloneNode(true)
-      frag.querySelector('[itemprop~="image"]'       ).src         = article.image
-      frag.querySelector('[itemprop~="url"]'         ).href        = article.url
-      frag.querySelector('[itemprop~="headline"]'    ).textContent = article.title
-      frag.querySelector('[itemprop="datePublished"]').dateTime    = article.datetime
-      frag.querySelector('[itemprop="datePublished"]').textContent = xjs.Date.format(new Date(article.datetime), 'F j, Y')
-      return frag
-    }))
-    return returned.innerHTML
+    return this._DATA.whats_happening.map((article) => `
+      <li class="o-List__Item o-Grid__Item">${this.xArticle(article)}</li>
+    `).join('')
   }
 
   /**
@@ -214,16 +243,9 @@ class Homepage {
    * @returns {string} HTML output
    */
   memberStories() {
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(...this._DATA.member_stories.map(function (member) {
-      let frag = Homepage.NAMED_TEMPLATES.memberStories.cloneNode(true)
-      frag.querySelector('[itemprop="image"]'      ).src         = member.image
-      frag.querySelector('[itemprop="name"]'       ).textContent = member.name
-      frag.querySelector('[itemprop="description"]').textContent = member.grade
-      frag.querySelector('blockquote'              ).textContent = member.quote
-      return frag
-    }))
-    return returned.innerHTML
+    return this._DATA.member_stories.map((member) => `
+      <li class="o-List__Item o-Grid__Item">${this.xMember(member)}</li>
+    `).join('')
   }
 
 
