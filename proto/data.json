@@ -8,14 +8,14 @@
     {
       "title": "Dream Big: Engineering Our World",
       "image": "./images/timely.png",
-      "cta"  : { "text": "Find a screen", "url": "#0" },
-      "caption": "A giant-screen film about engineering will take viewers on a journey of discovery from the world’s tallest building to a bridge higher than the clouds."
+      "caption": "A giant-screen film about engineering will take viewers on a journey of discovery from the world’s tallest building to a bridge higher than the clouds.",
+      "cta"  : { "text": "Find a screen", "url": "#0" }
     },
     {
       "title": "Save America’s Infrastructure",
       "image": "./images/infrastructure.png",
-      "cta"  : { "text": "Read more", "url": "#0" },
-      "caption": "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers."
+      "caption": "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers.",
+      "cta"  : { "text": "Read more", "url": "#0" }
     }
   ],
   "portal": {

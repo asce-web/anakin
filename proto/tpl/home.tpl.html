@@ -38,7 +38,11 @@
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <ul class="o-List">{{ timelyPromos }}</ul>
+      <ul class="o-List">
+        <template>
+          <li class="o-List__Item">{{ xPromo }}</li>
+        </template>
+      </ul>
     </section>
     <section class="o-Runner" id="portals">
       <h1 class="h-Hidden">Portals</h1>
