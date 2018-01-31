@@ -5,6 +5,7 @@ const jsdom = require('jsdom')
 
 const xjs = {
   Date: require('extrajs').Date,
+  DocumentFragment: require('extrajs-dom').DocumentFragment,
 }
 
 /**
@@ -33,10 +34,7 @@ class Homepage {
     frag.querySelector('slot[name="hero-caption"]').textContent = this._DATA.hero.caption
     frag.querySelector('a'                        ).href        = this._DATA.hero.cta.url
     frag.querySelector('a'                        ).textContent = this._DATA.hero.cta.text
-
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(frag)
-    return returned.innerHTML
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
@@ -53,10 +51,7 @@ class Homepage {
     action.setAttribute('itemtype', `http://schema.org/${stat.type || 'Action'}`)
     action.querySelector('[itemprop="url"]' ).href        = stat.cta.url
     action.querySelector('[itemprop="name"]').textContent = stat.cta.text
-
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(frag)
-    return returned.innerHTML
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
@@ -80,10 +75,7 @@ class Homepage {
       innerfrag.querySelector('[itemprop="significantLink"]').textContent = link.text
       frag.querySelector('template').parentNode.append(innerfrag)
     })
-
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(frag)
-    return returned.innerHTML
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
@@ -110,10 +102,7 @@ class Homepage {
       innerfrag.querySelector('[itemprop="name"]').textContent = link.text
       frag.querySelector('template').parentNode.append(innerfrag)
     })
-
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(frag)
-    return returned.innerHTML
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
@@ -138,10 +127,7 @@ class Homepage {
       innerfrag.querySelector('[itemprop="name"]').textContent = link.text
       frag.querySelector('template').parentNode.append(innerfrag)
     })
-
-    let returned = new jsdom.JSDOM().window.document.createElement('div')
-    returned.append(frag)
-    return returned.innerHTML
+    return new xjs.DocumentFragment(frag).innerHTML()
   }
 
   /**
