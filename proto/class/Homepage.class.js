@@ -224,7 +224,20 @@ class Homepage {
   compile() {
     const document = Homepage.NAMED_TEMPLATES.homeDocument
 
+    function populateList(listselector, data, renderer) {
+      let container = document.querySelector(listselector)
+      let template = container.querySelector('template').content
+      data.forEach(function (item) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = renderer.call(this, item)
+        container.append(frag)
+      }, this)
+    }
+
     // ++++ HARD-CODED DATA ++++ //
+    populateList.call(this, '#we-represent > ul', Homepage.DATA.stats  , this.xStat  )
+    populateList.call(this, '#portals      > ol', Homepage.DATA.portals, this.xPortal)
+    /*
     ;(function () {
       let container = document.querySelector('#we-represent > ul')
       let template = container.querySelector('template').content
@@ -243,9 +256,27 @@ class Homepage {
         container.append(frag)
       }, this)
     }).call(this)
+     */
 
     // ++++ USER-INPUT DATA ++++ //
     document.querySelector('main > header').innerHTML = this.xHero(this._DATA['hero'])
+    populateList.call(this, '#promotions             > ul', this._DATA['promotions'            ], this.xPromo     )
+    populateList.call(this, '#publication-highlights > ul', this._DATA['publication-highlights'], this.xPub       )
+    populateList.call(this, '#learn-contribute       > ul', this._DATA['learn-contribute'      ], this.xHomeAction)
+    populateList.call(this, '#jobs                   > ul', this._DATA['jobs'                  ], this.xJob       )
+    populateList.call(this, '#whats-happening        > ul', this._DATA['whats-happening'       ], this.xArticle   )
+    populateList.call(this, '#member-stories         > ul', this._DATA['member-stories'        ], this.xMember    )
+    /*
+    ;[
+      ['#promotions             > ul', this._DATA['promotions'            ], this.xPromo     ],
+      ['#publication-highlights > ul', this._DATA['publication-highlights'], this.xPub       ],
+      ['#learn-contribute       > ul', this._DATA['learn-contribute'      ], this.xHomeAction],
+      ['#jobs                   > ul', this._DATA['jobs'                  ], this.xJob       ],
+      ['#whats-happening        > ul', this._DATA['whats-happening'       ], this.xArticle   ],
+      ['#member-stories         > ul', this._DATA['member-stories'        ], this.xMember    ],
+    ].forEach((params) => populateList.call(this, ...params))
+     */
+    /*
     ;(function () {
       let container = document.querySelector('#promotions > ul')
       let template = container.querySelector('template').content
@@ -300,6 +331,7 @@ class Homepage {
         container.append(frag)
       }, this)
     }).call(this)
+     */
     return `<!doctype html>` + document.documentElement.outerHTML
   }
 }
