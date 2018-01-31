@@ -96,7 +96,6 @@ a {
 
 
 .o-Grid--jobs,
-.o-Grid--foundation,
 .o-Grid--publications,
 .o-Grid--homeActions,
 .o-Grid--whatsHappening {
@@ -106,7 +105,6 @@ a {
 }
 
 .o-Grid--jobs,
-.o-Grid--foundation,
 .o-Grid--whatsHappening {
   @media screen and (min-width: 45em) {
     grid-template-rows: repeat(2, auto);
@@ -135,10 +133,28 @@ a {
 }
 
 .o-Grid--foundation {
-  @media screen and (min-width: 45em) {
-    & > .c-Stat {
-      grid-area: ~'1 / 2 / -1 / -1';
-    }
+  grid-template-areas: 'heading heading'
+                       'caption caption'
+                       'icon    blurb  '
+                       'icon    button ';
+  grid-column-gap: var(--layout-padding-inline);
+  @media screen and (min-width: 30em) {
+    grid-template: 'heading icon blurb '
+                   'caption icon button'
+                  / 2fr     1fr  1fr   ;
+  }
+  & > h1                            { grid-area: heading; }
+  & > p.o-Grid--foundation__Caption { grid-area: caption; }
+  & > i                             { grid-area: icon;    }
+  & > p.o-Grid--foundation__Blurb   { grid-area: blurb;   }
+  & > p.o-Grid--foundation__Action  { grid-area: button;  }
+  & > i {
+    justify-self: center; align-self: center; // HACK fallback for place-self
+    place-self: center;
+  }
+  & > .o-Grid--foundation__Blurb,
+  & > .o-Grid--foundation__Action {
+    text-align: center;
   }
 }
 
