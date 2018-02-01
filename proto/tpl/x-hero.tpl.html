@@ -1,8 +1,10 @@
 <template>
   <div class="c-Hero" id="hero" style="background-image: url('{{ image }}');">
-    <p class="c-Hero__Bar">
-      <slot class="c-Hero__Cap" name="hero-caption">{{ caption }}</slot>
-      <a class="c-Hero__Cta" href="{{ cta_url }}">{{ cta_text }}</a>
-    </p>
+    <div class="c-Hero__Bar">
+      <p class="o-Constrain -mb-u">
+        <slot class="c-Hero__Cap" name="hero-caption">{{ caption }}</slot>
+        <a class="c-Hero__Cta" href="{{ cta_url }}">{{ cta_text }}</a>
+      </p>
+    </div>
   </div>
 </template>

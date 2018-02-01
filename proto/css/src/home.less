@@ -2,8 +2,8 @@
 /*================================*\
     anakin  |  home.less
 \*================================*/
-// @import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
-// @import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
 
 
 
@@ -88,8 +88,14 @@ a {
 //
 // Styleguide Objects
 
+.o-Constrain {
+  // TODO import from xmeter v6.3
+  max-width: 90rem;
+  margin-left: auto; margin-right: auto;
+}
+
+
 .o-Grid--jobs,
-.o-Grid--foundation,
 .o-Grid--publications,
 .o-Grid--homeActions,
 .o-Grid--whatsHappening {
@@ -99,7 +105,6 @@ a {
 }
 
 .o-Grid--jobs,
-.o-Grid--foundation,
 .o-Grid--whatsHappening {
   @media screen and (min-width: 45em) {
     grid-template-rows: repeat(2, auto);
@@ -128,10 +133,28 @@ a {
 }
 
 .o-Grid--foundation {
-  @media screen and (min-width: 45em) {
-    & > .c-Stat {
-      grid-area: ~'1 / 2 / -1 / -1';
-    }
+  grid-template-areas: 'heading heading'
+                       'caption caption'
+                       'icon    blurb  '
+                       'icon    button ';
+  grid-column-gap: var(--layout-padding-inline);
+  @media screen and (min-width: 30em) {
+    grid-template: 'heading icon blurb '
+                   'caption icon button'
+                  / 2fr     1fr  1fr   ;
+  }
+  & > h1                            { grid-area: heading; }
+  & > p.o-Grid--foundation__Caption { grid-area: caption; }
+  & > i                             { grid-area: icon;    }
+  & > p.o-Grid--foundation__Blurb   { grid-area: blurb;   }
+  & > p.o-Grid--foundation__Action  { grid-area: button;  }
+  & > i {
+    justify-self: center; align-self: center; // HACK fallback for place-self
+    place-self: center;
+  }
+  & > .o-Grid--foundation__Blurb,
+  & > .o-Grid--foundation__Action {
+    text-align: center;
   }
 }
 
@@ -168,19 +191,44 @@ a {
 // Styleguide Components
 
 .c-SectionHed {
+  .font-size-el(@g-font-size-kilo); // undo base h1
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .c-Hero {
+  height: 50vh;
+  position: relative; // for the bar
+  background-size: cover;
+  background-position: center;
 }
 .c-Hero__Bar {
+  background-color: blue; // TODO skin
+  position: absolute;
+  bottom: 0;
+  left: 0; right:0;
+  padding: calc(var(--lh) ~'/' 2) 1rem;
 }
 .c-Hero__Cap {
 }
 .c-Hero__Cta {
+  float: right;
+  float: inline-end;
+}
+
+.c-BigAssIcon {
+  background-color: purple;
+  color: white;
+  border-radius: 50%;
+  width: 4rem; height: 4rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .c-Stat {
   display: grid;
+  justify-items: center;
 }
 .c-Stat {
   @media not all and (min-width: 30em) {
@@ -193,6 +241,8 @@ a {
   }
 }
 .c-Stat__Num {
+  font-size: (@g-font-size-kilo * 1em);
+  font-weight: 600;
 }
 .c-Stat__Text {
 }
@@ -200,6 +250,10 @@ a {
 }
 
 .c-Portal {
+}
+.c-Portal__Head {
+  display: grid;
+  justify-items: center;
 }
 .c-Portal__Icon {
 }
@@ -292,6 +346,9 @@ a {
 }
 
 .c-Tagline {
+  margin-top: var(--lh);
+  .font-size-el(@g-font-size-kilo);
+  font-weight: 600;
 }
 
 

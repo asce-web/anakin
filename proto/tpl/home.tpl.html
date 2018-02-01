@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-halflings/web/html_css/css/glyphicons-halflings.css"/>
   <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
 
-  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.1.1/css/xmeter.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.2.0/css/xmeter.css"/>
   <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
 
   <link rel="stylesheet" href="./css/home.css"/>
@@ -27,9 +27,9 @@
   </header>
   <main id="main">
     <header>{{ xHero }}</header>
-    <section class="o-Runner" id="we-represent">
+    <section class="o-Runner -ta-c" id="we-represent">
       <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
-      <h1>We Represent:</h1>
+      <h1 class="-fz-i -fw-i">We Represent:</h1>
       <ul class="o-List o-Grid o-Grid--represent">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ xStat }}</li>
@@ -54,21 +54,19 @@
     </section>
     <aside>ADVERTISEMENT</aside>
     <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
-      <h1 itemprop="name">ASCE Foundation</h1>
-      <p itemprop="description">Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.</p>
-      <div class="c-Stat">
-        <i class="c-Stat__Icon h-Block glyphicons glyphicons-donate" role="none" aria-hidden="true"></i>
-        <p>
-          <span class="c-Stat__Text h-Block">Your Foundation!<br/>
-            Your Future!<br/>
-            You can make a difference!</span>
-        </p>
-        <p itemprop="potentialAction" itemscope="" itemtype="http://schema.org/DonateAction">
-          <a class="c-Stat__Cta c-Button" href="//www.ascefoundation.org/ways-to-give/one-time-gift/" rel="external" itemprop="url">
-            <span itemprop="name">Donate Today</span>
-          </a>
-        </p>
-      </div>
+      <h1 class="o-Grid__Item c-SectionHed -ta-i" itemprop="name">ASCE Foundation</h1>
+      <p class="o-Grid__Item o-Grid--foundation__Caption" itemprop="description">Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.</p>
+      <i class="o-Grid__Item c-BigAssIcon h-Block glyphicons glyphicons-donate" role="none" aria-hidden="true"></i>
+      <p class="o-Grid__Item o-Grid--foundation__Blurb">
+        Your Foundation!<br/>
+        Your Future!<br/>
+        You can make a difference!
+      </p>
+      <p class="o-Grid__Item o-Grid--foundation__Action" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/DonateAction">
+        <a class="c-Stat__Cta c-Button" href="//www.ascefoundation.org/ways-to-give/one-time-gift/" rel="external" itemprop="url">
+          <span itemprop="name">Donate Today</span>
+        </a>
+      </p>
     </section>
     <section class="o-Runner" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
@@ -87,7 +85,7 @@
       </ul>
     </section>
     <section class="o-Runner" id="jobs">
-      <h1>Jobs</h1>
+      <h1 class="c-SectionHed">Jobs</h1>
       <ul class="o-List o-Grid o-Grid--jobs">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ xJob }}</li>
@@ -98,7 +96,7 @@
       </footer>
     </section>
     <section class="o-Runner" id="whats-happening">
-      <h1>What’s Happening at ASCE</h1>
+      <h1 class="c-SectionHed">What’s Happening at ASCE</h1>
       <ul class="o-List o-Grid o-Grid--whatsHappening">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ xArticle }}</li>
@@ -107,7 +105,7 @@
       <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
     </section>
     <section class="o-Runner" id="member-stories">
-      <h1>ASCE Member Stories</h1>
+      <h1 class="c-SectionHed">ASCE Member Stories</h1>
       <ul class="o-List o-Grid o-Grid--members">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ xMember }}</li>

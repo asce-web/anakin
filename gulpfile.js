@@ -11,7 +11,7 @@ gulp.task('home:compile', function (callback) {
   return fs.writeFile('./proto/home.html', contents, 'utf8', callback) // send callback here to maintain async dependency
 })
 
-gulp.task('lessc:home', function () {
+gulp.task('home:lessc', function () {
   return gulp.src(__dirname + '/proto/css/src/home.less')
     .pipe(less())
     .pipe(autoprefixer({
@@ -20,3 +20,5 @@ gulp.task('lessc:home', function () {
     }))
     .pipe(gulp.dest('./proto/css/'))
 })
+
+gulp.task('home:build', ['home:compile', 'home:lessc'])
