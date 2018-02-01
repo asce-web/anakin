@@ -71,7 +71,7 @@ class Homepage {
     })
     let dupe = frag.querySelectorAll('.c-Portal')[1]
     dupe.append(list.cloneNode(true))
-    dupe.querySelector('.c-Portal__Head').append(...Array.from(orig.querySelector('.c-Portal__Head').children).map((elem) => elem.cloneNode(true)))
+    dupe.querySelector('.c-Portal__Head').append(...Array.from(orig.querySelector('.c-Portal__Head').childNodes).map((n) => n.cloneNode(true)))
     dupe.querySelector('.glyphicons').classList.remove('c-BigAssIcon', 'h-Block')
 
     return new xjs.DocumentFragment(frag).innerHTML()
