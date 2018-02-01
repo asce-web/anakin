@@ -4,6 +4,7 @@
 \*================================*/
 @import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
 @import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.delims.less');
 
 
 
@@ -33,15 +34,18 @@
 //++++++++++++++++++++++++++++++++//
 //    # SETTINGS & TOOLS
 //++++++++++++++++++++++++++++++++//
+@g-color-asce-blue : #0c5fa8;
+@g-color-asce-green: #62b840;
 //++++ end # SETTINGS & TOOLS ++++//
 
 
 //++++++++++++++++++++++++++++++++//
 //    # BASE
 //++++++++++++++++++++++++++++++++//
+@color-body: #333;
 html {
   --layout-padding-base: 0.25;
-  --layout-padding-block : calc(var(--layout-padding-base) ~'*' var(--vru));
+  --layout-padding-block : calc(var(--layout-padding-base) ~'*' var(--lh));
   --layout-padding-inline: calc(var(--layout-padding-base) ~'*' 2rem);
   --layout-padding: var(--layout-padding-block) var(--layout-padding-inline);
   @media screen and (min-width: 30rem) {
@@ -60,7 +64,7 @@ html {
 }
 body {
   font-family: 'Open Sans', sans-serif;
-  color: #333;
+  color: @color-body;
 }
 a {
   color: #0c5fa8;
@@ -69,6 +73,9 @@ a {
     color: #19a1cf;
   }
 }
+li:nth-of-type(1) { --color-accent: #ffdc7a }
+li:nth-of-type(2) { --color-accent: #1fc9cd }
+li:nth-of-type(3) { --color-accent: #ffa65c }
 //++++ end # BASE ++++//
 
 
@@ -111,10 +118,13 @@ a {
   }
 }
 
-.o-Grid--jobs,
+.o-Grid--represent,
+.o-Grid--portals,
 .o-Grid--publications,
 .o-Grid--homeActions,
-.o-Grid--whatsHappening {
+.o-Grid--jobs,
+.o-Grid--whatsHappening,
+.o-Grid--members {
   grid-row-gap   : var(--layout-padding-block);
   grid-column-gap: var(--layout-padding-inline);
 }
@@ -127,12 +137,16 @@ a {
 }
 
 .o-Grid--portals {
+  @media screen and (min-width: 30em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   @media screen and (min-width: 45em) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .o-Grid--foundation {
+  --color-accent: aqua; // FIXME
   grid-template-areas: 'heading heading'
                        'caption caption'
                        'icon    blurb  '
@@ -191,7 +205,7 @@ a {
 // Styleguide Components
 
 .c-SectionHed {
-  .font-size-el(@g-font-size-kilo); // undo base h1
+  .font-size-el(@g-font-size-kilo);
   font-weight: 300;
   text-transform: uppercase;
   text-align: center;
@@ -202,6 +216,7 @@ a {
   position: relative; // for the bar
   background-size: cover;
   background-position: center;
+  color: white;
 }
 .c-Hero__Bar {
   background-color: blue; // TODO skin
@@ -218,12 +233,52 @@ a {
 }
 
 .c-BigAssIcon {
-  background-color: purple;
+  background-color: var(--color-accent, black);
   color: white;
   border-radius: 50%;
   width: 4rem; height: 4rem;
   font-size: 2rem;
   text-align: center;
+}
+
+.c-Button {
+  // NOTE all this literally copied from `conferencesuite`
+  @g-color-btn-txt: #fff;
+  @g-color-btn-bg: @g-color-asce-blue;
+  @g-color-btn-sw: #cdcdcd; // shadow
+
+  font-family: 'futura-pt','Open Sans','Helvetica Neue','Helvetica',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  word-spacing: 1px;
+  letter-spacing: 1px;
+
+  display: inline-block;
+  padding: calc(~'0.5 * var(--lh)') 1rem;
+  font-size: (1em * 14/16);
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: @g-color-btn-bg;
+  border-radius: 0.25rem;
+  box-shadow: 0 (1em/8) 0 0 @g-color-btn-sw;
+  cursor: pointer;
+
+  &,
+  a& {
+    &,
+    &:hover,
+    &:focus {
+      color: @g-color-btn-txt;
+    }
+  }
+  &:hover,
+  &:focus {
+    background-color: lighten(@g-color-btn-bg, 5%);
+  }
+  &:active {
+    background-color: darken(@g-color-btn-bg, 5%);
+    box-shadow: 0 (1em/8) 0 0 @g-color-btn-sw inset;
+  }
 }
 
 .c-Stat {
@@ -241,7 +296,7 @@ a {
   }
 }
 .c-Stat__Num {
-  font-size: (@g-font-size-kilo * 1em);
+  .font-size-el(@g-font-size-kilo, 2);
   font-weight: 600;
 }
 .c-Stat__Text {
@@ -250,6 +305,33 @@ a {
 }
 
 .c-Portal {
+  --color-accent: @g-color-asce-green;
+  details& {
+    .glyphicons {
+      vertical-align: middle;
+      margin-right: 1rem;
+      border-radius: 50%;
+      background-color: var(--color-accent, @g-color-asce-blue);
+      color: white;
+    }
+    &[open] .glyphicons::before {
+      content: '\E601'; // copied from `.glyphicons-chevron-up` (cannot change classname, so copying css style)
+    }
+    @media screen and (min-width: 30em) {
+      display: none;
+    }
+  }
+  ::-webkit-details-marker {
+    display: none;
+  }
+}
+.c-Portal__Head,
+.c-Portal__List {
+  section.c-Portal & {
+    @media not all and (min-width: 30em) {
+      display: none;
+    }
+  }
 }
 .c-Portal__Head {
   display: grid;
@@ -258,6 +340,10 @@ a {
 .c-Portal__Icon {
 }
 .c-Portal__Hn {
+  color: @color-body;
+  details & {
+    text-align: inherit; // unset `.c-SectionHed`
+  }
 }
 .c-Portal__List {
 }
@@ -268,11 +354,13 @@ a {
 
 .c-Pub {
   display: grid;
+  grid-column-gap: calc(var(--layout-padding-inline) ~'/' 2);
   @media screen and (min-width: 30em) {
     grid-template: repeat(4, auto) ~'/' repeat(2, 1fr);
   }
 }
 .c-Pub__Img {
+  margin-bottom: var(--lh);
   @media screen and (min-width: 30em) {
     grid-row: 1 ~'/' -2;
   }
@@ -309,7 +397,7 @@ a {
 
 .c-ArticleTeaser {
   display: grid;
-  grid-template: repeat(2, auto) ~'/' 25% 75%;
+  grid-template: max-content auto ~'/' 25% 75%; // "max-content" minimizes the 1st row-size
   grid-column-gap: calc(0.5 ~'*' var(--layout-padding-inline));
   @media not all and (min-width: 30em) {
     grid-template-columns: 33.33333% 66.66666%;
@@ -332,21 +420,34 @@ a {
 
 .c-MemberStory {
   display: grid;
-  grid-template: repeat(3, auto) ~'/' repeat(2, 1fr);
+  grid-template: max-content auto auto ~'/' repeat(2, 1fr); // "max-content" minimizes the 1st row-size
 }
 .c-MemberStory__Img {
   grid-row: 1 ~'/' -2;
+  justify-self: center;
+  margin-bottom: var(--lh);
+  border: 0.25rem solid var(--color-accent, transparent);
+  border-radius: 50%;
+}
+.c-MemberStory__Hn,
+.c-MemberStory__SubHn {
+  text-align: center;
 }
 .c-MemberStory__Hn {
+  font-weight: 600;
 }
 .c-MemberStory__SubHn {
 }
 .c-MemberStory__Quote {
   grid-column: 1 ~'/' -1;
+  padding-left: 0.5rem;
+  border-left: 0.25rem solid var(--color-accent, transparent);
+  .quotes-double();
+  font-style: italic;
 }
 
 .c-Tagline {
-  margin-top: var(--lh);
+  padding-top: var(--lh);
   .font-size-el(@g-font-size-kilo);
   font-weight: 600;
 }
@@ -356,22 +457,22 @@ a {
 
 
 //++++++++++++++++++++++++++++++++//
-//    # ORGANISMS
+//    # INTERFACES
 //++++++++++++++++++++++++++++++++//
 
-// Organisms
+// Interfaces
 //
-// Compositions of Objects and Components that act together as a single interface.
+// Aggregate compositions of Objects and Components that form single, self-sustaining organisms.
 // <header><dl>
 //   <dt>author</dt>  <dd>Chris Harvey</dd>
-//   <dt>updated</dt> <dd><time>2017-11-07</time></dd>
+//   <dt>updated</dt> <dd><time>2018-02-01</time></dd>
 // </dl></header>
 //
 // Weight: 3
 //
-// Styleguide Organisms
+// Styleguide Interfaces
 
-//++++ end # ORGANISMS ++++//
+//++++ end # INTERFACES ++++//
 
 
 //++++++++++++++++++++++++++++++++//
@@ -388,5 +489,8 @@ a {
 //++++++++++++++++++++++++++++++++//
 //    # OVERRIDES
 //++++++++++++++++++++++++++++++++//
-.glyphicons-group + .c-Stat__Num::after { content: '+'; }
+.glyphicons-group + p > .c-Stat__Num::after { content: '+'; }
+._advertisement {
+  background-color: #eee;
+}
 //++++ end # OVERRIDES ++++//

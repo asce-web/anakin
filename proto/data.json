@@ -76,7 +76,7 @@
       "links"  : [
         { "text": "Read CE Magazine", "url": "#0" }
       ],
-      "body": "<h2>Featured this Month</h2>\n<article>\n  <p><img src=\"./images/cefeatured.png\" alt=\"\"/></p>\n  <h3>Topographic Transformation</h3>\n  <p><time datetime=\"2017-06\">June 2017</time></p>\n  <p>The formerly flat Governors Island, in New York City harbor, is home \n    to four artificial hills that provide spectacular views of the \n    surrounding scenery. Rising as much as 70 ft above the island surface, \n    the hills were very carefully designed and engineered to remain stable \n    even where they are the steepest.</p>\n  <p><a href=\"#0\">Continue &rarr;</a></p>\n</article>"
+      "body": "<h2>Featured this Month</h2>\n<article>\n  <img style=\"float: left; margin-right: 1rem;\" src=\"./images/cefeatured.png\" alt=\"\"/>\n  <h3>Topographic Transformation</h3>\n  <p><time datetime=\"2017-06\">June 2017</time></p>\n  <p>The formerly flat Governors Island, in New York City harbor, is home \n    to four artificial hills that provide spectacular views of the \n    surrounding scenery. Rising as much as 70 ft above the island surface, \n    the hills were very carefully designed and engineered to remain stable \n    even where they are the steepest.</p>\n  <p><a href=\"#0\">Continue &rarr;</a></p>\n</article>"
     }
   ],
   "learn-contribute": [
@@ -153,22 +153,22 @@
   ],
   "member-stories": [
     {
-      "name" : "Katie Haslett",
+      "name" : "Nakeia Jackson, S.M.ASCE",
       "grade": "Student Member",
-      "image": "./images/member1.png",
-      "quote": "The impact of seeing successful female engineering professiors has motivated and inspired me to want to make a difference, and work towards making contributions that will affect the future and how things are done from an engineering perspective."
+      "image": "./images/headshot-nakeia-jackson.jpg",
+      "quote": "I get to change the world with my work … this motivates me and excites me for the future of being an engineer."
     },
     {
-      "name" : "Nakeia Jackson",
-      "grade": "2017 New Faces of Civil Engineering",
-      "image": "./images/member2.png",
-      "quote": "When you become an engineer, you are always proud of the work you create. Your work is your own creativity and it’s thrilling to make something on paper come to life."
+      "name" : "Natalie Mills, EI, A.M.ASCE",
+      "grade": "Engineer Intern, Associate Member",
+      "image": "./images/headshot-natalie-mills.jpg",
+      "quote": "[ASCE is] where I met some of my closest friends. It’s more than a group I’m involved in; it’s really become a family."
     },
     {
-      "name" : "Damani Nkeiruka",
-      "grade": "Distinguished Member",
-      "image": "./images/member3.png",
-      "quote": "There are so many infrastructure and transportation issues that need to be solved, and I am excited to bring my knowledge, passion, and can-do attitude into that field."
+      "name" : "Chuck Pennoni, P.E., L.S., Pres.92.ASCE",
+      "grade": "Past President",
+      "image": "./images/headshot-chuck-pennoni.jpg",
+      "quote": "In the more than 50 years since I became a licensed professional engineer, ASCE has been my first and foremost resource for not only technical and professional development, but also broadening my skills in the business world."
     }
   ]
 }
