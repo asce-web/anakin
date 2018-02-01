@@ -4,6 +4,7 @@
 \*================================*/
 @import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
 @import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.delims.less');
 
 
 
@@ -39,6 +40,7 @@
 //++++++++++++++++++++++++++++++++//
 //    # BASE
 //++++++++++++++++++++++++++++++++//
+@color-body: #333;
 html {
   --layout-padding-base: 0.25;
   --layout-padding-block : calc(var(--layout-padding-base) ~'*' var(--lh));
@@ -60,7 +62,7 @@ html {
 }
 body {
   font-family: 'Open Sans', sans-serif;
-  color: #333;
+  color: @color-body;
 }
 a {
   color: #0c5fa8;
@@ -69,6 +71,9 @@ a {
     color: #19a1cf;
   }
 }
+li:nth-of-type(1) { --color-accent: #ffdc7a }
+li:nth-of-type(2) { --color-accent: #1fc9cd }
+li:nth-of-type(3) { --color-accent: #ffa65c }
 //++++ end # BASE ++++//
 
 
@@ -133,6 +138,7 @@ a {
 }
 
 .o-Grid--foundation {
+  --color-accent: aqua; // FIXME
   grid-template-areas: 'heading heading'
                        'caption caption'
                        'icon    blurb  '
@@ -218,7 +224,7 @@ a {
 }
 
 .c-BigAssIcon {
-  background-color: purple;
+  background-color: var(--color-accent, black);
   color: white;
   border-radius: 50%;
   width: 4rem; height: 4rem;
@@ -250,6 +256,7 @@ a {
 }
 
 .c-Portal {
+  --color-accent: green; // FIXME
 }
 .c-Portal__Head {
   display: grid;
@@ -258,6 +265,7 @@ a {
 .c-Portal__Icon {
 }
 .c-Portal__Hn {
+  color: @color-body;
 }
 .c-Portal__List {
 }
@@ -354,7 +362,10 @@ a {
 }
 .c-MemberStory__Quote {
   grid-column: 1 ~'/' -1;
-  padding-top: var(--layout-padding-block);
+  padding-left: 0.5rem;
+  border-left: 0.25rem solid var(--color-accent, transparent);
+  .quotes-double();
+  font-style: italic;
 }
 
 .c-Tagline {
