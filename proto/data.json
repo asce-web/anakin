@@ -153,22 +153,22 @@
   ],
   "member-stories": [
     {
-      "name" : "Katie Haslett",
+      "name" : "Nakeia Jackson, S.M.ASCE",
       "grade": "Student Member",
-      "image": "./images/member1.png",
-      "quote": "The impact of seeing successful female engineering professiors has motivated and inspired me to want to make a difference, and work towards making contributions that will affect the future and how things are done from an engineering perspective."
+      "image": "./images/headshot-nakeia-jackson.jpg",
+      "quote": "I get to change the world with my work … this motivates me and excites me for the future of being an engineer."
     },
     {
-      "name" : "Nakeia Jackson",
-      "grade": "2017 New Faces of Civil Engineering",
-      "image": "./images/member2.png",
-      "quote": "When you become an engineer, you are always proud of the work you create. Your work is your own creativity and it’s thrilling to make something on paper come to life."
+      "name" : "Natalie Mills, EI, A.M.ASCE",
+      "grade": "Engineer Intern, Associate Member",
+      "image": "./images/headshot-natalie-mills.jpg",
+      "quote": "[ASCE is] where I met some of my closest friends. It’s more than a group I’m involved in; it’s really become a family."
     },
     {
-      "name" : "Damani Nkeiruka",
-      "grade": "Distinguished Member",
-      "image": "./images/member3.png",
-      "quote": "There are so many infrastructure and transportation issues that need to be solved, and I am excited to bring my knowledge, passion, and can-do attitude into that field."
+      "name" : "Chuck Pennoni, P.E., L.S., Pres.92.ASCE",
+      "grade": "Past President",
+      "image": "./images/headshot-chuck-pennoni.jpg",
+      "quote": "In the more than 50 years since I became a licensed professional engineer, ASCE has been my first and foremost resource for not only technical and professional development, but also broadening my skills in the business world."
     }
   ]
 }

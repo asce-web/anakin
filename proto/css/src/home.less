@@ -334,17 +334,26 @@ a {
 
 .c-MemberStory {
   display: grid;
-  grid-template: repeat(3, auto) ~'/' repeat(2, 1fr);
+  grid-template: max-content auto auto ~'/' repeat(2, 1fr); // "max-content" minimizes the 1st row-size
 }
 .c-MemberStory__Img {
   grid-row: 1 ~'/' -2;
+  justify-self: center;
+  border: 0.25rem solid var(--color-accent, transparent);
+  border-radius: 50%;
+}
+.c-MemberStory__Hn,
+.c-MemberStory__SubHn {
+  text-align: center;
 }
 .c-MemberStory__Hn {
+  font-weight: 600;
 }
 .c-MemberStory__SubHn {
 }
 .c-MemberStory__Quote {
   grid-column: 1 ~'/' -1;
+  padding-top: var(--layout-padding-block);
 }
 
 .c-Tagline {
