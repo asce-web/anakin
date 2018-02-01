@@ -119,7 +119,8 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
 .o-Grid--jobs,
 .o-Grid--publications,
 .o-Grid--homeActions,
-.o-Grid--whatsHappening {
+.o-Grid--whatsHappening,
+.o-Grid--members {
   grid-row-gap   : var(--layout-padding-block);
   grid-column-gap: var(--layout-padding-inline);
 }
@@ -208,6 +209,7 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
   position: relative; // for the bar
   background-size: cover;
   background-position: center;
+  color: white;
 }
 .c-Hero__Bar {
   background-color: blue; // TODO skin
@@ -455,4 +457,7 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
 //    # OVERRIDES
 //++++++++++++++++++++++++++++++++//
 .glyphicons-group + p > .c-Stat__Num::after { content: '+'; }
+._advertisement {
+  background-color: #eee;
+}
 //++++ end # OVERRIDES ++++//

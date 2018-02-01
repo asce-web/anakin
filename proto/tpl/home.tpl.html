@@ -27,7 +27,7 @@
   </header>
   <main id="main">
     <header>{{ xHero }}</header>
-    <section class="o-Runner -ta-c" id="we-represent">
+    <section class="o-Runner o-Constrain -ta-c" id="we-represent">
       <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
       <h1 class="-fz-i -lh-i -fw-i">We Represent:</h1>
       <ul class="o-List o-Grid o-Grid--represent">
@@ -44,7 +44,7 @@
         </template>
       </ul>
     </section>
-    <section class="o-Runner" id="portals">
+    <section class="o-Runner o-Constrain" id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals">
         <template>
@@ -52,8 +52,8 @@
         </template>
       </ol>
     </section>
-    <aside>ADVERTISEMENT</aside>
-    <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
+    <aside class="o-Runner _advertisement">ADVERTISEMENT</aside>
+    <section class="o-Grid o-Grid--foundation o-Runner o-Constrain" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
       <h1 class="o-Grid__Item c-SectionHed -ta-i" itemprop="name">ASCE Foundation</h1>
       <p class="o-Grid__Item o-Grid--foundation__Caption" itemprop="description">Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.</p>
       <i class="o-Grid__Item c-BigAssIcon h-Block glyphicons glyphicons-donate" role="none" aria-hidden="true"></i>
@@ -68,7 +68,7 @@
         </a>
       </p>
     </section>
-    <section class="o-Runner" id="publication-highlights">
+    <section class="o-Runner o-Constrain" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
       <ul class="o-List o-Grid o-Grid--publications">
         <template>
@@ -76,7 +76,7 @@
         </template>
       </ul>
     </section>
-    <section class="o-Runner" id="learn-contribute">
+    <section class="o-Runner o-Constrain" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
       <ul class="o-List o-Grid o-Grid--homeActions">
         <template>
@@ -84,27 +84,25 @@
         </template>
       </ul>
     </section>
-    <section class="o-Runner" id="jobs">
+    <section class="o-Runner o-Constrain" id="jobs">
       <h1 class="c-SectionHed">Jobs</h1>
       <ul class="o-List o-Grid o-Grid--jobs">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ xJob }}</li>
         </template>
       </ul>
-      <footer>
-        <p><a href="#0">Find a job</a></p>
-      </footer>
+      <footer class="o-Runner -ta-c"><a href="#0">Find a job</a></footer>
     </section>
-    <section class="o-Runner" id="whats-happening">
+    <section class="o-Runner o-Constrain" id="whats-happening">
       <h1 class="c-SectionHed">What’s Happening at ASCE</h1>
       <ul class="o-List o-Grid o-Grid--whatsHappening">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ xArticle }}</li>
         </template>
       </ul>
-      <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
+      <footer class="o-Runner -ta-c"><a href="#0">Read more at <cite>ASCE News</cite></a></footer>
     </section>
-    <section class="o-Runner" id="member-stories">
+    <section class="o-Runner o-Constrain" id="member-stories">
       <h1 class="c-SectionHed">ASCE Member Stories</h1>
       <ul class="o-List o-Grid o-Grid--members">
         <template>
@@ -112,8 +110,8 @@
         </template>
       </ul>
     </section>
-    <p><a class="c-Button" href="#0">Join ASCE</a></p>
-    <aside>ADVERTISEMENT</aside>
+    <footer class="o-Runner o-Constrain -ta-c"><a class="c-Button" href="#0">Join ASCE</a></footer>
+    <aside class="o-Runner _advertisement">ADVERTISEMENT</aside>
   </main>
   <footer>
     <p>ASCE Footer</p>
