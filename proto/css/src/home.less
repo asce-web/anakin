@@ -34,6 +34,8 @@
 //++++++++++++++++++++++++++++++++//
 //    # SETTINGS & TOOLS
 //++++++++++++++++++++++++++++++++//
+@g-color-asce-blue : #0c5fa8;
+@g-color-asce-green: #62b840;
 //++++ end # SETTINGS & TOOLS ++++//
 
 
@@ -116,9 +118,11 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
   }
 }
 
-.o-Grid--jobs,
+.o-Grid--represent,
+.o-Grid--portals,
 .o-Grid--publications,
 .o-Grid--homeActions,
+.o-Grid--jobs,
 .o-Grid--whatsHappening,
 .o-Grid--members {
   grid-row-gap   : var(--layout-padding-block);
@@ -133,6 +137,9 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
 }
 
 .o-Grid--portals {
+  @media screen and (min-width: 30em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   @media screen and (min-width: 45em) {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -236,9 +243,6 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
 
 .c-Button {
   // NOTE all this literally copied from `conferencesuite`
-  @g-color-asce-blue : #0c5fa8;
-  @g-color-asce-green: #62b840;
-
   @g-color-btn-txt: #fff;
   @g-color-btn-bg: @g-color-asce-blue;
   @g-color-btn-sw: #cdcdcd; // shadow
@@ -301,7 +305,33 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
 }
 
 .c-Portal {
-  --color-accent: green; // FIXME
+  --color-accent: @g-color-asce-green;
+  details& {
+    .glyphicons {
+      vertical-align: middle;
+      margin-right: 1rem;
+      border-radius: 50%;
+      background-color: var(--color-accent, @g-color-asce-blue);
+      color: white;
+    }
+    &[open] .glyphicons::before {
+      content: '\E601'; // copied from `.glyphicons-chevron-up` (cannot change classname, so copying css style)
+    }
+    @media screen and (min-width: 30em) {
+      display: none;
+    }
+  }
+  ::-webkit-details-marker {
+    display: none;
+  }
+}
+.c-Portal__Head,
+.c-Portal__List {
+  section.c-Portal & {
+    @media not all and (min-width: 30em) {
+      display: none;
+    }
+  }
 }
 .c-Portal__Head {
   display: grid;
@@ -311,6 +341,9 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
 }
 .c-Portal__Hn {
   color: @color-body;
+  details & {
+    text-align: inherit; // unset `.c-SectionHed`
+  }
 }
 .c-Portal__List {
 }

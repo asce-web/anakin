@@ -223,7 +223,6 @@ class Homepage {
    */
   compile() {
     const document = Homepage.NAMED_TEMPLATES.homeDocument
-
     function populateList(listselector, data, renderer) {
       let container = document.querySelector(listselector)
       let template = container.querySelector('template').content
@@ -332,6 +331,20 @@ class Homepage {
       }, this)
     }).call(this)
      */
+
+    // ++++ EXTRA SHIT ++++ //
+    /* Mark up the portal expandos. */
+    document.querySelectorAll('.c-Portal').forEach(function (portal) {
+      let template = portal.parentNode.querySelectorAll('template')[1]
+      let heading = portal.querySelector('.c-Portal__Hn'  ).cloneNode(true)
+      let list    = portal.querySelector('.c-Portal__List').cloneNode(true)
+      heading.prepend(template.content.querySelector('summary > i'))
+      template.content.querySelector('summary').append(heading)
+      template.content.querySelector('details').append(list)
+      portal.parentNode.append(template.content)
+      template.remove()
+    })
+
     return `<!doctype html>` + document.documentElement.outerHTML
   }
 }
