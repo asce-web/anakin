@@ -41,7 +41,7 @@
 //++++++++++++++++++++++++++++++++//
 html {
   --layout-padding-base: 0.25;
-  --layout-padding-block : calc(var(--layout-padding-base) ~'*' var(--vru));
+  --layout-padding-block : calc(var(--layout-padding-base) ~'*' var(--lh));
   --layout-padding-inline: calc(var(--layout-padding-base) ~'*' 2rem);
   --layout-padding: var(--layout-padding-block) var(--layout-padding-inline);
   @media screen and (min-width: 30rem) {
@@ -274,6 +274,7 @@ a {
   }
 }
 .c-Pub__Img {
+  margin-bottom: var(--lh);
   @media screen and (min-width: 30em) {
     grid-row: 1 ~'/' -2;
   }
@@ -291,7 +292,6 @@ a {
 }
 .c-Pub__Body {
   grid-column: 1 ~'/' -1;
-  padding-top: var(--layout-padding-block);
 }
 
 .c-HomeAction {
@@ -311,7 +311,7 @@ a {
 
 .c-ArticleTeaser {
   display: grid;
-  grid-template: repeat(2, auto) ~'/' 25% 75%;
+  grid-template: max-content auto ~'/' 25% 75%; // "max-content" minimizes the 1st row-size
   grid-column-gap: calc(0.5 ~'*' var(--layout-padding-inline));
   @media not all and (min-width: 30em) {
     grid-template-columns: 33.33333% 66.66666%;
@@ -339,6 +339,7 @@ a {
 .c-MemberStory__Img {
   grid-row: 1 ~'/' -2;
   justify-self: center;
+  margin-bottom: var(--lh);
   border: 0.25rem solid var(--color-accent, transparent);
   border-radius: 50%;
 }
@@ -357,7 +358,7 @@ a {
 }
 
 .c-Tagline {
-  margin-top: var(--lh);
+  padding-top: var(--lh);
   .font-size-el(@g-font-size-kilo);
   font-weight: 600;
 }
