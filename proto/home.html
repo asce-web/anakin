@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css">
 
   <link rel="stylesheet" href="./css/home.css">
-  <link rel="stylesheet" href="./css/src/home-temp.css">
 
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700"/> -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
@@ -35,9 +34,9 @@
     </div>
   </div>
 </header>
-    <section class="o-Runner -ta-c" id="we-represent">
+    <section class="o-Runner o-Constrain -ta-c" id="we-represent">
       <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
-      <h1 class="-fz-i -fw-i">We Represent:</h1>
+      <h1 class="-fz-i -lh-i -fw-i">We Represent:</h1>
       <ul class="o-List o-Grid o-Grid--represent">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ xStat }}</li>
@@ -98,22 +97,26 @@
       
           <li class="o-List__Item">
     <section class="c-Promotion" style="background-image: url(./images/timely.png);">
+      <div class="o-Constrain">
       <h1 class="c-SectionHed c-Promotion__Hn">Dream Big: Engineering Our World</h1>
       <p class="c-Promotion__Text">A giant-screen film about engineering will take viewers on a journey of discovery from the world’s tallest building to a bridge higher than the clouds.</p>
       <p><a class="c-Promotion__Cta c-Button" href="#0">Find a screen</a></p>
+      </div>
     </section>
 </li>
         
           <li class="o-List__Item">
     <section class="c-Promotion" style="background-image: url(./images/infrastructure.png);">
+      <div class="o-Constrain">
       <h1 class="c-SectionHed c-Promotion__Hn">Save America’s Infrastructure</h1>
       <p class="c-Promotion__Text">Keep up with the latest in US infrastructure news from the American Society of Civil Engineers.</p>
       <p><a class="c-Promotion__Cta c-Button" href="#0">Read more</a></p>
+      </div>
     </section>
 </li>
         </ul>
     </section>
-    <section class="o-Runner" id="portals">
+    <section class="o-Runner o-Constrain" id="portals">
       <h1 class="h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals">
         <template>
@@ -150,7 +153,36 @@
         </li>
       </ul>
   </section>
-</li>
+  
+
+    <details class="c-Portal">
+      <summary>
+        
+      <h1 class="c-SectionHed c-Portal__Hn" itemprop="name"><i class="glyphicons glyphicons-chevron-down" aria-hidden="true"></i>Membership</h1></summary>
+    <ul class="o-List c-Portal__List">
+      <template>
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="{{ url }}" itemprop="significantLink">{{ text }}</a>
+        </li>
+      </template>
+    
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Manage My Membership</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Join ASCE</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Renew my membership</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">View member benefits</a>
+        </li>
+      </ul></details>
+  </li>
         
           <li class="o-List__Item o-Grid__Item">
   <section id="continuing-education" class="c-Portal" itemscope="" itemtype="http://schema.org/WebPage">
@@ -182,7 +214,36 @@
         </li>
       </ul>
   </section>
-</li>
+  
+
+    <details class="c-Portal">
+      <summary>
+        
+      <h1 class="c-SectionHed c-Portal__Hn" itemprop="name"><i class="glyphicons glyphicons-chevron-down" aria-hidden="true"></i>Continuing Education</h1></summary>
+    <ul class="o-List c-Portal__List">
+      <template>
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="{{ url }}" itemprop="significantLink">{{ text }}</a>
+        </li>
+      </template>
+    
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">View my courses</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Browse course catalog</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">P.E. Exam Review</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">5 Free webinars</a>
+        </li>
+      </ul></details>
+  </li>
         
           <li class="o-List__Item o-Grid__Item">
   <section id="publications" class="c-Portal" itemscope="" itemtype="http://schema.org/WebPage">
@@ -214,7 +275,36 @@
         </li>
       </ul>
   </section>
-</li>
+  
+
+    <details class="c-Portal">
+      <summary>
+        
+      <h1 class="c-SectionHed c-Portal__Hn" itemprop="name"><i class="glyphicons glyphicons-chevron-down" aria-hidden="true"></i>Publications</h1></summary>
+    <ul class="o-List c-Portal__List">
+      <template>
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="{{ url }}" itemprop="significantLink">{{ text }}</a>
+        </li>
+      </template>
+    
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Browse the ASCE Library</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Browse the bookstore</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Bridges calendar</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Find a journal</a>
+        </li>
+      </ul></details>
+  </li>
         
           <li class="o-List__Item o-Grid__Item">
   <section id="conferences-events" class="c-Portal" itemscope="" itemtype="http://schema.org/WebPage">
@@ -246,7 +336,36 @@
         </li>
       </ul>
   </section>
-</li>
+  
+
+    <details class="c-Portal">
+      <summary>
+        
+      <h1 class="c-SectionHed c-Portal__Hn" itemprop="name"><i class="glyphicons glyphicons-chevron-down" aria-hidden="true"></i>Conferences &amp; Events</h1></summary>
+    <ul class="o-List c-Portal__List">
+      <template>
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="{{ url }}" itemprop="significantLink">{{ text }}</a>
+        </li>
+      </template>
+    
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">View the calendar</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Submit a papaer</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Annual ASCE Convention</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">ASCE Week</a>
+        </li>
+      </ul></details>
+  </li>
         
           <li class="o-List__Item o-Grid__Item">
   <section id="initiatives" class="c-Portal" itemscope="" itemtype="http://schema.org/WebPage">
@@ -278,7 +397,36 @@
         </li>
       </ul>
   </section>
-</li>
+  
+
+    <details class="c-Portal">
+      <summary>
+        
+      <h1 class="c-SectionHed c-Portal__Hn" itemprop="name"><i class="glyphicons glyphicons-chevron-down" aria-hidden="true"></i>Initiatives</h1></summary>
+    <ul class="o-List c-Portal__List">
+      <template>
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="{{ url }}" itemprop="significantLink">{{ text }}</a>
+        </li>
+      </template>
+    
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Key Contact Program</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Report Card for America’s Infrastructure</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Sustainability</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">ASCE Grand Challenge</a>
+        </li>
+      </ul></details>
+  </li>
         
           <li class="o-List__Item o-Grid__Item">
   <section id="careers" class="c-Portal" itemscope="" itemtype="http://schema.org/WebPage">
@@ -310,11 +458,40 @@
         </li>
       </ul>
   </section>
-</li>
+  
+
+    <details class="c-Portal">
+      <summary>
+        
+      <h1 class="c-SectionHed c-Portal__Hn" itemprop="name"><i class="glyphicons glyphicons-chevron-down" aria-hidden="true"></i>Careers</h1></summary>
+    <ul class="o-List c-Portal__List">
+      <template>
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="{{ url }}" itemprop="significantLink">{{ text }}</a>
+        </li>
+      </template>
+    
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Career Connections</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Getting Licensed &amp;amp; Certified</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Career resources</a>
+        </li>
+      
+        <li class="o-List__Item c-Portal__List__Item">
+          <a class="c-Portal__Link" href="#0" itemprop="significantLink">Code of Ethics</a>
+        </li>
+      </ul></details>
+  </li>
         </ol>
     </section>
-    <aside>ADVERTISEMENT</aside>
-    <section class="o-Grid o-Grid--foundation o-Runner" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
+    <aside class="o-Runner _advertisement">ADVERTISEMENT</aside>
+    <section class="o-Grid o-Grid--foundation o-Runner o-Constrain" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
       <h1 class="o-Grid__Item c-SectionHed -ta-i" itemprop="name">ASCE Foundation</h1>
       <p class="o-Grid__Item o-Grid--foundation__Caption" itemprop="description">Making a positive change in our communities is possible… but only if we start now, set our sights high, and work together.</p>
       <i class="o-Grid__Item c-BigAssIcon h-Block glyphicons glyphicons-donate" role="none" aria-hidden="true"></i>
@@ -329,7 +506,7 @@
         </a>
       </p>
     </section>
-    <section class="o-Runner" id="publication-highlights">
+    <section class="o-Runner o-Constrain" id="publication-highlights">
       <h1 class="h-Hidden">Publication Highlights</h1>
       <ul class="o-List o-Grid o-Grid--publications">
         <template>
@@ -397,7 +574,7 @@
       </ul>
     <article class="c-Pub__Body"><h2>Featured this Month</h2>
 <article>
-  <p><img src="./images/cefeatured.png" alt=""></p>
+  <img style="float: left; margin-right: 1rem;" src="./images/cefeatured.png" alt="">
   <h3>Topographic Transformation</h3>
   <p><time datetime="2017-06">June 2017</time></p>
   <p>The formerly flat Governors Island, in New York City harbor, is home 
@@ -411,7 +588,7 @@
 </li>
         </ul>
     </section>
-    <section class="o-Runner" id="learn-contribute">
+    <section class="o-Runner o-Constrain" id="learn-contribute">
       <h1 class="h-Hidden">Learn &amp; Contribute</h1>
       <ul class="o-List o-Grid o-Grid--homeActions">
         <template>
@@ -503,7 +680,7 @@
 </li>
         </ul>
     </section>
-    <section class="o-Runner" id="jobs">
+    <section class="o-Runner o-Constrain" id="jobs">
       <h1 class="c-SectionHed">Jobs</h1>
       <ul class="o-List o-Grid o-Grid--jobs">
         <template>
@@ -570,11 +747,9 @@
     </div>
 </li>
         </ul>
-      <footer>
-        <p><a href="#0">Find a job</a></p>
-      </footer>
+      <footer class="o-Runner -ta-c"><a href="#0">Find a job</a></footer>
     </section>
-    <section class="o-Runner" id="whats-happening">
+    <section class="o-Runner o-Constrain" id="whats-happening">
       <h1 class="c-SectionHed">What’s Happening at ASCE</h1>
       <ul class="o-List o-Grid o-Grid--whatsHappening">
         <template>
@@ -623,9 +798,9 @@
     </div>
 </li>
         </ul>
-      <p><a href="#0">Read more at <cite>ASCE News</cite></a></p>
+      <footer class="o-Runner -ta-c"><a href="#0">Read more at <cite>ASCE News</cite></a></footer>
     </section>
-    <section class="o-Runner" id="member-stories">
+    <section class="o-Runner o-Constrain" id="member-stories">
       <h1 class="c-SectionHed">ASCE Member Stories</h1>
       <ul class="o-List o-Grid o-Grid--members">
         <template>
@@ -634,34 +809,34 @@
       
           <li class="o-List__Item o-Grid__Item">
     <div class="c-MemberStory" itemprop="member" itemscope="" itemtype="http://schema.org/Person">
-      <img class="c-MemberStory__Img" src="./images/member1.png" alt="" itemprop="image">
-      <p class="c-MemberStory__Hn" itemprop="name">Katie Haslett</p>
+      <img class="c-MemberStory__Img" src="./images/headshot-nakeia-jackson.jpg" alt="" itemprop="image">
+      <p class="c-MemberStory__Hn" itemprop="name">Nakeia Jackson, S.M.ASCE</p>
       <p class="c-MemberStory__SubHn" itemprop="description">Student Member</p>
-      <blockquote class="c-MemberStory__Quote">The impact of seeing successful female engineering professiors has motivated and inspired me to want to make a difference, and work towards making contributions that will affect the future and how things are done from an engineering perspective.</blockquote>
+      <blockquote class="c-MemberStory__Quote">I get to change the world with my work … this motivates me and excites me for the future of being an engineer.</blockquote>
     </div>
 </li>
         
           <li class="o-List__Item o-Grid__Item">
     <div class="c-MemberStory" itemprop="member" itemscope="" itemtype="http://schema.org/Person">
-      <img class="c-MemberStory__Img" src="./images/member2.png" alt="" itemprop="image">
-      <p class="c-MemberStory__Hn" itemprop="name">Nakeia Jackson</p>
-      <p class="c-MemberStory__SubHn" itemprop="description">2017 New Faces of Civil Engineering</p>
-      <blockquote class="c-MemberStory__Quote">When you become an engineer, you are always proud of the work you create. Your work is your own creativity and it’s thrilling to make something on paper come to life.</blockquote>
+      <img class="c-MemberStory__Img" src="./images/headshot-natalie-mills.jpg" alt="" itemprop="image">
+      <p class="c-MemberStory__Hn" itemprop="name">Natalie Mills, EI, A.M.ASCE</p>
+      <p class="c-MemberStory__SubHn" itemprop="description">Engineer Intern, Associate Member</p>
+      <blockquote class="c-MemberStory__Quote">[ASCE is] where I met some of my closest friends. It’s more than a group I’m involved in; it’s really become a family.</blockquote>
     </div>
 </li>
         
           <li class="o-List__Item o-Grid__Item">
     <div class="c-MemberStory" itemprop="member" itemscope="" itemtype="http://schema.org/Person">
-      <img class="c-MemberStory__Img" src="./images/member3.png" alt="" itemprop="image">
-      <p class="c-MemberStory__Hn" itemprop="name">Damani Nkeiruka</p>
-      <p class="c-MemberStory__SubHn" itemprop="description">Distinguished Member</p>
-      <blockquote class="c-MemberStory__Quote">There are so many infrastructure and transportation issues that need to be solved, and I am excited to bring my knowledge, passion, and can-do attitude into that field.</blockquote>
+      <img class="c-MemberStory__Img" src="./images/headshot-chuck-pennoni.jpg" alt="" itemprop="image">
+      <p class="c-MemberStory__Hn" itemprop="name">Chuck Pennoni, P.E., L.S., Pres.92.ASCE</p>
+      <p class="c-MemberStory__SubHn" itemprop="description">Past President</p>
+      <blockquote class="c-MemberStory__Quote">In the more than 50 years since I became a licensed professional engineer, ASCE has been my first and foremost resource for not only technical and professional development, but also broadening my skills in the business world.</blockquote>
     </div>
 </li>
         </ul>
     </section>
-    <p><a href="#0">Join ASCE</a></p>
-    <aside>ADVERTISEMENT</aside>
+    <footer class="o-Runner o-Constrain -ta-c"><a class="c-Button" href="#0">Join ASCE</a></footer>
+    <aside class="o-Runner _advertisement">ADVERTISEMENT</aside>
   </main>
   <footer>
     <p>ASCE Footer</p>
