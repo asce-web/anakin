@@ -57,16 +57,23 @@ class Homepage {
    */
   xPortal(port) {
     let frag = Homepage.NAMED_TEMPLATES.xPortal.cloneNode(true)
-    frag.querySelector('.c-Portal').id = port.id
-    frag.querySelector('[itemprop="url"]').href = port.url
-    frag.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', port.icon)
-    frag.querySelector('[itemprop="name"]').textContent = port.name
+    let orig = frag.querySelectorAll('.c-Portal')[0]
+    orig.id = port.id
+    orig.querySelector('[itemprop="url"]').href = port.url
+    orig.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', port.icon)
+    orig.querySelector('[itemprop="name"]').textContent = port.name
+    let list = orig.querySelector('.c-Portal__List')
     this._DATA['portals'][port.id].forEach(function (link) {
-      let innerfrag = frag.querySelector('template').content.cloneNode(true)
+      let innerfrag = list.querySelector('template').content.cloneNode(true)
       innerfrag.querySelector('[itemprop="significantLink"]').href        = link.url
       innerfrag.querySelector('[itemprop="significantLink"]').textContent = link.text
-      frag.querySelector('template').parentNode.append(innerfrag)
+      list.append(innerfrag)
     })
+    let dupe = frag.querySelectorAll('.c-Portal')[1]
+    dupe.append(list.cloneNode(true))
+    dupe.querySelector('.c-Portal__Head').append(...Array.from(orig.querySelector('.c-Portal__Head').children).map((elem) => elem.cloneNode(true)))
+    dupe.querySelector('.glyphicons').classList.remove('c-BigAssIcon', 'h-Block')
+
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
@@ -331,19 +338,6 @@ class Homepage {
       }, this)
     }).call(this)
      */
-
-    // ++++ EXTRA SHIT ++++ //
-    /* Mark up the portal expandos. */
-    document.querySelectorAll('.c-Portal').forEach(function (portal) {
-      let template = portal.parentNode.querySelectorAll('template')[1]
-      let heading = portal.querySelector('.c-Portal__Hn'  ).cloneNode(true)
-      let list    = portal.querySelector('.c-Portal__List').cloneNode(true)
-      heading.prepend(template.content.querySelector('summary > i'))
-      template.content.querySelector('summary').append(heading)
-      template.content.querySelector('details').append(list)
-      portal.parentNode.append(template.content)
-      template.remove()
-    })
 
     return `<!doctype html>` + document.documentElement.outerHTML
   }

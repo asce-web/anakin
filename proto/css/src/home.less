@@ -306,6 +306,12 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
 
 .c-Portal {
   --color-accent: @g-color-asce-green;
+  margin-bottom: 0; // unset base `details`
+  section& {
+    @media not all and (min-width: 30em) {
+      display: none;
+    }
+  }
   details& {
     .glyphicons {
       vertical-align: middle;
@@ -313,6 +319,9 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
       border-radius: 50%;
       background-color: var(--color-accent, @g-color-asce-blue);
       color: white;
+      &::before {
+        content: '\E602'; // copied from `.glyphicons-chevron-down` (cannot change classname, so copying css style)
+      }
     }
     &[open] .glyphicons::before {
       content: '\E601'; // copied from `.glyphicons-chevron-up` (cannot change classname, so copying css style)
@@ -325,23 +334,21 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
     display: none;
   }
 }
-.c-Portal__Head,
-.c-Portal__List {
-  section.c-Portal & {
-    @media not all and (min-width: 30em) {
-      display: none;
-    }
-  }
-}
 .c-Portal__Head {
   display: grid;
-  justify-items: center;
+  section.c-Portal & {
+    justify-items: center;
+  }
+  details.c-Portal & {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
 }
 .c-Portal__Icon {
 }
 .c-Portal__Hn {
   color: @color-body;
-  details & {
+  details.c-Portal & {
     text-align: inherit; // unset `.c-SectionHed`
   }
 }
