@@ -191,7 +191,7 @@ a {
 // Styleguide Components
 
 .c-SectionHed {
-  .font-size-el(@g-font-size-kilo); // undo base h1
+  .font-size-el(@g-font-size-kilo);
   font-weight: 300;
   text-transform: uppercase;
   text-align: center;
@@ -241,7 +241,7 @@ a {
   }
 }
 .c-Stat__Num {
-  font-size: (@g-font-size-kilo * 1em);
+  .font-size-el(@g-font-size-kilo, 2);
   font-weight: 600;
 }
 .c-Stat__Text {
@@ -390,5 +390,5 @@ a {
 //++++++++++++++++++++++++++++++++//
 //    # OVERRIDES
 //++++++++++++++++++++++++++++++++//
-.glyphicons-group + .c-Stat__Num::after { content: '+'; }
+.glyphicons-group + p > .c-Stat__Num::after { content: '+'; }
 //++++ end # OVERRIDES ++++//
