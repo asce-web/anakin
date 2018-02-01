@@ -232,6 +232,49 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
   text-align: center;
 }
 
+.c-Button {
+  // NOTE all this literally copied from `conferencesuite`
+  @g-color-asce-blue : #0c5fa8;
+  @g-color-asce-green: #62b840;
+
+  @g-color-btn-txt: #fff;
+  @g-color-btn-bg: @g-color-asce-blue;
+  @g-color-btn-sw: #cdcdcd; // shadow
+
+  font-family: 'futura-pt','Open Sans','Helvetica Neue','Helvetica',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  word-spacing: 1px;
+  letter-spacing: 1px;
+
+  display: inline-block;
+  padding: calc(~'0.5 * var(--lh)') 1rem;
+  font-size: (1em * 14/16);
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: @g-color-btn-bg;
+  border-radius: 0.25rem;
+  box-shadow: 0 (1em/8) 0 0 @g-color-btn-sw;
+  cursor: pointer;
+
+  &,
+  a& {
+    &,
+    &:hover,
+    &:focus {
+      color: @g-color-btn-txt;
+    }
+  }
+  &:hover,
+  &:focus {
+    background-color: lighten(@g-color-btn-bg, 5%);
+  }
+  &:active {
+    background-color: darken(@g-color-btn-bg, 5%);
+    box-shadow: 0 (1em/8) 0 0 @g-color-btn-sw inset;
+  }
+}
+
 .c-Stat {
   display: grid;
   justify-items: center;
