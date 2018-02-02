@@ -1,59 +1,65 @@
 {
   "hero": {
-    "image": "./images/hero.png",
-    "caption": "The 2017 Report Card for America’s Infrastructure is available now.",
-    "cta": { "text": "View the Report Card", "url": "#0" }
+    "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-hero-img-revised.jpg",
+    "caption": "More than 1.3 million viewers have been inspired by Dream Big: Engineering Our World, including a Georgia school that made it the school theme.",
+    "cta": { "text": "See Dream Big near you", "url": "//www.asce.org/dream-big/" }
   },
   "promotions": [
     {
-      "title": "Dream Big: Engineering Our World",
-      "image": "./images/timely.png",
-      "caption": "A giant-screen film about engineering will take viewers on a journey of discovery from the world’s tallest building to a bridge higher than the clouds.",
-      "cta"  : { "text": "Find a screen", "url": "#0" }
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-01-Access.jpg",
+      "title": "A Wealth of Technical Resources, Free",
+      "caption": "Exclusively for ASCE members, AccessEngineering is a reference hub with tutorial videos, handbooks, online calculators and more.",
+      "cta"  : { "text": "Visit AccessEngineering", "url": "//secure.asce.org/ASCEWebsite/Integration/MHEducation.aspx" }
     },
     {
-      "title": "Save America’s Infrastructure",
-      "image": "./images/infrastructure.png",
-      "caption": "Keep up with the latest in US infrastructure news from the American Society of Civil Engineers.",
-      "cta"  : { "text": "Read more", "url": "#0" }
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-02-OPAL.jpg",
+      "title": "Celebrate Civil Engineering’s Best",
+      "caption": "Meet civil engineering luminaries and salute outstanding careers and projects at the OPAL Gala, March 15 in Arlington, VA.",
+      "cta"  : { "text": "Read More", "url": "//ektronstaging.asce.org/event/2018/opal-awards-gala/" }
+    },
+    {
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-03-Contest.jpg",
+      "title": "WANT TO INNOVATE A BETTER FUTURE?",
+      "caption": "Your best ideas could transform infrastructure. Enter the ASCE Innovation Contest and join a community of fellow innovators.",
+      "cta"  : { "text": "Submit Your Idea", "url": "//collaborate.asce.org/ascegrandchallenge/contest/aboutthecontest" }
     }
   ],
   "portals": {
     "membership": [
-      { "text": "Manage My Membership", "url": "#0" },
-      { "text": "Join ASCE", "url": "#0" },
-      { "text": "Renew my membership", "url": "#0" },
-      { "text": "View member benefits", "url": "#0" }
+      { "text": "Renew my membership", "url": "/renewal" },
+      { "text": "Join ASCE", "url": "/join/" },
+      { "text": "Manage My Membership", "url": "//secure.asce.org/ASCEwebsite/SECURE/SignIn/SignIn.aspx?ASCEUrl=~/OnlineProfile/MemberOnlineProfile.aspx&_ga=2.8785845.1602178342.1514981321-853874763.1491599963" },
+      { "text": "View member benefits", "url": "/benefits/" }
     ],
     "continuing-education": [
-      { "text": "View my courses", "url": "#0" },
-      { "text": "Browse course catalog", "url": "#0" },
-      { "text": "P.E. Exam Review", "url": "#0" },
-      { "text": "5 Free webinars", "url": "#0" }
+      { "text": "Search courses", "url": "//mylearning.asce.org/" },
+      { "text": "Browse Guided Online Courses", "url": "/Guided-Online-Courses/" },
+      { "text": "Prepare for the P.E. Exam", "url": "/PE_Exam_Review/" },
+      { "text": "Register for ASCE Week", "url": "/asceweek/" }
     ],
     "publications": [
-      { "text": "Browse the ASCE Library", "url": "#0" },
-      { "text": "Browse the bookstore", "url": "#0" },
-      { "text": "Bridges calendar", "url": "#0" },
-      { "text": "Find a journal", "url": "#0" }
+      { "text": "Search ASCE Library", "url": "//ascelibrary.org/" },
+      { "text": "Shop Books and Standards", "url": "/booksandjournals_old/" },
+      { "text": "Discover ASCE 7", "url": "/asce-7/" },
+      { "text": "Find a journal", "url": "//ascelibrary.org/action/showPublications?pubType=journal" }
     ],
     "conferences-events": [
-      { "text": "View the calendar", "url": "#0" },
-      { "text": "Submit a papaer", "url": "#0" },
-      { "text": "Annual ASCE Convention", "url": "#0" },
-      { "text": "ASCE Week", "url": "#0" }
+      { "text": "View the calendar", "url": "/conferences/" },
+      { "text": "Annual ASCE Convention", "url": "//www.asceconvention.org/" },
+      { "text": "Submit a paper or session", "url": "/Call_for_Papers/" },
+      { "text": "Sponsor or Exhibit", "url": "/Sponsoring_Exhibiting/" }
     ],
     "initiatives": [
-      { "text": "Key Contact Program", "url": "#0" },
-      { "text": "Report Card for America’s Infrastructure", "url": "#0" },
-      { "text": "Sustainability", "url": "#0" },
-      { "text": "ASCE Grand Challenge", "url": "#0" }
+      { "text": "View the Infrastructure Report Card", "url": "//www.infrastructurereportcard.org/" },
+      { "text": "Track legislation in your state", "url": "//cqrcengage.com/asce/states " },
+      { "text": "Sustainability", "url": "/sustainability/" },
+      { "text": "2018 Innovation Contest", "url": "//collaborate.asce.org/ascegrandchallenge/contest/aboutthecontest" }
     ],
     "careers": [
-      { "text": "Career Connections", "url": "#0" },
-      { "text": "Getting Licensed &amp; Certified", "url": "#0" },
-      { "text": "Career resources", "url": "#0" },
-      { "text": "Code of Ethics", "url": "#0" }
+      { "text": "Career Connections", "url": "//careers.asce.org/jobseekers/index.cfm" },
+      { "text": "Getting Licensed & Certified", "url": "/Licensure/" },
+      { "text": "Salary Survey", "url": "/salaries" },
+      { "text": "Ethics", "url": "/Ethics-landing/" }
     ]
   },
   "asce-foundation": {
@@ -65,22 +71,22 @@
       "id"     : "asce7",
       "name"   : "ASCE 7",
       "caption": "Minimum Design Loads and Associated Criteria for Buildings and Other Structures, ASCE/SEI 7-16.",
-      "image"  : "./images/asce7.png",
+      "image"  : "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/asce7.png",
       "links"  : [
-        { "text": "Provisions & commentary", "url": "#0" },
-        { "text": "Guides & more", "url": "#0" }
+        { "text": "Provisions & commentary", "url": "//www.asce.org/templates/publications-book-detail.aspx?id=24136" },
+        { "text": "Guides & more", "url": "//www.asce.org/templates/publications-book-detail.aspx?id=22499" }
       ],
-      "body": "<h2>ASCE 7 Online</h2>\n<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>\n<p><a class=\"c-Button\" href=\"#0\">Get digital access</a></p>\n<h2>ASCE 7 Hazard Tool</h2>\n<p>Look up key design parameters as specified by ASCE 7.</p>\n<p><a class=\"c-Button\" href=\"#0\">Search design parameters</a></p>"
+      "body": "<h2>ASCE 7 Online</h2>\n<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>\n<p><a class=\"c-Button\" href=\"//asce7.online/\">Get digital access</a></p>\n<h2>ASCE 7 Hazard Tool</h2>\n<p>Look up key design parameters as specified by ASCE 7.</p>\n<p><a class=\"c-Button\" href=\"//asce7hazardtool.online/\">Search design parameters</a></p>"
     },
     {
       "id"     : "civil-engineering-magazine",
       "name"   : "Civil Engineering Magazine",
       "caption": "The official magazine of the American Society of Civil Engineers.",
-      "image"  : "./images/cecover.png",
+      "image"  : "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/2017-november-ce-magazine-cover.jpg",
       "links"  : [
-        { "text": "Read CE Magazine", "url": "#0" }
+        { "text": "Read CE Magazine", "url": "//ektronstaging.asce.org/cemagazine/" }
       ],
-      "body": "<h2>Featured this Month</h2>\n<article>\n  <img style=\"float: left; margin-right: 1rem;\" src=\"./images/cefeatured.png\" alt=\"\"/>\n  <h3>Topographic Transformation</h3>\n  <p><time datetime=\"2017-06\">June 2017</time></p>\n  <p>The formerly flat Governors Island, in New York City harbor, is home \n    to four artificial hills that provide spectacular views of the \n    surrounding scenery. Rising as much as 70 ft above the island surface, \n    the hills were very carefully designed and engineered to remain stable \n    even where they are the steepest.</p>\n  <p><a href=\"#0\">Continue &rarr;</a></p>\n</article>"
+      "body": "<h2>Featured this Month</h2>\n<img style=\"float: left; margin-right: 1rem;\" src=\"//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/la-seine-musicale-anne-claudebarb-feature(1).jpg\" alt=\"\"/>\n<h3>Musical Masterpiece</h3>\n<p>November 2017</p>\n<p><cite lang=\"fr\">La Seine Musicale</cite>, a world-class concert hall on a redeveloping island west of Paris, is a masterpiece of structural, acoustic, and mechanical engineering. Resembling a ship at sea, the concrete structure supports a glassy, egg-shaped auditorium flanked by a shimmering “sail” that moves with the sun, shading the globe and generating solar power.</p>\n<p><a href=\"http://www.asce.org/cemagazine/musical-masterpiece/\">Continue &rarr;</a></p>"
     }
   ],
   "learn-contribute": [
@@ -88,90 +94,90 @@
       "id"     : "technical-information",
       "name"   : "Technical Information",
       "caption": "Access the latest technical information in your discipline.",
-      "image"  : "./images/techinfo.png",
+      "image"  : "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/technical-information.jpg",
       "links"  : [
-        { "text": "Find a local group"   , "url": "#0" },
-        { "text": "Browse publications"  , "url": "#0" },
-        { "text": "Register for a course", "url": "#0" },
-        { "text": "Find a conference"    , "url": "#0" }
+        { "text": "Participate in a committee", "url": "/ASCE_Committees/" },
+        { "text": "Browse publications", "url": "/Publications/" },
+        { "text": "Register for a course", "url": "//mylearning.asce.org/" },
+        { "text": "Find a conference", "url": "/conferences/" }
       ]
     },
     {
       "id"     : "get-involved",
       "name"   : "Get Involved",
       "caption": "Dedicate your time and expertise to a cause that is important to you.",
-      "image"  : "./images/involved.png",
+      "image"  : "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/get-involved-river-cleanup.jpg",
       "links"  : [
-        { "text": "View volunteer opportunities", "url": "#0" },
-        { "text": "Find a Section or Branch"    , "url": "#0" },
-        { "text": "Visit ASCE Collaborate"      , "url": "#0" },
-        { "text": "Find a committee"            , "url": "#0" }
+        { "text": "Find and Explore volunteer opportunities", "url": "/volunteer-opportunities/" },
+        { "text": "Discuss issues through online forums", "url": "//collaborate.asce.org/home" },
+        { "text": "Engage with civil engineers locally", "url": "/membership-communities/" },
+        { "text": "Inspire the next generations", "url": "//www.asce.org/pre-college_outreach/" }
       ]
     }
   ],
   "jobs": [
     {
-      "title"       : "Geotechnical Engineer",
-      "organization": "SME",
-      "location"    : "Helix Water District",
-      "url"         : "#0"
+      "title"       : "Director, Engineering",
+      "organization": "Indianapolis Airport Authority",
+      "location"    : "Indianapolis, IN",
+      "url"         : "//careers.asce.org/jobs/10709297/director-engineering"
     },
     {
-      "title"       : "Traffic Engineer",
-      "organization": "Oregon Department of Transportation",
-      "location"    : "Portland, OR",
-      "url"         : "#0"
+      "title"       : "Staff Scientist",
+      "organization": "NCE",
+      "location"    : "Point Richmond, CA",
+      "url"         : "//careers.asce.org/jobs/10709313/staff-scientist"
     },
     {
-      "title"       : "NRC Research Associateship Program",
-      "organization": "The National Academies of Science, Engineering, and Medicine",
-      "location"    : "Washington, DC",
-      "url"         : "#0"
+      "title"       : "Assistant / Associate Civil Engineer",
+      "organization": "City of Lafayette",
+      "location"    : "Lafayette, CA",
+      "url"         : "//careers.asce.org/jobs/10709094/assistant-associate-civil-engineer"
     },
     {
-      "title"       : "Full Professor Faculty Position in Structural Engineering for Extreme Events",
-      "organization": "University of Nevada, Reno",
-      "location"    : "Reno, NV",
-      "url"         : "#0"
+      "title"       : "Research Officer, Earthquake Engineering",
+      "organization": "National Research Council",
+      "location"    : "Ottawa, Canada",
+      "url"         : "//careers.asce.org/jobs/10704916/research-officer-earthquake-engineering"
     }
   ],
   "whats-happening": [
     {
-      "title": "ASCE’s New Infrastructure Report Card: Another D+, But Solutions Available",
-      "image": "./images/news1.png",
-      "url": "#0",
-      "datetime": "2017-03-09"
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/Featured_News/2017-Review-WEB-FEAT-360x327.jpg?n=2328",
+      "title": "A Trip Around ASCE’s 2017 in 17 Tweets",
+      "url": "////news.asce.org/a-trip-around-asces-2017-in-17-tweets/",
+      "datetime": "2017-12-19"
     },
     {
-      "title": "Emergency and Carryover Storage Project Earns OCEA",
-      "image": "./images/news2.png",
-      "url": "#0",
-      "datetime": "2017-03-16"
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/Featured_News/Wildfire-WEB-FEAT-360x327.jpg?n=5483",
+      "title": "ASCE Branches Train and Deploy California Wildfire Damage Evaluators",
+      "url": "//news.asce.org/dream-big-enters-2018-bigger-than-ever/",
+      "datetime": "2017-12-19"
     },
     {
-      "title": "Former Corps Chief Bostick Honored with OPAL Award",
-      "image": "./images/news3.png",
-      "url": "#0",
-      "datetime": "2017-03-16"
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/grand-challenge-rethink-whats-possible-logo.png?n=2277",
+      "title": "For Father-Daughter Team, Imagination Leads to Innovation",
+      "url": "//news.asce.org/for-father-daughter-team-imagination-leads-to-innovation/",
+      "datetime": "2017-12-07"
     }
   ],
   "member-stories": [
     {
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/nakeia-jackson-headshot.jpg",
       "name" : "Nakeia Jackson, S.M.ASCE",
       "grade": "Student Member",
-      "image": "./images/headshot-nakeia-jackson.jpg",
       "quote": "I get to change the world with my work … this motivates me and excites me for the future of being an engineer."
     },
     {
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/natalie-mills-headshot.jpg",
       "name" : "Natalie Mills, EI, A.M.ASCE",
       "grade": "Engineer Intern, Associate Member",
-      "image": "./images/headshot-natalie-mills.jpg",
       "quote": "[ASCE is] where I met some of my closest friends. It’s more than a group I’m involved in; it’s really become a family."
     },
     {
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/chuck-pennoni-headshot.jpg",
       "name" : "Chuck Pennoni, P.E., L.S., Pres.92.ASCE",
       "grade": "Past President",
-      "image": "./images/headshot-chuck-pennoni.jpg",
       "quote": "In the more than 50 years since I became a licensed professional engineer, ASCE has been my first and foremost resource for not only technical and professional development, but also broadening my skills in the business world."
     }
   ]
