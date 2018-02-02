@@ -9,7 +9,9 @@
     "extrajs-dom": "^4.0.0-alpha",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean-css": "^3.9.2",
     "gulp-less": "^3.4.0",
+    "gulp-sourcemaps": "^2.6.4",
     "harp": "^0.24.1",
     "jsdom": "^11.6.1",
     "xmeter": "^6.2.0"

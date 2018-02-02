@@ -1,0 +1,33 @@
+
+/*################################*\
+    anakin  |  _c-Pub.less
+\*################################*/
+
+
+.c-Pub {
+  display: grid;
+  grid-column-gap: calc(var(--layout-padding-inline) ~'/' 2);
+  @media screen and (min-width: 30em) {
+    grid-template: repeat(4, auto) ~'/' repeat(2, 1fr);
+  }
+}
+.c-Pub__Img {
+  margin-bottom: var(--lh);
+  @media screen and (min-width: 30em) {
+    grid-row: 1 ~'/' -2;
+  }
+}
+.c-Pub__Hn {
+  & > cite { font-style: unset; }
+}
+.c-Pub__Cap {
+}
+.c-Pub__List {
+}
+.c-Pub__List__Item {
+}
+.c-Pub__Link {
+}
+.c-Pub__Body {
+  grid-column: 1 ~'/' -1;
+}
