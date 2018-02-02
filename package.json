@@ -21,7 +21,8 @@
   },
   "scripts": {
     "serve": "harp server -p 9000",
-    "build": "gulp lessc:home",
+    "build": "gulp home:build",
+    "unbuild": "rm ./proto/css/home.css{,.map}  &&  rm ./proto/home.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
