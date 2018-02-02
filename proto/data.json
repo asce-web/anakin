@@ -56,6 +56,10 @@
       { "text": "Code of Ethics", "url": "#0" }
     ]
   },
+  "asce-foundation": {
+    "caption": "Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.",
+    "cta": { "text": "Donate Today", "url": "//www.ascefoundation.org/ways-to-give/one-time-gift/" }
+  },
   "publication-highlights": [
     {
       "id"     : "asce7",

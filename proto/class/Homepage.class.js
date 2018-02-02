@@ -338,6 +338,12 @@ class Homepage {
       }, this)
     }).call(this)
      */
+    ;(function (data) {
+      let foundation = document.querySelector('#asce-foundation')
+      foundation.querySelector('[itemprop="description"]').textContent = data.caption
+      foundation.querySelector('[itemprop="potentialAction"] [itemprop="url"]' ).href        = data.cta.url
+      foundation.querySelector('[itemprop="potentialAction"] [itemprop="name"]').textContent = data.cta.text
+    })(this._DATA['asce-foundation'])
 
     return `<!doctype html>` + document.documentElement.outerHTML
   }
