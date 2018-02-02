@@ -130,7 +130,7 @@ class Homepage {
     frag.querySelector('.c-Pub').id = pub.id
     frag.querySelector('[itemprop~="image"]'     ).src         = pub.image
     frag.querySelector('[itemprop="name"]'       ).textContent = pub.name
-    frag.querySelector('[itemprop="description"]').innerHTML   = pub.caption
+    frag.querySelector('[itemprop="description"]').textContent = pub.caption
     frag.querySelector('article'                 ).innerHTML   = pub.body
     pub.links.forEach(function (link) {
       let innerfrag = frag.querySelector('template').content.cloneNode(true)
@@ -156,7 +156,7 @@ class Homepage {
     frag.querySelector('.c-HomeAction').id = act.id
     frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', `url('${act.image}')`)
     frag.querySelector('.c-HomeAction__Hn'  ).textContent = act.name
-    frag.querySelector('.c-HomeAction__Cap' ).innerHTML   = act.caption
+    frag.querySelector('.c-HomeAction__Cap' ).textContent = act.caption
     act.links.forEach(function (link) {
       let innerfrag = frag.querySelector('template').content.cloneNode(true)
       innerfrag.querySelector('[itemprop="url"]' ).href        = link.url
@@ -230,6 +230,13 @@ class Homepage {
    */
   compile() {
     const document = Homepage.NAMED_TEMPLATES.homeDocument
+    /**
+     * @summary Populate a list with a rendering function.
+     * @description The list must have a `<template>` element child.
+     * @param   {string} listselector the querySelector of the list to fill
+     * @param   {Array} data any array of data to fill the list with
+     * @param   {function(*):string} renderer a function returning a datum’s HTML output
+     */
     function populateList(listselector, data, renderer) {
       let container = document.querySelector(listselector)
       let template = container.querySelector('template').content
@@ -265,7 +272,6 @@ class Homepage {
      */
 
     // ++++ USER-INPUT DATA ++++ //
-    document.querySelector('main > header').innerHTML = this.xHero(this._DATA['hero'])
     populateList.call(this, '#promotions             > ul', this._DATA['promotions'            ], this.xPromo     )
     populateList.call(this, '#publication-highlights > ul', this._DATA['publication-highlights'], this.xPub       )
     populateList.call(this, '#learn-contribute       > ul', this._DATA['learn-contribute'      ], this.xHomeAction)
@@ -338,6 +344,13 @@ class Homepage {
       }, this)
     }).call(this)
      */
+    document.querySelector('main > header').innerHTML = this.xHero(this._DATA['hero'])
+    ;(function (data) {
+      let foundation = document.querySelector('#asce-foundation')
+      foundation.querySelector('[itemprop="description"]').textContent = data.caption
+      foundation.querySelector('[itemprop="potentialAction"] [itemprop="url"]' ).href        = data.cta.url
+      foundation.querySelector('[itemprop="potentialAction"] [itemprop="name"]').textContent = data.cta.text
+    })(this._DATA['asce-foundation'])
 
     return `<!doctype html>` + document.documentElement.outerHTML
   }
