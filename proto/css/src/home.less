@@ -36,6 +36,11 @@
 //++++++++++++++++++++++++++++++++//
 @g-color-asce-blue : #0c5fa8;
 @g-color-asce-green: #62b840;
+@g-color-asce-foundation: #19a1cf;
+
+@g-color-mustard   : #ffda54;
+@g-color-aqua      : #00c0ca;
+@g-color-gamboge   : #ff9400;
 //++++ end # SETTINGS & TOOLS ++++//
 
 
@@ -73,9 +78,9 @@ a {
     color: #19a1cf;
   }
 }
-li:nth-of-type(1) { --color-accent: #ffdc7a }
-li:nth-of-type(2) { --color-accent: #1fc9cd }
-li:nth-of-type(3) { --color-accent: #ffa65c }
+li:nth-of-type(1) { --color-accent: @g-color-mustard; }
+li:nth-of-type(2) { --color-accent: @g-color-aqua   ; }
+li:nth-of-type(3) { --color-accent: @g-color-gamboge; }
 //++++ end # BASE ++++//
 
 
@@ -146,7 +151,7 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
 }
 
 .o-Grid--foundation {
-  --color-accent: aqua; // FIXME
+  --color-accent: @g-color-asce-foundation;
   grid-template-areas: 'heading heading'
                        'caption caption'
                        'icon    blurb  '
@@ -234,6 +239,8 @@ li:nth-of-type(3) { --color-accent: #ffa65c }
 
 .c-BigAssIcon {
   background-color: var(--color-accent, black);
+  // background-image: linear-gradient(0.375turn, rgba(255,255,255,0.33), transparent); // fallback for `#rrggbbaa` syntax
+  // background-image: linear-gradient(0.375turn, ~'#ffffff55', transparent); // NOTE: need to interpolate due to Less not supporting `#rrggbbaa` syntax
   color: white;
   border-radius: 50%;
   width: 4rem; height: 4rem;
