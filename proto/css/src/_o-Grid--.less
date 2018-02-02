@@ -1,0 +1,61 @@
+
+/*################################*\
+    anakin  |  _o-Grid--.less
+\*################################*/
+
+
+// Subclasses of the `o-Grid` Object.
+// See `/node_modules/xmeter/css/src/_o-Grid.less`.
+
+
+.o-Grid--jobs,
+.o-Grid--publications,
+.o-Grid--homeActions,
+.o-Grid--whatsHappening {
+  @media screen and (min-width: 45em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.o-Grid--jobs,
+.o-Grid--whatsHappening {
+  @media screen and (min-width: 45em) {
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+.o-Grid--represent,
+.o-Grid--members {
+  @media screen and (min-width: 30em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.o-Grid--portals {
+  @media screen and (min-width: 30em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (min-width: 45em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+
+.o-Grid--represent,
+.o-Grid--portals,
+.o-Grid--publications,
+.o-Grid--homeActions,
+.o-Grid--jobs,
+.o-Grid--whatsHappening,
+.o-Grid--members {
+  grid-row-gap   : var(--layout-padding-block);
+  grid-column-gap: var(--layout-padding-inline);
+}
+
+.o-Grid--whatsHappening {
+  @media screen and (min-width: 45em) {
+    & > li:first-of-type {
+      grid-row: 1 ~'/' -1;
+    }
+  }
+}

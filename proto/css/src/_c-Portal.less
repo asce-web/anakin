@@ -1,0 +1,61 @@
+
+/*################################*\
+    anakin  |  _c-Portal.less
+\*################################*/
+@import (reference) url('__settings.less');
+
+
+.c-Portal {
+  --color-accent: @g-color-asce-green;
+  margin-bottom: 0; // unset base `details`
+  section& {
+    @media not all and (min-width: 30em) {
+      display: none;
+    }
+  }
+  details& {
+    .glyphicons {
+      vertical-align: middle;
+      margin-right: 1rem;
+      border-radius: 50%;
+      background-color: var(--color-accent, @g-color-asce-blue);
+      color: white;
+      &::before {
+        content: '\E602'; // copied from `.glyphicons-chevron-down` (cannot change classname, so copying css style)
+      }
+    }
+    &[open] .glyphicons::before {
+      content: '\E601'; // copied from `.glyphicons-chevron-up` (cannot change classname, so copying css style)
+    }
+    @media screen and (min-width: 30em) {
+      display: none;
+    }
+  }
+  ::-webkit-details-marker {
+    display: none;
+  }
+}
+.c-Portal__Head {
+  display: grid;
+  section.c-Portal & {
+    justify-items: center;
+  }
+  details.c-Portal & {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+}
+.c-Portal__Icon {
+}
+.c-Portal__Hn {
+  color: @g-color-body-txt; // override `a[href]`
+  details.c-Portal & {
+    text-align: inherit; // unset `.c-SectionHed`
+  }
+}
+.c-Portal__List {
+}
+.c-Portal__List__Item {
+}
+.c-Portal__Link {
+}

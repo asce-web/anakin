@@ -1,0 +1,28 @@
+
+/*################################*\
+    anakin  |  _c-ArticleTeaser.less
+\*################################*/
+
+
+.c-ArticleTeaser {
+  display: grid;
+  grid-template: max-content auto ~'/' 25% 75%; // "max-content" minimizes the 1st row-size
+  grid-column-gap: calc(0.5 ~'*' var(--layout-padding-inline));
+  @media not all and (min-width: 30em) {
+    grid-template-columns: 33.33333% 66.66666%;
+  }
+  li:first-of-type > & {
+    grid-template-columns: 37.5% 62.5%;
+    @media not all and (min-width: 30em) {
+      grid-template: unset;
+    }
+  }
+}
+.c-ArticleTeaser__Img {
+  grid-row: 1 ~'/' -1;
+}
+.c-ArticleTeaser__Hn {
+  cite { font-style: unset; }
+}
+.c-ArticleTeaser__Date {
+}

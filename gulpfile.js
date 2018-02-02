@@ -3,6 +3,7 @@ const fs = require('fs')
 const gulp = require('gulp')
 const less         = require('gulp-less')
 const autoprefixer = require('gulp-autoprefixer')
+const clean_css    = require('gulp-clean-css')
 
 const Homepage = require('./proto/class/Homepage.class.js')
 
@@ -12,11 +13,19 @@ gulp.task('home:compile', function (callback) {
 })
 
 gulp.task('home:lessc', function () {
-  return gulp.src(__dirname + '/proto/css/src/home.less')
+  return gulp.src(`${__dirname}/proto/css/src/home.less`)
     .pipe(less())
     .pipe(autoprefixer({
       grid: true,
       cascade: false,
+    }))
+    .pipe(clean_css({
+      level: {
+        2: {
+          overrideProperties: false,
+          restructureRules: true,
+        },
+      },
     }))
     .pipe(gulp.dest('./proto/css/'))
 })
