@@ -1,33 +1,28 @@
 
 /*################################*\
-    anakin  |  _c-Hero.less
+    anakin  |  _c-Promo.less
 \*################################*/
 @import (reference) url('__settings.less');
 
 
-.c-Hero {
+.c-Promo {
   height: 50vh;
   position: relative; // for the bar
   background-size: cover;
   background-position: center;
   color: white;
+  text-align: center;
 }
-.c-Hero__Bar {
-  background-color: fadeout(@g-color-asce-blue, 25%);
+.c-Promo__Bar {
+  background-color: fadeout(black, 75%);
   position: absolute;
   bottom: 0;
   left: 0; right:0;
   padding: calc(var(--lh) ~'/' 2) 1rem; // REVIEW padding variables
 }
-.c-Hero__Content {
-  margin-bottom: 0; // HACK fallback
-  margin-block-end: unset; // unset base `p`
-  grid-template-columns: 1fr auto;
-  grid-column-gap: 2rem;
-  colulmn-gap: 2rem;
-  align-items: center;
+.c-Promo__Cap {
+  margin-left: auto; margin-right: auto;
+  margin-inline: auto;
 }
-.c-Hero__Cap {
-}
-.c-Hero__Cta {
+.c-Promo__Cta {
 }

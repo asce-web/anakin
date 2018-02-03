@@ -106,11 +106,11 @@ class Homepage {
    */
   xPromo(promo) {
     let frag = Homepage.NAMED_TEMPLATES.xPromo.cloneNode(true)
-    frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${promo.image}')`)
-    frag.querySelector('.c-Promotion__Hn'  ).textContent = promo.title
-    frag.querySelector('.c-Promotion__Text').textContent = promo.caption
-    frag.querySelector('.c-Promotion__Cta' ).href        = promo.cta.url
-    frag.querySelector('.c-Promotion__Cta' ).textContent = promo.cta.text
+    frag.querySelector('.c-Promo').style.setProperty('background-image', `url('${promo.image}')`)
+    frag.querySelector('.c-Promo__Hn' ).textContent = promo.title
+    frag.querySelector('.c-Promo__Cap').textContent = promo.caption
+    frag.querySelector('.c-Promo__Cta').href        = promo.cta.url
+    frag.querySelector('.c-Promo__Cta').textContent = promo.cta.text
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
