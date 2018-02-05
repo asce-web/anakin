@@ -84,43 +84,6 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-
-  /**
-   * @summary Hero section display.
-   * @param   {!Object} hero the hero image and contents
-   * @param   {string} hero.image url to hero image
-   * @param   {string} hero.caption text caption
-   * @param   {{text:string, url:string}} hero.cta call-to-action
-   * @returns {string} HTML output
-   */
-  xHero(hero) {
-    let frag = Homepage.NAMED_TEMPLATES.xHero.cloneNode(true)
-    frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${hero.image}')`)
-    frag.querySelector('slot[name="hero-caption"]').textContent = hero.caption
-    frag.querySelector('a'                        ).href        = hero.cta.url
-    frag.querySelector('a'                        ).textContent = hero.cta.text
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  /**
-   * @summary Timely Promo display.
-   * @param   {!Object} promo the promotion to display
-   * @param   {string} promo.title promo heading
-   * @param   {string} promo.image url to promo image
-   * @param   {string} promo.caption text caption
-   * @param   {{text:string, url:string}} promo.cta call-to-action
-   * @returns {string} HTML output
-   */
-  xPromo(promo) {
-    let frag = Homepage.NAMED_TEMPLATES.xPromo.cloneNode(true)
-    frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${promo.image}')`)
-    frag.querySelector('.c-Promotion__Hn'  ).textContent = promo.title
-    frag.querySelector('.c-Promotion__Text').textContent = promo.caption
-    frag.querySelector('.c-Promotion__Cta' ).href        = promo.cta.url
-    frag.querySelector('.c-Promotion__Cta' ).textContent = promo.cta.text
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
   /**
    * @summary Featured Publication display.
    * @param   {!Object} pub the publication data to display
@@ -184,6 +147,42 @@ class Homepage {
       innerfrag.querySelector('[itemprop="name"]').textContent = link.text
       frag.querySelector('template').parentNode.append(innerfrag)
     })
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
+  /**
+   * @summary Hero section display.
+   * @param   {!Object} hero the hero image and contents
+   * @param   {string} hero.image url to hero image
+   * @param   {string} hero.caption text caption
+   * @param   {{text:string, url:string}} hero.cta call-to-action
+   * @returns {string} HTML output
+   */
+  xHero(hero) {
+    let frag = Homepage.NAMED_TEMPLATES.xHero.cloneNode(true)
+    frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${hero.image}')`)
+    frag.querySelector('slot[name="hero-caption"]').textContent = hero.caption
+    frag.querySelector('a'                        ).href        = hero.cta.url
+    frag.querySelector('a'                        ).textContent = hero.cta.text
+    return new xjs.DocumentFragment(frag).innerHTML()
+  }
+
+  /**
+   * @summary Timely Promo display.
+   * @param   {!Object} promo the promotion to display
+   * @param   {string} promo.title promo heading
+   * @param   {string} promo.image url to promo image
+   * @param   {string} promo.caption text caption
+   * @param   {{text:string, url:string}} promo.cta call-to-action
+   * @returns {string} HTML output
+   */
+  xPromo(promo) {
+    let frag = Homepage.NAMED_TEMPLATES.xPromo.cloneNode(true)
+    frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${promo.image}')`)
+    frag.querySelector('.c-Promotion__Hn'  ).textContent = promo.title
+    frag.querySelector('.c-Promotion__Text').textContent = promo.caption
+    frag.querySelector('.c-Promotion__Cta' ).href        = promo.cta.url
+    frag.querySelector('.c-Promotion__Cta' ).textContent = promo.cta.text
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
@@ -269,8 +268,8 @@ class Homepage {
     }
 
     // ++++ HARD-CODED DATA ++++ //
-    populateList.call(this, '#we-represent > ul', Homepage.DATA.stats  , this.xStat  )
-    populateList.call(this, '#portals      > ol', Homepage.DATA.portals, this.xPortal)
+    populateList.call(this, '#we-represent           > ul', Homepage.DATA.stats  , this.xStat  )
+    populateList.call(this, '#portals                > ol', Homepage.DATA.portals, this.xPortal)
     populateList.call(this, '#publication-highlights > ul', Homepage.DATA.pubs, this.xPub)
     populateList.call(this, '#learn-contribute       > ul', Homepage.DATA.acts, this.xHomeAction)
     /*
@@ -292,23 +291,6 @@ class Homepage {
         container.append(frag)
       }, this)
     }).call(this)
-     */
-
-    // ++++ USER-INPUT DATA ++++ //
-    populateList.call(this, '#promotions             > ul', this._DATA['promotions'            ], this.xPromo     )
-    populateList.call(this, '#jobs                   > ul', this._DATA['jobs'                  ], this.xJob       )
-    populateList.call(this, '#whats-happening        > ul', this._DATA['whats-happening'       ], this.xArticle   )
-    populateList.call(this, '#member-stories         > ul', this._DATA['member-stories'        ], this.xMember    )
-    /*
-    ;(function () {
-      let container = document.querySelector('#promotions > ul')
-      let template = container.querySelector('template').content
-      this._DATA['promotions'].forEach(function (promo) {
-        let frag = template.cloneNode(true)
-        frag.querySelector('li').innerHTML = this.xPromo(promo)
-        container.append(frag)
-      }, this)
-    }).call(this)
     ;(function () {
       let container = document.querySelector('#publication-highlights > ul')
       let template = container.querySelector('template').content
@@ -324,6 +306,23 @@ class Homepage {
       Homepage.DATA.acts.forEach(function (act) {
         let frag = template.cloneNode(true)
         frag.querySelector('li').innerHTML = this.xHomeAction(act)
+        container.append(frag)
+      }, this)
+    }).call(this)
+     */
+
+    // ++++ USER-INPUT DATA ++++ //
+    populateList.call(this, '#promotions             > ul', this._DATA['promotions'            ], this.xPromo     )
+    populateList.call(this, '#jobs                   > ul', this._DATA['jobs'                  ], this.xJob       )
+    populateList.call(this, '#whats-happening        > ul', this._DATA['whats-happening'       ], this.xArticle   )
+    populateList.call(this, '#member-stories         > ul', this._DATA['member-stories'        ], this.xMember    )
+    /*
+    ;(function () {
+      let container = document.querySelector('#promotions > ul')
+      let template = container.querySelector('template').content
+      this._DATA['promotions'].forEach(function (promo) {
+        let frag = template.cloneNode(true)
+        frag.querySelector('li').innerHTML = this.xPromo(promo)
         container.append(frag)
       }, this)
     }).call(this)
@@ -385,24 +384,10 @@ Homepage.NAMED_TEMPLATES = {
     .window.document,
 
   /**
-   * @summary Template for Hero section.
-   * @const {DocumentFragment}
-   */
-  xHero: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-hero.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
    * @summary Template for Featured Statistic.
    * @const {DocumentFragment}
    */
   xStat: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-stat.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Timely Promo.
-   * @const {DocumentFragment}
-   */
-  xPromo: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-promo.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
@@ -424,6 +409,20 @@ Homepage.NAMED_TEMPLATES = {
    * @const {DocumentFragment}
    */
   xHomeAction: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-homeaction.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Hero section.
+   * @const {DocumentFragment}
+   */
+  xHero: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-hero.tpl.html'), 'utf8'))
+    .window.document.querySelector('template').content,
+
+  /**
+   * @summary Template for Timely Promo.
+   * @const {DocumentFragment}
+   */
+  xPromo: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-promo.tpl.html'), 'utf8'))
     .window.document.querySelector('template').content,
 
   /**
@@ -452,32 +451,10 @@ Homepage.NAMED_TEMPLATES = {
 
 
 /**
- * @summary Hard-coded data for the markup.
+ * @summary Static (hard-coded) data for the markup.
  * @description This is *not* the user-input data, which is passed to the constructor.
  * @const {!Object}
  */
-Homepage.DATA = {
-  stats: [
-    { icon: "group" , number: 150000, text: "Members"   , type: "JoinAction"  , cta: { text: "Join ASCE"          , url: "//www.asce.org/join/"                         } },
-    { icon: "map"   , number: 177   , text: "Countries" , type: "SearchAction", cta: { text: "Find a Local Group" , url: "//www.asce.org/membership-communities/"       } },
-    { icon: "shield", number: 9     , text: "Institutes", type: "JoinAction"  , cta: { text: "Select an Institute", url: "//www.asce.org/routing-page/technical-areas/" } },
-  ],
-  portals: [
-    { id: 'membership'          , name: 'Membership'          , icon: 'nameplate'   , url: '//www.asce.org/membership_and_communities/' },
-    { id: 'continuing-education', name: 'Continuing Education', icon: 'education'   , url: '//www.asce.org/continuing_education/'       },
-    { id: 'publications'        , name: 'Publications'        , icon: 'book-open'   , url: '//www.asce.org/publications/'               },
-    { id: 'conferences-events'  , name: 'Conferences & Events', icon: 'calendar'    , url: '//www.asce.org/conferences_events/'         },
-    { id: 'initiatives'         , name: 'Initiatives'         , icon: 'address-book', url: '//www.asce.org/our_initiatives/'            },
-    { id: 'careers'             , name: 'Careers'             , icon: 'briefcase'   , url: '//www.asce.org/careers/'                    },
-  ],
-  pubs: [
-    { "id": "asce7"                     , "name": "ASCE 7"                     },
-    { "id": "civil-engineering-magazine", "name": "Civil Engineering Magazine" }
-  ],
-  acts: [
-    { "id": "technical-information" , "name": "Technical Information" },
-    { "id": "get-involved"          , "name": "Get Involved"          }
-  ],
-}
+Homepage.DATA = require('../static-data.json')
 
 module.exports = Homepage

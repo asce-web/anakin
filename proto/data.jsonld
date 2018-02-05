@@ -1,29 +1,5 @@
 {
-  "hero": {
-    "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-hero-img-revised.jpg",
-    "caption": "More than 1.3 million viewers have been inspired by Dream Big: Engineering Our World, including a Georgia school that made it the school theme.",
-    "cta": { "text": "See Dream Big near you", "url": "//www.asce.org/dream-big/" }
-  },
-  "promotions": [
-    {
-      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-01-Access.jpg",
-      "title": "A Wealth of Technical Resources, Free",
-      "caption": "Exclusively for ASCE members, AccessEngineering is a reference hub with tutorial videos, handbooks, online calculators and more.",
-      "cta"  : { "text": "Visit AccessEngineering", "url": "//secure.asce.org/ASCEWebsite/Integration/MHEducation.aspx" }
-    },
-    {
-      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-02-OPAL.jpg",
-      "title": "Celebrate Civil Engineering’s Best",
-      "caption": "Meet civil engineering luminaries and salute outstanding careers and projects at the OPAL Gala, March 15 in Arlington, VA.",
-      "cta"  : { "text": "Read More", "url": "//ektronstaging.asce.org/event/2018/opal-awards-gala/" }
-    },
-    {
-      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-03-Contest.jpg",
-      "title": "WANT TO INNOVATE A BETTER FUTURE?",
-      "caption": "Your best ideas could transform infrastructure. Enter the ASCE Innovation Contest and join a community of fellow innovators.",
-      "cta"  : { "text": "Submit Your Idea", "url": "//collaborate.asce.org/ascegrandchallenge/contest/aboutthecontest" }
-    }
-  ],
+  "@context": "http://schema.org/",
   "portals": {
     "membership": [
       { "text": "Renew my membership", "url": "/renewal" },
@@ -61,10 +37,6 @@
       { "text": "Salary Survey", "url": "/salaries" },
       { "text": "Ethics", "url": "/Ethics-landing/" }
     ]
-  },
-  "asce-foundation": {
-    "caption": "Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.",
-    "cta": { "text": "Donate Today", "url": "//www.ascefoundation.org/ways-to-give/one-time-gift/" }
   },
   "publication-highlights": {
     "asce7": {
@@ -107,6 +79,26 @@
       ]
     }
   },
+  "promotions": [
+    {
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-01-Access.jpg",
+      "title": "A Wealth of Technical Resources, Free",
+      "caption": "Exclusively for ASCE members, AccessEngineering is a reference hub with tutorial videos, handbooks, online calculators and more.",
+      "cta"  : { "text": "Visit AccessEngineering", "url": "//secure.asce.org/ASCEWebsite/Integration/MHEducation.aspx" }
+    },
+    {
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-02-OPAL.jpg",
+      "title": "Celebrate Civil Engineering’s Best",
+      "caption": "Meet civil engineering luminaries and salute outstanding careers and projects at the OPAL Gala, March 15 in Arlington, VA.",
+      "cta"  : { "text": "Read More", "url": "//ektronstaging.asce.org/event/2018/opal-awards-gala/" }
+    },
+    {
+      "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-03-Contest.jpg",
+      "title": "WANT TO INNOVATE A BETTER FUTURE?",
+      "caption": "Your best ideas could transform infrastructure. Enter the ASCE Innovation Contest and join a community of fellow innovators.",
+      "cta"  : { "text": "Submit Your Idea", "url": "//collaborate.asce.org/ascegrandchallenge/contest/aboutthecontest" }
+    }
+  ],
   "jobs": [
     {
       "title"       : "Director, Engineering",
@@ -172,5 +164,14 @@
       "grade": "Past President",
       "quote": "In the more than 50 years since I became a licensed professional engineer, ASCE has been my first and foremost resource for not only technical and professional development, but also broadening my skills in the business world."
     }
-  ]
+  ],
+  "hero": {
+    "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-hero-img-revised.jpg",
+    "caption": "More than 1.3 million viewers have been inspired by Dream Big: Engineering Our World, including a Georgia school that made it the school theme.",
+    "cta": { "text": "See Dream Big near you", "url": "//www.asce.org/dream-big/" }
+  },
+  "asce-foundation": {
+    "caption": "Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.",
+    "cta": { "text": "Donate Today", "url": "//www.ascefoundation.org/ways-to-give/one-time-gift/" }
+  }
 }
