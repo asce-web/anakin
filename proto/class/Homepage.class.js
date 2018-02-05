@@ -56,6 +56,13 @@ class Homepage {
    * @returns {string} HTML output
    */
   xPortal(port) {
+    /**
+     * @summary Dynamic data in the database corresponding to this port.
+     * @private
+     * @type {Array<{text:string, url:string}>}
+     */
+    const portal_data = this._DATA['portals'][port.id]
+
     let frag = Homepage.NAMED_TEMPLATES.xPortal.cloneNode(true)
     let orig = frag.querySelectorAll('.c-Portal')[0]
     orig.id = port.id
@@ -63,7 +70,7 @@ class Homepage {
     orig.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', port.icon)
     orig.querySelector('[itemprop="name"]').textContent = port.name
     let list = orig.querySelector('.c-Portal__List')
-    this._DATA['portals'][port.id].forEach(function (link) {
+    portal_data.forEach(function (link) {
       let innerfrag = list.querySelector('template').content.cloneNode(true)
       innerfrag.querySelector('[itemprop="significantLink"]').href        = link.url
       innerfrag.querySelector('[itemprop="significantLink"]').textContent = link.text
@@ -119,20 +126,27 @@ class Homepage {
    * @param   {!Object} pub the publication data to display
    * @param   {string} pub.id the ID
    * @param   {string} pub.name the heading
-   * @param   {string} pub.caption the caption
-   * @param   {string} pub.image url to image
-   * @param   {Array<{text:string, url:string}>} pub.links list of links
-   * @param   {string} pub.body rich body text
    * @returns {string} HTML output
    */
   xPub(pub) {
+    /**
+     * @summary Dynamic data in the database corresponding to this pub.
+     * @private
+     * @type {!Object}
+     * @property {string} caption the caption
+     * @property {string} image url to image
+     * @property {Array<{text:string, url:string}>} links list of links
+     * @property {string} body rich body text
+     */
+    const pub_data = this._DATA['publication-highlights'][pub.id]
+
     let frag = Homepage.NAMED_TEMPLATES.xPub.cloneNode(true)
     frag.querySelector('.c-Pub').id = pub.id
-    frag.querySelector('[itemprop~="image"]'     ).src         = pub.image
+    frag.querySelector('[itemprop~="image"]'     ).src         = pub_data.image
     frag.querySelector('[itemprop="name"]'       ).textContent = pub.name
-    frag.querySelector('[itemprop="description"]').textContent = pub.caption
-    frag.querySelector('article'                 ).innerHTML   = pub.body
-    pub.links.forEach(function (link) {
+    frag.querySelector('[itemprop="description"]').textContent = pub_data.caption
+    frag.querySelector('article'                 ).innerHTML   = pub_data.body
+    pub_data.links.forEach(function (link) {
       let innerfrag = frag.querySelector('template').content.cloneNode(true)
       innerfrag.querySelector('[itemprop="url"]' ).href        = link.url
       innerfrag.querySelector('[itemprop="name"]').textContent = link.text
@@ -146,18 +160,25 @@ class Homepage {
    * @param   {!Object} act the action data to display
    * @param   {string} act.id the ID
    * @param   {string} act.name the heading
-   * @param   {string} act.caption the caption
-   * @param   {string} act.image url to image
-   * @param   {Array<{text:string, url:string}>} act.links list of links
    * @returns {string} HTML output
    */
   xHomeAction(act) {
+    /**
+     * @summary Dynamic data in the database corresponding to this act.
+     * @private
+     * @type {!Object}
+     * @property {string} caption the caption
+     * @property {string} image url to image
+     * @property {Array<{text:string, url:string}>} links list of links
+     */
+    const act_data = this._DATA['learn-contribute'][act.id]
+
     let frag = Homepage.NAMED_TEMPLATES.xHomeAction.cloneNode(true)
     frag.querySelector('.c-HomeAction').id = act.id
-    frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', `url('${act.image}')`)
+    frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', `url('${act_data.image}')`)
     frag.querySelector('.c-HomeAction__Hn'  ).textContent = act.name
-    frag.querySelector('.c-HomeAction__Cap' ).textContent = act.caption
-    act.links.forEach(function (link) {
+    frag.querySelector('.c-HomeAction__Cap' ).textContent = act_data.caption
+    act_data.links.forEach(function (link) {
       let innerfrag = frag.querySelector('template').content.cloneNode(true)
       innerfrag.querySelector('[itemprop="url"]' ).href        = link.url
       innerfrag.querySelector('[itemprop="name"]').textContent = link.text
@@ -250,6 +271,8 @@ class Homepage {
     // ++++ HARD-CODED DATA ++++ //
     populateList.call(this, '#we-represent > ul', Homepage.DATA.stats  , this.xStat  )
     populateList.call(this, '#portals      > ol', Homepage.DATA.portals, this.xPortal)
+    populateList.call(this, '#publication-highlights > ul', Homepage.DATA.pubs, this.xPub)
+    populateList.call(this, '#learn-contribute       > ul', Homepage.DATA.acts, this.xHomeAction)
     /*
     ;(function () {
       let container = document.querySelector('#we-represent > ul')
@@ -273,21 +296,9 @@ class Homepage {
 
     // ++++ USER-INPUT DATA ++++ //
     populateList.call(this, '#promotions             > ul', this._DATA['promotions'            ], this.xPromo     )
-    populateList.call(this, '#publication-highlights > ul', this._DATA['publication-highlights'], this.xPub       )
-    populateList.call(this, '#learn-contribute       > ul', this._DATA['learn-contribute'      ], this.xHomeAction)
     populateList.call(this, '#jobs                   > ul', this._DATA['jobs'                  ], this.xJob       )
     populateList.call(this, '#whats-happening        > ul', this._DATA['whats-happening'       ], this.xArticle   )
     populateList.call(this, '#member-stories         > ul', this._DATA['member-stories'        ], this.xMember    )
-    /*
-    ;[
-      ['#promotions             > ul', this._DATA['promotions'            ], this.xPromo     ],
-      ['#publication-highlights > ul', this._DATA['publication-highlights'], this.xPub       ],
-      ['#learn-contribute       > ul', this._DATA['learn-contribute'      ], this.xHomeAction],
-      ['#jobs                   > ul', this._DATA['jobs'                  ], this.xJob       ],
-      ['#whats-happening        > ul', this._DATA['whats-happening'       ], this.xArticle   ],
-      ['#member-stories         > ul', this._DATA['member-stories'        ], this.xMember    ],
-    ].forEach((params) => populateList.call(this, ...params))
-     */
     /*
     ;(function () {
       let container = document.querySelector('#promotions > ul')
@@ -301,7 +312,7 @@ class Homepage {
     ;(function () {
       let container = document.querySelector('#publication-highlights > ul')
       let template = container.querySelector('template').content
-      this._DATA['publication-highlights'].forEach(function (pub) {
+      Homepage.DATA.pubs.forEach(function (pub) {
         let frag = template.cloneNode(true)
         frag.querySelector('li').innerHTML = this.xPub(pub)
         container.append(frag)
@@ -310,7 +321,7 @@ class Homepage {
     ;(function () {
       let container = document.querySelector('#learn-contribute > ul')
       let template = container.querySelector('template').content
-      this._DATA['learn-contribute'].forEach(function (act) {
+      Homepage.DATA.acts.forEach(function (act) {
         let frag = template.cloneNode(true)
         frag.querySelector('li').innerHTML = this.xHomeAction(act)
         container.append(frag)
@@ -344,6 +355,8 @@ class Homepage {
       }, this)
     }).call(this)
      */
+
+    // ++++ DATA WITH NO PATTERNS ++++ //
     document.querySelector('main > header').innerHTML = this.xHero(this._DATA['hero'])
     ;(function (data) {
       let foundation = document.querySelector('#asce-foundation')
@@ -456,6 +469,14 @@ Homepage.DATA = {
     { id: 'conferences-events'  , name: 'Conferences & Events', icon: 'calendar'    , url: '//www.asce.org/conferences_events/'         },
     { id: 'initiatives'         , name: 'Initiatives'         , icon: 'address-book', url: '//www.asce.org/our_initiatives/'            },
     { id: 'careers'             , name: 'Careers'             , icon: 'briefcase'   , url: '//www.asce.org/careers/'                    },
+  ],
+  pubs: [
+    { "id": "asce7"                     , "name": "ASCE 7"                     },
+    { "id": "civil-engineering-magazine", "name": "Civil Engineering Magazine" }
+  ],
+  acts: [
+    { "id": "technical-information" , "name": "Technical Information" },
+    { "id": "get-involved"          , "name": "Get Involved"          }
   ],
 }
 

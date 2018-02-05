@@ -66,10 +66,8 @@
     "caption": "Making a positive change in our communities is possible&hellip; but only if we start now, set our sights high, and work together.",
     "cta": { "text": "Donate Today", "url": "//www.ascefoundation.org/ways-to-give/one-time-gift/" }
   },
-  "publication-highlights": [
-    {
-      "id"     : "asce7",
-      "name"   : "ASCE 7",
+  "publication-highlights": {
+    "asce7": {
       "caption": "Minimum Design Loads and Associated Criteria for Buildings and Other Structures, ASCE/SEI 7-16.",
       "image"  : "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/asce7.png",
       "links"  : [
@@ -78,9 +76,7 @@
       ],
       "body": "<h2>ASCE 7 Online</h2>\n<p>Digital access to both ASCE/SEI 7-16 and 7-10.</p>\n<p><a class=\"c-Button\" href=\"//asce7.online/\">Get digital access</a></p>\n<h2>ASCE 7 Hazard Tool</h2>\n<p>Look up key design parameters as specified by ASCE 7.</p>\n<p><a class=\"c-Button\" href=\"//asce7hazardtool.online/\">Search design parameters</a></p>"
     },
-    {
-      "id"     : "civil-engineering-magazine",
-      "name"   : "Civil Engineering Magazine",
+    "civil-engineering-magazine": {
       "caption": "The official magazine of the American Society of Civil Engineers.",
       "image"  : "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/2017-november-ce-magazine-cover.jpg",
       "links"  : [
@@ -88,11 +84,9 @@
       ],
       "body": "<h2>Featured this Month</h2>\n<img style=\"float: left; margin-right: 1rem;\" src=\"//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/la-seine-musicale-anne-claudebarb-feature(1).jpg\" alt=\"\"/>\n<h3>Musical Masterpiece</h3>\n<p>November 2017</p>\n<p><cite lang=\"fr\">La Seine Musicale</cite>, a world-class concert hall on a redeveloping island west of Paris, is a masterpiece of structural, acoustic, and mechanical engineering. Resembling a ship at sea, the concrete structure supports a glassy, egg-shaped auditorium flanked by a shimmering “sail” that moves with the sun, shading the globe and generating solar power.</p>\n<p><a href=\"http://www.asce.org/cemagazine/musical-masterpiece/\">Continue &rarr;</a></p>"
     }
-  ],
-  "learn-contribute": [
-    {
-      "id"     : "technical-information",
-      "name"   : "Technical Information",
+  },
+  "learn-contribute": {
+    "technical-information": {
       "caption": "Access the latest technical information in your discipline.",
       "image"  : "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/technical-information.jpg",
       "links"  : [
@@ -102,9 +96,7 @@
         { "text": "Find a conference", "url": "/conferences/" }
       ]
     },
-    {
-      "id"     : "get-involved",
-      "name"   : "Get Involved",
+    "get-involved": {
       "caption": "Dedicate your time and expertise to a cause that is important to you.",
       "image"  : "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/get-involved-river-cleanup.jpg",
       "links"  : [
@@ -114,7 +106,7 @@
         { "text": "Inspire the next generations", "url": "//www.asce.org/pre-college_outreach/" }
       ]
     }
-  ],
+  },
   "jobs": [
     {
       "title"       : "Director, Engineering",
