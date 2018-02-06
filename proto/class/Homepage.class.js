@@ -91,13 +91,6 @@ class Homepage {
 
 
 /**
- * @summary A set of templates marking up data types.
- * @const {Object<DocumentFragment>}
- */
-Homepage.NAMED_TEMPLATES = {
-}
-
-/**
  * @summary A set of component builders. Each has a template and a renderer.
  * @const {Object<{template:DocumentFragment, renderer:(function(DocumentFragment,*):DocumentFragment)}>}
  */

@@ -9,7 +9,7 @@ const sourcemaps   = require('gulp-sourcemaps')
 const Homepage = require('./proto/class/Homepage.class.js')
 
 gulp.task('home:compile', function (callback) {
-  return fs.readFile('./proto/data.jsonld', 'utf8', function (err, data) {
+  return fs.readFile('./proto/database.jsonld', 'utf8', function (err, data) {
     let contents = new Homepage(JSON.parse(data)).compile()
     fs.writeFile('./proto/home.html', contents, 'utf8', callback) // send callback here to maintain async dependency
   })
