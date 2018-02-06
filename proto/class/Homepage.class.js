@@ -9,6 +9,7 @@ const xjs = {
 }
 
 const xStatRender = require('../tpl/x-stat.tpl.js')
+const xPortalRender = require('../tpl/x-portal.tpl.js')
 
 /**
  * ASCE Homepage.
@@ -32,41 +33,11 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-  /**
-   * @summary Portal display.
-   * @param   {!Object} port the portal data to display
-   * @param   {string} port.id the identifier property of `portal` in the database (pointing to an array)
-   * @param   {string} port.name the heading
-   * @param   {string} port.icon the subclass of Glyphicon
-   * @param   {string} port.url  the url the heading is linked to
-   * @returns {string} HTML output
-   */
   xPortal(port) {
-    /**
-     * @summary Dynamic data in the database corresponding to this port.
-     * @private
-     * @type {Array<{text:string, url:string}>}
-     */
-    const portal_data = this._DATA['portals'][port.id]
-
-    let frag = Homepage.NAMED_TEMPLATES.xPortal.cloneNode(true)
-    let orig = frag.querySelectorAll('.c-Portal')[0]
-    orig.id = port.id
-    orig.querySelector('[itemprop="url"]').href = port.url
-    orig.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', port.icon)
-    orig.querySelector('[itemprop="name"]').textContent = port.name
-    let list = orig.querySelector('.c-Portal__List')
-    portal_data.forEach(function (link) {
-      let innerfrag = list.querySelector('template').content.cloneNode(true)
-      innerfrag.querySelector('[itemprop="significantLink"]').href        = link.url
-      innerfrag.querySelector('[itemprop="significantLink"]').textContent = link.text
-      list.append(innerfrag)
+    let frag = xPortalRender(Homepage.NAMED_TEMPLATES.xPortal.cloneNode(true), {
+      fixed: port,
+      fluid: this._DATA['portals'][port.id],
     })
-    let dupe = frag.querySelectorAll('.c-Portal')[1]
-    dupe.append(list.cloneNode(true))
-    dupe.querySelector('.c-Portal__Head').append(...Array.from(orig.querySelector('.c-Portal__Head').childNodes).map((n) => n.cloneNode(true)))
-    dupe.querySelector('.glyphicons').classList.remove('c-BigAssIcon', 'h-Block')
-
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
