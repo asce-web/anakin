@@ -12,6 +12,7 @@ const xStatRender = require('../tpl/x-stat.tpl.js')
 const xPortalRender = require('../tpl/x-portal.tpl.js')
 const xPubRender = require('../tpl/x-pub.tpl.js')
 const xHomeActionRender = require('../tpl/x-homeaction.tpl.js')
+const xHeroRender = require('../tpl/x-hero.tpl.js')
 
 /**
  * ASCE Homepage.
@@ -59,20 +60,8 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-  /**
-   * @summary Hero section display.
-   * @param   {!Object} hero the hero image and contents
-   * @param   {string} hero.image url to hero image
-   * @param   {string} hero.caption text caption
-   * @param   {{text:string, url:string}} hero.cta call-to-action
-   * @returns {string} HTML output
-   */
   xHero(hero) {
-    let frag = Homepage.NAMED_TEMPLATES.xHero.cloneNode(true)
-    frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${hero.image}')`)
-    frag.querySelector('slot[name="hero-caption"]').textContent = hero.caption
-    frag.querySelector('a'                        ).href        = hero.cta.url
-    frag.querySelector('a'                        ).textContent = hero.cta.text
+    let frag = xHeroRender(Homepage.NAMED_TEMPLATES.xHero.cloneNode(true), hero)
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
@@ -270,7 +259,7 @@ class Homepage {
      */
 
     // ++++ DATA WITH NO PATTERNS ++++ //
-    document.querySelector('main > header').innerHTML = this.xHero(this._DATA['hero'])
+    document.querySelector('main > header').innerHTML = this.xHero(this._DATA['hero']) // TODO use .append() with a DocumentFragment
     ;(function (data) {
       let foundation = document.querySelector('#asce-foundation')
       foundation.querySelector('[itemprop="description"]').textContent = data.caption
