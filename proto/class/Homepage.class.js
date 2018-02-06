@@ -13,6 +13,7 @@ const xPortalRender = require('../tpl/x-portal.tpl.js')
 const xPubRender = require('../tpl/x-pub.tpl.js')
 const xHomeActionRender = require('../tpl/x-homeaction.tpl.js')
 const xHeroRender = require('../tpl/x-hero.tpl.js')
+const xPromoRender = require('../tpl/x-promo.tpl.js')
 
 /**
  * ASCE Homepage.
@@ -65,22 +66,8 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-  /**
-   * @summary Timely Promo display.
-   * @param   {!Object} promo the promotion to display
-   * @param   {string} promo.title promo heading
-   * @param   {string} promo.image url to promo image
-   * @param   {string} promo.caption text caption
-   * @param   {{text:string, url:string}} promo.cta call-to-action
-   * @returns {string} HTML output
-   */
   xPromo(promo) {
-    let frag = Homepage.NAMED_TEMPLATES.xPromo.cloneNode(true)
-    frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${promo.image}')`)
-    frag.querySelector('.c-Promotion__Hn'  ).textContent = promo.title
-    frag.querySelector('.c-Promotion__Text').textContent = promo.caption
-    frag.querySelector('.c-Promotion__Cta' ).href        = promo.cta.url
-    frag.querySelector('.c-Promotion__Cta' ).textContent = promo.cta.text
+    let frag = xPromoRender(Homepage.NAMED_TEMPLATES.xPromo.cloneNode(true), promo)
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
