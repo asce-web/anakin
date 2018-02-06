@@ -1,9 +1,9 @@
 <template>
   <div class="c-Hero" id="hero" style="background-image: url('{{ image }}');">
     <div class="c-Hero__Bar">
-      <p class="o-Constrain -mb-u">
-        <slot class="c-Hero__Cap" name="hero-caption">{{ caption }}</slot>
-        <a class="c-Hero__Cta" href="{{ cta_url }}">{{ cta_text }}</a>
+      <p class="o-Constrain o-Grid c-Hero__Content">
+        <slot class="o-Grid__Item c-Hero__Cap h-Block" name="hero-caption">{{ caption }}</slot>
+        <a    class="o-Grid__Item c-Hero__Cta h-Block c-Button" href="{{ cta_url }}">{{ cta_text }}</a>
       </p>
     </div>
   </div>

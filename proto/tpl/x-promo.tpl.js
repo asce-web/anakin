@@ -9,11 +9,11 @@
  * @returns {DocumentFragment} modified fragment
  */
 function xPromo(frag, data) {
-  frag.querySelector('.c-Promotion').style.setProperty('background-image', `url('${data.image}')`)
-  frag.querySelector('.c-Promotion__Hn'  ).textContent = data.title
-  frag.querySelector('.c-Promotion__Text').textContent = data.caption
-  frag.querySelector('.c-Promotion__Cta' ).href        = data.cta.url
-  frag.querySelector('.c-Promotion__Cta' ).textContent = data.cta.text
+  frag.querySelector('.c-Promo').style.setProperty('background-image', `url('${data.image}')`)
+  frag.querySelector('.c-Promo__Hn' ).textContent = data.title
+  frag.querySelector('.c-Promo__Cap').textContent = data.caption
+  frag.querySelector('.c-Promo__Cta').href        = data.cta.url
+  frag.querySelector('.c-Promo__Cta').textContent = data.cta.text
   return frag
 }
 
