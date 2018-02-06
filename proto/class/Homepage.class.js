@@ -8,6 +8,8 @@ const xjs = {
   DocumentFragment: require('extrajs-dom').DocumentFragment,
 }
 
+const xStatRender = require('../tpl/x-stat.tpl.js')
+
 /**
  * ASCE Homepage.
  */
@@ -25,24 +27,8 @@ class Homepage {
   }
 
 
-  /**
-   * @summary Featured Statistic display.
-   * @param   {!Object} stat the statistic to display
-   * @param   {string} stat.icon the classname of the glyphicon
-   * @param   {number} stat.number the featured numerical value
-   * @param   {string} stat.text the featured textual value
-   * @param   {{text:string, url:string}} stat.cta call-to-action
-   * @returns {string} HTML output
-   */
   xStat(stat) {
-    let frag = Homepage.NAMED_TEMPLATES.xStat.cloneNode(true)
-    frag.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', stat.icon)
-    frag.querySelector('slot[name="stat-number"]').textContent = stat.number.toLocaleString('en')
-    frag.querySelector('slot[name="stat-text"]'  ).textContent = stat.text
-    let action = frag.querySelector('[itemprop="potentialAction"]')
-    action.setAttribute('itemtype', `http://schema.org/${stat.type || 'Action'}`)
-    action.querySelector('[itemprop="url"]' ).href        = stat.cta.url
-    action.querySelector('[itemprop="name"]').textContent = stat.cta.text
+    let frag = xStatRender(Homepage.NAMED_TEMPLATES.xStat.cloneNode(true), stat)
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
@@ -263,6 +249,11 @@ class Homepage {
       data.forEach(function (item) {
         let frag = template.cloneNode(true)
         frag.querySelector('li').innerHTML = renderer.call(this, item)
+        /*
+        TODO
+        frag.querySelector('li').append(renderer.call(null, item))
+        where `renderer` returns a DocumentFragment
+         */
         container.append(frag)
       }, this)
     }
