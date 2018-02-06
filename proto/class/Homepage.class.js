@@ -16,6 +16,7 @@ const xHeroRender = require('../tpl/x-hero.tpl.js')
 const xPromoRender = require('../tpl/x-promo.tpl.js')
 const xJobRender = require('../tpl/x-job.tpl.js')
 const xArticleRender = require('../tpl/x-article.tpl.js')
+const xMemberRender = require('../tpl/x-member.tpl.js')
 
 /**
  * ASCE Homepage.
@@ -83,21 +84,8 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-  /**
-   * @summary Member Story display.
-   * @param   {!Object} member the member data to display
-   * @param   {string} member.name the name of the member (as a string)
-   * @param   {string} member.grade type of member, title, or subheading
-   * @param   {string} member.image url to a headshot photo
-   * @param   {string} member.quote quote by the member
-   * @returns {string} HTML output
-   */
   xMember(member) {
-    let frag = Homepage.NAMED_TEMPLATES.xMember.cloneNode(true)
-    frag.querySelector('[itemprop="image"]'      ).src         = member.image
-    frag.querySelector('[itemprop="name"]'       ).textContent = member.name
-    frag.querySelector('[itemprop="description"]').textContent = member.grade
-    frag.querySelector('blockquote'              ).textContent = member.quote
+    let frag = xMemberRender(Homepage.NAMED_TEMPLATES.xMember.cloneNode(true), member)
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
