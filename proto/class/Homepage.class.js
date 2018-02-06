@@ -73,12 +73,13 @@ class Homepage {
     // ++++ DATA WITH NO PATTERNS ++++ //
     new xjs.HTMLElement(document.querySelector('main > header')).empty().node
       .append(Homepage.COMPONENT.xHero.renderer(Homepage.COMPONENT.xHero.template.cloneNode(true), this._DATA['hero']))
-    ;(function (data) {
-      let foundation = document.querySelector('#asce-foundation')
-      foundation.querySelector('[itemprop="description"]').textContent = data.caption
-      foundation.querySelector('[itemprop="potentialAction"] [itemprop="url"]' ).href        = data.cta.url
-      foundation.querySelector('[itemprop="potentialAction"] [itemprop="name"]').textContent = data.cta.text
-    })(this._DATA['asce-foundation'])
+    document.querySelector('#asce-foundation')
+      .append((function renderer(frag, data) {
+        frag.querySelector('[itemprop="description"]').textContent                       = data.caption
+        frag.querySelector('[itemprop="potentialAction"] [itemprop="url"]' ).href        = data.cta.url
+        frag.querySelector('[itemprop="potentialAction"] [itemprop="name"]').textContent = data.cta.text
+        return frag
+      })(document.querySelector('#asce-foundation > template').content.cloneNode(true), this._DATA['asce-foundation']))
 
     return `<!doctype html>` + document.documentElement.outerHTML
   }
