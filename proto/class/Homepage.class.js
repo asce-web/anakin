@@ -15,6 +15,7 @@ const xHomeActionRender = require('../tpl/x-homeaction.tpl.js')
 const xHeroRender = require('../tpl/x-hero.tpl.js')
 const xPromoRender = require('../tpl/x-promo.tpl.js')
 const xJobRender = require('../tpl/x-job.tpl.js')
+const xArticleRender = require('../tpl/x-article.tpl.js')
 
 /**
  * ASCE Homepage.
@@ -77,22 +78,8 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-  /**
-   * @summary Article Teaser display.
-   * @param   {!Object} article the article data to display
-   * @param   {string} article.title the article title or headline
-   * @param   {string} article.image url to a thumbnail
-   * @param   {string} article.url the url to link to
-   * @param   {string} article.datetime the publish date
-   * @returns {string} HTML output
-   */
   xArticle(article) {
-    let frag = Homepage.NAMED_TEMPLATES.xArticle.cloneNode(true)
-    frag.querySelector('[itemprop~="image"]'       ).src         = article.image
-    frag.querySelector('[itemprop~="url"]'         ).href        = article.url
-    frag.querySelector('[itemprop~="headline"]'    ).textContent = article.title
-    frag.querySelector('[itemprop="datePublished"]').dateTime    = article.datetime
-    frag.querySelector('[itemprop="datePublished"]').textContent = xjs.Date.format(new Date(article.datetime), 'F j, Y')
+    let frag = xArticleRender(Homepage.NAMED_TEMPLATES.xArticle.cloneNode(true), article)
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
