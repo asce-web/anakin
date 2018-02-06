@@ -5,18 +5,9 @@ const jsdom = require('jsdom')
 
 const xjs = {
   Date: require('extrajs').Date,
-  DocumentFragment: require('extrajs-dom').DocumentFragment,
+  ...require('extrajs-dom'),
 }
 
-const xStatRender = require('../tpl/x-stat.tpl.js')
-const xPortalRender = require('../tpl/x-portal.tpl.js')
-const xPubRender = require('../tpl/x-pub.tpl.js')
-const xHomeActionRender = require('../tpl/x-homeaction.tpl.js')
-const xHeroRender = require('../tpl/x-hero.tpl.js')
-const xPromoRender = require('../tpl/x-promo.tpl.js')
-const xJobRender = require('../tpl/x-job.tpl.js')
-const xArticleRender = require('../tpl/x-article.tpl.js')
-const xMemberRender = require('../tpl/x-member.tpl.js')
 
 /**
  * ASCE Homepage.
@@ -35,62 +26,6 @@ class Homepage {
   }
 
 
-  xStat(stat) {
-    let frag = xStatRender(Homepage.NAMED_TEMPLATES.xStat.cloneNode(true), stat)
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  xPortal(port) {
-    let frag = xPortalRender(Homepage.NAMED_TEMPLATES.xPortal.cloneNode(true), {
-      fixed: port,
-      fluid: this._DATA['portals'][port.id],
-    })
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  xPub(pub) {
-    let frag = xPubRender(Homepage.NAMED_TEMPLATES.xPub.cloneNode(true), {
-      fixed: pub,
-      fluid: this._DATA['publication-highlights'][pub.id],
-    })
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  xHomeAction(act) {
-    let frag = xHomeActionRender(Homepage.NAMED_TEMPLATES.xHomeAction.cloneNode(true), {
-      fixed: act,
-      fluid: this._DATA['learn-contribute'][act.id],
-    })
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  xHero(hero) {
-    let frag = xHeroRender(Homepage.NAMED_TEMPLATES.xHero.cloneNode(true), hero)
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  xPromo(promo) {
-    let frag = xPromoRender(Homepage.NAMED_TEMPLATES.xPromo.cloneNode(true), promo)
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  xJob(job) {
-    let frag = xJobRender(Homepage.NAMED_TEMPLATES.xJob.cloneNode(true), job)
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  xArticle(article) {
-    let frag = xArticleRender(Homepage.NAMED_TEMPLATES.xArticle.cloneNode(true), article)
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-  xMember(member) {
-    let frag = xMemberRender(Homepage.NAMED_TEMPLATES.xMember.cloneNode(true), member)
-    return new xjs.DocumentFragment(frag).innerHTML()
-  }
-
-
-
   /**
    * @summary Compile HTML markup from a template file.
    * @description This method takes an entire HTML template file and compiles the static output.
@@ -101,115 +36,43 @@ class Homepage {
     /**
      * @summary Populate a list with a rendering function.
      * @description The list must have a `<template>` element child.
-     * @param   {string} listselector the querySelector of the list to fill
-     * @param   {Array} data any array of data to fill the list with
-     * @param   {function(*):string} renderer a function returning a datum’s HTML output
+     * @private
+     * @param   {!Object} arg the object argument
+     * @param   {string} arg.listselector the querySelector of the list to fill
+     * @param   {Array} arg.datalist any array of data to fill the list with
+     * @param   {!Object} arg.component component builder; see {@link Homepage.COMPONENT} for details
+     * @param   {DocumentFragment} arg.component.template
+     * @param   {function(DocumentFragment,*):DocumentFragment} arg.component.renderer
+     * @param   {(function(*):*)=} arg.itemmap any item transformation if necessary
      */
-    function populateList(listselector, data, renderer) {
+    function populateList({listselector, datalist, component, itemmap}) {
       let container = document.querySelector(listselector)
       let template = container.querySelector('template').content
-      data.forEach(function (item) {
+
+      datalist.forEach(function (item) {
         let frag = template.cloneNode(true)
-        frag.querySelector('li').innerHTML = renderer.call(this, item)
-        /*
-        TODO
-        frag.querySelector('li').append(renderer.call(null, item))
-        where `renderer` returns a DocumentFragment
-         */
+        // empty the list item, then append rendered component
+        new xjs.HTMLLIElement(frag.querySelector('li')).empty().node
+          .append(component.renderer(component.template.cloneNode(true), (itemmap || ((x) => x)).call(null, item)))
         container.append(frag)
-      }, this)
+      })
     }
 
     // ++++ HARD-CODED DATA ++++ //
-    populateList.call(this, '#we-represent           > ul', Homepage.DATA.stats  , this.xStat  )
-    populateList.call(this, '#portals                > ol', Homepage.DATA.portals, this.xPortal)
-    populateList.call(this, '#publication-highlights > ul', Homepage.DATA.pubs, this.xPub)
-    populateList.call(this, '#learn-contribute       > ul', Homepage.DATA.acts, this.xHomeAction)
-    /*
-    ;(function () {
-      let container = document.querySelector('#we-represent > ul')
-      let template = container.querySelector('template').content
-      Homepage.DATA.stats.forEach(function (stat) {
-        let frag = template.cloneNode(true)
-        frag.querySelector('li').innerHTML = this.xStat(stat)
-        container.append(frag)
-      }, this)
-    }).call(this)
-    ;(function () {
-      let container = document.querySelector('#portals > ol')
-      let template = container.querySelector('template').content
-      Homepage.DATA.portals.forEach(function (port) {
-        let frag = template.cloneNode(true)
-        frag.querySelector('li').innerHTML = this.xPortal(port)
-        container.append(frag)
-      }, this)
-    }).call(this)
-    ;(function () {
-      let container = document.querySelector('#publication-highlights > ul')
-      let template = container.querySelector('template').content
-      Homepage.DATA.pubs.forEach(function (pub) {
-        let frag = template.cloneNode(true)
-        frag.querySelector('li').innerHTML = this.xPub(pub)
-        container.append(frag)
-      }, this)
-    }).call(this)
-    ;(function () {
-      let container = document.querySelector('#learn-contribute > ul')
-      let template = container.querySelector('template').content
-      Homepage.DATA.acts.forEach(function (act) {
-        let frag = template.cloneNode(true)
-        frag.querySelector('li').innerHTML = this.xHomeAction(act)
-        container.append(frag)
-      }, this)
-    }).call(this)
-     */
+    populateList({ listselector: '#we-represent           > ul', datalist: Homepage.DATA.stats          , component: Homepage.COMPONENT.xStat       })
+    populateList({ listselector: '#portals                > ol', datalist: Homepage.DATA.portals        , component: Homepage.COMPONENT.xPortal    , itemmap: (item) => ({ fixed: item, fluid: this._DATA['portals'               ][item.id] }) })
+    populateList({ listselector: '#publication-highlights > ul', datalist: Homepage.DATA.pubs           , component: Homepage.COMPONENT.xPub       , itemmap: (item) => ({ fixed: item, fluid: this._DATA['publication-highlights'][item.id] }) })
+    populateList({ listselector: '#learn-contribute       > ul', datalist: Homepage.DATA.acts           , component: Homepage.COMPONENT.xHomeAction, itemmap: (item) => ({ fixed: item, fluid: this._DATA['learn-contribute'      ][item.id] }) })
 
     // ++++ USER-INPUT DATA ++++ //
-    populateList.call(this, '#promotions             > ul', this._DATA['promotions'            ], this.xPromo     )
-    populateList.call(this, '#jobs                   > ul', this._DATA['jobs'                  ], this.xJob       )
-    populateList.call(this, '#whats-happening        > ul', this._DATA['whats-happening'       ], this.xArticle   )
-    populateList.call(this, '#member-stories         > ul', this._DATA['member-stories'        ], this.xMember    )
-    /*
-    ;(function () {
-      let container = document.querySelector('#promotions > ul')
-      let template = container.querySelector('template').content
-      this._DATA['promotions'].forEach(function (promo) {
-        let frag = template.cloneNode(true)
-        frag.querySelector('li').innerHTML = this.xPromo(promo)
-        container.append(frag)
-      }, this)
-    }).call(this)
-    ;(function () {
-      let container = document.querySelector('#jobs > ul')
-      let template = container.querySelector('template').content
-      this._DATA['jobs'].forEach(function (job) {
-        let frag = template.cloneNode(true)
-        frag.querySelector('li').innerHTML = this.xJob(job)
-        container.append(frag)
-      }, this)
-    }).call(this)
-    ;(function () {
-      let container = document.querySelector('#whats-happening > ul')
-      let template = container.querySelector('template').content
-      this._DATA['whats-happening'].forEach(function (article) {
-        let frag = template.cloneNode(true)
-        frag.querySelector('li').innerHTML = this.xArticle(article)
-        container.append(frag)
-      }, this)
-    }).call(this)
-    ;(function () {
-      let container = document.querySelector('#member-stories > ul')
-      let template = container.querySelector('template').content
-      this._DATA['member-stories'].forEach(function (member) {
-        let frag = template.cloneNode(true)
-        frag.querySelector('li').innerHTML = this.xMember(member)
-        container.append(frag)
-      }, this)
-    }).call(this)
-     */
+    populateList({ listselector: '#promotions             > ul', datalist: this._DATA['promotions'     ], component: Homepage.COMPONENT.xPromo      })
+    populateList({ listselector: '#jobs                   > ul', datalist: this._DATA['jobs'           ], component: Homepage.COMPONENT.xJob        })
+    populateList({ listselector: '#whats-happening        > ul', datalist: this._DATA['whats-happening'], component: Homepage.COMPONENT.xArticle    })
+    populateList({ listselector: '#member-stories         > ul', datalist: this._DATA['member-stories' ], component: Homepage.COMPONENT.xMember     })
 
     // ++++ DATA WITH NO PATTERNS ++++ //
-    document.querySelector('main > header').innerHTML = this.xHero(this._DATA['hero']) // TODO use .append() with a DocumentFragment
+    new xjs.HTMLElement(document.querySelector('main > header')).empty().node
+      .append(Homepage.COMPONENT.xHero.renderer(Homepage.COMPONENT.xHero.template.cloneNode(true), this._DATA['hero']))
     ;(function (data) {
       let foundation = document.querySelector('#asce-foundation')
       foundation.querySelector('[itemprop="description"]').textContent = data.caption
@@ -235,69 +98,22 @@ Homepage.NAMED_TEMPLATES = {
    */
   homeDocument: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/home.tpl.html'), 'utf8'))
     .window.document,
+}
 
-  /**
-   * @summary Template for Featured Statistic.
-   * @const {DocumentFragment}
-   */
-  xStat: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-stat.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Portal.
-   * @const {DocumentFragment}
-   */
-  xPortal: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-portal.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Featured Publication.
-   * @const {DocumentFragment}
-   */
-  xPub: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-pub.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Home Action.
-   * @const {DocumentFragment}
-   */
-  xHomeAction: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-homeaction.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Hero section.
-   * @const {DocumentFragment}
-   */
-  xHero: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-hero.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Timely Promo.
-   * @const {DocumentFragment}
-   */
-  xPromo: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-promo.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Job Listing.
-   * @const {DocumentFragment}
-   */
-  xJob: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-job.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Article Teaser.
-   * @const {DocumentFragment}
-   */
-  xArticle: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-article.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
-
-  /**
-   * @summary Template for Member Story.
-   * @const {DocumentFragment}
-   */
-  xMember: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/x-member.tpl.html'), 'utf8'))
-    .window.document.querySelector('template').content,
+/**
+ * @summary A set of component builders. Each has a template and a renderer.
+ * @const {Object<{template:DocumentFragment, renderer:(function(DocumentFragment,*):DocumentFragment)}>}
+ */
+Homepage.COMPONENT = {
+  xStat      : { template: jsdom.JSDOM.fragment(fs.readFileSync(path.join(__dirname, '../tpl/x-stat.tpl.html'      ), 'utf8')).querySelector('template').content,  renderer: require('../tpl/x-stat.tpl.js'      ) },
+  xPortal    : { template: jsdom.JSDOM.fragment(fs.readFileSync(path.join(__dirname, '../tpl/x-portal.tpl.html'    ), 'utf8')).querySelector('template').content,  renderer: require('../tpl/x-portal.tpl.js'    ) },
+  xPub       : { template: jsdom.JSDOM.fragment(fs.readFileSync(path.join(__dirname, '../tpl/x-pub.tpl.html'       ), 'utf8')).querySelector('template').content,  renderer: require('../tpl/x-pub.tpl.js'       ) },
+  xHomeAction: { template: jsdom.JSDOM.fragment(fs.readFileSync(path.join(__dirname, '../tpl/x-homeaction.tpl.html'), 'utf8')).querySelector('template').content,  renderer: require('../tpl/x-homeaction.tpl.js') },
+  xPromo     : { template: jsdom.JSDOM.fragment(fs.readFileSync(path.join(__dirname, '../tpl/x-promo.tpl.html'     ), 'utf8')).querySelector('template').content,  renderer: require('../tpl/x-promo.tpl.js'     ) },
+  xJob       : { template: jsdom.JSDOM.fragment(fs.readFileSync(path.join(__dirname, '../tpl/x-job.tpl.html'       ), 'utf8')).querySelector('template').content,  renderer: require('../tpl/x-job.tpl.js'       ) },
+  xArticle   : { template: jsdom.JSDOM.fragment(fs.readFileSync(path.join(__dirname, '../tpl/x-article.tpl.html'   ), 'utf8')).querySelector('template').content,  renderer: require('../tpl/x-article.tpl.js'   ) },
+  xMember    : { template: jsdom.JSDOM.fragment(fs.readFileSync(path.join(__dirname, '../tpl/x-member.tpl.html'    ), 'utf8')).querySelector('template').content,  renderer: require('../tpl/x-member.tpl.js'    ) },
+  xHero      : { template: jsdom.JSDOM.fragment(fs.readFileSync(path.join(__dirname, '../tpl/x-hero.tpl.html'      ), 'utf8')).querySelector('template').content,  renderer: require('../tpl/x-hero.tpl.js'      ) },
 }
 
 
