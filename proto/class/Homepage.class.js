@@ -45,43 +45,45 @@ class Homepage {
      * @param   {!Object} arg.component component builder; see {@link Homepage.COMPONENT} for details
      * @param   {DocumentFragment} arg.component.template
      * @param   {function(DocumentFragment,*):DocumentFragment} arg.component.renderer
-     * @param   {(function(*):*)=} arg.itemmap any item transformation if necessary
      */
-    function populateList({listselector, datalist, component, itemmap}) {
+    function populateList({listselector, datalist, component}) {
       let container = document.querySelector(listselector)
-      let template = container.querySelector('template').content
-
-      datalist.forEach(function (item) {
-        let frag = template.cloneNode(true)
+      container.append(...datalist.map((datum) => (function (frag, data) {
         // empty the list item, then append rendered component
         new xjs.HTMLLIElement(frag.querySelector('li')).empty().node
-          .append(component.renderer(component.template.cloneNode(true), (itemmap || ((x) => x)).call(null, item)))
-        container.append(frag)
-      })
+          .append(component.renderer(component.template.cloneNode(true), data))
+        return frag
+      })(container.querySelector('template').content.cloneNode(true), datum)))
     }
 
     // ++++ HARD-CODED DATA ++++ //
-    populateList({ listselector: '#we-represent           > ul', datalist: Homepage.DATA.stats          , component: Homepage.COMPONENT.xStat       })
-    populateList({ listselector: '#portals                > ol', datalist: Homepage.DATA.portals        , component: Homepage.COMPONENT.xPortal    , itemmap: (item) => ({ fixed: item, fluid: this._DATA['portals'               ][item.id] }) })
-    populateList({ listselector: '#publication-highlights > ul', datalist: Homepage.DATA.pubs           , component: Homepage.COMPONENT.xPub       , itemmap: (item) => ({ fixed: item, fluid: this._DATA['publication-highlights'][item.id] }) })
-    populateList({ listselector: '#learn-contribute       > ul', datalist: Homepage.DATA.acts           , component: Homepage.COMPONENT.xHomeAction, itemmap: (item) => ({ fixed: item, fluid: this._DATA['learn-contribute'      ][item.id] }) })
+    populateList({ listselector: '#we-represent           > ul', datalist: Homepage.DATA.stats                                                                                , component: Homepage.COMPONENT.xStat       })
+    populateList({ listselector: '#portals                > ol', datalist: Homepage.DATA.portals.map((d) => ({ fixed: d, fluid: this._DATA['portals'               ][d.id] })), component: Homepage.COMPONENT.xPortal     })
+    populateList({ listselector: '#publication-highlights > ul', datalist: Homepage.DATA.pubs   .map((d) => ({ fixed: d, fluid: this._DATA['publication-highlights'][d.id] })), component: Homepage.COMPONENT.xPub        })
+    populateList({ listselector: '#learn-contribute       > ul', datalist: Homepage.DATA.acts   .map((d) => ({ fixed: d, fluid: this._DATA['learn-contribute'      ][d.id] })), component: Homepage.COMPONENT.xHomeAction })
 
     // ++++ USER-INPUT DATA ++++ //
-    populateList({ listselector: '#promotions             > ul', datalist: this._DATA['promotions'     ], component: Homepage.COMPONENT.xPromo      })
-    populateList({ listselector: '#jobs                   > ul', datalist: this._DATA['jobs'           ], component: Homepage.COMPONENT.xJob        })
-    populateList({ listselector: '#whats-happening        > ul', datalist: this._DATA['whats-happening'], component: Homepage.COMPONENT.xArticle    })
-    populateList({ listselector: '#member-stories         > ul', datalist: this._DATA['member-stories' ], component: Homepage.COMPONENT.xMember     })
+    populateList({ listselector: '#promotions             > ul', datalist: this._DATA['promotions'     ]                                                                      , component: Homepage.COMPONENT.xPromo      })
+    populateList({ listselector: '#jobs                   > ul', datalist: this._DATA['jobs'           ]                                                                      , component: Homepage.COMPONENT.xJob        })
+    populateList({ listselector: '#whats-happening        > ul', datalist: this._DATA['whats-happening']                                                                      , component: Homepage.COMPONENT.xArticle    })
+    populateList({ listselector: '#member-stories         > ul', datalist: this._DATA['member-stories' ]                                                                      , component: Homepage.COMPONENT.xMember     })
 
     // ++++ DATA WITH NO PATTERNS ++++ //
-    new xjs.HTMLElement(document.querySelector('main > header')).empty().node
-      .append(Homepage.COMPONENT.xHero.renderer(Homepage.COMPONENT.xHero.template.cloneNode(true), this._DATA['hero']))
-    document.querySelector('#asce-foundation')
-      .append((function renderer(frag, data) {
+    ;(function () {
+      let container = document.querySelector('main > header')
+      new xjs.HTMLElement(container).empty()
+      container.append(Homepage.COMPONENT.xHero.renderer(Homepage.COMPONENT.xHero.template.cloneNode(true), this._DATA['hero']))
+    }).call(this)
+
+    ;(function () {
+      let container = document.querySelector('#asce-foundation')
+      container.append((function renderer(frag, data) {
         frag.querySelector('[itemprop="description"]').textContent                       = data.caption
         frag.querySelector('[itemprop="potentialAction"] [itemprop="url"]' ).href        = data.cta.url
         frag.querySelector('[itemprop="potentialAction"] [itemprop="name"]').textContent = data.cta.text
         return frag
-      })(document.querySelector('#asce-foundation > template').content.cloneNode(true), this._DATA['asce-foundation']))
+      })(container.querySelector('template').content.cloneNode(true), this._DATA['asce-foundation']))
+    }).call(this)
 
     return dom.serialize()
   }
@@ -92,7 +94,7 @@ class Homepage {
 
 /**
  * @summary A set of component builders. Each has a template and a renderer.
- * @const {Object<{template:DocumentFragment, renderer:(function(DocumentFragment,*):DocumentFragment)}>}
+ * @const {!Object<{template:DocumentFragment, renderer:(function(DocumentFragment,*):DocumentFragment)}>}
  */
 Homepage.COMPONENT = {
   xStat      : { template: jsdom.JSDOM.fragment(fs.readFileSync(path.join(__dirname, '../tpl/x-stat.tpl.html'      ), 'utf8')).querySelector('template').content,  renderer: require('../tpl/x-stat.tpl.js'      ) },
