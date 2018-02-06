@@ -14,6 +14,7 @@ const xPubRender = require('../tpl/x-pub.tpl.js')
 const xHomeActionRender = require('../tpl/x-homeaction.tpl.js')
 const xHeroRender = require('../tpl/x-hero.tpl.js')
 const xPromoRender = require('../tpl/x-promo.tpl.js')
+const xJobRender = require('../tpl/x-job.tpl.js')
 
 /**
  * ASCE Homepage.
@@ -71,21 +72,8 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-  /**
-   * @summary Job Listing display.
-   * @param   {!Object} job the job data to display
-   * @param   {string} job.title the job title
-   * @param   {string} job.organization the hiring organization
-   * @param   {string} job.location the location of the job (as text)
-   * @param   {string} job.url the url to link to
-   * @returns {string} HTML output
-   */
   xJob(job) {
-    let frag = Homepage.NAMED_TEMPLATES.xJob.cloneNode(true)
-    frag.querySelector('[itemprop="url"]').href        = job.url
-    frag.querySelector('[itemprop="url"]').textContent = job.title
-    frag.querySelector('[itemprop="hiringOrganization"] > [itemprop="name"]').textContent = job.organization
-    frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = job.location
+    let frag = xJobRender(Homepage.NAMED_TEMPLATES.xJob.cloneNode(true), job)
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
