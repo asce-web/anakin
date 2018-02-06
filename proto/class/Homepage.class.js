@@ -32,7 +32,9 @@ class Homepage {
    * @returns {string} compiled HTML output
    */
   compile() {
-    const document = Homepage.NAMED_TEMPLATES.homeDocument
+    const dom = new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/home.tpl.html'), 'utf8'))
+    const document = dom.window.document
+
     /**
      * @summary Populate a list with a rendering function.
      * @description The list must have a `<template>` element child.
@@ -81,7 +83,7 @@ class Homepage {
         return frag
       })(document.querySelector('#asce-foundation > template').content.cloneNode(true), this._DATA['asce-foundation']))
 
-    return `<!doctype html>` + document.documentElement.outerHTML
+    return dom.serialize()
   }
 }
 
@@ -93,12 +95,6 @@ class Homepage {
  * @const {Object<DocumentFragment>}
  */
 Homepage.NAMED_TEMPLATES = {
-  /**
-   * @summary Main Template for whole page.
-   * @const {Document}
-   */
-  homeDocument: new jsdom.JSDOM(fs.readFileSync(path.join(__dirname, '../tpl/home.tpl.html'), 'utf8'))
-    .window.document,
 }
 
 /**
