@@ -11,6 +11,7 @@ const xjs = {
 const xStatRender = require('../tpl/x-stat.tpl.js')
 const xPortalRender = require('../tpl/x-portal.tpl.js')
 const xPubRender = require('../tpl/x-pub.tpl.js')
+const xHomeActionRender = require('../tpl/x-homeaction.tpl.js')
 
 /**
  * ASCE Homepage.
@@ -50,34 +51,10 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-  /**
-   * @summary Home Action display.
-   * @param   {!Object} act the action data to display
-   * @param   {string} act.id the ID
-   * @param   {string} act.name the heading
-   * @returns {string} HTML output
-   */
   xHomeAction(act) {
-    /**
-     * @summary Dynamic data in the database corresponding to this act.
-     * @private
-     * @type {!Object}
-     * @property {string} caption the caption
-     * @property {string} image url to image
-     * @property {Array<{text:string, url:string}>} links list of links
-     */
-    const act_data = this._DATA['learn-contribute'][act.id]
-
-    let frag = Homepage.NAMED_TEMPLATES.xHomeAction.cloneNode(true)
-    frag.querySelector('.c-HomeAction').id = act.id
-    frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', `url('${act_data.image}')`)
-    frag.querySelector('.c-HomeAction__Hn'  ).textContent = act.name
-    frag.querySelector('.c-HomeAction__Cap' ).textContent = act_data.caption
-    act_data.links.forEach(function (link) {
-      let innerfrag = frag.querySelector('template').content.cloneNode(true)
-      innerfrag.querySelector('[itemprop="url"]' ).href        = link.url
-      innerfrag.querySelector('[itemprop="name"]').textContent = link.text
-      frag.querySelector('template').parentNode.append(innerfrag)
+    let frag = xHomeActionRender(Homepage.NAMED_TEMPLATES.xHomeAction.cloneNode(true), {
+      fixed: act,
+      fluid: this._DATA['learn-contribute'][act.id],
     })
     return new xjs.DocumentFragment(frag).innerHTML()
   }
