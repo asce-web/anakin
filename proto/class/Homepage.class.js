@@ -10,6 +10,7 @@ const xjs = {
 
 const xStatRender = require('../tpl/x-stat.tpl.js')
 const xPortalRender = require('../tpl/x-portal.tpl.js')
+const xPubRender = require('../tpl/x-pub.tpl.js')
 
 /**
  * ASCE Homepage.
@@ -41,36 +42,10 @@ class Homepage {
     return new xjs.DocumentFragment(frag).innerHTML()
   }
 
-  /**
-   * @summary Featured Publication display.
-   * @param   {!Object} pub the publication data to display
-   * @param   {string} pub.id the ID
-   * @param   {string} pub.name the heading
-   * @returns {string} HTML output
-   */
   xPub(pub) {
-    /**
-     * @summary Dynamic data in the database corresponding to this pub.
-     * @private
-     * @type {!Object}
-     * @property {string} caption the caption
-     * @property {string} image url to image
-     * @property {Array<{text:string, url:string}>} links list of links
-     * @property {string} body rich body text
-     */
-    const pub_data = this._DATA['publication-highlights'][pub.id]
-
-    let frag = Homepage.NAMED_TEMPLATES.xPub.cloneNode(true)
-    frag.querySelector('.c-Pub').id = pub.id
-    frag.querySelector('[itemprop~="image"]'     ).src         = pub_data.image
-    frag.querySelector('[itemprop="name"]'       ).textContent = pub.name
-    frag.querySelector('[itemprop="description"]').textContent = pub_data.caption
-    frag.querySelector('article'                 ).innerHTML   = pub_data.body
-    pub_data.links.forEach(function (link) {
-      let innerfrag = frag.querySelector('template').content.cloneNode(true)
-      innerfrag.querySelector('[itemprop="url"]' ).href        = link.url
-      innerfrag.querySelector('[itemprop="name"]').textContent = link.text
-      frag.querySelector('template').parentNode.append(innerfrag)
+    let frag = xPubRender(Homepage.NAMED_TEMPLATES.xPub.cloneNode(true), {
+      fixed: pub,
+      fluid: this._DATA['publication-highlights'][pub.id],
     })
     return new xjs.DocumentFragment(frag).innerHTML()
   }
