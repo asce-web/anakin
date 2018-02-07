@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-halflings/web/html_css/css/glyphicons-halflings.css"/>
   <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
 
-  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.2.0/css/xmeter.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v6.3.0-alpha/css/xmeter.css"/>
   <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
 
   <link rel="stylesheet" href="./css/home.css"/>
@@ -38,11 +38,16 @@
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <ul class="o-List">
+      <div class="o-Tablist o-Tablist--slider dev" role="tablist">
+        <!-- <button class="o-Slider__Button" type="button" value="prev">prev</button> -->
         <template>
-          <li class="o-List__Item">{{ ./tpl/x-promo.tpl.html }}</li>
+          <details class="o-Tablist__Panel dev" id="promotions-panel{{ i }}" role="tabpanel" open="">
+            <summary class="o-Tablist__Tab dev" role="tab" aria-label="{{ title }}">&#x25cf;</summary>
+            {{ ./tpl/x-promo.tpl.html }}
+          </details>
         </template>
-      </ul>
+        <!-- <button class="o-Slider__Button" type="button" value="next">next</button> -->
+      </div>
     </section>
     <section class="o-Runner o-Constrain" id="portals">
       <h1 class="h-Hidden">Portals</h1>
@@ -119,6 +124,8 @@
     <p>ASCE Footer</p>
   </footer>
   <a class="h-Hidden" href="#top">jump to top</a>
-  <!-- <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script> -->
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+  <script src="../node_modules/xmeter/js/o-Tablist.js"></script>
+  <script src="./js/o-Slider.js"></script>
 </body>
 </html>
