@@ -14,7 +14,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "harp": "^0.24.1",
     "jsdom": "^11.6.1",
-    "xmeter": "^6.2.0"
+    "xmeter": "^6.3.0-alpha"
   },
   "directories": {
     "doc": "docs/api"
