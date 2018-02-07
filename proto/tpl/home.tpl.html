@@ -38,11 +38,16 @@
     </section>
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
-      <ul class="o-List">
+      <div class="o-Tablist o-Tablist--slider dev" role="tablist">
+        <!-- <button class="o-Slider__Button" type="button" value="prev">prev</button> -->
         <template>
-          <li class="o-List__Item">{{ ./tpl/x-promo.tpl.html }}</li>
+          <details class="o-Tablist__Panel dev" id="promotions-panel{{ i }}" role="tabpanel" open="">
+            <summary class="o-Tablist__Tab dev" role="tab" aria-label="{{ title }}">&#x25cf;</summary>
+            {{ ./tpl/x-promo.tpl.html }}
+          </details>
         </template>
-      </ul>
+        <!-- <button class="o-Slider__Button" type="button" value="next">next</button> -->
+      </div>
     </section>
     <section class="o-Runner o-Constrain" id="portals">
       <h1 class="h-Hidden">Portals</h1>
