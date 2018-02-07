@@ -96,6 +96,16 @@
 
 @import (inline) url('http://conferencesuite.asce.org/themes/custom/legacy/css/dist/_c-Button.css');
 
+// full-bleed background image used in the Hero and Promo sections.
+.mx-fullimage() {
+  height: 100vmin;
+  @media screen and (min-width: 30em) {
+    height: 75vmin;
+  }
+  background-size: cover;
+  background-position: center;
+}
+
 .c-SectionHed {
   .font-size-el(@g-font-size-kilo);
   font-weight: 300;
