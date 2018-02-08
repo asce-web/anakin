@@ -25,8 +25,10 @@
 .o-Grid--members {
   .mx-clearfix();
   & > li.o-Grid__Item {
+    @media (min-width: 30em) {
     float: left;
     width: 33.333333%;
+    }
   }
 }
 
@@ -36,8 +38,10 @@
 .o-Grid--whatsHappening {
   .mx-clearfix();
   & > li.o-Grid__Item {
+    @media (min-width: 45em) {
     float: left;
     width: 50%;
+    }
   }
 }
 
@@ -48,12 +52,11 @@
 .o-Grid--portals {
   .mx-clearfix();
   & > li.o-Grid__Item {
-    @media screen and (min-width: 30rem) {
+    @media (min-width: 30em) {
       float: left;
       width: 50%;
     }
-    @media screen and (min-width: 45rem) {
-      float: left;
+    @media (min-width: 45em) {
       width: 33.333333%;
     }
   }
@@ -62,15 +65,31 @@
 .c-BigAssIcon {
   margin: auto;
 }
-.c-Pub,
-.c-ArticleTeaser,
-.c-MemberStory {
+.c-ArticleTeaser {
+  .mx-clearfix();
+}
+.c-Pub__Body,
+.c-MemberStory__Quote {
   clear: both;
 }
 .c-Pub__Img,
 .c-ArticleTeaser__Img,
 .c-MemberStory__Img {
   float: left;
+}
+.c-Pub__Img {
+  @media (min-width: 30em) {
+    max-width: 33.333%;
+  }
+  @media (min-width: 45em) {
+    max-width: 50%;
+  }
+}
+.c-ArticleTeaser__Img {
+  max-width: 33.333%;
+}
+.c-MemberStory__Img {
+  max-width: 50%;
 }
 
 

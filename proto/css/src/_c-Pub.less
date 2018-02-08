@@ -10,13 +10,16 @@
   }
   grid-column-gap: calc(var(--layout-padding-inline) ~'/' 2);
   @media screen and (min-width: 30em) {
+    grid-template: repeat(4, auto) ~'/' 1fr 2fr;
+  }
+  @media screen and (min-width: 45em) {
     grid-template: repeat(4, auto) ~'/' repeat(2, 1fr);
   }
 }
 .c-Pub__Img {
-  margin-bottom: var(--lh);
   @media screen and (min-width: 30em) {
     grid-row: 1 ~'/' -2;
+    margin-bottom: var(--lh);
   }
 }
 .c-Pub__Hn {
