@@ -19,6 +19,7 @@
  * # OBJECTS--------------------------------REUSABLE STRUCTURAL PATTERNS
  * Runner...................................padding around sections
  * Grid--...................................extensions of Grid Object
+ * Tablist--slider..........................slider "carousel" extends o-Tablist
  *
  * # COMPONENTS-----------------------------SPECIFIC STYLE PATTERNS
  * SectionHed...............................typographical section heading styles
@@ -73,6 +74,7 @@
 }
 
 @import url('_o-Grid--.less');
+@import url('_o-Tablist--slider.less');
 //++++ end # OBJECTS ++++//
 
 
@@ -94,6 +96,16 @@
 
 @import (inline) url('http://conferencesuite.asce.org/themes/custom/legacy/css/dist/_c-Button.css');
 
+// full-bleed background image used in the Hero and Promo sections.
+.mx-fullimage() {
+  height: 100vmin;
+  @media screen and (min-width: 30em) {
+    height: 75vmin;
+  }
+  background-size: cover;
+  background-position: center;
+}
+
 .c-SectionHed {
   .font-size-el(@g-font-size-kilo);
   font-weight: 300;
@@ -108,6 +120,10 @@
 }
 
 .c-BigAssIcon {
+  display: block;
+  line-height: inherit; // HACK fallback
+  line-height: unset;
+  background-color: black; // HACK fallback for custom prop
   background-color: var(--color-accent, black);
   // background-image: linear-gradient(0.375turn, rgba(255,255,255,0.33), transparent); // fallback for `#rrggbbaa` syntax
   // background-image: linear-gradient(0.375turn, ~'#ffffff55', transparent); // NOTE: need to interpolate due to Less not supporting `#rrggbbaa` syntax

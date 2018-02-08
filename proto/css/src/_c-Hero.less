@@ -6,10 +6,8 @@
 
 
 .c-Hero {
-  height: 50vh;
+  .mx-fullimage();
   position: relative; // for the bar
-  background-size: cover;
-  background-position: center;
   color: white;
 }
 .c-Hero__Bar {
@@ -20,14 +18,20 @@
   padding: calc(var(--lh) ~'/' 2) 1rem; // REVIEW padding variables
 }
 .c-Hero__Content {
-  margin-bottom: 0; // HACK fallback
-  margin-block-end: unset; // unset base `p`
-  grid-template-columns: 1fr auto;
-  grid-column-gap: 2rem;
+  flex-wrap: wrap;
   colulmn-gap: 2rem;
   align-items: center;
 }
+.c-Hero__Cap,
+.c-Hero__Cta {
+  margin-bottom: 0; // HACK fallback
+  margin-block-end: unset; // unset base `p`
+}
 .c-Hero__Cap {
+  flex: 999999; min-width: 66.666666%; // HACK: https://stackoverflow.com/questions/48676986
+  padding-right: 2rem; // HACK fallback for column-gap
 }
 .c-Hero__Cta {
+  flex: 1 0 auto;
+  text-align: center;
 }

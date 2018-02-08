@@ -5,16 +5,18 @@
 
 
 .c-ArticleTeaser {
+  @supports (display: grid) {
   display: grid;
-  grid-template: max-content auto ~'/' 25% 75%; // "max-content" minimizes the 1st row-size
-  grid-column-gap: calc(0.5 ~'*' var(--layout-padding-inline));
-  @media not all and (min-width: 30em) {
-    grid-template-columns: 33.33333% 66.66666%;
   }
+  grid-template: max-content auto ~'/' 1fr 2fr; // "max-content" minimizes the 1st row-size
+  grid-column-gap: calc(0.5 ~'*' var(--layout-padding-inline));
   li:first-of-type > & {
-    grid-template-columns: 37.5% 62.5%;
     @media not all and (min-width: 30em) {
       grid-template: unset;
+    }
+    @media screen and (min-width: 30em) {
+      @phi: ((sqrt(5) + 1) / 2); // 1.618034
+      grid-template-columns: 1fr (@phi * 1fr);
     }
   }
 }

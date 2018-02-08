@@ -1,0 +1,62 @@
+
+/*################################*\
+    anakin  |  _o-Tablist--slider.less
+\*################################*/
+
+
+// Extend the `.o-Tablist`, `.o-Tablist__Tab`, and `.o-Tablist__Panel` styles.
+//
+// NOTE: I have increased the specificity of the following selectors to override xmeter’s
+// `.dev` selector specificity. This will be fixed once Xmeter v7.0 is released, at which point
+// the following selectors can return to normal again.
+
+.dev.o-Tablist--slider {
+  position: relative; // for the contained buttons
+  justify-content: center;
+  margin-bottom: var(--lh);
+  .o-Tablist__Tab {
+    flex: none;
+    order: 1;
+    padding: 0 2ch;
+    text-align: center;
+    &[aria-selected="true"] {
+      font-weight: normal; // unset [role="tab"]
+    }
+    &[aria-selected="false"] {
+      opacity: 0.5;
+    }
+  }
+  .o-Tablist__Panel {
+  }
+  .o-Tablist--slider__Button {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    margin: 0 4ch;
+    font-size: 2em;
+    background: none;
+    border: 0;
+    color: white;
+    &[value="prev"] {
+      left: 0;
+    }
+    &[value="next"] {
+      right: 0;
+    }
+  }
+}
+
+
+// Move indicators (tabs) into the timely promo visual region.
+// (Un)comment to toggle.
+.dev.o-Tablist--slider {
+  .o-Tablist__Tab {
+    position: relative;
+    top: calc(-2 ~'*' var(--lh));
+    z-index: 1;
+    color: white;
+  }
+}
+.c-Promo__Bar {
+  padding-bottom: calc(var(--lh) ~'*' 2) !important; // overwrite .c-Promo__Bar default style, which comes later in source
+}

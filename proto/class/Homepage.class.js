@@ -55,22 +55,35 @@ class Homepage {
     }
 
     // ++++ HARD-CODED DATA ++++ //
-    populateList({ container: document.querySelector('#we-represent           > ul'), datalist: Homepage.DATA.stats                                                                                , component: Homepage.COMPONENT.xStat       })
-    populateList({ container: document.querySelector('#portals                > ol'), datalist: Homepage.DATA.portals.map((d) => ({ fixed: d, fluid: this._DATA['portals'               ][d.id] })), component: Homepage.COMPONENT.xPortal     })
-    populateList({ container: document.querySelector('#publication-highlights > ul'), datalist: Homepage.DATA.pubs   .map((d) => ({ fixed: d, fluid: this._DATA['publication-highlights'][d.id] })), component: Homepage.COMPONENT.xPub        })
-    populateList({ container: document.querySelector('#learn-contribute       > ul'), datalist: Homepage.DATA.acts   .map((d) => ({ fixed: d, fluid: this._DATA['learn-contribute'      ][d.id] })), component: Homepage.COMPONENT.xHomeAction })
+    populateList({ container: document.querySelector('#we-represent           .o-List'), datalist: Homepage.DATA.stats                                                                                , component: Homepage.COMPONENT.xStat       })
+    populateList({ container: document.querySelector('#portals                .o-List'), datalist: Homepage.DATA.portals.map((d) => ({ fixed: d, fluid: this._DATA['portals'               ][d.id] })), component: Homepage.COMPONENT.xPortal     })
+    populateList({ container: document.querySelector('#publication-highlights .o-List'), datalist: Homepage.DATA.pubs   .map((d) => ({ fixed: d, fluid: this._DATA['publication-highlights'][d.id] })), component: Homepage.COMPONENT.xPub        })
+    populateList({ container: document.querySelector('#learn-contribute       .o-List'), datalist: Homepage.DATA.acts   .map((d) => ({ fixed: d, fluid: this._DATA['learn-contribute'      ][d.id] })), component: Homepage.COMPONENT.xHomeAction })
 
     // ++++ USER-INPUT DATA ++++ //
-    populateList({ container: document.querySelector('#promotions             > ul'), datalist: this._DATA['promotions'     ]                                                                      , component: Homepage.COMPONENT.xPromo      })
-    populateList({ container: document.querySelector('#jobs                   > ul'), datalist: this._DATA['jobs'           ]                                                                      , component: Homepage.COMPONENT.xJob        })
-    populateList({ container: document.querySelector('#whats-happening        > ul'), datalist: this._DATA['whats-happening']                                                                      , component: Homepage.COMPONENT.xArticle    })
-    populateList({ container: document.querySelector('#member-stories         > ul'), datalist: this._DATA['member-stories' ]                                                                      , component: Homepage.COMPONENT.xMember     })
+    populateList({ container: document.querySelector('#jobs                   .o-List'), datalist: this._DATA['jobs'           ]                                                                      , component: Homepage.COMPONENT.xJob        })
+    populateList({ container: document.querySelector('#whats-happening        .o-List'), datalist: this._DATA['whats-happening']                                                                      , component: Homepage.COMPONENT.xArticle    })
+    populateList({ container: document.querySelector('#member-stories         .o-List'), datalist: this._DATA['member-stories' ]                                                                      , component: Homepage.COMPONENT.xMember     })
 
     // ++++ DATA WITH NO PATTERNS ++++ //
     ;(function () {
       let container = document.querySelector('main > header')
       new xjs.HTMLElement(container).empty()
       container.append(Homepage.COMPONENT.xHero.render(this._DATA['hero']))
+    }).call(this)
+
+    ;(function () {
+      let container = document.querySelector('#promotions [role="tablist"]')
+      let temp = jsdom.JSDOM.fragment('')
+      temp.append(...this._DATA['promotions'].map((datum, i) =>
+        new Component(container.querySelector('template').content, function (frag, data) {
+          frag.querySelector('[role="tab"]').setAttribute('aria-label', data.title)
+          frag.querySelector('[role="tab"]').nextSibling.remove()
+          frag.querySelector('[role="tabpanel"]').id = `promotions-panel${i}`
+          frag.querySelector('[role="tabpanel"]').append(Homepage.COMPONENT.xPromo.render(data))
+        }).render(datum)
+      ))
+      container.insertBefore(temp, container.querySelector('button[value="next"]'))
     }).call(this)
 
     ;(function () {
