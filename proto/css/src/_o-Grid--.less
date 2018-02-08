@@ -8,6 +8,15 @@
 // See `/node_modules/xmeter/css/src/_o-Grid.less`.
 
 
+// HACK OVERRIDE `.o-Grid`!
+// This overrides the default `.o-Grid {display: block;}` style, but re-applies it inside a feature query (`@supports`). The only reason for any of this is because IE can go to hell to be completely honest with you.
+.o-Grid {
+  display: block;
+  @supports (display: grid) {
+    display: grid;
+  }
+}
+
 .o-Grid--jobs,
 .o-Grid--publications,
 .o-Grid--homeActions,
