@@ -1,10 +1,10 @@
 <template>
   <div class="c-Hero" id="hero" style="background-image: url('{{ image }}');">
     <div class="c-Hero__Bar">
-      <p class="o-Constrain o-Grid c-Hero__Content">
-        <slot class="o-Grid__Item c-Hero__Cap h-Block" name="hero-caption">{{ caption }}</slot>
-        <a    class="o-Grid__Item c-Hero__Cta h-Block c-Button" href="{{ cta_url }}">{{ cta_text }}</a>
-      </p>
+      <div class="o-Constrain o-Flex c-Hero__Content">
+        <p class="o-Flex__Item c-Hero__Cap"><slot name="hero-caption">{{ caption }}</slot></p>
+        <p class="o-Flex__Item c-Hero__Cta"><a class="c-Button" href="{{ cta_url }}">{{ cta_text }}</a></p>
+      </div>
     </div>
   </div>
 </template>

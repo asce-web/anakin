@@ -12,8 +12,8 @@ function xPromo(frag, data) {
   frag.querySelector('.c-Promo').style.setProperty('background-image', `url('${data.image}')`)
   frag.querySelector('.c-Promo__Hn' ).textContent = data.title
   frag.querySelector('.c-Promo__Cap').textContent = data.caption
-  frag.querySelector('.c-Promo__Cta').href        = data.cta.url
-  frag.querySelector('.c-Promo__Cta').textContent = data.cta.text
+  frag.querySelector('a'            ).href        = data.cta.url
+  frag.querySelector('a'            ).textContent = data.cta.text
   return frag
 }
 
