@@ -5,15 +5,15 @@
   "description": "ASCE.org Core Styles",
   "main": "styles/anakin.css",
   "devDependencies": {
-    "extrajs": "^0.10.1",
+    "extrajs": "^0.11.0-beta",
     "extrajs-dom": "^4.0.0-alpha",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "^3.9.2",
     "gulp-less": "^3.4.0",
     "gulp-sourcemaps": "^2.6.4",
-    "harp": "^0.24.1",
-    "jsdom": "^11.6.1",
+    "harp": "^0.25.0",
+    "jsdom": "^11.6.2",
     "xmeter": "^6.3.0-alpha"
   },
   "directories": {
