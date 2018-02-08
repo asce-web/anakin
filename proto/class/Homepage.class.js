@@ -74,7 +74,8 @@ class Homepage {
 
     ;(function () {
       let container = document.querySelector('#promotions [role="tablist"]')
-      container.append(...this._DATA['promotions'].map((datum, i) =>
+      let temp = jsdom.JSDOM.fragment('')
+      temp.append(...this._DATA['promotions'].map((datum, i) =>
         new Component(container.querySelector('template').content, function (frag, data) {
           frag.querySelector('[role="tab"]').setAttribute('aria-label', data.title)
           frag.querySelector('[role="tab"]').nextSibling.remove()
@@ -82,6 +83,7 @@ class Homepage {
           frag.querySelector('[role="tabpanel"]').append(Homepage.COMPONENT.xPromo.render(data))
         }).render(datum)
       ))
+      container.insertBefore(temp, container.querySelector('button[value="next"]'))
     }).call(this)
 
     ;(function () {

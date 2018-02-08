@@ -39,14 +39,22 @@
     <section id="promotions">
       <h1 class="h-Hidden">Promotions</h1>
       <div class="o-Tablist o-Tablist--slider dev" role="tablist">
-        <!-- <button class="o-Slider__Button" type="button" value="prev">prev</button> -->
+        <button class="o-Tablist--slider__Button" type="button" value="prev" tabindex="-1">
+          <i class="glyphicons glyphicons-circle-arrow-left">
+            <span class="h-Hidden">previous panel</span>
+          </i>
+        </button>
         <template>
           <details class="o-Tablist__Panel dev" id="promotions-panel{{ i }}" role="tabpanel" open="">
             <summary class="o-Tablist__Tab dev" role="tab" aria-label="{{ title }}">&#x25cf;</summary>
             {{ ./tpl/x-promo.tpl.html }}
           </details>
         </template>
-        <!-- <button class="o-Slider__Button" type="button" value="next">next</button> -->
+        <button class="o-Tablist--slider__Button" type="button" value="next" tabindex="-1">
+          <i class="glyphicons glyphicons-circle-arrow-right">
+            <span class="h-Hidden">next panel</span>
+          </i>
+        </button>
       </div>
     </section>
     <section class="o-Runner o-Constrain" id="portals">
