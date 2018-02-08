@@ -6,7 +6,9 @@
 
 
 .c-MemberStory {
+  @supports (display: grid) {
   display: grid;
+  }
   grid-template: max-content auto auto ~'/' repeat(2, 1fr); // "max-content" minimizes the 1st row-size
 }
 .c-MemberStory__Img {

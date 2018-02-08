@@ -13,51 +13,64 @@
 
 
 
+.mx-clearfix() {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
 .o-Grid--represent,
 .o-Grid--members {
-  & > li.o-Grid__Item:nth-of-type(1) { -ms-grid-column: 1; }
-  & > li.o-Grid__Item:nth-of-type(2) { -ms-grid-column: 2; }
-  & > li.o-Grid__Item:nth-of-type(3) { -ms-grid-column: 3; }
+  .mx-clearfix();
+  & > li.o-Grid__Item {
+    float: left;
+    width: 33.333333%;
+  }
 }
 
 .o-Grid--publications,
 .o-Grid--homeActions,
 .o-Grid--jobs,
 .o-Grid--whatsHappening {
-  & > li.o-Grid__Item:nth-of-type(2n+1) { -ms-grid-column: 1; }
-  & > li.o-Grid__Item:nth-of-type(2n+2) { -ms-grid-column: 2; }
-
-  & > li.o-Grid__Item:nth-of-type(n+3) { -ms-grid-row: 2; }
+  .mx-clearfix();
+  & > li.o-Grid__Item {
+    float: left;
+    width: 50%;
+  }
 }
 
 .o-Grid--foundation {
-  display: block;
   text-align: center;
-  & > i { margin: auto; }
 }
 
 .o-Grid--portals {
-  @media (min-width: 30em) {
-    & > li.o-Grid__Item:nth-of-type(2n+1) { -ms-grid-column: 1; } // 1, 3, 5, ...
-    & > li.o-Grid__Item:nth-of-type(2n+2) { -ms-grid-column: 2; } // 2, 4, 6, ...
-
-    & > li.o-Grid__Item:nth-of-type(n+1) { -ms-grid-row: 1; } // 1, 2, ...
-    & > li.o-Grid__Item:nth-of-type(n+3) { -ms-grid-row: 2; } // 3, 4, ...
-    & > li.o-Grid__Item:nth-of-type(n+5) { -ms-grid-row: 3; } // 5, 6, ...
-  }
-  @media (min-width: 45em) {
-    & > li.o-Grid__Item:nth-of-type(3n+1) { -ms-grid-column: 1; } // 1, 4, ...
-    & > li.o-Grid__Item:nth-of-type(3n+2) { -ms-grid-column: 2; } // 2, 5, ...
-    & > li.o-Grid__Item:nth-of-type(3n+3) { -ms-grid-column: 3; } // 3, 6, ...
-
-    & > li.o-Grid__Item:nth-of-type(n+1) { -ms-grid-row: 1; } // 1, 2, 3, ...
-    & > li.o-Grid__Item:nth-of-type(n+4) { -ms-grid-row: 2; } // 4, 5, 6, ...
+  .mx-clearfix();
+  & > li.o-Grid__Item {
+    @media screen and (min-width: 30rem) {
+      float: left;
+      width: 50%;
+    }
+    @media screen and (min-width: 45rem) {
+      float: left;
+      width: 33.333333%;
+    }
   }
 }
 
-.c-Stat {
-  p { -ms-grid-row: 2; }
-  p[itemprop="potentialAction"] { -ms-grid-row: 3; }
+.c-BigAssIcon {
+  margin: auto;
+}
+.c-Pub,
+.c-ArticleTeaser,
+.c-MemberStory {
+  clear: both;
+}
+.c-Pub__Img,
+.c-ArticleTeaser__Img,
+.c-MemberStory__Img {
+  float: left;
 }
 
 

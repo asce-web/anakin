@@ -5,7 +5,9 @@
 
 
 .c-Pub {
+  @supports (display: grid) {
   display: grid;
+  }
   grid-column-gap: calc(var(--layout-padding-inline) ~'/' 2);
   @media screen and (min-width: 30em) {
     grid-template: repeat(4, auto) ~'/' repeat(2, 1fr);
