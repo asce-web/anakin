@@ -22,6 +22,7 @@
  * Tablist--slider..........................slider "carousel" extends o-Tablist
  *
  * # COMPONENTS-----------------------------SPECIFIC STYLE PATTERNS
+ * Button--ghost............................ghost button, extends Button ; TODO merge with Legacy/Neo
  * SectionHed...............................typographical section heading styles
  * Tagline..................................typographical tagline styles
  * BigAssIcon...............................icon styles
@@ -132,6 +133,16 @@
   width: 4rem; height: 4rem;
   font-size: 2rem;
   text-align: center;
+}
+
+.c-Button--ghost {
+  background: transparent;
+  box-shadow: 0 0 0 0.125rem white;
+  a&:hover,
+  a&:focus {
+    background: white;
+    color: @g-color-asce-blue
+  }
 }
 
 @import url('_c-Hero.less');
