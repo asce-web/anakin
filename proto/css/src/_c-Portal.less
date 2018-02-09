@@ -39,6 +39,12 @@
   @supports (display: grid) {
   display: grid;
   }
+  a[href]& {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
   section.c-Portal & {
     justify-items: center;
   }
@@ -56,6 +62,12 @@
   }
 }
 .c-Portal__List {
+  section.c-Portal & {
+    max-width: 30ch;
+    max-inline-size: 30ch;
+    margin-left: auto; margin-right: auto;
+    margin-inline: auto;
+  }
 }
 .c-Portal__List__Item {
 }

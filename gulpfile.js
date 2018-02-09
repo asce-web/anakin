@@ -28,6 +28,7 @@ gulp.task('home:lessc', function () {
       level: {
         2: {
           overrideProperties: false,
+          mergeMedia: false,
           restructureRules: true,
         },
       },
