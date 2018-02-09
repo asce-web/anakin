@@ -78,7 +78,7 @@ class Homepage {
       temp.append(...this._DATA['promotions'].map((datum, i) =>
         new Component(container.querySelector('template').content, function (frag, data) {
           frag.querySelector('[role="tab"]').setAttribute('aria-label', data.title)
-          frag.querySelector('[role="tab"]').nextSibling.remove()
+          frag.querySelector('[role="tab"]').nextSibling.remove() // remove the following Text node (“twig”)
           frag.querySelector('[role="tabpanel"]').id = `promotions-panel${i}`
           frag.querySelector('[role="tabpanel"]').append(Homepage.COMPONENT.xPromo.render(data))
         }).render(datum)
