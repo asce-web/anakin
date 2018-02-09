@@ -30,9 +30,9 @@
   }
   .o-Tablist--slider__Button {
     position: absolute;
-    z-index: 2;
-    top: 50%;
-    margin: 0 4ch;
+    top: 50%; transform: translateY(-50%); // account for height of button
+    z-index: 1;
+    margin: 0 (100% / 16);
     font-size: 2em;
     background: none;
     border: 0;
