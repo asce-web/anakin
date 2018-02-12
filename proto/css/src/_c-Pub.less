@@ -18,15 +18,26 @@
   }
 }
 
+.c-Pub__Img,
+.c-Pub__Hn,
+.c-Pub__Cap {
+  margin-bottom: calc(0.5 ~'*' var(--lh));
+}
+
 .c-Pub__Img {
-  .mx-thumbnail();
+  box-shadow: 0 0.25rem 1rem 0.125rem fadeout(black, 75%); // HACK for #rrggbbaa support
+  box-shadow: 0 0.25rem 1rem 0.125rem #00000040; // REVIEW color
+  width: 100%;
+  @media not all and (min-width: 30em) {
+    width: (7/12 * 100%);
+  }
   @media screen and (min-width: 30em) {
     grid-row: 1 ~'/' -2;
-    margin-bottom: var(--lh);
   }
 }
 
 .c-Pub__Hn {
+  padding-top: calc(0.5 ~'*' var(--lh));
   text-align: inherit;
   & > cite { font-style: unset; }
 }
