@@ -1,0 +1,39 @@
+
+/*################################*\
+    anakin  |  _c-LinkList.less
+\*################################*/
+
+
+.c-LinkList {
+}
+.c-LinkList__Item {
+  margin-bottom: calc(0.5 ~'*' var(--lh));
+  margin-bottom: 0.5lh;
+  margin-block-end: calc(0.5 ~'*' var(--lh));
+  margin-block-end: 0.5lh;
+}
+.c-LinkList__Link {
+  &[href] {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+  i.glyphicons {
+    // make square
+    line-height: inherit;
+    width: var(--lh);
+    width: 1lh;
+    inline-size: var(--lh);
+    inline-size: 1lh;
+    text-align: center;
+    transform: scale(calc(1 ~'/' var(--line-height)));
+
+    box-shadow: 0 0 0 2px;
+    border-radius: 50%;
+
+    &::before {
+      padding: 0; // unset _hack.less
+    }
+  }
+}
