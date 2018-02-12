@@ -8,12 +8,13 @@
   @supports (display: grid) {
   display: grid;
   }
+  grid-template-rows: max-content max-content auto auto; // NB "max-content" minimizes row-size
   grid-column-gap: calc(var(--layout-padding-inline) ~'/' 2);
   @media screen and (min-width: 30em) {
-    grid-template: repeat(4, auto) ~'/' 1fr 2fr;
+    grid-template-columns: 1fr 2fr;
   }
   @media screen and (min-width: 45em) {
-    grid-template: repeat(4, auto) ~'/' repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 }
 .c-Pub__Img {
