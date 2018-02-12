@@ -1,8 +1,9 @@
 <template>
   <section id="{{ id }}" class="c-HomeAction">
-    <header class="c-HomeAction__Head" style="background-image: url('{{ image }}');">
-      <h1 class="c-SectionHed c-HomeAction__Hn">{{ name }}</h1>
+    <header class="c-HomeAction__Head">
+      <h1 class="c-HomeAction__Hn c-SectionHed">{{ name }}</h1>
       <p class="c-HomeAction__Cap">{{ caption }}</p>
+      <img class="c-HomeAction__Img" src="{{ image }}" alt=""/>
     </header>
     <ul class="o-List c-HomeAction__List c-LinkList">
       <template>

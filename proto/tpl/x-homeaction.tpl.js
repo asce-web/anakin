@@ -14,7 +14,7 @@
 function xHomeAction(frag, data) {
   const [act, act_data] = [data.fixed, data.fluid]
   frag.querySelector('.c-HomeAction').id = act.id
-  frag.querySelector('.c-HomeAction__Head').style.setProperty('background-image', `url('${act_data.image}')`)
+  frag.querySelector('.c-HomeAction__Img' ).src         = act_data.image
   frag.querySelector('.c-HomeAction__Hn'  ).textContent = act.name
   frag.querySelector('.c-HomeAction__Cap' ).textContent = act_data.caption
   act_data.links.forEach(function (link) {
