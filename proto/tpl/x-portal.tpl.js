@@ -26,7 +26,7 @@ function xPortal(frag, data) {
   portal_data.forEach(function (link) {
     let innerfrag = list.querySelector('template').content.cloneNode(true)
     innerfrag.querySelector('[itemprop="significantLink"]').href        = link.url
-    innerfrag.querySelector('[itemprop="significantLink"]').textContent = link.text
+    innerfrag.querySelector('[itemprop="significantLink"] slot').textContent = link.text
     list.append(innerfrag)
   })
 
