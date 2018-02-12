@@ -5,18 +5,19 @@
 
 
 .c-Pub {
-  @supports (display: grid) {
-  display: grid;
-  }
-  grid-template-rows: max-content max-content auto auto; // NB "max-content" minimizes row-size
-  grid-column-gap: calc(var(--layout-padding-inline) ~'/' 2);
   @media screen and (min-width: 30em) {
+    @supports (display: grid) {
+      display: grid;
+    }
+    grid-column-gap: calc(var(--layout-padding-inline) ~'/' 2);
+    grid-template-rows: max-content max-content auto auto; // NB "max-content" minimizes row-size
     grid-template-columns: 1fr 2fr;
   }
   @media screen and (min-width: 45em) {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 .c-Pub__Img {
   .mx-thumbnail();
   @media screen and (min-width: 30em) {
@@ -24,17 +25,24 @@
     margin-bottom: var(--lh);
   }
 }
+
 .c-Pub__Hn {
+  text-align: inherit;
   & > cite { font-style: unset; }
 }
+
 .c-Pub__Cap {
 }
+
 .c-Pub__List {
 }
+
 .c-Pub__List__Item {
 }
+
 .c-Pub__Link {
 }
+
 .c-Pub__Body {
   grid-column: 1 ~'/' -1;
 }
