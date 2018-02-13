@@ -7,7 +7,6 @@
  * @param   {string} data.text the featured textual value
  * @param   {string} data.type a Schema.Org classname; should be a subclass of http://schema.org/Action
  * @param   {{text:string, url:string}} data.cta call-to-action
- * @returns {DocumentFragment} modified fragment
  */
 function xStat(frag, data) {
   frag.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', data.icon)
@@ -17,7 +16,6 @@ function xStat(frag, data) {
   action.setAttribute('itemtype', `http://schema.org/${data.type || 'Action'}`)
   action.querySelector('[itemprop="url"]' ).href        = data.cta.url
   action.querySelector('[itemprop="name"]').textContent = data.cta.text
-  return frag
 }
 
 module.exports = xStat

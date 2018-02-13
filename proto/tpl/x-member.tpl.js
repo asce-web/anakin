@@ -1,5 +1,3 @@
-const xjs = require('extrajs')
-
 /**
  * @summary Member Story display.
  * @param   {DocumentFragment} frag the template content with which to render
@@ -8,14 +6,12 @@ const xjs = require('extrajs')
  * @param   {string} data.grade type of member, title, or subheading
  * @param   {string} data.image url to a headshot photo
  * @param   {string} data.quote quote by the member
- * @returns {DocumentFragment} modified fragment
  */
 function xMember(frag, data) {
   frag.querySelector('[itemprop="image"]'      ).src         = data.image
   frag.querySelector('[itemprop="name"]'       ).textContent = data.name
   frag.querySelector('[itemprop="description"]').textContent = data.grade
   frag.querySelector('blockquote'              ).textContent = data.quote
-  return frag
 }
 
 module.exports = xMember

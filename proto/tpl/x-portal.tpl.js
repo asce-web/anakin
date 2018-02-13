@@ -1,3 +1,7 @@
+const xjs = {
+  HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
+}
+
 /**
  * @summary Portal display.
  * @param   {DocumentFragment} frag the template content with which to render
@@ -8,7 +12,6 @@
  * @param   {string} port.fixed.icon the subclass of Glyphicon
  * @param   {string} port.fixed.url the url the heading is linked to
  * @param   {Array<{text:string, url:string}>} data.fluid user-input data, pulled from database
- * @returns {DocumentFragment} modified fragment
  */
 function xPortal(frag, data) {
   const [port, portal_data] = [data.fixed, data.fluid]
@@ -22,13 +25,14 @@ function xPortal(frag, data) {
   orig.querySelector('[itemprop="url"]').href = port.url
   orig.querySelector('.glyphicons').className = frag.querySelector('.glyphicons').className.replace('{{ icon }}', port.icon)
   orig.querySelector('[itemprop="name"]').textContent = port.name
+
   let list = orig.querySelector('.c-Portal__List')
-  portal_data.forEach(function (link) {
-    let innerfrag = list.querySelector('template').content.cloneNode(true)
-    innerfrag.querySelector('[itemprop="significantLink"]').href        = link.url
-    innerfrag.querySelector('[itemprop="significantLink"] slot').textContent = link.text
-    list.append(innerfrag)
-  })
+  list.append(...portal_data.map((link) =>
+    new xjs.HTMLTemplateElement(list.querySelector('template')).setRenderer(function (f, d) {
+      f.querySelector('[itemprop="significantLink"]'     ).href        = d.url
+      f.querySelector('[itemprop="significantLink"] slot').textContent = d.text
+    }).render(link)
+  ))
 
   /**
    * Duplicate, for mobile view.
@@ -38,8 +42,6 @@ function xPortal(frag, data) {
   dupe.append(list.cloneNode(true))
   dupe.querySelector('.c-Portal__Head').append(...Array.from(orig.querySelector('.c-Portal__Head').childNodes).map((n) => n.cloneNode(true)))
   dupe.querySelector('.glyphicons').classList.remove('c-BigAssIcon', 'h-Block')
-
-  return frag
 }
 
 module.exports = xPortal

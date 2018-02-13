@@ -6,7 +6,6 @@
  * @param   {string} data.title promo heading
  * @param   {string} data.caption text caption
  * @param   {{text:string, url:string}} data.cta call-to-action
- * @returns {DocumentFragment} modified fragment
  */
 function xPromo(frag, data) {
   frag.querySelector('.c-Promo').style.setProperty('background-image', `url('${data.image}')`)
@@ -14,7 +13,6 @@ function xPromo(frag, data) {
   frag.querySelector('.c-Promo__Cap').textContent = data.caption
   frag.querySelector('a'            ).href        = data.cta.url
   frag.querySelector('a'            ).textContent = data.cta.text
-  return frag
 }
 
 module.exports = xPromo
