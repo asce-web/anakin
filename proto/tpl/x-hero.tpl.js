@@ -9,9 +9,9 @@
  */
 function xHero(frag, data) {
   frag.querySelector('.c-Hero').style.setProperty('background-image', `url('${data.image}')`)
-  frag.querySelector('slot[name="hero-caption"]').textContent = data.caption
-  frag.querySelector('a'                        ).href        = data.cta.url
-  frag.querySelector('a'                        ).textContent = data.cta.text
+  frag.querySelector('.c-Hero__Cap').textContent = data.caption
+  frag.querySelector('a'           ).href        = data.cta.url
+  frag.querySelector('a'           ).textContent = data.cta.text
 }
 
 module.exports = xHero

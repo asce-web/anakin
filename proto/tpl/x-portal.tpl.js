@@ -29,8 +29,8 @@ function xPortal(frag, data) {
   let list = orig.querySelector('.c-Portal__List')
   list.append(...portal_data.map((link) =>
     new xjs.HTMLTemplateElement(list.querySelector('template')).setRenderer(function (f, d) {
-      f.querySelector('[itemprop="significantLink"]'     ).href        = d.url
-      f.querySelector('[itemprop="significantLink"] slot').textContent = d.text
+      f.querySelector('[itemprop="significantLink"]'       ).href        = d.url
+      f.querySelector('[itemprop="significantLink"] > slot').textContent = d.text
     }).render(link)
   ))
 
