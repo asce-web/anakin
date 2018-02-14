@@ -2,6 +2,8 @@
 /*################################*\
     anakin  |  _c-Pub.less
 \*################################*/
+@import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
 
 
 .c-Pub {
@@ -60,4 +62,8 @@
 
 .c-Pub__Body {
   grid-column: 1 ~'/' -1;
+  h2 { .font-size-el(@g-font-size-h3); }
+  h3 { .font-size-el(@g-font-size-h4); }
+  h4 { .font-size-el(@g-font-size-h5); }
+  h5 { .font-size-el(@g-font-size-h6); }
 }
