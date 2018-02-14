@@ -42,7 +42,7 @@
       </ul>
     </section>
     <section id="promotions">
-      <h1 class="h-Hidden">Promotions</h1>
+      <h1 class="c-SectionHed h-Hidden">Promotions</h1>
       <div class="o-Tablist o-Tablist--slider dev" role="tablist">
         <button class="o-Tablist--slider__Button" type="button" value="prev" tabindex="-1">
           <i class="glyphicons glyphicons-circle-arrow-left">
@@ -63,7 +63,7 @@
       </div>
     </section>
     <section class="o-Runner o-Constrain" id="portals">
-      <h1 class="h-Hidden">Portals</h1>
+      <h1 class="c-SectionHed h-Hidden">Portals</h1>
       <ol class="o-List o-Grid o-Grid--portals">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-portal.tpl.html }}</li>
@@ -71,7 +71,7 @@
       </ol>
     </section>
     <aside class="o-Runner _advertisement">ADVERTISEMENT</aside>
-    <section class="o-Grid o-Grid--foundation o-Runner o-Constrain" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
+    <section class="o-Grid o-Grid--foundation o-Runner o-Runner--separator o-Constrain" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
       <template>
         <h1 class="o-Grid__Item c-SectionHed -ta-i" itemprop="name">ASCE Foundation</h1>
         <p class="o-Grid__Item o-Grid--foundation__Caption" itemprop="description">{{ caption }}</p>
@@ -88,41 +88,41 @@
         </p>
       </template>
     </section>
-    <section class="o-Runner o-Constrain" id="publication-highlights">
-      <h1 class="h-Hidden">Publication Highlights</h1>
+    <section class="o-Runner o-Runner--separator o-Constrain" id="publication-highlights">
+      <h1 class="c-SectionHed h-Hidden">Publication Highlights</h1>
       <ul class="o-List o-Grid o-Grid--publications">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-pub.tpl.html }}</li>
         </template>
       </ul>
     </section>
-    <section class="o-Runner o-Constrain" id="learn-contribute">
-      <h1 class="h-Hidden">Learn &amp; Contribute</h1>
+    <section class="o-Runner o-Runner--separator o-Constrain" id="learn-contribute">
+      <h1 class="c-SectionHed h-Hidden">Learn &amp; Contribute</h1>
       <ul class="o-List o-Grid o-Grid--homeActions">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-homeaction.tpl.html }}</li>
         </template>
       </ul>
     </section>
-    <section class="o-Runner o-Constrain" id="jobs">
+    <section class="o-Runner o-Runner--separator o-Constrain" id="jobs">
       <h1 class="c-SectionHed">Jobs</h1>
       <ul class="o-List o-Grid o-Grid--jobs">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-job.tpl.html }}</li>
         </template>
       </ul>
-      <footer class="o-Runner -ta-c"><a href="//careers.asce.org/jobs">Find a job</a></footer>
+      <footer class="o-Runner -ta-c"><a class="c-LinkArrow" href="//careers.asce.org/jobs">Find a job <i class="glyphicons glyphicons-chevron-right"></i></a></footer>
     </section>
-    <section class="o-Runner o-Constrain" id="whats-happening">
+    <section class="o-Runner o-Runner--separator o-Constrain" id="whats-happening">
       <h1 class="c-SectionHed">What’s Happening at ASCE</h1>
       <ul class="o-List o-Grid o-Grid--whatsHappening">
         <template>
           <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-article.tpl.html }}</li>
         </template>
       </ul>
-      <footer class="o-Runner -ta-c"><a href="//news.asce.org/">Read more at <cite>ASCE News</cite></a></footer>
+      <footer class="o-Runner -ta-c"><a class="c-LinkArrow" href="//news.asce.org/">Read more at <cite>ASCE News</cite> <i class="glyphicons glyphicons-chevron-right"></i></a></footer>
     </section>
-    <section class="o-Runner o-Constrain" id="member-stories">
+    <section class="o-Runner o-Runner--separator o-Constrain" id="member-stories">
       <h1 class="c-SectionHed">ASCE Member Stories</h1>
       <ul class="o-List o-Grid o-Grid--members">
         <template>
