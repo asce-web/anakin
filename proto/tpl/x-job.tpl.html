@@ -2,8 +2,8 @@
     <div class="c-JobListing" itemscope="" itemtype="http://schema.org/JobPosting">
       <p class="c-JobListing__Hn" itemprop="name title">
         <a class="c-JobListing__Link c-LinkArrow" href="{{ url }}" itemprop="url">
-          <slot>{{ title }}</slot>
-          <i class="glyphicons glyphicons-chevron-right"></i>
+          <slot class="c-LinkArrow__Text">{{ title }}</slot>
+          <i class="c-LinkArrow__Icon glyphicons glyphicons-chevron-right"></i>
         </a>
       </p>
       <p class="c-JobListing__Org" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">

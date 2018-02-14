@@ -14,7 +14,7 @@
     }
   }
   details& {
-    .glyphicons {
+    .c-Portal__Icon {
       vertical-align: middle;
       margin-right: 1rem;
       border-radius: 50%;
@@ -24,11 +24,8 @@
         content: '\E602'; // copied from `.glyphicons-chevron-down` (cannot change classname, so copying css style)
       }
     }
-    &[open] .glyphicons::before {
+    &[open] .c-Portal__Icon::before {
       content: '\E601'; // copied from `.glyphicons-chevron-up` (cannot change classname, so copying css style)
-    }
-    .c-LinkList__Link .glyphicons {
-      display: none;
     }
     @media screen and (min-width: 30em) {
       display: none;
@@ -38,32 +35,33 @@
     display: none;
   }
 }
+
 .c-Portal__Head {
-  @supports (display: grid) {
-  display: grid;
-  }
+  display: flex;
+  align-items: center;
   a[href]& {
     &:hover,
     &:focus {
       text-decoration: underline;
     }
   }
-  section.c-Portal & {
-    justify-items: center;
-  }
-  details.c-Portal & {
-    grid-template-columns: auto 1fr;
-    align-items: center;
+  @media screen and (min-width: 30em) {
+    flex-direction: column;
   }
 }
+
 .c-Portal__Icon {
+  flex: none;
 }
+
 .c-Portal__Hn {
+  flex: 1;
   color: @g-color-body-txt; // override `a[href]`
   details.c-Portal & {
     text-align: inherit; // unset `.c-SectionHed`
   }
 }
+
 .c-Portal__List {
   section.c-Portal & {
     max-width: 30ch;
@@ -72,7 +70,9 @@
     margin-inline: auto;
   }
 }
+
 .c-Portal__List__Item {
 }
+
 .c-Portal__Link {
 }

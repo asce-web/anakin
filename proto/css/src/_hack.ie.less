@@ -10,6 +10,7 @@
 
 
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@p-lh: 1.5rem; // fallback for var(--lh)
 
 
 
@@ -19,6 +20,10 @@
     display: block;
     clear: both;
   }
+}
+
+.o-Tablist--slider__Button {
+  display: none; // remove tablist slider button on IE, which doesn’t support sliders
 }
 
 .o-Grid--represent,
@@ -64,31 +69,69 @@
 
 .c-BigAssIcon {
   margin: auto;
+  .c-Portal & {
+    background-color: @g-color-asce-green;
+  }
+  #asce-foundation & {
+    background-color: @g-color-asce-foundation;
+  }
+  li:nth-of-type(1) .c-Stat & { background-color: @g-color-mustard; }
+  li:nth-of-type(2) .c-Stat & { background-color: @g-color-aqua   ; }
+  li:nth-of-type(3) .c-Stat & { background-color: @g-color-gamboge; }
 }
+
+.c-Button {
+  padding: (0.5 * @g-lh) 1rem;
+}
+
+.c-LinkArrow__Icon {
+  width : @g-lh;
+  height: @g-lh;
+  margin-right: 1ch;
+}
+
+.c-LinkList__Item {
+  margin-bottom: (0.5 * @g-lh);
+}
+
+.c-Portal__List {
+  section & {
+    min-height: (((4 * 2) + (4 * 0.5)) * @p-lh); // 4 lines at 2lh each, plus 4 margins at 0.5lh each
+  }
+}
+
 .c-ArticleTeaser {
   .mx-clearfix();
 }
+
 .c-Pub__Body,
 .c-MemberStory__Quote {
   clear: both;
 }
-.c-Pub__Img,
-.c-ArticleTeaser__Img,
-.c-MemberStory__Img {
-  float: left;
-}
+
 .c-Pub__Img {
   @media (min-width: 30em) {
-    max-width: 33.333%;
+    float: left;
   }
-  @media (min-width: 45em) {
-    max-width: 50%;
+  @media (min-width: 30em) and (max-width: 44.999em) {
+    max-width: (5/12 * 100%); // width of the left grid column
+  }
+  @media (min-width: 60em) {
+    max-width: 50%; // width of the left grid column
   }
 }
+
 .c-ArticleTeaser__Img {
-  max-width: 33.333%;
+  li:not(:first-of-type) & {
+    @media (min-width: 30em) {
+      float: left;
+      max-width: (5/12 * 100%); // width of the left grid column
+    }
+  }
 }
+
 .c-MemberStory__Img {
+  float: left;
   max-width: 50%;
 }
 

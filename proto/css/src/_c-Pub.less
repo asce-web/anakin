@@ -2,6 +2,8 @@
 /*################################*\
     anakin  |  _c-Pub.less
 \*################################*/
+@import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
 
 
 .c-Pub {
@@ -29,7 +31,7 @@
 }
 
 .c-Pub__Img {
-  box-shadow: 0 0.25rem 1rem 0.125rem fadeout(black, 75%); // HACK for #rrggbbaa support
+  box-shadow: 0 0.25rem 1rem 0.125rem fadeout(black, 75%); // COMBAK-FALLBACK for #rrggbbaa support
   box-shadow: 0 0.25rem 1rem 0.125rem #00000040; // REVIEW color
   width: (7/12 * 100%);
   @media screen and (min-width: 30em) and (max-width: 44.999em), screen and (min-width: 60em) {
@@ -60,4 +62,8 @@
 
 .c-Pub__Body {
   grid-column: 1 ~'/' -1;
+  h2 { .font-size-el(@g-font-size-h3); }
+  h3 { .font-size-el(@g-font-size-h4); }
+  h4 { .font-size-el(@g-font-size-h5); }
+  h5 { .font-size-el(@g-font-size-h6); }
 }

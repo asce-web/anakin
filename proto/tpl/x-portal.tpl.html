@@ -7,9 +7,9 @@
     <ul class="o-List c-Portal__List c-LinkList">
       <template>
         <li class="o-List__Item c-Portal__List__Item c-LinkList__Item">
-          <a class="c-Portal__Link c-LinkList__Link" href="{{ url }}" itemprop="significantLink">
-            <i class="glyphicons glyphicons-chevron-right" aria-hidden="true"></i>
-            <slot>{{ text }}</slot>
+          <a class="c-Portal__Link c-LinkArrow" href="{{ url }}" itemprop="significantLink">
+            <i class="c-LinkArrow__Icon glyphicons glyphicons-chevron-right" aria-hidden="true"></i>
+            <slot class="c-LinkArrow__Text">{{ text }}</slot>
           </a>
         </li>
       </template>

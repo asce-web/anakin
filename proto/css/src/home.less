@@ -27,6 +27,7 @@
  * Tagline..................................typographical tagline styles
  * BigAssIcon...............................icon styles
  * LinkList.................................list of actionable links
+ * LinkArrow................................a single actionable link (not part of a list)
  * Hero.....................................Hero image & section
  * Promo....................................Timely Promotion
  * Stat.....................................Featured Statistic
@@ -49,6 +50,14 @@
 //++++++++++++++++++++++++++++++++//
 //    # BASE
 //++++++++++++++++++++++++++++++++//
+.glyphicons::before {
+  padding: 0.5rem; // fix absolute padding
+}
+.dev.o-Tablist,
+.dev.o-Tablist__Tab,
+.dev.o-Tablist__Panel {
+  appearance: initial; // TODO remove on xmeter@6.3.0
+}
 @import url('_base.less');
 //++++ end # BASE ++++//
 
@@ -129,7 +138,7 @@
 
 
 .c-SectionHed {
-  .font-size-el(@g-font-size-kilo);
+  .font-size-el(@g-font-size-h2, 2);
   font-weight: 300;
   text-transform: uppercase;
   text-align: center;
@@ -143,9 +152,9 @@
 
 .c-BigAssIcon {
   display: block;
-  line-height: inherit; // HACK fallback
+  line-height: inherit; // COMBAK-FALLBACK
   line-height: unset;
-  background-color: @g-color-asce-blue; // HACK fallback for custom prop
+  background-color: @g-color-asce-blue; // COMBAK-FALLBACK for custom prop
   background-color: var(--color-accent, @g-color-asce-blue);
   // background-image: linear-gradient(0.375turn, rgba(255,255,255,0.33), transparent); // fallback for `#rrggbbaa` syntax
   // background-image: linear-gradient(0.375turn, ~'#ffffff55', transparent); // NOTE: need to interpolate due to Less not supporting `#rrggbbaa` syntax
@@ -171,6 +180,7 @@
 }
 
 @import url('_c-LinkList.less');
+@import url('_c-LinkArrow.less');
 @import url('_c-Hero.less');
 @import url('_c-Promo.less');
 @import url('_c-Stat.less');

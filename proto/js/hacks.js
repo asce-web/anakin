@@ -5,9 +5,3 @@
 // This script should not be relied upon. It may break at any time without warning. It may also cause unexpected things to happen.
 // Edit with caution.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-document.querySelectorAll('#civil-engineering-magazine .c-LinkList__Link').forEach(function (link) {
-  link.querySelector('i.glyphicons-chevron-right').remove()
-  link.classList.add('c-Button')
-  link.classList.remove('c-LinkList__Link')
-})
