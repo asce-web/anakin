@@ -4,14 +4,25 @@
 \*################################*/
 
 
+// HACK Add the "+" after the 150,000 members. This should have been done in the HTML.
 .glyphicons-group + p > .c-Stat__Num::after { content: '+'; }
 
 
+// HACK The link in CE Mag should be a button, which goes against all patterns. You can’t blame it, it just wants to be different.
+#civil-engineering-magazine .c-Pub__Link {
+  @import (reference) url('http://conferencesuite.asce.org/themes/custom/legacy/css/src/_c-Button.less');
+  .c-Button;
+  .c-LinkArrow__Icon { display: none }
+}
+
+
+// TODO advertisement styles
 ._advertisement {
   background-color: #eee;
 }
 
 
+// HACK This grid does not follow any other `o-Grid` pattern. It should be its own Object.
 .o-Grid--foundation {
   --color-accent: @g-color-asce-foundation;
   grid-template-areas: 'heading heading'
