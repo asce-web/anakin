@@ -27,6 +27,7 @@
  * Tagline..................................typographical tagline styles
  * BigAssIcon...............................icon styles
  * LinkList.................................list of actionable links
+ * LinkArrow................................a single actionable link (not part of a list)
  * Hero.....................................Hero image & section
  * Promo....................................Timely Promotion
  * Stat.....................................Featured Statistic
@@ -49,6 +50,9 @@
 //++++++++++++++++++++++++++++++++//
 //    # BASE
 //++++++++++++++++++++++++++++++++//
+.glyphicons::before {
+  padding: 0.5rem; // fix absolute padding
+}
 @import url('_base.less');
 //++++ end # BASE ++++//
 
@@ -171,6 +175,7 @@
 }
 
 @import url('_c-LinkList.less');
+@import url('_c-LinkArrow.less');
 @import url('_c-Hero.less');
 @import url('_c-Promo.less');
 @import url('_c-Stat.less');

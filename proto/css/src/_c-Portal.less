@@ -14,7 +14,7 @@
     }
   }
   details& {
-    .glyphicons {
+    .c-Portal__Icon {
       vertical-align: middle;
       margin-right: 1rem;
       border-radius: 50%;
@@ -24,11 +24,8 @@
         content: '\E602'; // copied from `.glyphicons-chevron-down` (cannot change classname, so copying css style)
       }
     }
-    &[open] .glyphicons::before {
+    &[open] .c-Portal__Icon::before {
       content: '\E601'; // copied from `.glyphicons-chevron-up` (cannot change classname, so copying css style)
-    }
-    .c-LinkList__Link .glyphicons {
-      display: none;
     }
     @media screen and (min-width: 30em) {
       display: none;

@@ -1,0 +1,39 @@
+
+/*################################*\
+    anakin  |  _c-LinkArrow.less
+\*################################*/
+@import (reference) url('_c-LinkList.less');
+
+
+// This component copies all the styles from `.c-LinkList__Link`.
+// Use this component when you have a link that does not belong in a list.
+
+.c-LinkArrow {
+  &[href] {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.c-LinkArrow__Icon {
+    // make square
+    line-height: inherit;
+    width: var(--lh);
+    width: 1lh;
+    inline-size: var(--lh);
+    inline-size: 1lh;
+    text-align: center;
+    transform: scale(calc(1 ~'/' var(--line-height)));
+
+    box-shadow: 0 0 0 2px;
+    border-radius: 50%;
+
+    &::before {
+      padding: 0; // unset _hack.less
+    }
+}
+
+.c-LinkArrow__Text {
+}

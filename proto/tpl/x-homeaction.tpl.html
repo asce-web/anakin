@@ -8,9 +8,9 @@
     <ul class="o-List c-HomeAction__List c-LinkList">
       <template>
         <li class="o-List__Item c-HomeAction__List__Item c-LinkList__Item" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/Action">
-          <a class="c-HomeAction__Link c-LinkList__Link" href="{{ url }}" itemprop="url">
-            <i class="glyphicons glyphicons-chevron-right" aria-hidden="true"></i>
-            <slot itemprop="name">{{ text }}</slot>
+          <a class="c-HomeAction__Link c-LinkArrow" href="{{ url }}" itemprop="url">
+            <i class="c-LinkArrow__Icon glyphicons glyphicons-chevron-right" aria-hidden="true"></i>
+            <slot class="c-LinkArrow__Text" itemprop="name">{{ text }}</slot>
           </a>
         </li>
       </template>
