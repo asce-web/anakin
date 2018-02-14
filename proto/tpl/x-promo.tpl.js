@@ -4,13 +4,11 @@
  * @param   {!Object} data the promotion to display
  * @param   {string} data.image url to promo image
  * @param   {string} data.title promo heading
- * @param   {string} data.caption text caption
  * @param   {{text:string, url:string}} data.cta call-to-action
  */
 function xPromo(frag, data) {
   frag.querySelector('.c-Promo').style.setProperty('background-image', `url('${data.image}')`)
   frag.querySelector('.c-Promo__Hn' ).textContent = data.title
-  frag.querySelector('.c-Promo__Cap').textContent = data.caption
   frag.querySelector('a'            ).href        = data.cta.url
   frag.querySelector('a'            ).textContent = data.cta.text
 }
