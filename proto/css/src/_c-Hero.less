@@ -7,30 +7,30 @@
 
 .c-Hero {
   .mx-fullimage();
-  position: relative; // for the bar
-  color: white;
 }
+
 .c-Hero__Bar {
   background-color: fadeout(@g-color-asce-blue, 25%); // REVIEW color
-  position: absolute;
-  bottom: 0;
-  left: 0; right:0;
-  padding: calc(var(--lh) ~'/' 2) 1rem; // REVIEW padding variables
+  padding: calc(0.5 ~'*' var(--lh)) 1rem; // REVIEW padding variables
 }
+
 .c-Hero__Content {
   flex-wrap: wrap;
   colulmn-gap: 2rem;
   align-items: center;
 }
+
 .c-Hero__Cap,
 .c-Hero__Cta {
   margin-bottom: 0; // HACK fallback
   margin-block-end: unset; // unset base `p`
 }
+
 .c-Hero__Cap {
   flex: 999999; min-width: 66.666666%; // HACK: https://stackoverflow.com/questions/48676986
   padding-right: 2rem; // HACK fallback for column-gap
 }
+
 .c-Hero__Cta {
   flex: 1 0 auto;
   text-align: center;

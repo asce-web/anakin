@@ -114,12 +114,17 @@
 
 // full-bleed background image used in the Hero and Promo sections.
 .mx-fullimage() {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  justify-content: flex-end; // REVIEW-FALLBACK NOTE: must be after `jusfify-content: end;` to fix support
   height: 100vmin;
   @media screen and (min-width: 30em) {
     height: (2/3 * 100vmin);
   }
   background-size: cover;
   background-position: center;
+  color: white;
 }
 
 
