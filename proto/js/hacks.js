@@ -9,4 +9,5 @@
 document.querySelectorAll('#civil-engineering-magazine .c-LinkList__Link').forEach(function (link) {
   link.querySelector('i.glyphicons-chevron-right').remove()
   link.classList.add('c-Button')
+  link.classList.remove('c-LinkList__Link')
 })

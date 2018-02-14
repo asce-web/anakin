@@ -6,12 +6,15 @@
 
 .c-LinkList {
 }
+
 .c-LinkList__Item {
   margin-bottom: calc(0.5 ~'*' var(--lh));
   margin-bottom: 0.5lh;
   margin-block-end: calc(0.5 ~'*' var(--lh));
   margin-block-end: 0.5lh;
 }
+
+.c-LinkArrow, // FIXME this selector does not belong here!
 .c-LinkList__Link {
   &[href] {
     &:hover,
