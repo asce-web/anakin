@@ -10,6 +10,7 @@
 
 
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@p-lh: 1.5rem; // fallback for var(--lh)
 
 
 
@@ -65,18 +66,32 @@
 .c-BigAssIcon {
   margin: auto;
 }
+
+.c-LinkList__Item {
+  margin-bottom: (0.5 * @g-lh);
+}
+
+.c-Portal__List {
+  section& {
+    min-height: (8 * @p-lh);
+  }
+}
+
 .c-ArticleTeaser {
   .mx-clearfix();
 }
+
 .c-Pub__Body,
 .c-MemberStory__Quote {
   clear: both;
 }
+
 .c-Pub__Img,
 .c-ArticleTeaser__Img,
 .c-MemberStory__Img {
   float: left;
 }
+
 .c-Pub__Img {
   @media (min-width: 30em) {
     max-width: 33.333%;
@@ -85,9 +100,13 @@
     max-width: 50%;
   }
 }
+
 .c-ArticleTeaser__Img {
+  li:not(:first-of-type) & {
   max-width: 33.333%;
+  }
 }
+
 .c-MemberStory__Img {
   max-width: 50%;
 }
