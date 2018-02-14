@@ -69,6 +69,15 @@
 
 .c-BigAssIcon {
   margin: auto;
+  .c-Portal & {
+    background-color: @g-color-asce-green;
+  }
+  #asce-foundation & {
+    background-color: @g-color-asce-foundation;
+  }
+  li:nth-of-type(1) .c-Stat & { background-color: @g-color-mustard; }
+  li:nth-of-type(2) .c-Stat & { background-color: @g-color-aqua   ; }
+  li:nth-of-type(3) .c-Stat & { background-color: @g-color-gamboge; }
 }
 
 .c-Button {
@@ -86,8 +95,8 @@
 }
 
 .c-Portal__List {
-  section& {
-    min-height: (8 * @p-lh);
+  section & {
+    min-height: (((4 * 2) + (4 * 0.5)) * @p-lh); // 4 lines at 2lh each, plus 4 margins at 0.5lh each
   }
 }
 
@@ -98,12 +107,6 @@
 .c-Pub__Body,
 .c-MemberStory__Quote {
   clear: both;
-}
-
-.c-Pub__Img,
-.c-ArticleTeaser__Img,
-.c-MemberStory__Img {
-  float: left;
 }
 
 .c-Pub__Img {
@@ -128,6 +131,7 @@
 }
 
 .c-MemberStory__Img {
+  float: left;
   max-width: 50%;
 }
 
