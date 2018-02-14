@@ -1,3 +1,7 @@
+const xjs = {
+  HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
+}
+
 /**
  * @summary Featured Publication display.
  * @param   {DocumentFragment} frag the template content with which to render
@@ -10,7 +14,6 @@
  * @param   {string} data.fluid.image url to image
  * @param   {Array<{text:string, url:string}>} data.fluid.links list of links
  * @param   {string} data.fluid.body rich body text
- * @returns {DocumentFragment} modified fragment
  */
 function xPub(frag, data) {
   const [pub, pub_data] = [data.fixed, data.fluid]
@@ -19,13 +22,14 @@ function xPub(frag, data) {
   frag.querySelector('[itemprop="name"]'       ).textContent = pub.name
   frag.querySelector('[itemprop="description"]').textContent = pub_data.caption
   frag.querySelector('article'                 ).innerHTML   = pub_data.body
-  pub_data.links.forEach(function (link) {
-    let innerfrag = frag.querySelector('template').content.cloneNode(true)
-    innerfrag.querySelector('[itemprop="url"]' ).href        = link.url
-    innerfrag.querySelector('[itemprop="name"]').textContent = link.text
-    frag.querySelector('template').parentNode.append(innerfrag)
-  })
-  return frag
+
+  let list = frag.querySelector('.c-Pub__List')
+  list.append(...pub_data.links.map((link) =>
+    new xjs.HTMLTemplateElement(list.querySelector('template')).setRenderer(function (f, d) {
+      f.querySelector('[itemprop="url"]' ).href        = d.url
+      f.querySelector('[itemprop="name"]').textContent = d.text
+    }).render(link)
+  ))
 }
 
 module.exports = xPub

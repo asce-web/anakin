@@ -1,4 +1,6 @@
-const xjs = require('extrajs')
+const xjs = {
+  Date: require('extrajs').Date,
+}
 
 /**
  * @summary Article Teaser display.
@@ -8,7 +10,6 @@ const xjs = require('extrajs')
  * @param   {string} data.image url to a thumbnail
  * @param   {string} data.url the url to link to
  * @param   {string} data.datetime the publish date
- * @returns {DocumentFragment} modified fragment
  */
 function xArticle(frag, data) {
   frag.querySelector('[itemprop~="image"]'       ).src         = data.image
@@ -16,7 +17,6 @@ function xArticle(frag, data) {
   frag.querySelector('[itemprop~="headline"]'    ).textContent = data.title
   frag.querySelector('[itemprop="datePublished"]').dateTime    = data.datetime
   frag.querySelector('[itemprop="datePublished"]').textContent = xjs.Date.format(new Date(data.datetime), 'F j, Y')
-  return frag
 }
 
 module.exports = xArticle

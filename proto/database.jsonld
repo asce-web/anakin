@@ -83,19 +83,16 @@
     {
       "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-01-Access.jpg",
       "title": "A Wealth of Technical Resources, Free",
-      "caption": "Exclusively for ASCE members, AccessEngineering is a reference hub with tutorial videos, handbooks, online calculators and more.",
       "cta"  : { "text": "Visit AccessEngineering", "url": "//secure.asce.org/ASCEWebsite/Integration/MHEducation.aspx" }
     },
     {
       "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-02-OPAL.jpg",
       "title": "Celebrate Civil Engineering’s Best",
-      "caption": "Meet civil engineering luminaries and salute outstanding careers and projects at the OPAL Gala, March 15 in Arlington, VA.",
       "cta"  : { "text": "Read More", "url": "//ektronstaging.asce.org/event/2018/opal-awards-gala/" }
     },
     {
       "image": "//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-03-Contest.jpg",
-      "title": "WANT TO INNOVATE A BETTER FUTURE?",
-      "caption": "Your best ideas could transform infrastructure. Enter the ASCE Innovation Contest and join a community of fellow innovators.",
+      "title": "Want to Innovate a Better Future?",
       "cta"  : { "text": "Submit Your Idea", "url": "//collaborate.asce.org/ascegrandchallenge/contest/aboutthecontest" }
     }
   ],
