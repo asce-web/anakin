@@ -1,0 +1,81 @@
+{
+  "_args": [
+    [
+      "xmeter@6.3.0-alpha.1",
+      "/Users/charvey/repos/anakin"
+    ]
+  ],
+  "_development": true,
+  "_from": "xmeter@6.3.0-alpha.1",
+  "_id": "xmeter@6.3.0-alpha.1",
+  "_inBundle": false,
+  "_integrity": "sha512-XWNQhxewtV4DdQm0lRr8w6YYVsrQbf2s+/KvP1rofDThYz7CHepNA8wAQT0DamraxIt7dwuhzpjspHopAw/Gfg==",
+  "_location": "/xmeter",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "xmeter@6.3.0-alpha.1",
+    "name": "xmeter",
+    "escapedName": "xmeter",
+    "rawSpec": "6.3.0-alpha.1",
+    "saveSpec": null,
+    "fetchSpec": "6.3.0-alpha.1"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/xmeter/-/xmeter-6.3.0-alpha.1.tgz",
+  "_spec": "6.3.0-alpha.1",
+  "_where": "/Users/charvey/repos/anakin",
+  "author": {
+    "name": "Chris Harvey",
+    "email": "chrisharvey2pi@gmail.com",
+    "url": "https://chharvey.github.io/"
+  },
+  "bugs": {
+    "url": "https://github.com/chharvey/xmeter/issues"
+  },
+  "dependencies": {
+    "extrajs-dom": "^4.0.0-alpha.3",
+    "extrajs-view": "^1.1.2"
+  },
+  "description": "A default stylesheet with a set of tools that make designing with vertical rhythm easy.",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-jsdoc3": "^1.0.1",
+    "gulp-less": "^3.4.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "kss": "^3.0.0-beta.18",
+    "normalize.css": "^6.0.0",
+    "sitepage": "^1.0.0"
+  },
+  "homepage": "https://github.com/chharvey/xmeter#readme",
+  "keywords": [
+    "css",
+    "default",
+    "stylesheet",
+    "normalize",
+    "vertical rhythm",
+    "less"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "xmeter",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chharvey/xmeter.git"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "test": "node test.js",
+    "unbuild": "npm run unbuild:docs  &&  rm css/xmeter.css{,.map}",
+    "unbuild:api": "rm -r docs/api/",
+    "unbuild:docs": "npm run unbuild:api  &&  npm run unbuild:kss  &&  rm docs/{{index,base}.html,css/docs.css}",
+    "unbuild:kss": "rm -r docs/styleguide/"
+  },
+  "version": "6.3.0-alpha.1"
+}
