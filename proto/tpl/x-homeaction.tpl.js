@@ -1,4 +1,5 @@
 const xjs = {
+  HTMLUListElement: require('extrajs-dom').HTMLUListElement,
   HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
 }
 
@@ -21,13 +22,10 @@ function xHomeAction(frag, data) {
   frag.querySelector('.c-HomeAction__Hn'  ).textContent = act.name
   frag.querySelector('.c-HomeAction__Cap' ).textContent = act_data.caption
 
-  let list = frag.querySelector('.c-HomeAction__List')
-  list.append(...act_data.links.map((link) =>
-    new xjs.HTMLTemplateElement(list.querySelector('template')).setRenderer(function (f, d) {
+  new xjs.HTMLUListElement(frag.querySelector('.c-HomeAction__List')).populate(act_data.links, function (f, d) {
       f.querySelector('[itemprop="url"]' ).href        = d.url
       f.querySelector('[itemprop="name"]').textContent = d.text
-    }).render(link)
-  ))
+  })
 }
 
 module.exports = xHomeAction

@@ -44,12 +44,24 @@ class Homepage {
      * @param   {xjs.HTMLTemplateElement} arg.component component builder for each item in the list
      */
     function populateList({container, datalist, component}) {
-      container.append(...datalist.map((datum) =>
-        new xjs.HTMLTemplateElement(container.querySelector('template')).setRenderer(function (frag, data) {
-          new xjs.HTMLLIElement(frag.querySelector('li')).empty().node
-            .append(component.render(data))
-        }).render(datum)
-      ))
+      let Wrapper = xjs[container.constructor.name] // NOTE-WARNING: the `name` property of a function is not reliable! It could fail after agressive minification (wherein functions names could change).
+      if (!Wrapper) throw new ReferenceError(`No constructor \`xjs.${container.constructor.name}\` found.`)
+
+      // Use the following code if `Function#constructor.name` fails.
+      // let Wrapper;
+      // let matches = {
+      //   'ol'   : xjs.HTMLOListElement,
+      //   'ul'   : xjs.HTMLUListElement,
+      //   'thead': xjs.HTMLTableSectionElement,
+      //   'tfoot': xjs.HTMLTableSectionElement,
+      //   'tbody': xjs.HTMLTableSectionElement,
+      //   'tr'   : xjs.HTMLTableRowElement,
+      // }
+      // for (let tag in matches) { Wrapper = (container.matches(tag)) ? matches[tag] : Wrapper }
+
+      new Wrapper(container).populate(datalist, function (frag, data) {
+        new xjs.HTMLLIElement(frag.querySelector('li')).empty().append(component.render(data))
+      })
     }
 
     // ++++ HARD-CODED DATA ++++ //
@@ -73,24 +85,24 @@ class Homepage {
     ;(function () {
       let container = document.querySelector('#promotions [role="tablist"]')
       let temp = jsdom.JSDOM.fragment('')
-      temp.append(...this._DATA['promotions'].map((datum, i) =>
-        new xjs.HTMLTemplateElement(container.querySelector('template')).setRenderer(function (frag, data) {
-          frag.querySelector('[role="tab"]').setAttribute('aria-label', data.title)
-          frag.querySelector('[role="tab"]').nextSibling.remove() // remove the following Text node (“twig”)
-          frag.querySelector('[role="tabpanel"]').id = `promotions-panel${i}`
-          frag.querySelector('[role="tabpanel"]').append(Homepage.TEMPLATES.xPromo.render(data))
-        }).render(datum)
-      ))
+      let xPromoTab = new xjs.HTMLTemplateElement(container.querySelector('template')).setRenderer(function (frag, data) {
+        frag.querySelector('[role="tab"]').setAttribute('aria-label', data.title)
+        frag.querySelector('[role="tab"]').nextSibling.remove() // remove the following Text node (“twig”)
+        frag.querySelector('[role="tabpanel"]').id = `promotions-panel${this._DATA['promotions'].indexOf(data)}`
+        frag.querySelector('[role="tabpanel"]').append(Homepage.TEMPLATES.xPromo.render(data))
+      })
+      temp.append(...this._DATA['promotions'].map((datum) => xPromoTab.render(datum, this)))
       container.insertBefore(temp, container.querySelector('button[value="next"]'))
     }).call(this)
 
     ;(function () {
       let container = document.querySelector('#asce-foundation')
-      container.append(new xjs.HTMLTemplateElement(container.querySelector('template')).setRenderer(function (frag, data) {
+      let xFoundation = new xjs.HTMLTemplateElement(container.querySelector('template')).setRenderer(function (frag, data) {
         frag.querySelector('[itemprop="description"]').textContent                       = data.caption
         frag.querySelector('[itemprop="potentialAction"] [itemprop="url"]' ).href        = data.cta.url
         frag.querySelector('[itemprop="potentialAction"] [itemprop="name"]').textContent = data.cta.text
-      }).render(this._DATA['asce-foundation']))
+      })
+      container.append(xFoundation.render(this._DATA['asce-foundation']))
     }).call(this)
 
     return dom.serialize()
