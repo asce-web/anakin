@@ -1,7 +1,10 @@
+const path = require('path')
+
 const xjs = {
   HTMLUListElement: require('extrajs-dom').HTMLUListElement,
   HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
 }
+
 
 /**
  * @summary Home Action display.
@@ -28,4 +31,6 @@ function xHomeAction(frag, data) {
   })
 }
 
-module.exports = xHomeAction
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-homeaction.tpl.html'))
+  .setRenderer(xHomeAction)

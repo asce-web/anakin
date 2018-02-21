@@ -1,3 +1,10 @@
+const path = require('path')
+
+const xjs = {
+  HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
+}
+
+
 /**
  * @summary Member Story display.
  * @param   {DocumentFragment} frag the template content with which to render
@@ -14,4 +21,6 @@ function xMember(frag, data) {
   frag.querySelector('blockquote'              ).textContent = data.quote
 }
 
-module.exports = xMember
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-member.tpl.html'))
+  .setRenderer(xMember)

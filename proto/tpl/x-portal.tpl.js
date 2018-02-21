@@ -1,7 +1,10 @@
+const path = require('path')
+
 const xjs = {
   HTMLUListElement: require('extrajs-dom').HTMLUListElement,
   HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
 }
+
 
 /**
  * @summary Portal display.
@@ -43,4 +46,6 @@ function xPortal(frag, data) {
   dupe.querySelector('.glyphicons').classList.remove('c-BigAssIcon', 'h-Block')
 }
 
-module.exports = xPortal
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-portal.tpl.html'))
+  .setRenderer(xPortal)

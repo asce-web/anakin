@@ -1,5 +1,8 @@
+const path = require('path')
+
 const xjs = {
   Date: require('extrajs').Date,
+  HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
 }
 
 /**
@@ -19,4 +22,6 @@ function xArticle(frag, data) {
   frag.querySelector('[itemprop="datePublished"]').textContent = xjs.Date.format(new Date(data.datetime), 'F j, Y')
 }
 
-module.exports = xArticle
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-article.tpl.html'))
+  .setRenderer(xArticle)

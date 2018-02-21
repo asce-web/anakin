@@ -1,7 +1,10 @@
+const path = require('path')
+
 const xjs = {
   HTMLUListElement: require('extrajs-dom').HTMLUListElement,
   HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
 }
+
 
 /**
  * @summary Featured Publication display.
@@ -30,4 +33,6 @@ function xPub(frag, data) {
   })
 }
 
-module.exports = xPub
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-pub.tpl.html'))
+  .setRenderer(xPub)

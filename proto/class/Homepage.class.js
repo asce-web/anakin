@@ -7,6 +7,16 @@ const xjs = {
   ...require('extrajs-dom'),
 }
 
+const xStat       = require('../tpl/x-stat.tpl.js')
+const xPortal     = require('../tpl/x-portal.tpl.js')
+const xPub        = require('../tpl/x-pub.tpl.js')
+const xHomeAction = require('../tpl/x-homeaction.tpl.js')
+const xPromo      = require('../tpl/x-promo.tpl.js')
+const xJob        = require('../tpl/x-job.tpl.js')
+const xArticle    = require('../tpl/x-article.tpl.js')
+const xMember     = require('../tpl/x-member.tpl.js')
+const xHero       = require('../tpl/x-hero.tpl.js')
+
 
 /**
  * ASCE Homepage.
@@ -65,31 +75,31 @@ class Homepage {
     }
 
     // ++++ HARD-CODED DATA ++++ //
-    populateList({ container: document.querySelector('#we-represent           .o-List'), datalist: Homepage.DATA.stats                                                                                , component: Homepage.TEMPLATES.xStat       })
-    populateList({ container: document.querySelector('#portals                .o-List'), datalist: Homepage.DATA.portals.map((d) => ({ fixed: d, fluid: this._DATA['portals'               ][d.id] })), component: Homepage.TEMPLATES.xPortal     })
-    populateList({ container: document.querySelector('#publication-highlights .o-List'), datalist: Homepage.DATA.pubs   .map((d) => ({ fixed: d, fluid: this._DATA['publication-highlights'][d.id] })), component: Homepage.TEMPLATES.xPub        })
-    populateList({ container: document.querySelector('#learn-contribute       .o-List'), datalist: Homepage.DATA.acts   .map((d) => ({ fixed: d, fluid: this._DATA['learn-contribute'      ][d.id] })), component: Homepage.TEMPLATES.xHomeAction })
+    populateList({ container: document.querySelector('#we-represent           .o-List'), datalist: Homepage.DATA.stats                                                                                , component: xStat       })
+    populateList({ container: document.querySelector('#portals                .o-List'), datalist: Homepage.DATA.portals.map((d) => ({ fixed: d, fluid: this._DATA['portals'               ][d.id] })), component: xPortal     })
+    populateList({ container: document.querySelector('#publication-highlights .o-List'), datalist: Homepage.DATA.pubs   .map((d) => ({ fixed: d, fluid: this._DATA['publication-highlights'][d.id] })), component: xPub        })
+    populateList({ container: document.querySelector('#learn-contribute       .o-List'), datalist: Homepage.DATA.acts   .map((d) => ({ fixed: d, fluid: this._DATA['learn-contribute'      ][d.id] })), component: xHomeAction })
 
     // ++++ USER-INPUT DATA ++++ //
-    populateList({ container: document.querySelector('#jobs                   .o-List'), datalist: this._DATA['jobs'           ]                                                                      , component: Homepage.TEMPLATES.xJob        })
-    populateList({ container: document.querySelector('#whats-happening        .o-List'), datalist: this._DATA['whats-happening']                                                                      , component: Homepage.TEMPLATES.xArticle    })
-    populateList({ container: document.querySelector('#member-stories         .o-List'), datalist: this._DATA['member-stories' ]                                                                      , component: Homepage.TEMPLATES.xMember     })
+    populateList({ container: document.querySelector('#jobs                   .o-List'), datalist: this._DATA['jobs'           ]                                                                      , component: xJob        })
+    populateList({ container: document.querySelector('#whats-happening        .o-List'), datalist: this._DATA['whats-happening']                                                                      , component: xArticle    })
+    populateList({ container: document.querySelector('#member-stories         .o-List'), datalist: this._DATA['member-stories' ]                                                                      , component: xMember     })
 
     // ++++ DATA WITH NO PATTERNS ++++ //
     ;(function () {
       let container = document.querySelector('main > header')
       new xjs.HTMLElement(container).empty()
-      container.append(Homepage.TEMPLATES.xHero.render(this._DATA['hero']))
+      container.append(xHero.render(this._DATA['hero']))
     }).call(this)
 
     ;(function () {
       let container = document.querySelector('#promotions [role="tablist"]')
       let temp = jsdom.JSDOM.fragment('')
-      let xPromoTab = new xjs.HTMLTemplateElement(container.querySelector('template')).setRenderer(function (frag, data) {
+      const xPromoTab = new xjs.HTMLTemplateElement(container.querySelector('template')).setRenderer(function (frag, data) {
         frag.querySelector('[role="tab"]').setAttribute('aria-label', data.title)
         frag.querySelector('[role="tab"]').nextSibling.remove() // remove the following Text node (“twig”)
         frag.querySelector('[role="tabpanel"]').id = `promotions-panel${this._DATA['promotions'].indexOf(data)}`
-        frag.querySelector('[role="tabpanel"]').append(Homepage.TEMPLATES.xPromo.render(data))
+        frag.querySelector('[role="tabpanel"]').append(xPromo.render(data))
       })
       temp.append(...this._DATA['promotions'].map((datum) => xPromoTab.render(datum, this)))
       container.insertBefore(temp, container.querySelector('button[value="next"]'))
@@ -97,7 +107,7 @@ class Homepage {
 
     ;(function () {
       let container = document.querySelector('#asce-foundation')
-      let xFoundation = new xjs.HTMLTemplateElement(container.querySelector('template')).setRenderer(function (frag, data) {
+      const xFoundation = new xjs.HTMLTemplateElement(container.querySelector('template')).setRenderer(function (frag, data) {
         frag.querySelector('[itemprop="description"]').textContent                       = data.caption
         frag.querySelector('[itemprop="potentialAction"] [itemprop="url"]' ).href        = data.cta.url
         frag.querySelector('[itemprop="potentialAction"] [itemprop="name"]').textContent = data.cta.text
@@ -108,38 +118,6 @@ class Homepage {
     return dom.serialize()
   }
 }
-
-
-
-
-/**
- * @summary A set of component builders. Each has a template and a renderer.
- * @namespace
- */
-Homepage.TEMPLATES = {
-  xStat      : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-stat.tpl.html'      ))).setRenderer(require('../tpl/x-stat.tpl.js'      )),
-  xPortal    : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-portal.tpl.html'    ))).setRenderer(require('../tpl/x-portal.tpl.js'    )),
-  xPub       : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-pub.tpl.html'       ))).setRenderer(require('../tpl/x-pub.tpl.js'       )),
-  xHomeAction: new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-homeaction.tpl.html'))).setRenderer(require('../tpl/x-homeaction.tpl.js')),
-  xPromo     : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-promo.tpl.html'     ))).setRenderer(require('../tpl/x-promo.tpl.js'     )),
-  xJob       : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-job.tpl.html'       ))).setRenderer(require('../tpl/x-job.tpl.js'       )),
-  xArticle   : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-article.tpl.html'   ))).setRenderer(require('../tpl/x-article.tpl.js'   )),
-  xMember    : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-member.tpl.html'    ))).setRenderer(require('../tpl/x-member.tpl.js'    )),
-  xHero      : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-hero.tpl.html'      ))).setRenderer(require('../tpl/x-hero.tpl.js'      )),
-
-  /*
-  xStat      : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-stat.tpl.html'      )).setRenderer(require('../tpl/x-stat.tpl.js'      )),
-  xPortal    : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-portal.tpl.html'    )).setRenderer(require('../tpl/x-portal.tpl.js'    )),
-  xPub       : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-pub.tpl.html'       )).setRenderer(require('../tpl/x-pub.tpl.js'       )),
-  xHomeAction: xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-homeaction.tpl.html')).setRenderer(require('../tpl/x-homeaction.tpl.js')),
-  xPromo     : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-promo.tpl.html'     )).setRenderer(require('../tpl/x-promo.tpl.js'     )),
-  xJob       : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-job.tpl.html'       )).setRenderer(require('../tpl/x-job.tpl.js'       )),
-  xArticle   : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-article.tpl.html'   )).setRenderer(require('../tpl/x-article.tpl.js'   )),
-  xMember    : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-member.tpl.html'    )).setRenderer(require('../tpl/x-member.tpl.js'    )),
-  xHero      : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-hero.tpl.html'      )).setRenderer(require('../tpl/x-hero.tpl.js'      )),
-   */
-}
-
 
 
 
