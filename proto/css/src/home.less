@@ -2,8 +2,9 @@
 /*================================*\
     anakin  |  home.less
 \*================================*/
-@import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
-@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+// @import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
+// @import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+// @import (reference) url('__settings.less');
 
 
 
@@ -121,24 +122,6 @@
 //
 // Styleguide Components
 
-// full-bleed background image used in the Hero and Promo sections.
-.mx-fullimage() {
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  justify-content: flex-end; // REVIEW-FALLBACK NOTE: must be after `jusfify-content: end;` to fix support
-  height: 100vmin;
-  @media screen and (min-width: 30em) {
-    height: 50vmin;
-  }
-  background-size: cover;
-  background-position: center;
-  color: white;
-}
-.mx-fullimage-bar() {
-  text-shadow: 0 0 0.125rem rgba(0,0,0,0.5); //COMBAK-FALLBACK
-  text-shadow: 0 0 0.125rem #00000080;
-}
 
 .c-SectionHed {
   .font-size-el(@g-font-size-h2, 2);
@@ -182,9 +165,6 @@
 
 // @import (inline) url('http://conferencesuite.asce.org/themes/custom/legacy/css/dist/_c-Button.css');
 // TEMP: copied from anakin and chewie
-@g-color-btn-txt: #fff;
-@g-color-btn-bg: @g-color-asce-blue;
-@g-color-btn-sw: #cdcdcd; // shadow
 .c-Button {
   font-family: 'futura-pt','Open Sans','Helvetica Neue','Helvetica',sans-serif;
   font-weight: 700;
