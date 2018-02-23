@@ -11,7 +11,7 @@ function xJob(frag, data) {
   frag.querySelector('[itemprop="url"]'                                   ).href        = data.url
   frag.querySelector('[itemprop="url"] slot'                              ).textContent = data.title
   frag.querySelector('[itemprop="hiringOrganization"] > [itemprop="name"]').textContent = data.organization
-  frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = data.location
+  // frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = data.location
 }
 
 module.exports = xJob

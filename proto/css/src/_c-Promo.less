@@ -3,6 +3,7 @@
     anakin  |  _c-Promo.less
 \*################################*/
 @import (reference) url('__settings.less');
+@import (reference) url('__mx.fullimage.less');
 
 
 .c-Promo {
@@ -11,6 +12,7 @@
 }
 
 .c-Promo__Bar {
+  .mx-fullimage-bar();
   background-color: fadeout(black, 75%); // COMBAK-FALLBACK for #rrggbbaa support
   background-color: #00000040; // REVIEW color
   padding: calc(0.5 ~'*' var(--lh)) 1rem; // REVIEW padding variables

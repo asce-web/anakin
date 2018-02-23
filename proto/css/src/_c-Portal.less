@@ -7,27 +7,8 @@
 
 .c-Portal {
   --color-accent: @g-color-asce-green;
-  margin-bottom: 0; // unset base `details`
-  section& {
+  &:not(.c-Portal--expando) {
     @media not all and (min-width: 30em) {
-      display: none;
-    }
-  }
-  details& {
-    .c-Portal__Icon {
-      vertical-align: middle;
-      margin-right: 1rem;
-      border-radius: 50%;
-      background-color: var(--color-accent, @g-color-asce-blue);
-      color: white;
-      &::before {
-        content: '\E602'; // copied from `.glyphicons-chevron-down` (cannot change classname, so copying css style)
-      }
-    }
-    &[open] .c-Portal__Icon::before {
-      content: '\E601'; // copied from `.glyphicons-chevron-up` (cannot change classname, so copying css style)
-    }
-    @media screen and (min-width: 30em) {
       display: none;
     }
   }
@@ -56,7 +37,6 @@
 
 .c-Portal__Hn {
   flex: 1;
-  color: @g-color-body-txt; // override `a[href]`
   details.c-Portal & {
     text-align: inherit; // unset `.c-SectionHed`
   }
@@ -75,4 +55,34 @@
 }
 
 .c-Portal__Link {
+}
+
+
+// Expandable accordion. Extends the default Portal style.
+.c-Portal--expando {
+  .c-Portal__Head {
+    display: table;
+  }
+  .c-Portal__Icon,
+  .c-Portal__Hn {
+    display: table-cell;
+  }
+  .c-Portal__Icon {
+    vertical-align: middle;
+    margin-right: 1rem;
+    border-radius: 50%;
+    color: var(--color-accent, @g-color-asce-blue);
+    &::before {
+      content: '\E602'; // copied from `.glyphicons-chevron-down` (cannot change classname, so copying css style)
+    }
+  }
+  &[open] .c-Portal__Icon::before {
+    content: '\E601'; // copied from `.glyphicons-chevron-up` (cannot change classname, so copying css style)
+  }
+  .c-Portal__Hn {
+    padding-top: 0; // unset base <h1>
+  }
+  @media screen and (min-width: 30em) {
+    display: none;
+  }
 }

@@ -1,0 +1,24 @@
+
+/*################################*\
+    anakin  |  _mx.fullimage.less
+\*################################*/
+
+
+// full-bleed background image used in the Hero and Promo sections.
+.mx-fullimage() {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  justify-content: flex-end; // REVIEW-FALLBACK NOTE: must be after `jusfify-content: end;` to fix support
+  height: 100vmin;
+  @media screen and (min-width: 30em) {
+    height: 50vmin;
+  }
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+.mx-fullimage-bar() {
+  text-shadow: 0 0 0.125rem rgba(0,0,0,0.5); //COMBAK-FALLBACK
+  text-shadow: 0 0 0.125rem #00000080;
+}

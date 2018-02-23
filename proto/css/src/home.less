@@ -3,6 +3,8 @@
     anakin  |  home.less
 \*================================*/
 @import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+// @import (reference) url('__settings.less');
 
 
 
@@ -42,8 +44,9 @@
  * # THEMES & HELPERS-----------------------LOCATION-DEPENDENT STYLES
  *
  * # OVERRIDES------------------------------ATOMS & HACKS
- * _hack.shame.less.........................hacks
+ * _hack.less...............................general hacks for all platforms
  * _hack.ie.less............................IE hacks
+ * _hack.ektron.less........................Ektron hacks
  */
 
 
@@ -77,8 +80,6 @@
 // Weight: 1
 //
 // Styleguide Objects
-
-@import (inline) url('http://conferencesuite.asce.org/themes/custom/legacy/css/dist/_o-Constrain.css');
 
 .o-Runner {
   padding: var(--layout-padding);
@@ -119,23 +120,6 @@
 //
 // Styleguide Components
 
-@import (inline) url('http://conferencesuite.asce.org/themes/custom/legacy/css/dist/_c-Button.css');
-
-// full-bleed background image used in the Hero and Promo sections.
-.mx-fullimage() {
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  justify-content: flex-end; // REVIEW-FALLBACK NOTE: must be after `jusfify-content: end;` to fix support
-  height: 100vmin;
-  @media screen and (min-width: 30em) {
-    height: (2/3 * 100vmin);
-  }
-  background-size: cover;
-  background-position: center;
-  color: white;
-}
-
 
 .c-SectionHed {
   .font-size-el(@g-font-size-h2, 2);
@@ -148,8 +132,16 @@
   padding-top: var(--lh);
   .font-size-el(@g-font-size-kilo);
   font-weight: 600;
+  // REVIEW: Careful here, this `<h1>` style depends on the “We Represent”
+  // being an `<h1>` immediately following the `.c-Tagline`.
+  // REMEMBER to fix this if the element ever moves or changes.
+  & + h1 {
+    font-weight: inherit;
+    .font-size-el(@g-font-size-kilo, 2);
+  }
 }
 
+// TODO: choose a more appropriate name
 .c-BigAssIcon {
   display: block;
   line-height: inherit; // COMBAK-FALLBACK
@@ -169,13 +161,50 @@
   }
 }
 
+// @import (inline) url('http://conferencesuite.asce.org/themes/custom/legacy/css/dist/_c-Button.css');
+// TEMP: copied from anakin and chewie
+.c-Button {
+  font-family: 'futura-pt','Open Sans','Helvetica Neue','Helvetica',sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  word-spacing: 1px;
+  letter-spacing: 1px;
+
+  display: inline-block;
+  padding: calc(~'0.5 * var(--vru)') 1rem;
+  font-size: (1em * 14/16);
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: @g-color-btn-bg;
+  border-radius: 0.25rem;
+  box-shadow: 0 (1em/8) 0 0 @g-color-btn-sw;
+  cursor: pointer;
+  &,
+  a[href]& {
+    &,
+    &:hover,
+    &:focus {
+      color: @g-color-btn-txt;
+    }
+  }
+  &:hover,
+  &:focus {
+    background-color: lighten(@g-color-btn-bg, 5%);
+  }
+  &:active {
+    background-color: darken(@g-color-btn-bg, 5%);
+    box-shadow: 0 (1em/8) 0 0 @g-color-btn-sw inset;
+  }
+}
+
 .c-Button--ghost {
   background: transparent;
   box-shadow: 0 0 0 0.125rem white;
+  text-shadow: none; // override .mx-fullimage-bar()
   a&:hover,
   a&:focus {
     background: white;
-    color: @g-color-asce-blue
+    color: @g-color-asce-blue;
   }
 }
 
@@ -222,4 +251,5 @@
 //++++++++++++++++++++++++++++++++//
 @import url('_hack.less');
 @import url('_hack.ie.less');
+@import url('_hack.ektron.less');
 //++++ end # OVERRIDES ++++//

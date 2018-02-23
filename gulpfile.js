@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 
 const gulp = require('gulp')
 const less         = require('gulp-less')
@@ -15,15 +16,36 @@ gulp.task('home:compile', function (callback) {
   })
 })
 
+gulp.task('home:lessc-each', function () {
+  return gulp.src(path.resolve(__dirname, './proto/css/src/*.less'))
+    .pipe(sourcemaps.init())
+    .pipe(less())
+    .pipe(autoprefixer({
+      grid: true,
+    }))
+    .pipe(gulp.dest('./proto/css/dist/'))
+    .pipe(clean_css({
+      level: {
+        2: {
+          overrideProperties: false,
+          mergeMedia: false,
+          restructureRules: true,
+        },
+      },
+    }))
+    .pipe(sourcemaps.write('./')) // write to an external .map file
+    .pipe(gulp.dest('./proto/css/dist/'))
+})
+
 gulp.task('home:lessc', function () {
   return gulp.src(`${__dirname}/proto/css/src/home.less`)
+    .pipe(sourcemaps.init())
     .pipe(less())
     .pipe(autoprefixer({
       grid: true,
       cascade: false,
     }))
     .pipe(gulp.dest('./proto/css/'))
-    .pipe(sourcemaps.init())
     .pipe(clean_css({
       level: {
         2: {

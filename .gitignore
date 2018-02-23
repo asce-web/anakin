@@ -21,6 +21,9 @@ logs
 npm-debug.log*
 
 
+# Compiled source files
+proto/css/dist
+
 # Auto-generated documentation & style guides
 docs/styleguide
 docs/api

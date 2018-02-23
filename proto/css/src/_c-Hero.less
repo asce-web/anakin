@@ -3,6 +3,7 @@
     anakin  |  _c-Hero.less
 \*################################*/
 @import (reference) url('__settings.less');
+@import (reference) url('__mx.fullimage.less');
 
 
 .c-Hero {
@@ -10,6 +11,7 @@
 }
 
 .c-Hero__Bar {
+  .mx-fullimage-bar();
   background-color: fadeout(@g-color-asce-blue, 25%); // REVIEW color
   padding: calc(0.5 ~'*' var(--lh)) 1rem; // REVIEW padding variables
 }
@@ -22,8 +24,6 @@
 
 .c-Hero__Cap,
 .c-Hero__Cta {
-  margin-bottom: 0; // COMBAK-FALLBACK
-  margin-block-end: unset; // unset base `p`
 }
 
 .c-Hero__Cap {
@@ -33,5 +33,7 @@
 
 .c-Hero__Cta {
   flex: 1 0 auto;
+  margin-bottom: 0; // COMBAK-FALLBACK
+  margin-block-end: unset; // unset base `p`
   text-align: center;
 }

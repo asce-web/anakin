@@ -38,7 +38,7 @@ function xPortal(frag, data) {
    * Duplicate, for mobile view.
    * @type {HTMLElement}
    */
-  let dupe = frag.querySelectorAll('.c-Portal')[1]
+  let dupe = frag.querySelector('.c-Portal--expando')
   dupe.append(list.cloneNode(true))
   dupe.querySelector('.c-Portal__Head').append(...Array.from(orig.querySelector('.c-Portal__Head').childNodes).map((n) => n.cloneNode(true)))
   dupe.querySelector('.glyphicons').classList.remove('c-BigAssIcon', 'h-Block')
