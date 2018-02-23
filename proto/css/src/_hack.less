@@ -11,9 +11,9 @@
 
 // HACK The link in CE Mag should be a button, which goes against all patterns. You can’t blame it, it just wants to be different.
 #civil-engineering-magazine .c-Pub__Link {
-  @import (reference) url('http://conferencesuite.asce.org/themes/custom/legacy/css/src/_c-Button.less');
   .c-Button;
-  .c-LinkArrow__Icon { display: none }
+  &:hover { text-decoration: none; } // undo .c-LinkArrow style
+  .c-LinkArrow__Icon { display: none; }
 }
 
 

@@ -39,13 +39,13 @@ gulp.task('home:lessc-each', function () {
 
 gulp.task('home:lessc', function () {
   return gulp.src(`${__dirname}/proto/css/src/home.less`)
+    .pipe(sourcemaps.init())
     .pipe(less())
     .pipe(autoprefixer({
       grid: true,
       cascade: false,
     }))
     .pipe(gulp.dest('./proto/css/'))
-    .pipe(sourcemaps.init())
     .pipe(clean_css({
       level: {
         2: {
