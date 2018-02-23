@@ -136,6 +136,10 @@
   background-position: center;
   color: white;
 }
+.mx-fullimage-bar() {
+  text-shadow: 0 0 0.125rem rgba(0,0,0,0.5); //COMBAK-FALLBACK
+  text-shadow: 0 0 0.125rem #00000080;
+}
 
 
 .c-SectionHed {
@@ -180,6 +184,7 @@
 .c-Button--ghost {
   background: transparent;
   box-shadow: 0 0 0 0.125rem white;
+  text-shadow: none; // override .mx-fullimage-bar()
   a&:hover,
   a&:focus {
     background: white;
