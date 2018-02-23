@@ -61,6 +61,14 @@ main footer { background-color: transparent; }
 }
 
 
+// HACK: fix icon sizing due to Bootstrap root rem values
+// `10 / 7` (≈1.42857) is the body line-height for some Godforsaken reason
+.c-LinkArrow__Icon {
+  width      : (10/7 * 1em);
+  inline-size: (10/7 * 1em);
+}
+
+
 .c-Button[href] {
   text-decoration: none; // override bootstrap text-decoration
   &:visited { color: @g-color-btn-txt; }
