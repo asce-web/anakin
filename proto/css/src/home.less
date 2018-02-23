@@ -42,8 +42,9 @@
  * # THEMES & HELPERS-----------------------LOCATION-DEPENDENT STYLES
  *
  * # OVERRIDES------------------------------ATOMS & HACKS
- * _hack.shame.less.........................hacks
+ * _hack.less...............................general hacks for all platforms
  * _hack.ie.less............................IE hacks
+ * _hack.ektron.less........................Ektron hacks
  */
 
 
@@ -150,6 +151,7 @@
   font-weight: 600;
 }
 
+// TODO: choose a more appropriate name
 .c-BigAssIcon {
   display: block;
   line-height: inherit; // COMBAK-FALLBACK
@@ -222,4 +224,5 @@
 //++++++++++++++++++++++++++++++++//
 @import url('_hack.less');
 @import url('_hack.ie.less');
+@import url('_hack.ektron.less');
 //++++ end # OVERRIDES ++++//

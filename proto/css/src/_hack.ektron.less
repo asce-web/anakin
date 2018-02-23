@@ -1,0 +1,64 @@
+
+/*################################*\
+    anakin  |  _hack.ektron.less
+\*################################*/
+
+
+// Ektron and Bootstrap fixes go here.
+// Using the container selector `form#aspnetForm` (only applied to Ektron generated page).
+// Please vigorously add comments! Describe every single purpose.
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+// HACK: Must set Bootstrap style because megamenu uses `rem` values,
+// which depend on root font size. Note that of course this is not accessible:
+// it does not allow users to choose their own font size in browser settings.
+html {
+  font-size: 10px;
+}
+
+
+
+
+// `form#aspnetForm` selector is a wrapper applied by Ektron.
+form#aspnetForm {
+
+
+// HACK: Override max-width of 1200 set by `anakin/main.less`
+main { max-width: none; }
+
+
+// HACK: undo bullets in megamenu & footer navigation set by base <ul>.
+// TO FIXME: add the class `.o-List` to the lists to remove default styles.
+// Then remove this style.
+// (NOTE: `.o-List` stands for “Object List”, not “Ordered List”)
+.nav ul,
+& > footer ul { list-style-type: none; }
+
+
+// HACK: Override value of 0 set by xmeter styles of inline elements
+// Spans in the megamenu are diplayed as blocks, so setting `line-height:0` causes text to overlap.
+// TO FIXME: add the class `.h-Block` to the spans to fix this. Or use <div>s instead of <span>s.
+// QUESTION: **Consider why we are even displaying these spans as blocks in the first place.**
+// Then remove this style.
+.nav span { line-height: inherit; }
+
+
+// HACK: override default footer background in `anakin/main.less`
+// QUESTION: Why are all footers set to have a background color? Can we choose a more targeted selector?
+// TO FIXME: Remove the background color of `#8c959d` on all footer elements,
+// and then apply that color to only the footers you want.
+// Then remove this style.
+main footer { background-color: transparent; }
+
+
+// HACK: fix icon sizing due to Bootstrap root rem values.
+// TODO: choose a more appropriate name
+.c-BigAssIcon {
+  transform: scale(16 / 10);
+}
+
+
+           }
