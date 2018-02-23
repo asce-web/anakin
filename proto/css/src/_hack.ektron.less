@@ -15,7 +15,8 @@
 // HACK: Must set Bootstrap style because megamenu uses `rem` values,
 // which depend on root font size. Note that of course this is not accessible:
 // it does not allow users to choose their own font size in browser settings.
-html {
+// Bootstrap sets the `.js` class on `<html>`.
+html.js {
   font-size: 10px;
 }
 
