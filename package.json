@@ -6,7 +6,7 @@
   "main": "styles/anakin.css",
   "devDependencies": {
     "extrajs": "^0.11.0-beta",
-    "extrajs-dom": "^4.0.0-alpha.3",
+    "extrajs-dom": "4.0.0-alpha.3",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "^3.9.2",
@@ -14,7 +14,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "harp": "^0.25.0",
     "jsdom": "^11.6.2",
-    "xmeter": "^6.3.0-alpha.1"
+    "xmeter": "6.3.0-alpha.1"
   },
   "directories": {
     "doc": "docs/api"
