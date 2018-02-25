@@ -1,0 +1,11 @@
+<template>
+  <ol role="directory">
+    <template>
+      <li itemprop="hasPart" itemscope="" itemtype="http://schema.org/WebPage">
+        <a href="{{ url }}" itemprop="url">
+          <slot itemprop="name">{{ name }}</slot>
+        </a>
+      </li>
+    </template>
+  </ol>
+</template>

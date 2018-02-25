@@ -1,0 +1,14 @@
+{
+  "title": "ARIA Patterns",
+  "source": "css/src/",
+  "destination": "docs/styleguide/",
+  "css": [
+    "https://cdn.rawgit.com/chharvey/xmeter/v6.2.0/css/xmeter.css",
+    "../../css/dist/o-Tablist.css",
+    "../../css/dist/c-Permalink.css",
+    "../../css/dist/h-Hidden.css"
+  ],
+  "js": [
+    "../../js/dist/o-Tablist.js"
+  ]
+}
