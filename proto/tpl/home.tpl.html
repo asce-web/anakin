@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
 
   <link rel="stylesheet" href="../bower_components/xmeter/css/xmeter.css"/>
+  <link rel="stylesheet" href="../bower_components/aria-patterns/css/dist/o-Tablist.css"/>
   <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
 
   <link rel="stylesheet" href="./css/home.css"/>
@@ -19,7 +20,7 @@
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,400italic,700"/> -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> -->
 
-  <script src="../bower_components/xmeter/js/o-Tablist.js" defer=""></script>
+  <script src="../bower_components/aria-patterns/js/dist/o-Tablist.js" defer=""></script>
   <script src="./js/o-Slider.js" defer=""></script>
   <script src="./js/hacks.js" defer=""></script>
 </head>
@@ -42,15 +43,15 @@
     </section>
     <section id="promotions">
       <h1 class="c-SectionHed h-Hidden">Promotions</h1>
-      <div class="o-Tablist o-Tablist--slider dev" role="tablist">
+      <div class="o-Tablist o-Tablist--slider" role="tablist">
         <button class="o-Tablist--slider__Button" type="button" value="prev" tabindex="-1">
           <i class="glyphicons glyphicons-circle-arrow-left">
             <span class="h-Hidden">previous panel</span>
           </i>
         </button>
         <template>
-          <details class="o-Tablist__Panel dev" id="promotions-panel{{ i }}" role="tabpanel" open="">
-            <summary class="o-Tablist__Tab dev" role="tab" aria-label="{{ title }}">&#x25cf;</summary>
+          <details class="o-Tablist__Panel" id="promotions-panel{{ i }}" role="tabpanel" open="">
+            <summary class="o-Tablist__Tab" role="tab" aria-label="{{ title }}">&#x25cf;</summary>
             {{ ./tpl/x-promo.tpl.html }}
           </details>
         </template>
