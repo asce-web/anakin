@@ -21,7 +21,7 @@ function xPub(frag, data) {
   frag.querySelector('[itemprop~="image"]'     ).src         = pub_data.image
   frag.querySelector('[itemprop="name"]'       ).textContent = pub.name
   frag.querySelector('[itemprop="description"]').textContent = pub_data.caption
-  frag.querySelector('article'                 ).innerHTML   = pub_data.body
+  frag.querySelector('[itemprop="text"]'       ).innerHTML   = pub_data.body
 
   let list = frag.querySelector('.c-Pub__List')
   list.append(...pub_data.links.map((link) =>
