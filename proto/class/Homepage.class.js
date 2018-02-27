@@ -105,17 +105,6 @@ class Homepage {
  * @namespace
  */
 Homepage.TEMPLATES = {
-  xStat      : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-stat.tpl.html'      ))).setRenderer(require('../tpl/x-stat.tpl.js'      )),
-  xPortal    : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-portal.tpl.html'    ))).setRenderer(require('../tpl/x-portal.tpl.js'    )),
-  xPub       : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-pub.tpl.html'       ))).setRenderer(require('../tpl/x-pub.tpl.js'       )),
-  xHomeAction: new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-homeaction.tpl.html'))).setRenderer(require('../tpl/x-homeaction.tpl.js')),
-  xPromo     : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-promo.tpl.html'     ))).setRenderer(require('../tpl/x-promo.tpl.js'     )),
-  xJob       : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-job.tpl.html'       ))).setRenderer(require('../tpl/x-job.tpl.js'       )),
-  xArticle   : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-article.tpl.html'   ))).setRenderer(require('../tpl/x-article.tpl.js'   )),
-  xMember    : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-member.tpl.html'    ))).setRenderer(require('../tpl/x-member.tpl.js'    )),
-  xHero      : new xjs.HTMLTemplateElement(xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-hero.tpl.html'      ))).setRenderer(require('../tpl/x-hero.tpl.js'      )),
-
-  /*
   xStat      : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-stat.tpl.html'      )).setRenderer(require('../tpl/x-stat.tpl.js'      )),
   xPortal    : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-portal.tpl.html'    )).setRenderer(require('../tpl/x-portal.tpl.js'    )),
   xPub       : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-pub.tpl.html'       )).setRenderer(require('../tpl/x-pub.tpl.js'       )),
@@ -125,7 +114,6 @@ Homepage.TEMPLATES = {
   xArticle   : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-article.tpl.html'   )).setRenderer(require('../tpl/x-article.tpl.js'   )),
   xMember    : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-member.tpl.html'    )).setRenderer(require('../tpl/x-member.tpl.js'    )),
   xHero      : xjs.HTMLTemplateElement.fromFileSync(path.join(__dirname, '../tpl/x-hero.tpl.html'      )).setRenderer(require('../tpl/x-hero.tpl.js'      )),
-   */
 }
 
 

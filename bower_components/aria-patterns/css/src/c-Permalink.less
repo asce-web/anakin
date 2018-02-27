@@ -1,36 +1,33 @@
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-///////--- CHANGED DEPRECATED! Use `require('aria-patterns')` instead! ---////////
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
 
 /*################################*\
-    xmeter  |  _c-Permalink.less
+    c-Permalink.less
 \*################################*/
 
 
 // The Permalink
 //
-// **CHANGED. DEPRECATED. This component has been moved to https://github.com/chharvey/aria-patterns.**
-//
 // The Permalink Component is added to the end of a heading in a documentation system,
 // style guide, or pattern library. This Component is an internal link, and makes sections
 // within a document easy to access.
-// Use with <code>.h-Inline</code> and <code>.h-Hidden</code>.
+//
+// Use with this project’s `.h-Hidden` and
+// [Xmeter’s](https://github.com/chharvey/xmeter/) `.h-Inline` Helpers.
+// <footer>Read https://github.com/chharvey/chharvey.github.io/wiki/Accessible-Skip-Links#internal-permalinks for more info.</footer>
 // <header><dl>
 //   <dt>author</dt>  <dd>Chris Harvey</dd>
 //   <dt>updated</dt> <dd><time>2017-03-26</time></dd>
 // </dl></header>
 //
-// Pug:
+// DOM:
 // <pre>
-// section#section-title
-//   h1
-//     | Section Title
-//     != Xmeter.view({id: 'section-title'}).permalink()
+// const ARIAPatterns = require('aria-pattrens')
+// document.querySelector('#section-title > h1').append(
+//   ARIAPatterns.xPermalink.render({id: 'section-title'})
+// )
 // </pre>
 //
 // Markup:
+// <link href="/node_modules/aria-patterns/css/dist/c-Permalink.css" rel="stylesheet"/>
 // <section id="section-title">
 //   <h1>
 //     Section Title
@@ -43,7 +40,10 @@
 // Styleguide Components.Permalink
 .c-Permalink {
   margin-left: 1rem;
-  margin-inline-start: 1rem;
+  @supports (margin-inline-start: 1rem) {
+    margin-left: unset;
+    margin-inline-start: 1rem;
+  }
   font-weight: 100;
   h1:hover > &,
   h2:hover > &,
@@ -51,7 +51,8 @@
   h4:hover > &,
   h5:hover > &,
   h6:hover > & {
-    position: initial; // HACK fallback
+    position: static; // HACK fallback for `initial`
+    position: initial; // HACK fallback for `unset`
     position: unset; // unset `.h-Hidden`
   }
 }

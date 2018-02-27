@@ -2,6 +2,7 @@ const path = require('path')
 
 const View = require('extrajs-view')
 const xjs = require('extrajs-dom')
+const ARIAPatterns = require('aria-patterns')
 
 /**
  * Static members for the Xmeter package.
@@ -33,35 +34,19 @@ class Xmeter {
        * @summary Call `Xmeter.view(data).permalink()` to render this display.
        * @function Xmeter.VIEW.permalink
        * @version DEPRECATED
-       * @deprecated
+       * @deprecated YES. Moved to {@link https://github.com/chharvey/aria-patterns}
        * @param   {string=} content the text of the link
        * @param   {string=} label the value for `[aria-label]` attribute
        * @returns {string} HTML output
        */
       .addDisplay(function permalink(content = '&sect;', label = 'permalink') {
-        return new xjs.DocumentFragment(Xmeter.TEMPLATES.xPermalink.render({
+        return new xjs.DocumentFragment(ARIAPatterns.xPermalink.render({
           id: this.id,
           label: label,
           text: content,
         })).innerHTML()
       })
   }
-}
-
-/**
- * @summary A set of component builders.
- * @namespace
- */
-Xmeter.TEMPLATES = {
-  /**
-   * @summary An `<a.Permlink>` element.
-   * @version EXPERIMENTAL
-   * @see /tpl/x-permalink.tpl.js
-   * @type {xjs.HTMLTemplateElement}
-   */
-  xPermalink: new xjs.HTMLTemplateElement(
-    xjs.HTMLTemplateElement.readTemplateFileSync(path.join(__dirname, '../tpl/x-permalink.tpl.html'))
-  ).setRenderer(require('../tpl/x-permalink.tpl.js')),
 }
 
 module.exports = Xmeter

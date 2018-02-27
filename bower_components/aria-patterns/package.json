@@ -1,0 +1,40 @@
+{
+  "name": "aria-patterns",
+  "version": "0.2.0",
+  "description": "Common patterns of elements with ARIA attributes.",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build",
+    "unbuild": "rm -r docs/{styleguide,api}/ {css,js}/dist/",
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chharvey/aria-patterns.git"
+  },
+  "keywords": [
+    "aria",
+    "a11y",
+    "accessibility",
+    "components"
+  ],
+  "author": "Chris Harvey <chrisharvey2pi@gmail.com> (https://chharvey.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chharvey/aria-patterns/issues"
+  },
+  "homepage": "https://github.com/chharvey/aria-patterns#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-jsdoc3": "^1.0.1",
+    "gulp-less": "^3.5.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify-es": "^1.0.1",
+    "kss": "^3.0.0-beta.18"
+  },
+  "dependencies": {
+    "extrajs-dom": "^4.0.0-alpha.4"
+  }
+}
