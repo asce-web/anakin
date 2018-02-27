@@ -73,7 +73,14 @@
     <aside class="o-Flex c-Advertisement c-Advertisement--leaderboard">
       <h1 class="c-Advertisement__Hn">Advertisement</h1>
       <div class="o-Runner h-Constrain">
-        This is the ad space
+        <picture>
+          <source srcset="./images/leaderboard.svg" media="(min-width: 30em)"/>
+          <img src="./images/mobilebanner.svg" alt="alt text for leaderboard ad"/>
+        </picture>
+        <div class="-d-n _ie-d-b"><!-- IE-only -->
+          <img class="_ie-d-n-sK" src="./images/mobilebanner.svg" alt="alt text for leaderboard ad"/>
+          <img class="_ie-d-n-nK" src="./images/leaderboard.svg"  alt="alt text for leaderboard ad"/>
+        </div>
       </div>
     </aside>
     <section class="o-Grid o-Grid--foundation o-Runner o-Runner--separator h-Constrain" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
@@ -148,9 +155,11 @@
     <footer class="o-Runner -ta-c"><a class="c-Button" href="//www.asce.org/join/">Join ASCE</a></footer>
     <aside class="o-Flex c-Advertisement">
       <h1 class="c-Advertisement__Hn">Advertisement</h1>
-      <div class="o-Runner h-Constrain">
-        This is the ad space
-      </div>
+      <ul class="o-List o-Flex o-Runner h-Constrain">
+        <li class="o-List__Item o-Flex__Item"><img src="./images/mediumrect.svg" alt="alt text for 1st small ad"/></li>
+        <li class="o-List__Item o-Flex__Item"><img src="./images/mediumrect.svg" alt="alt text for 2nd small ad"/></li>
+        <li class="o-List__Item o-Flex__Item"><img src="./images/mediumrect.svg" alt="alt text for 3rd small ad"/></li>
+      </ul>
     </aside>
   </main>
   <footer>

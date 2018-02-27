@@ -6,6 +6,33 @@
 @import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
 
 
+// TODO move these and others to Bangs:
+// - .c-LinkList__Item
+// - .c-Pub__Img
+// - .c-Pub__Hn
+// - .c-Pub__Cap
+// - .c-ArticleTeaser__Img
+// - .c-ArticleTeaser__Hn
+// - .c-ArticleTeaser__Date
+.mx-mbh() {
+  margin-bottom: calc(0.5 ~'*' var(--lh));
+  margin-bottom: 0.5lh;
+  @suports (margin-block-end: var(--variable)) {
+    margin-bottom: unset;
+    margin-block-end: calc(0.5 ~'*' var(--lh));
+    margin-block-end: 0.5lh;
+  }
+}
+.mx-pth() {
+  padding-top: calc(0.5 ~'*' var(--lh));
+  padding-top: 0.5lh;
+  @suports (padding-block-start: var(--variable)) {
+    padding-top: unset;
+    padding-block-start: calc(0.5 ~'*' var(--lh));
+    padding-block-start: 0.5lh;
+  }
+}
+
 .c-Advertisement {
   background-color: #eee;
   flex-direction: column;
@@ -13,23 +40,24 @@
 
 .c-Advertisement__Hn {
   order: 1;
-  padding-top: calc(0.5 ~'*' var(--lh));
-  padding-top: 0.5lh;
-  margin-bottom: calc(0.5 ~'*' var(--lh));
-  margin-bottom: 0.5lh;
-  @suports (padding-block-start: var(--variable)) {
-    padding-top: unset;
-    padding-block-start: calc(0.5 ~'*' var(--lh));
-    padding-block-start: 0.5lh;
-  }
-  @suports (margin-block-end: var(--variable)) {
-    margin-bottom: unset;
-    margin-block-end: calc(0.5 ~'*' var(--lh));
-    margin-block-end: 0.5lh;
-  }
+  .mx-mbh();
+  .mx-pth();
   font-weight: inherit;
   font-weight: unset;
   .font-size-el(@g-font-size-mill);
   text-align: center;
   text-transform: uppercase;
+}
+
+.c-Advertisement > .o-Flex {
+  margin-bottom: 0;
+  margin-bottom: unset; // unset base <ul>
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  inline-size: 100%;
+  > .o-Flex__Item {
+    flex: none;
+    .mx-mbh();
+  }
 }
