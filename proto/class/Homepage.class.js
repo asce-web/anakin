@@ -71,6 +71,9 @@ class Homepage {
     }).call(this)
 
     ;(function () {
+    }).call(this)
+
+    ;(function () {
       let container = document.querySelector('#promotions [role="tablist"]')
       let temp = jsdom.JSDOM.fragment('')
       temp.append(...this._DATA['promotions'].map((datum, i) =>
