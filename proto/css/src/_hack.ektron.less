@@ -59,6 +59,18 @@ main footer { background-color: transparent; }
 // HACK: fix icon sizing due to Bootstrap root rem values.
 .c-SolidCircleIcon {
   transform: scale(16 / 10);
+  &.c-Stat__Icon + p {
+    padding-top: 1.5rem;
+    padding-top: var(--lh);
+    padding-block-start: var(--lh);
+    padding-block-start: lh;
+  }
+  &.c-Portal__Icon + .c-Portal__Hn {
+    padding-top: 3rem;
+    padding-top: calc(2 ~'*' var(--lh));
+    padding-block-start: calc(2 ~'*' var(--lh));
+    padding-block-start: 2lh;
+  }
 }
 
 
