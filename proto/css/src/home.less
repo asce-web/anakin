@@ -157,53 +157,7 @@
   }
 }
 
-// @import (inline) url('http://conferencesuite.asce.org/themes/custom/legacy/css/dist/_c-Button.css');
-// TEMP: copied from anakin and chewie
-.c-Button {
-  font-family: 'futura-pt','Open Sans','Helvetica Neue','Helvetica',sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  word-spacing: 1px;
-  letter-spacing: 1px;
-
-  display: inline-block;
-  padding: calc(~'0.5 * var(--vru)') 1rem;
-  font-size: (1em * 14/16);
-  white-space: nowrap;
-  vertical-align: middle;
-  background-color: @g-color-btn-bg;
-  border-radius: 0.25rem;
-  box-shadow: 0 (1em/8) 0 0 @g-color-btn-sw;
-  cursor: pointer;
-  &,
-  a[href]& {
-    &,
-    &:hover,
-    &:focus {
-      color: @g-color-btn-txt;
-    }
-  }
-  &:hover,
-  &:focus {
-    background-color: lighten(@g-color-btn-bg, 5%);
-  }
-  &:active {
-    background-color: darken(@g-color-btn-bg, 5%);
-    box-shadow: 0 (1em/8) 0 0 @g-color-btn-sw inset;
-  }
-}
-
-.c-Button--ghost {
-  background: transparent;
-  box-shadow: 0 0 0 0.125rem white;
-  text-shadow: none; // override .mx-fullimage-bar()
-  a[href]&:hover,
-  a[href]&:focus {
-    background: white;
-    color: @g-color-asce-blue;
-  }
-}
-
+@import url('_c-Button.less');
 @import url('_c-Advertisement.less');
 @import url('_c-LinkList.less');
 @import url('_c-LinkArrow.less');
