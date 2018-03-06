@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   justify-content: end;
-  justify-content: flex-end; // REVIEW-FALLBACK NOTE: must be after `jusfify-content: end;` to fix support
+  justify-content: flex-end; // COMBAK-FALLBACK NOTE: must be after `jusfify-content: end;` to fix support
   height: 100vmin;
   @media screen and (min-width: 30em) {
     height: 50vmin;
@@ -19,6 +19,8 @@
   color: white;
 }
 .mx-fullimage-bar() {
+  padding: calc(0.5 ~'*' var(--lh)) 1rem; // COMBAK-FALLBACK
+  padding: 0.5lh 1rem; // REVIEW padding variables
   text-shadow: 0 0 0.125rem rgba(0,0,0,0.5); //COMBAK-FALLBACK
   text-shadow: 0 0 0.125rem #00000080;
 }

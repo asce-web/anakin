@@ -2,251 +2,132 @@
 /*================================*\
     anakin  |  home.less
 \*================================*/
-@import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
-@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
-// @import (reference) url('__settings.less');
 
 
 
-/*
- * Table Of Contents
- *
- * # SETTINGS & TOOLS-----------------------PROJECT SETTINGS & MIXINS
- * __settings.less..........................variables
- *
- * # BASE-----------------------------------BARE UNCLASSED ELEMENTS
- * _dev.less................................development code
- * _base.less...............................bare, unclassed elements
- *
- * # OBJECTS--------------------------------REUSABLE STRUCTURAL PATTERNS
- * Runner...................................padding around sections
- * Grid--...................................extensions of Grid Object
- * Tablist--slider..........................slider "carousel" extends o-Tablist
- *
- * # COMPONENTS-----------------------------SPECIFIC STYLE PATTERNS
- * Button--ghost............................ghost button, extends Button ; TODO merge with Legacy/Neo
- * SectionHed...............................typographical section heading styles
- * Tagline..................................typographical tagline styles
- * BigAssIcon...............................icon styles
- * Advertisement............................advertisement block
- * LinkList.................................list of actionable links
- * LinkArrow................................a single actionable link (not part of a list)
- * Hero.....................................Hero image & section
- * Promo....................................Timely Promotion
- * Stat.....................................Featured Statistic
- * Portal...................................Portal to internal subsite
- * Pub......................................Featured Publication
- * HomeAction...............................section of Learn & Contribute
- * ArticleTeaser............................article in What’s Happening section
- * MemberStory..............................a member story with image, name, role, and quote
- *
- * # INTERFACES-----------------------------SINGLE SELF-SUSTAINING ORGANISMS
- *
- * # THEMES & HELPERS-----------------------LOCATION-DEPENDENT STYLES
- *
- * # OVERRIDES------------------------------ATOMS & HACKS
- * _hack.less...............................general hacks for all platforms
- * _hack.ie.less............................IE hacks
- * _hack.ektron.less........................Ektron hacks
- */
 
-
-//++++++++++++++++++++++++++++++++//
-//    # BASE
-//++++++++++++++++++++++++++++++++//
-.glyphicons::before {
-  padding: 0.5rem; // fix absolute padding
-}
-@import url('_base.less');
-//++++ end # BASE ++++//
-
-
-//++++++++++++++++++++++++++++++++//
-//    # OBJECTS
-//++++++++++++++++++++++++++++++++//
-
-// Objects
+// Principles
 //
-// Patterns of structure that can be reused many times for many different purposes.
-// <header><dl>
-//   <dt>author</dt>  <dd>Chris Harvey</dd>
-//   <dt>updated</dt> <dd><time>2017-11-07</time></dd>
-// </dl></header>
+// Parts of an overarching design theme.
+// - voice-and-tone, mood, and look-and-feel of the site
+// - typographical conventions & rhythm (typefaces, font sizes, and leading used throughout the site)
+// - additionally, any atypical writing modes / other languages required
+// - site-wide color scheme
+// - image treatment conventions (storytelling, image placement, quality, filters, etc.)
 //
 // Weight: 1
 //
-// Styleguide Objects
+// Styleguide Principles
 
-.o-Runner {
-  padding: var(--layout-padding);
+.glyphicons::before {
+  padding: 0.5rem; // fix absolute padding
 }
-.o-Runner--separator {
-  // NB-LINK: `./_o-Grid--.less` mentions this selector on line 83.
-  position: relative;
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0; right: 0;
-    bottom: 0;
-    height: calc(0.125 ~'*' var(--lh));
-    block-size: 0.125lh;
-    background: linear-gradient(to right, transparent, @g-color-table-br, transparent);
-  }
-}
-
-@import url('_o-Grid--.less');
-@import url('_o-Tablist--slider.less');
-//++++ end # OBJECTS ++++//
+@import url('_base.less'); //..................................bare, unclassed elements
 
 
-//++++++++++++++++++++++++++++++++//
-//    # COMPONENTS
-//++++++++++++++++++++++++++++++++//
 
-// Components
+
+// Objects
 //
-// Patterns of look-and-feel that are each only used for one purpose.
-// <header><dl>
-//   <dt>author</dt>  <dd>Chris Harvey</dd>
-//   <dt>updated</dt> <dd><time>2017-11-07</time></dd>
-// </dl></header>
+// Layout and structural design patterns that can be reused many times for many different purposes.
+// Agnostic to function and content.
+// - layout display (grid/flexbox/multicol)
+// - positioning/floats/alignment
+// - sizing (width & height)
+// - spacing (padding & margin)
+// **Example**: a three-column grid. It has a specific visual structure but it can be used
+// in many contexts, e.g., a grid of products, a group of action buttons, or a listing of passes.
 //
 // Weight: 2
 //
+// Styleguide Objects
+
+@import url('_o-Grid--.less'); //..............................extensions of Grid Object
+@import url('_o-Tablist--slider.less'); //.....................slider "carousel" extends o-Tablist
+@import url('_o-Runner.less'); //..............................padding around sections
+
+
+
+
+// Components
+//
+// Cosmetic design patterns that are each only used for one functional purpose
+// or a specific type of content.
+// - box effects (backgrounds, borders, opacity)
+// - typefaces and font weights/styles
+// - textual effects (letter-spacing, alignment, indentation, decoration, list-style, color)
+// - bells & whistles (transformations, overflows, shadows, filters, transitions, icons)
+// **Example**: a Pass component. It has the look and feel of a physical paper ticket.
+// It wouldn’t make sense to use this component in any other context besides a conference pass.
+//
+// Weight: 3
+//
 // Styleguide Components
 
-
-.c-SectionHed {
-  .font-size-el(@g-font-size-h2, 2);
-  font-weight: 300;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.c-Tagline {
-  padding-top: var(--lh);
-  .font-size-el(@g-font-size-kilo);
-  font-weight: 600;
-  // REVIEW: Careful here, this `<h1>` style depends on the “We Represent”
-  // being an `<h1>` immediately following the `.c-Tagline`.
-  // REMEMBER to fix this if the element ever moves or changes.
-  & + h1 {
-    font-weight: inherit;
-    .font-size-el(@g-font-size-kilo, 2);
-  }
-}
-
-// TODO: choose a more appropriate name
-.c-BigAssIcon {
-  display: block;
-  line-height: inherit; // COMBAK-FALLBACK
-  line-height: unset;
-  background-color: @g-color-asce-blue; // COMBAK-FALLBACK for custom prop
-  background-color: var(--color-accent, @g-color-asce-blue);
-  // background-image: linear-gradient(0.375turn, rgba(255,255,255,0.33), transparent); // fallback for `#rrggbbaa` syntax
-  // background-image: linear-gradient(0.375turn, ~'#ffffff55', transparent); // NOTE: need to interpolate due to Less not supporting `#rrggbbaa` syntax
-  color: white;
-  border-radius: 50%;
-  width: 6rem; height: 6rem;
-  font-size: 3rem;
-  text-align: center;
-  &::before {
-    position:relative;
-    top: 50%; transform: translateY(-50%); // account for height of icon
-  }
-}
-
-// @import (inline) url('http://conferencesuite.asce.org/themes/custom/legacy/css/dist/_c-Button.css');
-// TEMP: copied from anakin and chewie
-.c-Button {
-  font-family: 'futura-pt','Open Sans','Helvetica Neue','Helvetica',sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  word-spacing: 1px;
-  letter-spacing: 1px;
-
-  display: inline-block;
-  padding: calc(~'0.5 * var(--vru)') 1rem;
-  font-size: (1em * 14/16);
-  white-space: nowrap;
-  vertical-align: middle;
-  background-color: @g-color-btn-bg;
-  border-radius: 0.25rem;
-  box-shadow: 0 (1em/8) 0 0 @g-color-btn-sw;
-  cursor: pointer;
-  &,
-  a[href]& {
-    &,
-    &:hover,
-    &:focus {
-      color: @g-color-btn-txt;
-    }
-  }
-  &:hover,
-  &:focus {
-    background-color: lighten(@g-color-btn-bg, 5%);
-  }
-  &:active {
-    background-color: darken(@g-color-btn-bg, 5%);
-    box-shadow: 0 (1em/8) 0 0 @g-color-btn-sw inset;
-  }
-}
-
-.c-Button--ghost {
-  background: transparent;
-  box-shadow: 0 0 0 0.125rem white;
-  text-shadow: none; // override .mx-fullimage-bar()
-  a[href]&:hover,
-  a[href]&:focus {
-    background: white;
-    color: @g-color-asce-blue;
-  }
-}
-
-@import url('_c-Advertisement.less');
-@import url('_c-LinkList.less');
-@import url('_c-LinkArrow.less');
-@import url('_c-Hero.less');
-@import url('_c-Promo.less');
-@import url('_c-Stat.less');
-@import url('_c-Portal.less');
-@import url('_c-Pub.less');
-@import url('_c-HomeAction.less');
-@import url('_c-ArticleTeaser.less');
-@import url('_c-MemberStory.less');
-//++++ end # COMPONENTS ++++//
+@import url('_c-SectionHed.less'); //..........................typographical section heading styles
+@import url('_c-SolidCircleIcon.less'); //.....................big circular solid filled icon styles
+@import url('_c-Button.less'); //..............................buttons (copied from old Anakin and Chewie) TODO merge with Legacy/Neo
+@import url('_c-Advertisement.less'); //.......................advertisement block
+@import url('_c-LinkList.less'); //............................list of actionable links
+@import url('_c-LinkArrow.less'); //...........................a single actionable link (not part of a list)
+@import url('_c-Tagline.less'); //.............................typographical tagline styles
+@import url('_c-Hero.less'); //................................Hero image & section
+@import url('_c-Promo.less'); //...............................Timely Promotion
+@import url('_c-Stat.less'); //................................Featured Statistic
+@import url('_c-Portal.less'); //..............................Portal to internal subsite
+@import url('_c-Pub.less'); //.................................Featured Publication
+@import url('_c-HomeAction.less'); //..........................section of Learn & Contribute
+@import url('_c-ArticleTeaser.less'); //.......................article in What’s Happening section
+@import url('_c-MemberStory.less'); //.........................a member story with image, name, role, and quote
 
 
-//++++++++++++++++++++++++++++++++//
-//    # INTERFACES
-//++++++++++++++++++++++++++++++++//
+
 
 // Interfaces
 //
 // Aggregate compositions of Objects and Components that form single, self-sustaining organisms.
-// <header><dl>
-//   <dt>author</dt>  <dd>Chris Harvey</dd>
-//   <dt>updated</dt> <dd><time>2018-02-01</time></dd>
-// </dl></header>
 //
-// Weight: 3
+// **Example**: a Header interface. It may be comprised of many single Components, such as
+// a site logo, search bar, navigatino menu, etc., where the Interface itself (and/or each
+// Component inside) may take the form of an Object.
+//
+// Weight: 4
 //
 // Styleguide Interfaces
 
-//++++ end # INTERFACES ++++//
 
 
-//++++++++++++++++++++++++++++++++//
-//    # THEMES & HELPERS
-//++++++++++++++++++++++++++++++++//
-//++++ end # THEMES & HELPERS ++++//
+
+// Helpers
+//
+// Somewhat explicit classes used for enhancing default styles.
+//
+// Weight: 5
+//
+// Styleguide Helpers
 
 
-//++++++++++++++++++++++++++++++++//
-//    # OVERRIDES
-//++++++++++++++++++++++++++++++++//
-@import url('_hack.less');
-@import url('_hack.ie.less');
-@import url('_hack.ektron.less');
-//++++ end # OVERRIDES ++++//
+
+
+// Atoms
+//
+// Very specific classes used for creating anomalies or fixing broken styles.
+//
+// Weight: 6
+//
+// Styleguide Atoms
+
+
+
+
+// Hacks
+//
+// Temporary rules for fixing specific issues.
+//
+// Weight: 7
+//
+// Styleguide Hacks
+
+@import url('_hack.less'); //..................................general hacks for all platforms
+@import url('_hack.ie.less'); //...............................IE hacks
+@import url('_hack.ektron.less'); //...........................Ektron hacks
