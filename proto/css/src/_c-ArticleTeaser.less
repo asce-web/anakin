@@ -2,6 +2,8 @@
 /*################################*\
     anakin  |  _c-ArticleTeaser.less
 \*################################*/
+@import (reference) url('__mx.mbh.less');
+@import (reference) url('__mx.pth.less');
 
 
 .c-ArticleTeaser {
@@ -18,7 +20,7 @@
 .c-ArticleTeaser__Img,
 .c-ArticleTeaser__Hn,
 .c-ArticleTeaser__Date {
-  margin-bottom: calc(0.5 ~'*' var(--lh));
+  .mx-mbh();
 }
 .c-ArticleTeaser__Img {
   grid-row: 1 ~'/' -1;
@@ -33,7 +35,7 @@
   }
 }
 .c-ArticleTeaser__Hn {
-  padding-top: calc(0.5 ~'*' var(--lh));
+  .mx-pth();
   cite {
     font-style: inherit;
     font-style: unset;

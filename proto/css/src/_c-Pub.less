@@ -4,6 +4,8 @@
 \*################################*/
 @import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
 @import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+@import (reference) url('__mx.mbh.less');
+@import (reference) url('__mx.pth.less');
 
 
 .c-Pub {
@@ -27,7 +29,7 @@
 .c-Pub__Img,
 .c-Pub__Hn,
 .c-Pub__Cap {
-  margin-bottom: calc(0.5 ~'*' var(--lh));
+  .mx-mbh();
 }
 
 .c-Pub__Img {
@@ -43,7 +45,7 @@
 }
 
 .c-Pub__Hn {
-  padding-top: calc(0.5 ~'*' var(--lh));
+  .mx-pth();
   text-align: inherit;
   cite {
     font-style: inherit;
