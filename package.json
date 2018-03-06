@@ -21,7 +21,11 @@
   },
   "scripts": {
     "serve": "harp server -p 9000",
-    "build": "gulp home:build",
+    "build:deps:xmeter": "cd ./node_modules/xmeter  &&  npm install  &&  npm run build  &&  cd -",
+    "build:deps:aria-patterns": "cd ./node_modules/aria-patterns  &&  npm install  &&  npm run build  &&  cd -",
+    "build:deps": "npm run build:deps:xmeter  &&  npm run build:deps:aria-patterns",
+    "build:home": "gulp home:build",
+    "build:all": "npm run build:deps  &&  npm run build:home",
     "unbuild": "rm ./proto/css/home.css{,.map}  &&  rm ./proto/home.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
