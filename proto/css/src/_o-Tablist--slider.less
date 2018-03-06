@@ -55,5 +55,6 @@
   }
 }
 .c-Promo__Bar {
-  padding-bottom: calc(var(--lh) ~'*' 2) !important; // overwrite .c-Promo__Bar default style, which comes later in source
+  padding-bottom: calc(2 ~'*' var(--lh)) !important; // COMBAK-FALLBACK
+  padding-bottom: 2lh !important; // overwrite `.mx-fullimage-bar()` default style, which comes later in source
 }
