@@ -1,3 +1,10 @@
+const path = require('path')
+
+const xjs = {
+  HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
+}
+
+
 /**
  * @summary Timely Promo display.
  * @param   {DocumentFragment} frag the template content with which to render
@@ -13,4 +20,6 @@ function xPromo(frag, data) {
   frag.querySelector('a'            ).textContent = data.cta.text
 }
 
-module.exports = xPromo
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-promo.tpl.html'))
+  .setRenderer(xPromo)

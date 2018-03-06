@@ -1,3 +1,10 @@
+const path = require('path')
+
+const xjs = {
+  HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
+}
+
+
 /**
  * @summary Featured Statistic display.
  * @param   {DocumentFragment} frag the template content with which to render
@@ -18,4 +25,6 @@ function xStat(frag, data) {
   action.querySelector('[itemprop="name"]').textContent = data.cta.text
 }
 
-module.exports = xStat
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-stat.tpl.html'))
+  .setRenderer(xStat)

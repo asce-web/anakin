@@ -1,3 +1,10 @@
+const path = require('path')
+
+const xjs = {
+  HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
+}
+
+
 /**
  * @summary Hero section display.
  * @param   {DocumentFragment} frag the template content with which to render
@@ -14,4 +21,6 @@ function xHero(frag, data) {
   frag.querySelector('a'           ).textContent = data.cta.text
 }
 
-module.exports = xHero
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-hero.tpl.html'))
+  .setRenderer(xHero)

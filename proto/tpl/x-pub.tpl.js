@@ -1,6 +1,10 @@
+const path = require('path')
+
 const xjs = {
+  HTMLUListElement: require('extrajs-dom').HTMLUListElement,
   HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
 }
+
 
 /**
  * @summary Featured Publication display.
@@ -23,13 +27,12 @@ function xPub(frag, data) {
   frag.querySelector('[itemprop="description"]').textContent = pub_data.caption
   frag.querySelector('[itemprop="text"]'       ).innerHTML   = pub_data.body
 
-  let list = frag.querySelector('.c-Pub__List')
-  list.append(...pub_data.links.map((link) =>
-    new xjs.HTMLTemplateElement(list.querySelector('template')).setRenderer(function (f, d) {
+  new xjs.HTMLUListElement(frag.querySelector('.c-Pub__List')).populate(pub_data.links, function (f, d) {
       f.querySelector('[itemprop="url"]' ).href        = d.url
       f.querySelector('[itemprop="name"]').textContent = d.text
-    }).render(link)
-  ))
+  })
 }
 
-module.exports = xPub
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-pub.tpl.html'))
+  .setRenderer(xPub)

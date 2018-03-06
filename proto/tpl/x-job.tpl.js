@@ -1,3 +1,10 @@
+const path = require('path')
+
+const xjs = {
+  HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
+}
+
+
 /**
  * @summary Job Listing display.
  * @param   {DocumentFragment} frag the template content with which to render
@@ -14,4 +21,6 @@ function xJob(frag, data) {
   // frag.querySelector('[itemprop="jobLocation"]        > [itemprop="name"]').textContent = data.location
 }
 
-module.exports = xJob
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-job.tpl.html'))
+  .setRenderer(xJob)

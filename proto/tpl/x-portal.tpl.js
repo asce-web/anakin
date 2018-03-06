@@ -1,6 +1,10 @@
+const path = require('path')
+
 const xjs = {
+  HTMLUListElement: require('extrajs-dom').HTMLUListElement,
   HTMLTemplateElement: require('extrajs-dom').HTMLTemplateElement,
 }
+
 
 /**
  * @summary Portal display.
@@ -27,12 +31,10 @@ function xPortal(frag, data) {
   orig.querySelector('[itemprop="name"]').textContent = port.name
 
   let list = orig.querySelector('.c-Portal__List')
-  list.append(...portal_data.map((link) =>
-    new xjs.HTMLTemplateElement(list.querySelector('template')).setRenderer(function (f, d) {
+  new xjs.HTMLUListElement(list).populate(portal_data, function (f, d) {
       f.querySelector('[itemprop="significantLink"]'       ).href        = d.url
       f.querySelector('[itemprop="significantLink"] > slot').textContent = d.text
-    }).render(link)
-  ))
+  })
 
   /**
    * Duplicate, for mobile view.
@@ -44,4 +46,6 @@ function xPortal(frag, data) {
   dupe.querySelector('.glyphicons').classList.remove('c-BigAssIcon', 'h-Block')
 }
 
-module.exports = xPortal
+module.exports = xjs.HTMLTemplateElement
+  .fromFileSync(path.join(__dirname, './x-portal.tpl.html'))
+  .setRenderer(xPortal)
