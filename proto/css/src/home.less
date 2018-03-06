@@ -2,9 +2,6 @@
 /*================================*\
     anakin  |  home.less
 \*================================*/
-@import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
-@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
-// @import (reference) url('__settings.less');
 
 
 
@@ -77,7 +74,6 @@
 //
 // Styleguide Objects
 
-
 @import url('_o-Grid--.less');
 @import url('_o-Tablist--slider.less');
 @import url('_o-Runner.less');
@@ -100,33 +96,13 @@
 //
 // Styleguide Components
 
-
-.c-SectionHed {
-  .font-size-el(@g-font-size-h2, 2);
-  font-weight: 300;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.c-Tagline {
-  padding-top: var(--lh);
-  .font-size-el(@g-font-size-kilo);
-  font-weight: 600;
-  // REVIEW: Careful here, this `<h1>` style depends on the “We Represent”
-  // being an `<h1>` immediately following the `.c-Tagline`.
-  // REMEMBER to fix this if the element ever moves or changes.
-  & + h1 {
-    font-weight: inherit;
-    .font-size-el(@g-font-size-kilo, 2);
-  }
-}
-
-
+@import url('_c-SectionHed.less');
 @import url('_c-SolidCircleIcon.less');
 @import url('_c-Button.less');
 @import url('_c-Advertisement.less');
 @import url('_c-LinkList.less');
 @import url('_c-LinkArrow.less');
+@import url('_c-Tagline.less');
 @import url('_c-Hero.less');
 @import url('_c-Promo.less');
 @import url('_c-Stat.less');
