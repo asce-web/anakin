@@ -109,3 +109,35 @@
     }
 }
 //++++ end # GRID ITEMS ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # ANOMALIES
+//++++++++++++++++++++++++++++++++//
+.o-Grid--foundation {
+  --color-accent: @g-color-asce-foundation;
+  grid-template-areas: 'heading heading'
+                       'caption caption'
+                       'icon    blurb  '
+                       'icon    button ';
+  grid-column-gap: var(--layout-padding-inline);
+  @media screen and (min-width: 30em) {
+    grid-template: 'heading icon blurb '
+                   'caption icon button'
+                  / 2fr     1fr  1fr   ;
+  }
+  & > h1                            { grid-area: heading; }
+  & > p.o-Grid--foundation__Caption { grid-area: caption; }
+  & > i                             { grid-area: icon;    }
+  & > p.o-Grid--foundation__Blurb   { grid-area: blurb;   }
+  & > p.o-Grid--foundation__Action  { grid-area: button;  }
+  & > i {
+    justify-self: center; align-self: center; // COMBAK-FALLBACK for place-self
+    place-self: center;
+  }
+  & > .o-Grid--foundation__Blurb,
+  & > .o-Grid--foundation__Action {
+    text-align: center;
+  }
+}
+//++++ end # ANOMALIES ++++//
