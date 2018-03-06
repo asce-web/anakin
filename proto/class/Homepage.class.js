@@ -82,7 +82,7 @@ class Homepage {
 
     // ++++ USER-INPUT DATA ++++ //
     populateList({ container: document.querySelector('#jobs                   .o-List'), datalist: this._DATA['jobs'           ]                                                                      , component: xJob        })
-    populateList({ container: document.querySelector('#whats-happening        .o-List'), datalist: this._DATA['whats-happening']                                                                      , component: xArticle    })
+    populateList({ container: document.querySelector('#news                   .o-List'), datalist: this._DATA['news'           ]                                                                      , component: xArticle    })
     populateList({ container: document.querySelector('#member-stories         .o-List'), datalist: this._DATA['member-stories' ]                                                                      , component: xMember     })
 
     // ++++ DATA WITH NO PATTERNS ++++ //
