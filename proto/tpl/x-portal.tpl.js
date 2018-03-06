@@ -43,7 +43,7 @@ function xPortal(frag, data) {
   let dupe = frag.querySelector('.c-Portal--expando')
   dupe.append(list.cloneNode(true))
   dupe.querySelector('.c-Portal__Head').append(...Array.from(orig.querySelector('.c-Portal__Head').childNodes).map((n) => n.cloneNode(true)))
-  dupe.querySelector('.glyphicons').classList.remove('c-BigAssIcon', 'h-Block')
+  dupe.querySelector('.glyphicons').classList.remove('c-SolidCircleIcon', 'h-Block')
 }
 
 module.exports = xjs.HTMLTemplateElement

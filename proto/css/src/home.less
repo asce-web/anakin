@@ -27,7 +27,7 @@
  * Button--ghost............................ghost button, extends Button ; TODO merge with Legacy/Neo
  * SectionHed...............................typographical section heading styles
  * Tagline..................................typographical tagline styles
- * BigAssIcon...............................icon styles
+ * SolidCircleIcon..........................big circular solid filled icon styles
  * Advertisement............................advertisement block
  * LinkList.................................list of actionable links
  * LinkArrow................................a single actionable link (not part of a list)
@@ -137,26 +137,8 @@
   }
 }
 
-// TODO: choose a more appropriate name
-.c-BigAssIcon {
-  display: block;
-  line-height: inherit; // COMBAK-FALLBACK
-  line-height: unset;
-  background-color: @g-color-asce-blue; // COMBAK-FALLBACK for custom prop
-  background-color: var(--color-accent, @g-color-asce-blue);
-  // background-image: linear-gradient(0.375turn, rgba(255,255,255,0.33), transparent); // fallback for `#rrggbbaa` syntax
-  // background-image: linear-gradient(0.375turn, ~'#ffffff55', transparent); // NOTE: need to interpolate due to Less not supporting `#rrggbbaa` syntax
-  color: white;
-  border-radius: 50%;
-  width: 6rem; height: 6rem;
-  font-size: 3rem;
-  text-align: center;
-  &::before {
-    position:relative;
-    top: 50%; transform: translateY(-50%); // account for height of icon
-  }
-}
 
+@import url('_c-SolidCircleIcon.less');
 @import url('_c-Button.less');
 @import url('_c-Advertisement.less');
 @import url('_c-LinkList.less');
