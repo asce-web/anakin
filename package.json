@@ -5,6 +5,7 @@
   "description": "ASCE.org Core Styles",
   "main": "styles/anakin.css",
   "devDependencies": {
+    "aria-patterns": "^0.2.0",
     "extrajs": "^0.11.0",
     "extrajs-dom": "^4.1.0-beta.1",
     "gulp": "^3.9.1",
@@ -21,9 +22,9 @@
   },
   "scripts": {
     "serve": "harp server -p 9000",
-    "build:deps:xmeter": "cd ./node_modules/xmeter  &&  npm install  &&  npm run build  &&  cd -",
-    "build:deps:aria-patterns": "cd ./node_modules/aria-patterns  &&  npm install  &&  npm run build  &&  cd -",
-    "build:deps": "npm run build:deps:xmeter  &&  npm run build:deps:aria-patterns",
+    "build:deps:xmeter": "cd ./node_modules/xmeter  &&  npm i  &&  npm run build  &&  cd -",
+    "build:deps:aria-patterns": "cd ./node_modules/aria-patterns  &&  npm i  &&  npm run build  &&  cd -",
+    "build:deps": "npm i  &&  npm run build:deps:xmeter  &&  npm run build:deps:aria-patterns",
     "build:home": "gulp home:build",
     "build:all": "npm run build:deps  &&  npm run build:home",
     "unbuild": "rm ./proto/css/home.css{,.map}  &&  rm ./proto/home.html",
