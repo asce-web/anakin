@@ -77,6 +77,35 @@
   }
 }
 
+.o-Runner {
+    @layout-padding-base: 0.25;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  @media (min-width: 30em) {
+    @layout-padding-base: 0.5;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  }
+  @media (min-width: 45em) {
+    @layout-padding-base: 1;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  }
+  @media (min-width: 60em) {
+  }
+  @media (min-width: 75em) {
+    @layout-padding-base: 2;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  }
+  @media (min-width: 90em) {
+  }
+}
+
 .c-SolidCircleIcon {
   margin: auto;
   .c-Portal & {
@@ -110,7 +139,10 @@
 
 .c-Portal__List {
   section & {
-    min-height: (((4 * 2) + (4 * 0.5)) * @p-lh); // 4 lines at 2lh each, plus 4 margins at 0.5lh each
+    // Correct floating “grid” items not stacking properly.
+    // NB-LINK: _hack.ektron.less#L105, uses this but adjusted for Bootstrap styles
+    min-height: (1rem        * 1.5                 * 2                    + (@p-lh/2))      * 4;
+    //           ^ font-size   ^ body line-height    ^ 2 lines per bullet   ^ bottom-margin   ^ 4 bullets total
   }
 }
 

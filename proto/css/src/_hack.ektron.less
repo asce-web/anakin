@@ -99,4 +99,19 @@ main footer { background-color: transparent; }
 }
 
 
+// HACK IE-only fixes in Ektron. See `_hack.ie.less` for original non-Ektron code.
+@media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  // Bootstrap-adjusted styles.
+  // NB-LINK: see _hack.ie.less#L114 for original, non-Bootstrap, fix
+  section .c-Portal__List {
+    min-height: (1.6rem      * 10/7                * 2                    + 0.75rem)        * 4;
+    //           ^ font-size   ^ body line-height    ^ 2 lines per bullet   ^ bottom-margin   ^ 4 bullets total
+  }
+  // disable icon resizing for IE
+  .c-SolidCircleIcon {
+    transform: none;
+  }
+}
+
+
            }
