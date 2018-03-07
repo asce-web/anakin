@@ -76,6 +76,14 @@ main footer { background-color: transparent; }
 }
 
 
+// HACK: fix margin-bottom on `ul >> ul` (etc.) set to 0 by Bootstrap
+.c-LinkList {
+  margin-bottom: 1.5rem;
+  margin-bottom: var(--lh);
+  margin-bottom: 1lh;
+}
+
+
 // HACK: fix icon sizing due to Bootstrap root rem values
 // `10 / 7` (≈1.42857) is the body line-height for some Godforsaken reason
 .c-LinkArrow__Icon {
