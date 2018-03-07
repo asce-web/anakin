@@ -7,7 +7,9 @@
 
 
 .c-Tagline {
-  padding-top: var(--lh);
+  padding: 0; // override Bootstrap
+  padding-top: var(--lh); // COMBAK-FALLBACK
+  padding-top: 1lh;
   .font-size-el(@g-font-size-kilo);
   font-weight: 600;
   // REVIEW: Careful here, this `<h1>` style depends on the “We Represent”
