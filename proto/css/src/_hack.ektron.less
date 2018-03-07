@@ -32,20 +32,21 @@ form#aspnetForm {
 main { max-width: none; }
 
 
+.nav,
+& > footer {
 // HACK: undo bullets in megamenu & footer navigation set by base <ul>.
 // TO FIXME: add the class `.o-List` to the lists to remove default styles.
 // Then remove this style.
 // (NOTE: `.o-List` stands for “Object List”, not “Ordered List”)
-.nav ul,
-& > footer ul { list-style-type: none; }
-
+  ul { list-style-type: none; }
 
 // HACK: Override value of 0 set by xmeter styles of inline elements
 // Spans in the megamenu are diplayed as blocks, so setting `line-height:0` causes text to overlap.
 // TO FIXME: add the class `.h-Block` to the spans to fix this. Or use <div>s instead of <span>s.
 // QUESTION: **Consider why we are even displaying these spans as blocks in the first place.**
 // Then remove this style.
-.nav span { line-height: inherit; }
+  span { line-height: inherit; }
+}
 
 
 // HACK: override default footer background in `anakin/main.less`
@@ -59,6 +60,7 @@ main footer { background-color: transparent; }
 // HACK: fix icon sizing due to Bootstrap root rem values.
 .c-SolidCircleIcon {
   transform: scale(16 / 10);
+  // HACK adjust surrounding elements’ spacing due to increased icon size
   &.c-Stat__Icon + p {
     padding-top: 1.5rem;
     padding-top: var(--lh);
@@ -85,6 +87,15 @@ main footer { background-color: transparent; }
 .c-Button[href] {
   text-decoration: none; // override bootstrap text-decoration
   &:visited { color: @g-color-btn-txt; }
+}
+
+
+// HACK adjust surrounding elements’ spacing due to increased icon size
+.c-Tagline + h1 {
+  margin-bottom: 4.5rem;
+  margin-bottom: calc(3 ~'*' var(--lh));
+  margin-block-end: calc(3 ~'*' var(--lh));
+  margin-block-end: 3lh;
 }
 
 

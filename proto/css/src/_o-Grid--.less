@@ -132,8 +132,7 @@
   & > p.o-Grid--foundation__Blurb   { grid-area: blurb;   }
   & > p.o-Grid--foundation__Action  { grid-area: button;  }
   & > i {
-    justify-self: center; align-self: center; // COMBAK-FALLBACK for place-self
-    place-self: center;
+    margin: auto; // a trick to achieve `place-self: center;`
   }
   & > .o-Grid--foundation__Blurb,
   & > .o-Grid--foundation__Action {
