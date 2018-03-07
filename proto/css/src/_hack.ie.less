@@ -77,6 +77,35 @@
   }
 }
 
+.o-Runner {
+    @layout-padding-base: 0.25;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  @media (min-width: 30em) {
+    @layout-padding-base: 0.5;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  }
+  @media (min-width: 45em) {
+    @layout-padding-base: 1;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  }
+  @media (min-width: 60em) {
+  }
+  @media (min-width: 75em) {
+    @layout-padding-base: 2;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  }
+  @media (min-width: 90em) {
+  }
+}
+
 .c-SolidCircleIcon {
   margin: auto;
   .c-Portal & {
