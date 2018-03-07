@@ -29,7 +29,7 @@
 html {
   --layout-padding-base: 0.25;
   --layout-padding-block : calc(var(--layout-padding-base) ~'*' var(--lh));
-  --layout-padding-block : calc(var(--layout-padding-base) ~'*' 1lh);
+  // --layout-padding-block : calc(var(--layout-padding-base) ~'*' 1lh); // cannot use unsupported `lh` unit inside `calc()`
   --layout-padding-inline: calc(var(--layout-padding-base) ~'*' 2rem);
   --layout-padding: var(--layout-padding-block) var(--layout-padding-inline);
   @media screen and (min-width: 30em) {
