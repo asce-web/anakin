@@ -49,6 +49,13 @@ main { max-width: none; }
 }
 
 
+// HACK: fix issue where `a[href]` specificity is overriding footer link colors.
+// HACK: the `:not:hover` is needed because #aspnetForm specificity is overriding `a[href]:hover`.
+// TO FIXME: Provide a component class for the ASCE.org footer and select links with `a[href]` in that class.
+// Then remove this style.
+& > footer a[href]:not(:hover) { color: white; }
+
+
 // HACK: override default footer background in `anakin/main.less`
 // QUESTION: Why are all footers set to have a background color? Can we choose a more targeted selector?
 // TO FIXME: Remove the background color of `#8c959d` on all footer elements,
@@ -92,8 +99,30 @@ main footer { background-color: transparent; }
 }
 
 
+// HACK: fix issue where bootstrap automatically underlines all links
+// TO FIXME: remove Bootstrap, then delete this style.
 .c-Button[href] {
   text-decoration: none; // override bootstrap text-decoration
+  // HACK: fix issue where a:visited is colored
+  // TO FIXME: change `a:visited` to `a[href]:visited`,
+  // then set the button text color on the `.c-Button` *and* `a.c-Button[href]` selectors,
+  // then delete this style.
+  // Also, add a NOTE in **Style Guide Principles**:
+  // > When styling links, only add styles (e.g. color, underline) to true hyperlinks: `a[href]` elements.
+  // > Do not style anchor placeholders, that is, `<a>` elements without the `[href]` attribute.
+  // > Anchor placeholders should not be visibly discernable from surrounding prose, as they are merely
+  // > placeholders in which a hyperlink *could* be placed.
+  // > Read https://www.w3.org/TR/html52/textlevel-semantics.html#the-a-element for more info.
+  // >
+  // > The reason for this is that we may have a situation in which a possible hyperlink may be added,
+  // > which is not yet determined at compile time.
+  // > For example this could be done via front-end script, after the user loads the page.
+  // > Another example would be where a template wraps a component with an anchor,
+  // > in the event that a content strategist may want to make that component linkable.
+  // > In these situations and we cannot change markup on the fly
+  // > (e.g. we cannot change an `<a>` to a `<span>`),
+  // > thus it is best practice to include a placeholder anchor (`<a>` element),
+  // > and than use logic to set the `[href]` if and when necessary.
   &:visited { color: @g-color-btn-txt; }
 }
 
@@ -110,7 +139,7 @@ main footer { background-color: transparent; }
 // HACK IE-only fixes in Ektron. See `_hack.ie.less` for original non-Ektron code.
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
   // Bootstrap-adjusted styles.
-  // NB-LINK: see _hack.ie.less#L114 for original, non-Bootstrap, fix
+  // NB-LINK: see _hack.ie.less#L143 for original, non-Bootstrap, fix
   section .c-Portal__List {
     min-height: (1.6rem      * 10/7                * 2                    + 0.75rem)        * 4;
     //           ^ font-size   ^ body line-height    ^ 2 lines per bullet   ^ bottom-margin   ^ 4 bullets total
