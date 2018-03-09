@@ -21,18 +21,20 @@
   <script src="./js/o-Slider.js" defer=""></script>
   <script src="./js/hacks.js" defer=""></script>
 </head>
-<body itemscope="" itemtype="http://schema.org/NGO">
+<body>
   <a class="h-Hidden" href="#main">skip to main content</a>
   <header>
-    <h1 itemprop="name">American Society of Civil Engineers</h1>
     <p>Header and Megamenu</p>
   </header>
-  <main id="main">
-    <header>{{ xHero }}</header>
+  <main id="main" itemscope="" itemtype="http://schema.org/NGO">
+    <header>
+      <h1 class="h-Hidden" itemprop="name">American Society of Civil Engineers</h1>
+      <slot class="h-Block" name="hero">{{ xHero }}</slot>
+    </header>
     <section class="o-Runner h-Constrain -ta-c" id="we-represent">
       <header>
-      <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
-      <h1>We Represent:</h1>
+        <p class="c-Tagline">Bringing the global civil engineering community together.</p>
+        <h1>We Represent:</h1>
       </header>
       <ul class="o-List o-Grid o-Grid--represent">
         <template>
