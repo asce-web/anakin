@@ -91,15 +91,18 @@ class Homepage {
 
     ;(function () {
       let container = document.querySelector('#promotions [role="tablist"]')
-      let temp = jsdom.JSDOM.fragment('')
-      const xPromoTab = new xjs.HTMLTemplateElement(container.querySelector('template')).setRenderer(function (frag, data) {
+      let templateEl = container.querySelector('template')
+      const xPromoTab = new xjs.HTMLTemplateElement(templateEl).setRenderer(function (frag, data) {
         frag.querySelector('[role="tab"]').setAttribute('aria-label', data.title)
         frag.querySelector('[role="tab"]').nextSibling.remove() // remove the following Text node (“twig”)
         frag.querySelector('[role="tabpanel"]').id = `promotions-panel${this._DATA['promotions'].indexOf(data)}`
         frag.querySelector('[role="tabpanel"]').append(xPromo.render(data))
       })
-      temp.append(...this._DATA['promotions'].map((datum) => xPromoTab.render(datum, this)))
-      container.insertBefore(temp, container.querySelector('button[value="next"]'))
+      templateEl.after(
+        new xjs.DocumentFragment(document.createDocumentFragment())
+          .append(...this._DATA['promotions'].map((datum) => xPromoTab.render(datum, this)))
+          .node
+      )
     }).call(this)
 
     ;(function () {
