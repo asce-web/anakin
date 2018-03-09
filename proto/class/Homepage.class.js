@@ -86,14 +86,8 @@ class Homepage {
     populateList({ container: document.querySelector('#member-stories         .o-List'), datalist: this._DATA['member-stories' ]                                                                      , component: xMember     })
 
     // ++++ DATA WITH NO PATTERNS ++++ //
-    ;(function () {
-      let container = document.querySelector('main > header')
-      new xjs.HTMLElement(container).empty()
-      container.append(xHero.render(this._DATA['hero']))
-    }).call(this)
-
-    ;(function () {
-    }).call(this)
+    new xjs.HTMLElement(document.querySelector('slot[name="hero"]')).empty()
+      .append(xHero.render(this._DATA['hero']))
 
     ;(function () {
       let container = document.querySelector('#promotions [role="tablist"]')
