@@ -19,15 +19,16 @@
   <script src="./js/o-Slider.js" defer=""></script>
   <script src="./js/hacks.js" defer=""></script>
 </head>
-<body itemscope="" itemtype="http://schema.org/NGO">
+<body>
   <a class="h-Hidden" href="#main">skip to main content</a>
   <header>
-    <h1 itemprop="name">American Society of Civil Engineers</h1>
     <p>Header and Megamenu</p>
   </header>
-  <main id="main">
+  <main id="main" itemscope="" itemtype="http://schema.org/NGO">
     <header>
-  <div class="c-Hero" id="hero" style="background-image: url(//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-hero-img-revised.jpg);">
+      <h1 class="h-Hidden" itemprop="name">American Society of Civil Engineers</h1>
+      <slot class="h-Block" name="hero">
+  <div class="c-Hero" style="background-image: url(//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-hero-img-revised.jpg);">
     <div class="c-Hero__Bar">
       <div class="o-Flex c-Hero__Content h-Constrain">
         <p class="o-Flex__Item c-Hero__Cap">More than 1.3 million viewers have been inspired by Dream Big: Engineering Our World, including a Georgia school that made it the school theme.</p>
@@ -35,11 +36,12 @@
       </div>
     </div>
   </div>
-</header>
+</slot>
+    </header>
     <section class="o-Runner h-Constrain -ta-c" id="we-represent">
       <header>
-      <blockquote class="c-Tagline">Bringing the global civil engineering community together.</blockquote>
-      <h1>We Represent:</h1>
+        <p class="c-Tagline">Bringing the global civil engineering community together.</p>
+        <h1>We Represent:</h1>
       </header>
       <ul class="o-List o-Grid o-Grid--represent">
         <template>
@@ -106,7 +108,6 @@
             {{ ./tpl/x-promo.tpl.html }}
           </details>
         </template>
-        
           <details class="o-Tablist__Panel" id="promotions-panel0" role="tabpanel" open="">
             <summary class="o-Tablist__Tab" role="tab" aria-label="A Wealth of Technical Resources, Free">●</summary>
   <section class="c-Promo" style="background-image: url(//ektronstaging.asce.org/uploadedImages/_Home_Page/Content_Pieces/January-timely-img-01-Access.jpg);">
@@ -136,6 +137,7 @@
     </div>
   </section>
 </details>
+        
         <button class="o-Tablist--slider__Button" type="button" value="next" tabindex="-1">
           <i class="glyphicons glyphicons-circle-arrow-right">
             <span class="h-Hidden">next panel</span>
@@ -720,7 +722,7 @@
         </p>
         <p class="o-Grid__Item o-Grid--foundation__Action" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/DonateAction">
           <a class="c-Stat__Cta c-Button" href="{{ cta_url }}" rel="external" itemprop="url">
-            <span itemprop="name">{{ cta_text }}</span>
+            <slot itemprop="name">{{ cta_text }}</slot>
           </a>
         </p>
       </template>
@@ -735,7 +737,7 @@
         </p>
         <p class="o-Grid__Item o-Grid--foundation__Action" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/DonateAction">
           <a class="c-Stat__Cta c-Button" href="//www.ascefoundation.org/ways-to-give/one-time-gift/" rel="external" itemprop="url">
-            <span itemprop="name">Donate Today</span>
+            <slot itemprop="name">Donate Today</slot>
           </a>
         </p>
       </section>
