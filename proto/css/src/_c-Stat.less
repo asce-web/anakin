@@ -1,0 +1,33 @@
+
+/*################################*\
+    anakin  |  _c-Stat.less
+\*################################*/
+@import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+
+
+.c-Stat {
+  @supports (display: grid) {
+  display: grid;
+  }
+  justify-items: center;
+  align-items: center;
+}
+.c-Stat {
+  @media not all and (min-width: 30em) {
+    grid-template: repeat(2, auto) ~'/' repeat(2, 1fr);
+  }
+}
+.c-Stat__Icon {
+  @media not all and (min-width: 30em) {
+    grid-row: 1 ~'/' -1;
+  }
+}
+.c-Stat__Num {
+  .font-size-el(@g-font-size-kilo, 2);
+  font-weight: 600;
+}
+.c-Stat__Text {
+}
+.c-Stat__Cta {
+}

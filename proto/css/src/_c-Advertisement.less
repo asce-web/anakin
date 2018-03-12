@@ -1,0 +1,39 @@
+
+/*################################*\
+    anakin  |  _c-Advertisement.less
+\*################################*/
+@import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+@import (reference) url('__mx.mbh.less');
+@import (reference) url('__mx.pth.less');
+
+
+
+.c-Advertisement {
+  background-color: #eee;
+  flex-direction: column;
+}
+
+.c-Advertisement__Hn {
+  order: 1;
+  .mx-mbh();
+  .mx-pth();
+  font-weight: inherit;
+  font-weight: unset;
+  .font-size-el(@g-font-size-mill);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c-Advertisement > .o-Flex {
+  margin-bottom: 0;
+  margin-bottom: unset; // unset base <ul>
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  inline-size: 100%;
+  > .o-Flex__Item {
+    flex: none;
+    .mx-mbh();
+  }
+}

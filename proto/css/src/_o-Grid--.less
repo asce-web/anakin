@@ -1,0 +1,142 @@
+
+/*################################*\
+    anakin  |  _o-Grid--.less
+\*################################*/
+@import (reference) url('__settings.less');
+
+
+// Subclasses of the `o-Grid` Object.
+// See `/node_modules/xmeter/css/src/_o-Grid.less`.
+
+
+// COMBAK-FALLBACK for `.o-Grid`!
+// This overrides the default `.o-Grid {display: block;}` style, but re-applies it inside a feature query (`@supports`). The only reason for any of this is because IE can go to hell to be completely honest with you.
+.o-Grid {
+  display: block;
+  @supports (display: grid) {
+    display: grid;
+  }
+}
+
+
+//++++++++++++++++++++++++++++++++//
+//    # ROWS & COLUMNS
+//++++++++++++++++++++++++++++++++//
+.o-Grid--jobs,
+.o-Grid--publications,
+.o-Grid--homeActions,
+.o-Grid--news {
+  @media screen and (min-width: 45em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.o-Grid--jobs,
+.o-Grid--news {
+  @media screen and (min-width: 45em) {
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+.o-Grid--represent {
+  @media screen and (min-width: 30em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.o-Grid--members {
+  @media screen and (min-width: 60em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.o-Grid--portals {
+  @media screen and (min-width: 30em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (min-width: 45em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+//++++ end # ROWS & COLUMNS ++++//
+
+
+
+//++++++++++++++++++++++++++++++++//
+//    # GAPS & RULES
+//++++++++++++++++++++++++++++++++//
+.o-Grid--represent,
+.o-Grid--portals,
+.o-Grid--publications,
+.o-Grid--homeActions,
+.o-Grid--jobs,
+.o-Grid--news,
+.o-Grid--members {
+  grid-row-gap   : var(--layout-padding-block);
+  grid-column-gap: var(--layout-padding-inline);
+}
+
+// HACK: There is no CSS property for grid-rule yet, so we are going to use an `::after` pseudo.
+.o-Grid--publications,
+.o-Grid--news {
+  & > li:first-of-type {
+    @supports (display: grid) {
+      @media screen and (min-width: 45em) {
+        // Styles taken direcly from `.o-Runner--separator` and modified to a vertical layout.
+        // NB-LINK: See `./_o-Runner.less`, line 12.
+        position: relative;
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0; bottom: 0;
+          right: calc(-0.5 ~'*' var(--layout-padding-inline)); // move it to the right by half the grid-gap
+          width: calc(0.125 ~'*' var(--lh));
+          inline-size: 0.125lh;
+          background: linear-gradient(to bottom, transparent, @g-color-table-br, transparent);
+        }
+      }
+    }
+  }
+}
+//++++ end # GAPS & RULES ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # GRID ITEMS
+//++++++++++++++++++++++++++++++++//
+.o-Grid--news {
+    & > li:first-of-type {
+      grid-row: 1 ~'/' -1;
+    }
+}
+//++++ end # GRID ITEMS ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # ANOMALIES
+//++++++++++++++++++++++++++++++++//
+.o-Grid--foundation {
+  --color-accent: @g-color-asce-foundation;
+  grid-template-areas: 'heading heading'
+                       'caption caption'
+                       'icon    blurb  '
+                       'icon    button ';
+  grid-column-gap: var(--layout-padding-inline);
+  @media screen and (min-width: 30em) {
+    grid-template: 'heading icon blurb '
+                   'caption icon button'
+                  / 2fr     1fr  1fr   ;
+  }
+  & > h1                            { grid-area: heading; }
+  & > p.o-Grid--foundation__Caption { grid-area: caption; }
+  & > i                             { grid-area: icon;    }
+  & > p.o-Grid--foundation__Blurb   { grid-area: blurb;   }
+  & > p.o-Grid--foundation__Action  { grid-area: button;  }
+  & > i {
+    margin: auto; // a trick to achieve `place-self: center;`
+  }
+  & > .o-Grid--foundation__Blurb,
+  & > .o-Grid--foundation__Action {
+    text-align: center;
+  }
+}
+//++++ end # ANOMALIES ++++//

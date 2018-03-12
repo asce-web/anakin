@@ -1,0 +1,192 @@
+
+/*################################*\
+    anakin  |  _hack.ie.less
+\*################################*/
+@import (reference) url('__settings.less');
+
+
+// IE fixes go here. These styles should *only* be rendered on IE!
+// Using the -ms-high-contrast quirk: only IE supports -ms-high-contrast
+///////////////////////////////////////////////////////////////////////////////
+
+
+@media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@p-lh: 1.5rem; // fallback for var(--lh)
+
+
+
+.mx-clearfix() {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.o-Tablist--slider__Button {
+  display: none; // remove tablist slider button on IE, which doesn’t support sliders
+}
+
+.o-Grid--represent {
+  .mx-clearfix();
+  & > li.o-Grid__Item {
+    @media (min-width: 30em) {
+    float: left;
+    width: 33.333333%;
+    }
+  }
+}
+
+.o-Grid--members {
+  .mx-clearfix();
+  & > li.o-Grid__Item {
+    @media (min-width: 60em) {
+      float: left;
+      width: 33.333333%;
+    }
+  }
+}
+
+.o-Grid--publications,
+.o-Grid--homeActions,
+.o-Grid--jobs,
+.o-Grid--news {
+  .mx-clearfix();
+  & > li.o-Grid__Item {
+    @media (min-width: 45em) {
+    float: left;
+    width: 50%;
+    }
+  }
+}
+
+.o-Grid--foundation {
+  text-align: center;
+}
+
+.o-Grid--portals {
+  .mx-clearfix();
+  & > li.o-Grid__Item {
+    @media (min-width: 30em) {
+      float: left;
+      width: 50%;
+    }
+    @media (min-width: 45em) {
+      width: 33.333333%;
+    }
+  }
+}
+
+.o-Runner {
+    @layout-padding-base: 0.25;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  @media (min-width: 30em) {
+    @layout-padding-base: 0.5;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  }
+  @media (min-width: 45em) {
+    @layout-padding-base: 1;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  }
+  @media (min-width: 60em) {
+  }
+  @media (min-width: 75em) {
+    @layout-padding-base: 2;
+    @layout-padding-block : (@layout-padding-base * @p-lh);
+    @layout-padding-inline: (@layout-padding-base * 2rem);
+    padding: @layout-padding-block @layout-padding-inline;
+  }
+  @media (min-width: 90em) {
+  }
+}
+
+.c-SolidCircleIcon {
+  margin: auto;
+  .c-Portal & {
+    background-color: @g-color-asce-green;
+  }
+  #asce-foundation & {
+    background-color: @g-color-asce-foundation;
+  }
+  li:nth-of-type(1) .c-Stat & { background-color: @g-color-mustard; }
+  li:nth-of-type(2) .c-Stat & { background-color: @g-color-aqua   ; }
+  li:nth-of-type(3) .c-Stat & { background-color: @g-color-gamboge; }
+}
+
+.c-Button {
+  padding: (0.5 * @g-lh) 1rem;
+}
+
+.c-LinkArrow__Icon {
+  width : @g-lh;
+  height: @g-lh;
+  margin-right: 1ch;
+}
+
+.c-LinkList__Item {
+  margin-bottom: (0.5 * @g-lh);
+}
+
+.c-Tagline {
+  padding-top: @g-lh;
+}
+
+.c-Portal__List {
+  section & {
+    // Correct floating “grid” items not stacking properly.
+    // NB-LINK: _hack.ektron.less#L142 uses this but adjusted for Bootstrap styles
+    min-height: (1rem        * 1.5                 * 2                    + (@p-lh/2))      * 4;
+    //           ^ font-size   ^ body line-height    ^ 2 lines per bullet   ^ bottom-margin   ^ 4 bullets total
+  }
+}
+
+.c-ArticleTeaser {
+  .mx-clearfix();
+}
+
+.c-Pub__Body,
+.c-MemberStory__Quote {
+  clear: both;
+}
+
+.c-Pub__Img {
+  @media (min-width: 30em) {
+    float: left;
+  }
+  @media (min-width: 30em) and (max-width: 44.999em) {
+    max-width: (5/12 * 100%); // width of the left grid column
+  }
+  @media (min-width: 60em) {
+    max-width: 50%; // width of the left grid column
+  }
+}
+
+.c-ArticleTeaser__Img {
+  li:not(:first-of-type) & {
+    @media (min-width: 30em) {
+      float: left;
+      max-width: (5/12 * 100%); // width of the left grid column
+    }
+  }
+}
+
+.c-MemberStory__Img {
+  float: left;
+  max-width: 50%;
+}
+
+
+
+
+
+
+
+
+
+                                                               }

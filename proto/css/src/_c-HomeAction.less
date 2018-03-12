@@ -1,0 +1,38 @@
+
+/*################################*\
+    anakin  |  _c-HomeAction.less
+\*################################*/
+
+
+.c-HomeAction {
+}
+
+.c-HomeAction__Head {
+  text-align: center;
+}
+
+.c-HomeAction__Img {
+  width: 100%;
+  margin-bottom: var(--lh);
+}
+
+.c-HomeAction__Hn {
+}
+
+.c-HomeAction__Cap {
+  @media screen and (min-width: 45em) {
+    // HACK: set the min-height of the paragraphs to ensure the columns are even side-by-side.
+    // This could be solved with *subgrid* if that were supported by browsers.
+    min-height: calc(2 ~'*' var(--lh));
+    min-inline-size: 2lh;
+  }
+}
+
+.c-HomeAction__List {
+}
+
+.c-HomeAction__List__Item {
+}
+
+.c-HomeAction__Link {
+}

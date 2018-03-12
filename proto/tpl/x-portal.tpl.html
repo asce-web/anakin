@@ -1,0 +1,21 @@
+<template>
+  <section id="{{ id }}" class="c-Portal" itemscope="" itemtype="http://schema.org/WebPage">
+    <a class="c-Portal__Head" href="{{ url }}" itemprop="url">
+      <i class="c-Portal__Icon c-SolidCircleIcon glyphicons glyphicons-{{ icon }}" aria-hidden="true"></i>
+      <h1 class="c-SectionHed c-Portal__Hn" itemprop="name">{{ name }}</h1>
+    </a>
+    <ul class="o-List c-Portal__List c-LinkList">
+      <template>
+        <li class="o-List__Item c-Portal__List__Item c-LinkList__Item">
+          <a class="c-Portal__Link c-LinkArrow" href="{{ url }}" itemprop="significantLink">
+            <i class="c-LinkArrow__Icon glyphicons glyphicons-chevron-right" aria-hidden="true"></i>
+            <slot class="c-LinkArrow__Text">{{ text }}</slot>
+          </a>
+        </li>
+      </template>
+    </ul>
+  </section>
+  <details class="c-Portal c-Portal--expando" itemscope="" itemtype="http://schema.org/WebPage">
+    <summary class="c-Portal__Head"></summary>
+  </details>
+</template>

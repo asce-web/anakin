@@ -1,0 +1,17 @@
+
+/*################################*\
+    anakin  |  _hack.less
+\*################################*/
+@import (reference) url('_c-Button.less');
+
+
+// HACK Add the "+" after the 150,000 members. This should have been done in the HTML.
+.glyphicons-group + p > .c-Stat__Num::after { content: '+'; }
+
+
+// HACK The link in CE Mag should be a button, which goes against all patterns. You can’t blame it, it just wants to be different.
+#civil-engineering-magazine .c-Pub__Link {
+  .c-Button;
+  &:hover { text-decoration: none; } // undo .c-LinkArrow style
+  .c-LinkArrow__Icon { display: none; }
+}

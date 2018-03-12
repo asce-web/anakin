@@ -1,0 +1,25 @@
+
+/*################################*\
+    anakin  |  _mx.pth.less
+\*################################*/
+
+
+// padding-top 0.5lh
+
+// TODO move these and others to Bangs:
+// - .c-LinkList__Item
+// - .c-Pub__Img
+// - .c-Pub__Hn
+// - .c-Pub__Cap
+// - .c-ArticleTeaser__Img
+// - .c-ArticleTeaser__Hn
+// - .c-ArticleTeaser__Date
+.mx-pth() {
+  padding-top: calc(0.5 ~'*' var(--lh));
+  padding-top: 0.5lh;
+  @suports (padding-block-start: var(--variable)) {
+    padding-top: unset;
+    padding-block-start: calc(0.5 ~'*' var(--lh));
+    padding-block-start: 0.5lh;
+  }
+}

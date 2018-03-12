@@ -1,0 +1,21 @@
+
+/*################################*\
+    anakin  |  _c-Tagline.less
+\*################################*/
+@import (reference) url('../../../node_modules/xmeter/css/src/__settings.less');
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+
+
+.c-Tagline {
+  padding-top: var(--lh); // COMBAK-FALLBACK
+  padding-top: 1lh;
+  .font-size-el(@g-font-size-kilo);
+  font-weight: 600;
+  // REVIEW: Careful here, this `<h1>` style depends on the “We Represent”
+  // being an `<h1>` immediately following the `.c-Tagline`.
+  // REMEMBER to fix this if the element ever moves or changes.
+  & + h1 {
+    font-weight: inherit;
+    .font-size-el(@g-font-size-kilo, 2);
+  }
+}

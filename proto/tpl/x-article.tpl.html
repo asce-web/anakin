@@ -1,0 +1,14 @@
+<template>
+    <div class="c-ArticleTeaser" itemscope="" itemtype="http://schema.org/NewsArticle">
+      <img class="c-ArticleTeaser__Img" src="{{ image }}" alt="" itemprop="image thumbnailUrl"/>
+      <p class="c-ArticleTeaser__Hn">
+        <a class="c-ArticleTeaser__Link c-LinkArrow" href="{{ url }}" itemprop="url mainEntityOfPage">
+          <cite class="c-LinkArrow__Text" itemprop="name headline">{{ title }}</cite>
+          <i class="c-LinkArrow__Icon glyphicons glyphicons-chevron-right"></i>
+        </a>
+      </p>
+      <p class="c-ArticleTeaser__Date">
+        <time datetime="{{ datetime }}" itemprop="datePublished">{{ datetime-formatted }}</time>
+      </p>
+    </div>
+</template>

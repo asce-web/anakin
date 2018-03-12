@@ -1,0 +1,161 @@
+
+/*################################*\
+    anakin  |  _base.less
+\*################################*/
+@import (reference) url('../../../node_modules/xmeter/css/src/__tool.fontsize.less');
+@import (reference) url('__settings.less');
+
+
+// Table of Contents
+// # GENERIC........................far-reaching page-wide selectors
+// # SECTIONS.......................sections, articles, headers, footers, headings
+// # GROUPING.......................paragraphs, lists, tables
+//   ## Paragraphs
+//   ## Lists
+//   ## Tables
+// # TEXT...........................phrasing (inline) content and links
+//   ## Links
+//   ## Stress
+//   ## Doc
+//   ## Data
+// # FORMS..........................form elements
+// # EMBEDDED.......................images, videos
+// # INTERACTIVE....................user-interactive HTML elements
+
+
+//++++++++++++++++++++++++++++++++//
+//    # GENERIC
+//++++++++++++++++++++++++++++++++//
+html {
+  --layout-padding-base: 0.25;
+  --layout-padding-block : calc(var(--layout-padding-base) ~'*' var(--lh));
+  // --layout-padding-block : calc(var(--layout-padding-base) ~'*' 1lh); // cannot use unsupported `lh` unit inside `calc()`
+  --layout-padding-inline: calc(var(--layout-padding-base) ~'*' 2rem);
+  --layout-padding: var(--layout-padding-block) var(--layout-padding-inline);
+  @media screen and (min-width: 30em) {
+    --layout-padding-base: 0.5;
+  }
+  @media screen and (min-width: 45em) {
+    --layout-padding-base: 1;
+  }
+  @media screen and (min-width: 60em) {
+  }
+  @media screen and (min-width: 75em) {
+    --layout-padding-base: 2;
+  }
+  @media screen and (min-width: 90em) {
+  }
+}
+body {
+  font-family: @g-font-family-body;
+  color: @g-color-body-txt;
+}
+//++++ end # GENERIC ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # SECTIONS
+//++++++++++++++++++++++++++++++++//
+h1, h2, h3, h4, h5, h6 {
+}
+h1 {
+}
+//++++ end # SECTIONS ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # GROUPING
+//++++++++++++++++++++++++++++++++//
+  //--------------------------------//
+  //    ## Paragraphs
+  //--------------------------------//
+  figcaption {
+  }
+  blockquote {
+  }
+  //---- end ## Paragraphs ----//
+
+  //--------------------------------//
+  //    ## Lists
+  //--------------------------------//
+  ul {
+  }
+  li:nth-of-type(1) { --color-accent: @g-color-mustard; }
+  li:nth-of-type(2) { --color-accent: @g-color-aqua   ; }
+  li:nth-of-type(3) { --color-accent: @g-color-gamboge; }
+  //---- end ## Lists ----//
+
+  //--------------------------------//
+  //    ## Tables
+  //--------------------------------//
+  table {
+    width: 100%;
+    .font-size-mod(0.75);
+  }
+  thead,
+  tfoot {
+    background-color: @g-color-table-bg;
+    font-weight: 600;
+    .font-size-el(14/12);
+  }
+  th,
+  td {
+    padding: calc(~'0.5 * var(--vru)') 0.5rem;
+    border: 0 solid @g-color-table-br;
+    border-width: 0 0 1px;
+  }
+  //---- end ## Tables ----//
+//++++ end # GROUPING ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # TEXT
+//++++++++++++++++++++++++++++++++//
+  //--------------------------------//
+  //    ## Links
+  //--------------------------------//
+  a[href] {
+    color: @g-color-asce-blue;
+    transition: 250ms;
+    transition-property: color, background-color;
+    &:hover,
+    &:focus {
+      color: #19a1cf; // what even is this color?!
+    }
+  }
+  //---- end ## Links ----//
+
+  //--------------------------------//
+  //    ## Stress
+  //--------------------------------//
+  //---- end ## Stress ----//
+
+  //--------------------------------//
+  //    ## Doc
+  //--------------------------------//
+  //---- end ## Doc ----//
+
+  //--------------------------------//
+  //    ## Data
+  //--------------------------------//
+  //---- end ## Data ----//
+
+//++++ end # TEXT ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # FORMS
+//++++++++++++++++++++++++++++++++//
+//++++ end # FORMS ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # EMBEDDED
+//++++++++++++++++++++++++++++++++//
+//++++ end # EMBEDDED ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # INTERACTIVE
+//++++++++++++++++++++++++++++++++//
+//++++ end # INTERACTIVE ++++//

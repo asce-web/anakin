@@ -1,0 +1,62 @@
+
+/*################################*\
+    anakin  |  _o-Tablist--slider.less
+\*################################*/
+
+
+// Extend the `.o-Tablist`, `.o-Tablist__Tab`, and `.o-Tablist__Panel` styles.
+// Extends https://github.com/chharvey/aria-patterns/blob/v0.2.0/css/src/o-Tablist.less
+.o-Tablist--slider {
+  position: relative; // for the contained left&right buttons
+  justify-content: center;
+  margin-bottom: var(--lh);
+  .o-Tablist__Tab {
+    flex: none;
+    order: 1;
+    padding: 0 2ch;
+    text-align: center;
+    &[aria-selected="true"] {
+      font-weight: normal; // unset [role="tab"]
+    }
+    &[aria-selected="false"] {
+      opacity: 0.5;
+    }
+  }
+  .o-Tablist__Panel {
+    order: 0; // unset old xmeter Tablist // TODO: remove on xmeter v7+
+  }
+  .o-Tablist--slider__Button {
+    position: absolute;
+    top: 50%; transform: translateY(-50%); // account for height of button
+    z-index: 1;
+    margin: 0 (100% / 16);
+    font-size: 2em;
+    background: none;
+    border: 0;
+    color: white;
+    text-shadow: 0 0 0.125rem rgba(0,0,0,0.5); // COMBAK-FALLBACK
+    text-shadow: 0 0 0.125rem #00000080;
+    &[value="prev"] {
+      left: 0;
+    }
+    &[value="next"] {
+      right: 0;
+    }
+  }
+}
+
+
+// Move indicators (tabs) into the timely promo visual region.
+// (Un)comment to toggle.
+.o-Tablist--slider {
+  .o-Tablist__Tab {
+    position: relative;
+    top: calc(-2 ~'*' var(--lh));
+    z-index: 1;
+    color: white;
+  }
+}
+.c-Promo__Bar {
+  padding-bottom: calc(2 ~'*' var(--lh)) !important; // COMBAK-FALLBACK
+  padding-bottom: 2lh !important; // overwrite `.mx-fullimage-bar()` default style, which comes later in source
+}

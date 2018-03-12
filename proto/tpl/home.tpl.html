@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" id="top">
+<head>
+  <title>American Society of Civil Engineers</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/futura.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons/web/html_css/css/glyphicons.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-filetypes/web/html_css/css/glyphicons-filetypes.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-halflings/web/html_css/css/glyphicons-halflings.css"/>
+  <link rel="stylesheet" href="https://cdn.asce.org/chewie/assets/glyphicons_pro_1_9_2/glyphicons-social/web/html_css/css/glyphicons-social.css"/>
+
+  <link rel="stylesheet" href="../node_modules/xmeter/css/xmeter.css"/>
+  <link rel="stylesheet" href="../node_modules/aria-patterns/css/dist/o-Tablist.css"/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.15.0/bangs.css"/>
+
+  <link rel="stylesheet" href="./css/home.css"/>
+
+  <script src="../node_modules/aria-patterns/js/dist/o-Tablist.js" defer=""></script>
+  <script src="./js/o-Slider.js" defer=""></script>
+  <script src="./js/hacks.js" defer=""></script>
+</head>
+<body>
+  <a class="h-Hidden" href="#main">skip to main content</a>
+  <header>
+    <p>Header and Megamenu</p>
+  </header>
+  <main id="main" itemscope="" itemtype="http://schema.org/NGO">
+    <header>
+      <h1 class="h-Hidden" itemprop="name">American Society of Civil Engineers</h1>
+      <slot class="h-Block" name="hero">{{ xHero }}</slot>
+    </header>
+    <section class="o-Runner h-Constrain -ta-c" id="we-represent">
+      <header>
+        <p class="c-Tagline">Bringing the global civil engineering community together.</p>
+        <h1>We Represent:</h1>
+      </header>
+      <ul class="o-List o-Grid o-Grid--represent">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-stat.tpl.html }}</li>
+        </template>
+      </ul>
+    </section>
+    <section id="promotions">
+      <h1 class="c-SectionHed h-Hidden">Promotions</h1>
+      <div class="o-Tablist o-Tablist--slider" role="tablist">
+        <button class="o-Tablist--slider__Button" type="button" value="prev" tabindex="-1">
+          <i class="glyphicons glyphicons-circle-arrow-left">
+            <span class="h-Hidden">previous panel</span>
+          </i>
+        </button>
+        <template>
+          <details class="o-Tablist__Panel" id="promotions-panel{{ i }}" role="tabpanel" open="">
+            <summary class="o-Tablist__Tab" role="tab" aria-label="{{ title }}">&#x25cf;</summary>
+            {{ ./tpl/x-promo.tpl.html }}
+          </details>
+        </template>
+        <button class="o-Tablist--slider__Button" type="button" value="next" tabindex="-1">
+          <i class="glyphicons glyphicons-circle-arrow-right">
+            <span class="h-Hidden">next panel</span>
+          </i>
+        </button>
+      </div>
+    </section>
+    <section class="o-Runner h-Constrain" id="portals">
+      <h1 class="c-SectionHed h-Hidden">Portals</h1>
+      <ol class="o-List o-Grid o-Grid--portals">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-portal.tpl.html }}</li>
+        </template>
+      </ol>
+    </section>
+    <aside class="o-Flex c-Advertisement c-Advertisement--leaderboard">
+      <h1 class="c-Advertisement__Hn">Advertisement</h1>
+      <div class="o-Runner h-Constrain">
+        <div class="-d-n-sK">
+          <script>/* insert ad service for mobile banner here. below is sample output. */</script>
+          <a href="https://graduatedegrees.online.njit.edu/lp-res-asce/" target="_blank">
+            <img src="./images/mobilebanner.png" alt="alt text for leaderboard ad"/>
+          </a>
+        </div>
+        <div class="-d-n-nK">
+          <script>/* insert ad service for leaderboard here. below is sample output. */</script>
+          <a href="https://graduatedegrees.online.njit.edu/lp-res-asce/" target="_blank">
+            <img src="./images/leaderboard.png"  alt="alt text for leaderboard ad"/>
+          </a>
+        </div>
+      </div>
+    </aside>
+    <section class="o-Grid o-Grid--foundation o-Runner o-Runner--separator h-Constrain" id="asce-foundation" itemprop="department" itemscope="" itemtype="http://schema.org/NGO">
+      <template>
+        <h1 class="o-Grid__Item c-SectionHed -ta-i" itemprop="name">ASCE Foundation</h1>
+        <p class="o-Grid__Item o-Grid--foundation__Caption" itemprop="description">{{ caption }}</p>
+        <i class="o-Grid__Item c-SolidCircleIcon glyphicons glyphicons-donate" aria-hidden="true"></i>
+        <p class="o-Grid__Item o-Grid--foundation__Blurb">
+          Your Foundation!<br/>
+          Your Future!<br/>
+          You can make a difference!
+        </p>
+        <p class="o-Grid__Item o-Grid--foundation__Action" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/DonateAction">
+          <a class="c-Stat__Cta c-Button" href="{{ cta_url }}" rel="external" itemprop="url">
+            <slot itemprop="name">{{ cta_text }}</slot>
+          </a>
+        </p>
+      </template>
+    </section>
+    <section class="o-Runner o-Runner--separator h-Constrain" id="publication-highlights">
+      <h1 class="c-SectionHed h-Hidden">Publication Highlights</h1>
+      <ul class="o-List o-Grid o-Grid--publications">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-pub.tpl.html }}</li>
+        </template>
+      </ul>
+    </section>
+    <section class="o-Runner o-Runner--separator h-Constrain" id="learn-contribute">
+      <h1 class="c-SectionHed h-Hidden">Learn &amp; Contribute</h1>
+      <ul class="o-List o-Grid o-Grid--homeActions">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-homeaction.tpl.html }}</li>
+        </template>
+      </ul>
+    </section>
+    <section class="o-Runner o-Runner--separator h-Constrain" id="jobs">
+      <h1 class="c-SectionHed">Jobs</h1>
+      <ul class="o-List o-Grid o-Grid--jobs">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-job.tpl.html }}</li>
+        </template>
+      </ul>
+      <footer class="o-Runner -ta-c">
+        <a class="c-LinkArrow" href="//careers.asce.org/jobs">
+          <span class="c-LinkArrow__Text">Find a job</span>
+          <i class="c-LinkArrow__Icon glyphicons glyphicons-chevron-right"></i>
+        </a>
+      </footer>
+    </section>
+    <section class="o-Runner o-Runner--separator h-Constrain" id="news">
+      <h1 class="c-SectionHed">ASCE News</h1>
+      <ul class="o-List o-Grid o-Grid--news">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-article.tpl.html }}</li>
+        </template>
+      </ul>
+      <footer class="o-Runner -ta-c">
+        <a class="c-LinkArrow" href="//news.asce.org/">
+          <span class="c-LinkArrow__Text">Read more at <cite>ASCE News</cite></span>
+          <i class="c-LinkArrow__Icon glyphicons glyphicons-chevron-right"></i>
+        </a>
+      </footer>
+    </section>
+    <section class="o-Runner o-Runner--separator h-Constrain" id="member-stories">
+      <h1 class="c-SectionHed">ASCE Member Stories</h1>
+      <ul class="o-List o-Grid o-Grid--members">
+        <template>
+          <li class="o-List__Item o-Grid__Item">{{ ./tpl/x-member.tpl.html }}</li>
+        </template>
+      </ul>
+    </section>
+    <footer class="o-Runner -ta-c"><a class="c-Button" href="//www.asce.org/join/">Join ASCE</a></footer>
+    <aside class="o-Flex c-Advertisement">
+      <h1 class="c-Advertisement__Hn">Advertisement</h1>
+      <ul class="o-List o-Flex o-Runner h-Constrain">
+        <li class="o-List__Item o-Flex__Item">
+          <script>/* insert ad service for 1st small ad here. below is sample output. */</script>
+          <a href="https://example.com/" target="_blank">
+            <img src="./images/mediumrect.png" alt="alt text for 1st small ad"/>
+          </a>
+        </li>
+        <li class="o-List__Item o-Flex__Item">
+          <script>/* insert ad service for 2nd small ad here. below is sample output. */</script>
+          <a href="https://example.com/" target="_blank">
+            <img src="./images/mediumrect.png" alt="alt text for 2nd small ad"/>
+          </a>
+        </li>
+        <li class="o-List__Item o-Flex__Item">
+          <script>/* insert ad service for 3rd small ad here. below is sample output. */</script>
+          <a href="https://example.com/" target="_blank">
+            <img src="./images/mediumrect.png" alt="alt text for 3rd small ad"/>
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </main>
+  <footer>
+    <p>ASCE Footer</p>
+  </footer>
+  <a class="h-Hidden" href="#top">jump to top</a>
+</body>
+</html>

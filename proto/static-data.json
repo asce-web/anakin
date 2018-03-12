@@ -1,0 +1,23 @@
+{
+  "stats": [
+    { "icon": "group" , "number": 150000, "text": "Members"   , "type": "JoinAction"  , "cta": { "text": "Join ASCE"          , "url": "//www.asce.org/join/"                         } },
+    { "icon": "map"   , "number": 177   , "text": "Countries" , "type": "SearchAction", "cta": { "text": "Find a Local Group" , "url": "//www.asce.org/membership-communities/"       } },
+    { "icon": "shield", "number": 9     , "text": "Institutes", "type": "JoinAction"  , "cta": { "text": "Select an Institute", "url": "//www.asce.org/routing-page/technical-areas/" } }
+  ],
+  "portals": [
+    { "id": "membership"          , "name": "Membership"           , "icon": "nameplate"    , "url": "//www.asce.org/membership_and_communities/" },
+    { "id": "continuing-education", "name": "Continuing Education" , "icon": "education"    , "url": "//www.asce.org/continuing_education/"       },
+    { "id": "publications"        , "name": "Publications"         , "icon": "book-open"    , "url": "//www.asce.org/publications/"               },
+    { "id": "conferences-events"  , "name": "Conferences & Events" , "icon": "calendar"     , "url": "//www.asce.org/conferences_events/"         },
+    { "id": "initiatives"         , "name": "Initiatives"          , "icon": "address-book" , "url": "//www.asce.org/our_initiatives/"            },
+    { "id": "careers"             , "name": "Careers"              , "icon": "briefcase"    , "url": "//www.asce.org/careers/"                    }
+  ],
+  "pubs": [
+    { "id": "asce7"                     , "name": "ASCE 7"                     },
+    { "id": "civil-engineering-magazine", "name": "Civil Engineering Magazine" }
+  ],
+  "acts": [
+    { "id": "technical-information" , "name": "Technical Information" },
+    { "id": "get-involved"          , "name": "Get Involved"          }
+  ]
+}

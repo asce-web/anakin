@@ -1,0 +1,43 @@
+{
+  "name": "anakin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ASCE.org Core Styles",
+  "main": "styles/anakin.css",
+  "devDependencies": {
+    "aria-patterns": "^0.2.0",
+    "extrajs": "^0.11.0",
+    "extrajs-dom": "^4.1.0-beta.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-less": "^3.5.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "harp": "^0.25.0",
+    "jsdom": "^11.6.2",
+    "xmeter": "^6.3.0"
+  },
+  "directories": {
+    "doc": "docs/api"
+  },
+  "scripts": {
+    "serve": "harp server -p 9000",
+    "build:deps:xmeter": "cd ./node_modules/xmeter  &&  npm i  &&  npm run build  &&  cd -",
+    "build:deps:aria-patterns": "cd ./node_modules/aria-patterns  &&  npm i  &&  npm run build  &&  cd -",
+    "build:deps": "npm i  &&  npm run build:deps:xmeter  &&  npm run build:deps:aria-patterns",
+    "build:home": "gulp home:build",
+    "build:all": "npm run build:deps  &&  npm run build:home",
+    "unbuild": "rm ./proto/css/home.css{,.map}  &&  rm ./proto/home.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asce-web/anakin.git"
+  },
+  "author": "ASCE Web Team <webteam@asce.org> (https://github.com/asce-web/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asce-web/anakin/issues"
+  },
+  "homepage": "https://github.com/asce-web/anakin#readme"
+}

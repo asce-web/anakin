@@ -1,0 +1,45 @@
+
+/*################################*\
+    anakin  |  _c-ArticleTeaser.less
+\*################################*/
+@import (reference) url('__mx.mbh.less');
+@import (reference) url('__mx.pth.less');
+
+
+.c-ArticleTeaser {
+  li:not(:first-of-type) > & {
+    @media screen and (min-width: 30em) {
+      @supports (display: grid) {
+        display: grid;
+      }
+      grid-template: max-content auto ~'/' 5fr 7fr; // "max-content" minimizes the 1st row-size
+      grid-column-gap: calc(0.5 ~'*' var(--layout-padding-inline));
+    }
+  }
+}
+.c-ArticleTeaser__Img,
+.c-ArticleTeaser__Hn,
+.c-ArticleTeaser__Date {
+  .mx-mbh();
+}
+.c-ArticleTeaser__Img {
+  grid-row: 1 ~'/' -1;
+  width: 100%;
+  li:first-of-type & {
+      width: (7/12 * 100%);
+  }
+  li:not(:first-of-type) & {
+    @media not all and (min-width: 30em) {
+      width: (5/12 * 100%);
+    }
+  }
+}
+.c-ArticleTeaser__Hn {
+  .mx-pth();
+  cite {
+    font-style: inherit;
+    font-style: unset;
+  }
+}
+.c-ArticleTeaser__Date {
+}
