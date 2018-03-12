@@ -123,7 +123,7 @@ main footer { background-color: transparent; }
   // > (e.g. we cannot change an `<a>` to a `<span>`),
   // > thus it is best practice to include a placeholder anchor (`<a>` element),
   // > and than use logic to set the `[href]` if and when necessary.
-  &:visited { color: @g-color-btn-txt; }
+  &:visited:not(:hover) { color: @g-color-btn-txt; }
 }
 
 
