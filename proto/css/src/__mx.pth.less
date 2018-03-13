@@ -15,11 +15,12 @@
 // - .c-ArticleTeaser__Hn
 // - .c-ArticleTeaser__Date
 .mx-pth() {
-  padding-top: calc(0.5 ~'*' var(--lh));
+  padding-top: (0.5 * 1.5rem);           // COMBAK-FALLBACK
+  padding-top: calc(0.5 ~'*' var(--lh)); // COMBAK-FALLBACK
   padding-top: 0.5lh;
   @suports (padding-block-start: var(--variable)) {
     padding-top: unset;
-    padding-block-start: calc(0.5 ~'*' var(--lh));
+    padding-block-start: calc(0.5 ~'*' var(--lh)); // COMBAK-FALLBACK
     padding-block-start: 0.5lh;
   }
 }
