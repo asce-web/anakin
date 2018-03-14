@@ -10,7 +10,7 @@
 
 .c-Pub {
   @media screen and (min-width: 30em) and (max-width: 44.999em), screen and (min-width: 60em) {
-    @supports (display: grid) {
+    @supports (display: grid) { // NB-LINK read .o-Grid--.less#L17 for details
       display: grid;
     }
     grid-column-gap: var(--layout-padding-inline);
@@ -20,9 +20,6 @@
   @media screen and (min-width: 45em) {
     // same breakpoint as `.o-Grid--publications`
     grid-column-gap: calc(0.5 ~'*' var(--layout-padding-inline));
-  }
-  @media screen and (min-width: 60em) {
-    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -35,9 +32,8 @@
 .c-Pub__Img {
   box-shadow: 0 0.25rem 1rem 0.125rem fadeout(black, 75%); // COMBAK-FALLBACK for #rrggbbaa support
   box-shadow: 0 0.25rem 1rem 0.125rem #00000040; // REVIEW color
-  width: (7/12 * 100%);
-  @media screen and (min-width: 30em) and (max-width: 44.999em), screen and (min-width: 60em) {
-    width: 100%;
+  @media not all and (min-width: 30em), screen and (min-width: 45em) and (max-width: 60em) {
+    max-width: (7/12 * 100%);
   }
   @media screen and (min-width: 30em) {
     grid-row: 1 ~'/' -2;
