@@ -24,13 +24,12 @@
 }
 .c-ArticleTeaser__Img {
   grid-row: 1 ~'/' -1;
-  width: 100%;
   li:first-of-type & {
-      width: (7/12 * 100%);
+    max-width: (7/12 * 100%);
   }
   li:not(:first-of-type) & {
     @media not all and (min-width: 30em) {
-      width: (5/12 * 100%);
+      max-width: (5/12 * 100%);
     }
   }
 }
