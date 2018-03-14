@@ -7,13 +7,11 @@
 
 
 .c-Stat {
-  @supports (display: grid) {
-  display: grid;
-  }
   text-align: center;
-}
-.c-Stat {
   @media not all and (min-width: 30em) {
+    @supports (display: grid) { // NB-LINK read .o-Grid--.less#L17 for details
+      display: grid;
+    }
     grid-template: repeat(2, auto) ~'/' repeat(2, 1fr);
   }
 }

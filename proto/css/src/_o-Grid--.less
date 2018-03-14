@@ -10,7 +10,11 @@
 
 
 // COMBAK-FALLBACK for `.o-Grid`!
-// This overrides the default `.o-Grid {display: block;}` style, but re-applies it inside a feature query (`@supports`). The only reason for any of this is because IE can go to hell to be completely honest with you.
+// This overrides the default `.o-Grid {display: grid;}` style, but re-applies it inside a feature query (`@supports`).
+// The reason for this is that IE partially supports CSS Grid, but it is very buggy,
+// so we want to exclude the `display: grid` rule from IE, even though it supports it.
+// Since IE does *not* support feature queries, we can nest `display: grid` inside one, and IE will not catch it!
+// NB-LINK
 .o-Grid {
   display: block;
   @supports (display: grid) {

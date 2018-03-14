@@ -9,7 +9,7 @@
 .c-ArticleTeaser {
   li:not(:first-of-type) > & {
     @media screen and (min-width: 30em) {
-      @supports (display: grid) {
+      @supports (display: grid) { // NB-LINK read .o-Grid--.less#L17 for details
         display: grid;
       }
       grid-template: max-content auto ~'/' 5fr 7fr; // "max-content" minimizes the 1st row-size
