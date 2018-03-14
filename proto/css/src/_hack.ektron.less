@@ -67,19 +67,15 @@ main footer { background-color: transparent; }
 // HACK: fix icon sizing due to Bootstrap root rem values.
 .c-SolidCircleIcon {
   transform: scale(16 / 10);
-  // HACK adjust surrounding elements’ spacing due to increased icon size
-  &.c-Stat__Icon + p {
-    padding-top: 1.5rem;
-    padding-top: var(--lh);
-    padding-block-start: var(--lh);
-    padding-block-start: lh;
+  margin-top: 3rem; margin-bottom: 3rem;
+  @support (display: grid) {
+    margin-top: auto; margin-bottom: auto;
   }
-  &.c-Portal__Icon + .c-Portal__Hn {
-    padding-top: 3rem;
-    padding-top: calc(2 ~'*' var(--lh));
-    padding-block-start: calc(2 ~'*' var(--lh));
-    padding-block-start: 2lh;
+  /* equivalent to:
+  @support not (display:grid) {
+    margin-top: 3rem; margin-bottom: 3rem;
   }
+   */
 }
 
 
@@ -124,15 +120,6 @@ main footer { background-color: transparent; }
   // > thus it is best practice to include a placeholder anchor (`<a>` element),
   // > and than use logic to set the `[href]` if and when necessary.
   &:visited:not(:hover) { color: @g-color-btn-txt; }
-}
-
-
-// HACK adjust surrounding elements’ spacing due to increased icon size
-.c-Tagline + h1 {
-  margin-bottom: 4.5rem;
-  margin-bottom: calc(3 ~'*' var(--lh));
-  margin-block-end: calc(3 ~'*' var(--lh));
-  margin-block-end: 3lh;
 }
 
 
