@@ -56,7 +56,7 @@
     @media (min-width: 45em) {
       float: left;
       width: 48%;
-      margin-right: 2%;
+      margin-left: 1%; margin-right: 1%;
     }
   }
 }
@@ -139,12 +139,10 @@
   padding-top: @g-lh;
 }
 
-.c-Portal__List {
-  section & {
+.c-Portal {
+  section& {
     // Correct floating “grid” items not stacking properly.
-    // NB-LINK: _hack.ektron.less#L142 uses this but adjusted for Bootstrap styles
-    min-height: (1rem        * 1.5                 * 2                    + (@p-lh/2))      * 4;
-    //           ^ font-size   ^ body line-height    ^ 2 lines per bullet   ^ bottom-margin   ^ 4 bullets total
+    min-height: 30em;
   }
 }
 
