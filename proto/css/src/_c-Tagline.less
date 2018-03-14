@@ -14,8 +14,10 @@
   // REVIEW: Careful here, this `<h1>` style depends on the “We Represent”
   // being an `<h1>` immediately following the `.c-Tagline`.
   // REMEMBER to fix this if the element ever moves or changes.
+  text-align: center;
   & + h1 {
     font-weight: inherit;
     .font-size-el(@g-font-size-kilo, 2);
+    text-align: center;
   }
 }
