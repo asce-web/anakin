@@ -67,15 +67,8 @@ main footer { background-color: transparent; }
 // HACK: fix icon sizing due to Bootstrap root rem values.
 .c-SolidCircleIcon {
   transform: scale(16 / 10);
-  margin-top: 3rem; margin-bottom: 3rem;
-  @supports (display: grid) {
-    margin-top: auto; margin-bottom: auto;
-  }
-  /* equivalent to:
-  @supports not (display:grid) {
-    margin-top: 3rem; margin-bottom: 3rem;
-  }
-   */
+  &.c-Portal__Icon                                     { margin-top: 3rem; margin-bottom: 3rem; }
+  @media screen and (min-width: 30em) { &.c-Stat__Icon { margin-top: 3rem; margin-bottom: 3rem; } }
 }
 
 
