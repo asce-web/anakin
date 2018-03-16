@@ -3,6 +3,7 @@
     anakin  |  _c-MemberStory.less
 \*################################*/
 @import (reference) url('../../../node_modules/xmeter/css/src/__tool.delims.less');
+@import (reference) url('__mx.mb1.less');
 
 
 .c-MemberStory {
@@ -19,9 +20,7 @@
     line-height: unset;
   grid-row: 1 ~'/' -2;
   margin: auto;
-  margin-bottom: 1.5rem;    // TODO update Bangs and then add class `.-mb-1`
-  margin-bottom: var(--lh); // TODO update Bangs and then add class `.-mb-1`
-  margin-bottom: 1lh;       // TODO update Bangs and then add class `.-mb-1`
+  .mx-mb1();
   border-radius: 50%;
   box-shadow: 0 0 0 0.25rem var(--color-accent, transparent); // Box-Shadow hack: doesn’t fuck with vertical rhythm: read https://github.com/chharvey/xmeter/blob/v6.2.0/docs/tools.md#box-shadow-hack
   // border: 0.25rem solid var(--color-accent, transparent);
