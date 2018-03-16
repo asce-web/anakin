@@ -1,0 +1,23 @@
+
+/*################################*\
+    anakin  |  _mx.mb1.less
+\*################################*/
+
+
+// margin-bottom 1lh
+
+// TODO move these and others to Bangs:
+// - .o-Tablist--slider
+// - .c-HomeAction__Img
+// - .c-MemberStory__Img
+// - form#aspnetForm .c-LinkList (_hack.ektron.less)
+.mx-mb1() {
+  margin-bottom: 1.5rem;    // COMBAK-FALLBACK
+  margin-bottom: var(--lh); // COMBAK-FALLBACK
+  margin-bottom: 1lh;
+  @suports (margin-block-end: var(--variable)) {
+    margin-bottom: unset;
+    margin-block-end: var(--lh); // COMBAK-FALLBACK
+    margin-block-end: 1lh;
+  }
+}

@@ -107,8 +107,12 @@
   }
 }
 
+// Hide slider tabs from IE. (Cannot `display:none` due to a11y and spacing issues.)
+.o-Tablist--slider .o-Tablist__Tab {
+  color: transparent;
+}
+
 .c-SolidCircleIcon {
-  margin: auto;
   .c-Portal & {
     background-color: @g-color-asce-green;
   }
@@ -134,10 +138,6 @@
 
 .c-LinkList__Item {
   margin-bottom: (0.5 * @g-lh);
-}
-
-.c-Tagline {
-  padding-top: @g-lh;
 }
 
 .c-Portal {
