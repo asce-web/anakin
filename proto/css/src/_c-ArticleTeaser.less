@@ -17,11 +17,7 @@
     }
   }
 }
-.c-ArticleTeaser__Img,
-.c-ArticleTeaser__Hn,
-.c-ArticleTeaser__Date {
-  .mx-mbh();
-}
+
 .c-ArticleTeaser__Img {
   grid-row: 1 ~'/' -1;
   li:first-of-type & {
@@ -33,12 +29,15 @@
     }
   }
 }
+
 .c-ArticleTeaser__Hn {
+  .mx-mbh();
   .mx-pth();
   cite {
     font-style: inherit;
     font-style: unset;
   }
 }
+
 .c-ArticleTeaser__Date {
 }
