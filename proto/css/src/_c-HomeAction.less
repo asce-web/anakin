@@ -5,6 +5,8 @@
 
 
 .c-HomeAction {
+  // COMBAK-AWAIT: align heading, caption, and images using subgrid of `.o-Grid--homeActions`
+  // once subgrid is supported (expected in 2019)
 }
 
 .c-HomeAction__Head {
@@ -20,12 +22,6 @@
 }
 
 .c-HomeAction__Cap {
-  @media screen and (min-width: 45em) {
-    // HACK: set the min-height of the paragraphs to ensure the columns are even side-by-side.
-    // This could be solved with *subgrid* if that were supported by browsers.
-    min-height: calc(2 ~'*' var(--lh));
-    min-inline-size: 2lh;
-  }
 }
 
 .c-HomeAction__List {
