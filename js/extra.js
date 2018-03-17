@@ -22,7 +22,7 @@ $(window).load(function(){
 // removed -- DC 7.29.17
 // ASCE Convention status message added -- DC 10.6.17
 // Personify down status message -- DC 12.01.17
-$('body').prepend('<div class="site-alert"><p><strong>Limited functionality</strong>: We are experience temporary technical difficulties.</p></div>');
+// $('body').prepend('<div class="site-alert"><p><strong>Limited functionality</strong>: We are experience temporary technical difficulties.</p></div>');
 
 
 // // Publications Maintenance updates -- DC 8.18.17
