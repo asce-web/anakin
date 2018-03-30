@@ -3,6 +3,7 @@
     anakin  |  _hack.ektron.less
 \*################################*/
 @import (reference) url('__settings.less');
+@import (reference) url('__mx.mb1.less');
 
 
 // Ektron and Bootstrap fixes go here.
@@ -67,27 +68,14 @@ main footer { background-color: transparent; }
 // HACK: fix icon sizing due to Bootstrap root rem values.
 .c-SolidCircleIcon {
   transform: scale(16 / 10);
-  // HACK adjust surrounding elements’ spacing due to increased icon size
-  &.c-Stat__Icon + p {
-    padding-top: 1.5rem;
-    padding-top: var(--lh);
-    padding-block-start: var(--lh);
-    padding-block-start: lh;
-  }
-  &.c-Portal__Icon + .c-Portal__Hn {
-    padding-top: 3rem;
-    padding-top: calc(2 ~'*' var(--lh));
-    padding-block-start: calc(2 ~'*' var(--lh));
-    padding-block-start: 2lh;
-  }
+  &.c-Portal__Icon                                     { margin-top: 3rem; margin-bottom: 3rem; }
+  @media screen and (min-width: 30em) { &.c-Stat__Icon { margin-top: 3rem; margin-bottom: 3rem; } }
 }
 
 
 // HACK: fix margin-bottom on `ul >> ul` (etc.) set to 0 by Bootstrap
 .c-LinkList {
-  margin-bottom: 1.5rem;
-  margin-bottom: var(--lh);
-  margin-bottom: 1lh;
+  .mx-mb1();
 }
 
 
@@ -95,7 +83,7 @@ main footer { background-color: transparent; }
 // `10 / 7` (≈1.42857) is the body line-height for some Godforsaken reason
 .c-LinkArrow__Icon {
   width      : (10/7 * 1em);
-  inline-size: (10/7 * 1em);
+  height     : (10/7 * 1em);
 }
 
 
@@ -127,23 +115,9 @@ main footer { background-color: transparent; }
 }
 
 
-// HACK adjust surrounding elements’ spacing due to increased icon size
-.c-Tagline + h1 {
-  margin-bottom: 4.5rem;
-  margin-bottom: calc(3 ~'*' var(--lh));
-  margin-block-end: calc(3 ~'*' var(--lh));
-  margin-block-end: 3lh;
-}
-
-
 // HACK IE-only fixes in Ektron. See `_hack.ie.less` for original non-Ektron code.
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
   // Bootstrap-adjusted styles.
-  // NB-LINK: see _hack.ie.less#L143 for original, non-Bootstrap, fix
-  section .c-Portal__List {
-    min-height: (1.6rem      * 10/7                * 2                    + 0.75rem)        * 4;
-    //           ^ font-size   ^ body line-height    ^ 2 lines per bullet   ^ bottom-margin   ^ 4 bullets total
-  }
   // disable icon resizing for IE
   .c-SolidCircleIcon {
     transform: none;

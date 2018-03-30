@@ -15,25 +15,20 @@
   ::-webkit-details-marker {
     display: none;
   }
-  // TODO: use subgrids to align all the portals’ headers
+  // COMBAK-AWAIT: align icon and heading using subgrid of `.o-Grid--portals`
+  // once subgrid is supported (expected in 2019)
 }
 
 .c-Portal__Head {
-  display: flex;
-  align-items: center;
   a[href]& {
     &:hover,
     &:focus {
       text-decoration: underline;
     }
   }
-  @media screen and (min-width: 30em) {
-    flex-direction: column;
-  }
 }
 
 .c-Portal__Icon {
-  flex: none;
 }
 
 .c-Portal__Hn {

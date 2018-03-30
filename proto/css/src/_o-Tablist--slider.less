@@ -2,6 +2,7 @@
 /*################################*\
     anakin  |  _o-Tablist--slider.less
 \*################################*/
+@import (reference) url('__mx.mb1.less');
 
 
 // Extend the `.o-Tablist`, `.o-Tablist__Tab`, and `.o-Tablist__Panel` styles.
@@ -9,7 +10,7 @@
 .o-Tablist--slider {
   position: relative; // for the contained left&right buttons
   justify-content: center;
-  margin-bottom: var(--lh);
+  .mx-mb1();
   .o-Tablist__Tab {
     flex: none;
     order: 1;

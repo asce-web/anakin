@@ -9,7 +9,7 @@
     { "id": "continuing-education", "name": "Continuing Education" , "icon": "education"    , "url": "//www.asce.org/continuing_education/"       },
     { "id": "publications"        , "name": "Publications"         , "icon": "book-open"    , "url": "//www.asce.org/publications/"               },
     { "id": "conferences-events"  , "name": "Conferences & Events" , "icon": "calendar"     , "url": "//www.asce.org/conferences_events/"         },
-    { "id": "initiatives"         , "name": "Initiatives"          , "icon": "address-book" , "url": "//www.asce.org/our_initiatives/"            },
+    { "id": "initiatives"         , "name": "Initiatives"          , "icon": "bullhorn"     , "url": "//www.asce.org/our_initiatives/"            },
     { "id": "careers"             , "name": "Careers"              , "icon": "briefcase"    , "url": "//www.asce.org/careers/"                    }
   ],
   "pubs": [

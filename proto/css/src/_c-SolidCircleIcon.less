@@ -6,9 +6,11 @@
 
 
 .c-SolidCircleIcon {
-  display: block;
-  line-height: inherit; // COMBAK-FALLBACK
-  line-height: unset;
+  // .h-Block
+    display: block;
+    line-height: inherit; // COMBAK-FALLBACK
+    line-height: unset;
+  margin: auto; // a trick to achieve `place-self: center;`
   background-color: @g-color-asce-blue; // COMBAK-FALLBACK for custom prop
   background-color: var(--color-accent, @g-color-asce-blue);
   // background-image: linear-gradient(0.375turn, rgba(255,255,255,0.33), transparent); // fallback for `#rrggbbaa` syntax

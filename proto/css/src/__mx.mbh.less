@@ -8,18 +8,15 @@
 
 // TODO move these and others to Bangs:
 // - .c-LinkList__Item
-// - .c-Pub__Img
 // - .c-Pub__Hn
-// - .c-Pub__Cap
-// - .c-ArticleTeaser__Img
 // - .c-ArticleTeaser__Hn
-// - .c-ArticleTeaser__Date
 .mx-mbh() {
-  margin-bottom: calc(0.5 ~'*' var(--lh));
+  margin-bottom: (0.5 * 1.5rem);           // COMBAK-FALLBACK
+  margin-bottom: calc(0.5 ~'*' var(--lh)); // COMBAK-FALLBACK
   margin-bottom: 0.5lh;
   @suports (margin-block-end: var(--variable)) {
     margin-bottom: unset;
-    margin-block-end: calc(0.5 ~'*' var(--lh));
+    margin-block-end: calc(0.5 ~'*' var(--lh)); // COMBAK-FALLBACK
     margin-block-end: 0.5lh;
   }
 }

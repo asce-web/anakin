@@ -1,0 +1,20 @@
+
+/*################################*\
+    anakin  |  _mx.pt1.less
+\*################################*/
+
+
+// padding-top 1lh
+
+// TODO move these and others to Bangs:
+// - .c-Tagline
+.mx-pt1() {
+  padding-top: 1.5rem;    // COMBAK-FALLBACK
+  padding-top: var(--lh); // COMBAK-FALLBACK
+  padding-top: 1lh;
+  @suports (padding-block-start: var(--variable)) {
+    padding-top: unset;
+    padding-block-start: var(--lh); // COMBAK-FALLBACK
+    padding-block-start: 1lh;
+  }
+}
