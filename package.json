@@ -6,14 +6,12 @@
   "main": "styles/anakin.css",
   "devDependencies": {
     "aria-patterns": "~0.2.0",
-    "extrajs": "^0.11.0",
     "extrajs-dom": "^4.1.0-beta.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "^3.9.2",
     "gulp-less": "^3.5.0",
     "gulp-sourcemaps": "^2.6.4",
-    "harp": "^0.25.0",
     "jsdom": "^11.6.2",
     "xmeter": "~6.4.0"
   },
