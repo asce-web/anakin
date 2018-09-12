@@ -1,0 +1,17 @@
+# Output of 'npm pack'
+*.tgz
+
+# Generated test files
+test/out/
+
+# Generated documentation & style guides
+docs/api/
+docs/styleguide/
+
+# Manually installed 3rd party packages
+vendor
+
+# Site files and assets
+proto/*/files
+proto/images
+# TODO : move site to proto/home/ and images folder to proto/home/files/images
