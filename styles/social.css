@@ -1,0 +1,8 @@
+/* file inherits styles from anakin.css. clean version of document needs to be created.*/
+.icon-ig {
+  background: url(https://cdn.asce.org/images/icons/ig-logo-white.svg) no-repeat;
+  background-size: contain;
+  height: 24px;
+  width: 24px; }
+  .icon-ig:hover {
+    background-image: url(https://cdn.asce.org/images/icons/ig-logo-black.svg); }

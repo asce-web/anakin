@@ -6,6 +6,7 @@ Thumbs.db
 config.codekit
 cols.html
 /config.codekit3
+prepros-6.config
 
 # Dependency directories
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
