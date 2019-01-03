@@ -1,3 +1,5 @@
+@import "variables";
+
 .double_col {
   ul:extend(.row) {
     display: flex;
@@ -42,7 +44,7 @@
 
 .site-alert {
   background: darkorange;
-  font-size: small;
+  font-size: 1.1em;
   padding: 0.5rem 1rem;
   text-align: center;
   color: beige;
@@ -50,6 +52,14 @@
   p {
     margin: 0;
     padding: 0;
+  }
+  a {
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
