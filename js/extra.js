@@ -50,6 +50,8 @@ $(window).load(function () {
 //         this.protocol = "https:"
 // });
 
+
+// Script that will ensure non-secure anchors on asce.org are now secure.
 $("a[href*='www.asce.org']").each(function () {
   if (this.protocol === "http:")
     this.protocol = "https:"
