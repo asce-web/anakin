@@ -2,10 +2,7 @@ const fs = require('fs')
 const path = require('path')
 
 const jsdom = require('jsdom')
-const xjs = {
-  Date: require('extrajs').Date,
-  ...require('extrajs-dom'),
-}
+const xjs = require('extrajs-dom')
 
 const xStat       = require('../tpl/x-stat.tpl.js')
 const xPortal     = require('../tpl/x-portal.tpl.js')

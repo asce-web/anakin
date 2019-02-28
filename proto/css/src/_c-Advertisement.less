@@ -37,3 +37,12 @@
     .mx-mbh();
   }
 }
+
+
+// HACK: we cannot control uploaded image size from ad server
+.c-Advertisement--leaderboard img {
+	max-width: 728px;
+}
+.c-Advertisement:not(.c-Advertisement--leaderboard) img {
+	max-width: 300px;
+}
