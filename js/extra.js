@@ -32,15 +32,14 @@ $(window).load(function () {
 var pathArray = window.location.pathname.split( '/' );
 var secondLevelLocation = pathArray[1];
 if (secondLevelLocation === "publications") {
-  $('body').prepend('<div class="site-alert"><p><strong>Attention ASCE Customers</strong> Due to ASCE\'s annual year - end inventory count, all Print Book, DVD, CD ROM and Video orders submitted after 1: 00 pm EST, Monday, September 9th, will begin shipping on Monday, September 16th.E - books will continue to be available for purchase through the ASCE Bookstore.</p></div>');
+  $('body').prepend('<div class="site-alert"><p><strong>Attention ASCE Customers</strong> Due to ASCE\'s annual year - end inventory count, all Print Book, DVD, CD ROM and Video orders submitted after 1:00 pm EST, Monday, September 9th, will begin shipping on Monday, September 16th. E-books will continue to be available for purchase through the ASCE Bookstore.</p></div>');
 }
 
-// Publications Maintenance updates -- DC 8.18.17
-// var pathArray = window.location.pathname.split( '/' );
-// var secondLevelLocation = pathArray[1];
-// if (secondLevelLocation === "student_chapters") {
-//   $('body').prepend('<div class="site-alert"><p><strong>Informational Alert</strong>: Important Information Regarding the Path Forward for Student Chapters, Steel Bridge. <a href="https://news.asce.org/asce-establishes-path-forward-for-student-chapters-steel-bridge/">Learn more</a></p></div>');
-// }
+var pathArray = window.location.pathname.split('/');
+var secondLevelLocation = pathArray[1];
+if (secondLevelLocation === "booksandjournals") {
+  $('body').prepend('<div class="site-alert"><p><strong>Attention ASCE Customers</strong> Due to ASCE\'s annual year - end inventory count, all Print Book, DVD, CD ROM and Video orders submitted after 1:00 pm EST, Monday, September 9th, will begin shipping on Monday, September 16th. E-books will continue to be available for purchase through the ASCE Bookstore.</p></div>');
+}
 
 // Temporary Fix for broken HTTP link
 // $("a[href]").each(function(){
