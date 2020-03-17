@@ -13,7 +13,7 @@ $(window).load(function () {
   $('#header-icon-livechat a, #footer-icon-livechat a').prepend('<span class="icon-livechat"></span>');
 });
 
-$('body').prepend('<div class="site-alert"><p>ASCE is committed to the health and safety of our members and event participants. <a href="/covid-19">Details</a></p></div>');
+$('body').prepend('<div class="site-alert"><p><a class="black-link" href="/covid-19">COVID-19 OUTBREAD: ASCE Event Cancellations and Updates</a></p></div>');
 
 // $('body').prepend('<div class="site-alert"><p>Due to system upgrades, online transactions will not be available from <strong>Thursday, February 7 at 5 p.m. EST through Monday, February 11</strong>. This includes registrations, purchases and changes to member records. If you need immediate assistance, please contact Customer Service at 1-800-548-2723 or 703-295-6300 (Mon–Fri 9 a.m.–6 p.m. EST) or email <a href="mailto:customercare@asce.org">customercare@asce.org</a>. Thank you for your patience.</p></div>');
 
