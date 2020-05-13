@@ -17,7 +17,7 @@ $(window).load(function () {
 var pathArray = window.location.pathname.split('/');
 var secondLevelLocation = pathArray[1];
 if ((secondLevelLocation === "continuing-education") || (secondLevelLocation === "education_and_careers")) {
-  $('body').prepend('<div class="secondary-alert"><p><strong>Attention ASCE Customers</strong> The <em>myLearning</em>, ASCE\'s learning management system, is currently down. We are working to resolve the issue. Please check back.</p></div>');
+  $('body').prepend('<div class="secondary-alert"><p><strong>Attention ASCE Customers</strong> The <em>myLearning</em> learning management system is currently down. We are working to resolve the issue. Please check back.</p></div>');
 }
 
 $('body').prepend('<div class="site-alert"><p><a class="black-link" href="/covid-19">COVID-19 OUTBREAK: ASCE Event Cancellations and Updates</a></p></div>');
