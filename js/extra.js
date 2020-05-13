@@ -16,8 +16,8 @@ $(window).load(function () {
 // Publications Maintenance updates -- DC 8.18.17
 var pathArray = window.location.pathname.split('/');
 var secondLevelLocation = pathArray[1];
-if (secondLevelLocation === "continuing-education") {
-  $('body').prepend('<div class="secondary-alert"><p><strong>Attention ASCE Customers</strong> Due to ASCE\'s annual year - end inventory count, all Print Book, DVD, CD ROM and Video orders submitted after 1:00 pm EST, Monday, September 9th, will begin shipping on Monday, September 16th. E-books will continue to be available for purchase through the ASCE Bookstore.</p></div>');
+if ((secondLevelLocation === "continuing-education") || (secondLevelLocation === "education_and_careers")) {
+  $('body').prepend('<div class="secondary-alert"><p><strong>Attention ASCE Customers</strong> The myLearning login is currently down. We are working to resolve the issue. Please check back.</p></div>');
 }
 
 $('body').prepend('<div class="site-alert"><p><a class="black-link" href="/covid-19">COVID-19 OUTBREAK: ASCE Event Cancellations and Updates</a></p></div>');
