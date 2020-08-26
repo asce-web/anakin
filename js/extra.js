@@ -13,12 +13,12 @@ $(window).load(function () {
   $('#header-icon-livechat a, #footer-icon-livechat a').prepend('<span class="icon-livechat"></span>');
 });
 
-// // Publications Maintenance updates -- DC 8.18.17
-// var pathArray = window.location.pathname.split('/');
-// var secondLevelLocation = pathArray[1];
-// if ((secondLevelLocation === "continuing-education") || (secondLevelLocation === "education_and_careers")) {
-//   $('body').prepend('<div class="secondary-alert"><p><strong>Attention ASCE Customers</strong>: The <em>myLearning</em> system is currently down. We are working to resolve the issue. Please check back.</p></div>');
-// }
+// // Publications Maintenance updates
+var pathArray = window.location.pathname.split('/');
+var secondLevelLocation = pathArray[1];
+if ((secondLevelLocation === "publications") || (secondLevelLocation === "booksandjournals")) {
+  $('body').prepend('<div class="secondary-alert"><p><strong>Attention ASCE Customers</strong>: Due to ASCE\'s annual year - end inventory count, all Print Book, DVD, CD ROM and Video orders submitted after 5:00 pm EST, Monday, September 7th, will begin shipping on Monday, September 14th. E-books will continue to be available for purchase through the <em>ASCE Bookstore</em>.</p></div>');
+}
 
 // $('body').prepend('<div class="secondary-alert"><p><strong>Attention</strong>: ASCE is experiencing technical difficulties with purchases on the ASCE site.  Customer service representatives are available at (800) 548-2723 or (703) 295-6300 from 9am – 6 pm ET to assist with purchases.</p></div>');
 $('body').prepend('<div class="site-alert"><p><a class="black-link" href="/covid-19">COVID-19 OUTBREAK: ASCE Event Cancellations and Updates</a></p></div>');
