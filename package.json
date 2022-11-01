@@ -7,7 +7,7 @@
   "devDependencies": {
     "aria-patterns": "~0.2.0",
     "extrajs-dom": "^4.1.0-beta.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "^3.9.2",
     "gulp-less": "^3.5.0",
